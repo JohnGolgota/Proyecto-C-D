@@ -1,0 +1,7 @@
+Para inprotar Fuentes desde un archivo .ttf o .otf
+
+@font-face {
+    font-family: "El nombre por el cual vas a llamar la fuente";
+    src: url(./LaDireccionlocalOWebDelArchivo.ttf);
+}
+Y no se que mas poner aqui

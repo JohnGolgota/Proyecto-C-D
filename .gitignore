@@ -1,0 +1,8 @@
+# en caso de tener archivos de prueba que no son necesarios compartir
+# .gitignore
+
+# .gitignore se utiliza para informar al Git, que componentes, archivos o carpetas no seran subidas directamente al repositorio
+# este archivo .gitignore se conserva para registrar el listado
+
+# este ejemplo es con una carpeta
+abye
