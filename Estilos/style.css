@@ -1,3 +1,8 @@
+/* --------------------------------------------- Fuentes. --------------------------------------------- */
+
+
+
+
 /* ----------------------------------------- Paleta De Colores Y Box-Sizing. ----------------------------------------- */
 * {
     --color1: #06283D;
@@ -13,18 +18,20 @@
 
 
 /* --- OUTLINE --- */
-* {outline: auto;}
+/* * {outline: auto;} */
+/* main * {outline: auto;} */
 
 
 
 /* -------------------------------------------- ESTILOS PERSONALIZADOS -------------------------------------------- */
+/* -------------------------- Subcategoria: Nav-bar -------------------------- */
 header {
     background: linear-gradient(to left, var(--color2), var(--color3));
     /* background: linear-gradient(to left, var(--color1), var(--color2)); */
 }
 
 .botones {
-    width: 340px;
+    width: 375px;
     height: 80%;
     margin-right: 10px;
 }
@@ -38,11 +45,24 @@ header {
     margin-right: 5px;
 }
 
+h1, 
+h4 {
+    color: var(--color4);
+    position: relative;
+}
+.titulo-subtitulo-banner {
+    display: block;
+}
+
+/* main {
+    background-color: var(--color1);
+} */
+
 
 
 /* -------------------------------------------- CONTENIDO IMPORTADO -------------------------------------------- */
 /* -------------------------- Subcategoria: Modo Oscuro -------------------------- */
-.puto-switch {
+.contenido-switch {
     position: absolute;
     width: 70px;
     height: 100%;
@@ -148,7 +168,7 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
     height: 100%;
     width: 0;
     border-radius: 3px;
-    background-color: var(--color2);
+    background-color: var(--color3);
     z-index: -1;
 
     -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
@@ -158,18 +178,353 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
    
 .boton:hover {
     color: #e8e8e8;
-    border-radius: 3px;
+    border-radius: 5px;
 }
    
 .boton:hover::before {
     width: 100%;
 }
 
-
 .btn-uno, .btn-dos {
     /* Ancho */
-    width: 120px;
+    width: 150px;
 
     /* Alto */
     max-height: 100%;
 }
+
+
+
+
+/* -------------------------- Subcategoria: Banner -------------------------- */
+.superbox {
+    width: 100%;
+    max-width: 100%;
+    height: 92vh;
+    max-height: 92vh;
+    overflow: hidden;
+    z-index: -1000;
+    background-color: var(--color4);
+    
+}
+.box {
+    position: relative;
+    top: -50%;
+    left: -60%;
+    /* transform: rotate(80deg); */
+    width: 50vh;
+    max-width: 80vh;
+    max-height: 50vh;
+    /* z-index: -10; */
+
+    background-color: var(--color3);
+}
+
+.wave {
+    position: sticky;
+    top: 0;
+    left: 0;
+    /* opacity: .4; */
+    /* position: relative; */
+    top: -30%;
+    left: 0;
+    background: var(--color3);
+    width: 1500px;
+    height: 1300px;
+    /* margin-left: -150px;
+    margin-top: -250px; */
+    transform-origin: 50% 48%;
+    border-radius: 43%;
+    animation: drift 5s infinite linear;
+}
+
+.wave.-three {
+    animation: drift 10500ms infinite linear;
+    position: relative;
+    background-color: var(--color1);
+}
+
+.wave.-two {
+    animation: drift 8000ms infinite linear;
+    /* opacity: .1; */
+    background: var(--color2);
+    position: absolute;
+}
+
+.wave.-one {
+    animation: drift 9000ms infinite linear;
+    /* opacity: .2; */
+    background: var(--color3);
+    position: absolute;
+}
+
+.box:after {
+    content: '';
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* z-index: 11; */
+    transform: translate3d(0, 0, 0);
+}
+
+@keyframes drift {
+    from { transform: rotate(0deg); }
+    from { transform: rotate(360deg); }
+}
+
+/*LOADING SPACE*/
+
+.contain {
+    animation-delay: 4s;
+    /* z-index: 1000; */
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+    background: #25a7d7;
+    background: -webkit-linear-gradient(#25a7d7, #2962FF);
+    background: linear-gradient(#25a7d7, #25a7d7);
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 5px;
+}
+
+/*Animation*/
+.icon:nth-child(2) img {-webkit-animation-delay: 0.2s;animation-delay: 0.2s}
+.icon:nth-child(3) img {-webkit-animation-delay: 0.3s;animation-delay: 0.3s}
+.icon:nth-child(4) img {-webkit-animation-delay: 0.4s;animation-delay: 0.4s}
+
+.icon img {
+    -webkit-animation: anim 5s ease infinite;
+    animation: anim 5s ease infinite;
+    -webkit-transform: scale(0,0) rotateZ(180deg);
+    transform: scale(0,0) rotateZ(180deg);
+}
+
+@-webkit-keyframes anim{
+    0% {
+        -webkit-transform: scale(0,0) rotateZ(-90deg);
+        transform: scale(0,0) rotateZ(-90deg);opacity:0
+    }
+    30% {
+        -webkit-transform: scale(1,1) rotateZ(0deg);
+        transform: scale(1,1) rotateZ(0deg);opacity:1
+    }
+    50% {
+        -webkit-transform: scale(1,1) rotateZ(0deg);
+        transform: scale(1,1) rotateZ(0deg);opacity:1
+    }
+    80% {
+        -webkit-transform: scale(0,0) rotateZ(90deg);
+        transform: scale(0,0) rotateZ(90deg);opacity:0
+    }
+}
+
+@keyframes anim{
+    0% {
+        -webkit-transform: scale(0,0) rotateZ(-90deg);
+        transform: scale(0,0) rotateZ(-90deg);opacity:0
+    }
+    30% {
+        -webkit-transform: scale(1,1) rotateZ(0deg);transform: scale(1,1) rotateZ(0deg);opacity:1
+    }
+    50% {
+        -webkit-transform: scale(1,1) rotateZ(0deg);
+        transform: scale(1,1) rotateZ(0deg);opacity:1
+    }
+    80% {
+        -webkit-transform: scale(0,0) rotateZ(90deg);
+        transform: scale(0,0) rotateZ(90deg);opacity:0
+    }
+}
+
+
+
+/* -------------------------------------------- DISEÑO RESPONSIVE -------------------------------------------- */
+/* -------------------------- Subcategoria: nav-bar -------------------------- */
+.oculto {
+    display: none;
+    border-radius: 0px;
+    width: 45px;
+    position: absolute;
+    right: 0;
+}
+
+@media (max-width: 575px){
+    .boton {
+        display: none;
+    }
+
+    .oculto {
+        display: block;
+    }
+    .contenido-switch {
+        position: absolute;
+        right: 50px;
+    }
+}
+
+@media (max-width: 190px){
+    .boton {
+        display: none;
+    }
+
+    .oculto {
+        display: block;
+    }
+
+    .contenido-switch {
+        display: none;
+    }
+}
+
+
+
+/* -------------------------- Subcategoria: Banner -------------------------- */
+@media (max-width: 1000px){
+    .box {
+        left: -80%;
+    }
+}
+
+@media (max-width: 900px){
+    .box {
+        left: -100%;
+    }
+}
+
+@media (max-width: 800px){
+    .box {
+        left: -120%;
+    }
+}
+
+@media (max-width: 745px){
+    .box {
+        left: -150%;
+    }
+}
+
+@media (max-width: 650px){
+    .box {
+        left: -175%;
+    }
+}
+
+@media (max-width: 580px){
+    .box {
+        left: -200%;
+    }
+}
+
+@media (max-width: 540px){
+    .box {
+        left: -205%;
+    }
+}
+
+@media (max-width: 530px){
+    .box {
+        left: -235%;
+    }
+}
+
+@media (max-width: 485px){
+    .box {
+        left: -250%;
+    }
+}
+
+@media (max-width: 460px){
+    .box {
+        left: -280%;
+    }
+}
+
+@media (max-width: 430px){
+    .box {
+        left: -288%;
+    }
+}
+
+@media (max-width: 405px){
+    .box {
+        left: -300%;
+    }
+}
+
+@media (max-width: 370px){
+    .box {
+        left: -330%;
+    }
+}
+
+@media (max-width: 360px){
+    .box {
+        left: -345%;
+    }
+}
+
+@media (max-width: 345px){
+    .box {
+        left: -360%;
+    }
+}
+
+@media (max-width: 335px){
+    .box {
+        left: -390%;
+    }
+}
+
+@media (max-width: 325px){
+    .box {
+        left: -397%;
+    }
+}
+
+@media (max-width: 315px){
+    .box {
+        left: -430%;
+    }
+}
+
+@media (max-width: 305px){
+    .box {
+        left: -450%;
+    }
+}
+
+@media (max-width: 295px){
+    .box {
+        left: -470%;
+    }
+}
+
+@media (max-width: 285px){
+    .box {
+        left: -480%;
+    }
+}
+
+
+
+/* -------------------------------------------- PANTALLA DE CARGA -------------------------------------------- */

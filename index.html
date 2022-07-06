@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Esta linea de codigo no es un EasterEgg, para nada. -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,35 +27,76 @@
             <div class="">
                 <a href="index.html" target=""><img src="/Imagenes/favicon.png" alt="Logo" width="35px"></a>
             </div>
-
-            <!-- Cosas de bootstrap -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Contenido de la barra de navegacion -->
-            <div class="collapse navbar-collapse">
+            
+            <!-- botones -->
+            <div class="navbar-nav d-inline align-items-end text-end position-absolute end-0 botones">
                 
-                <!-- botones -->
-                <div class="navbar-nav d-inline align-items-end text-end position-absolute end-0 botones">
-                    <!-- switch -->
-                    <div  class="puto-switch">
-                        <label class="switch align-items-center">
-                            <input type="checkbox" class="input-banner">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    
-                    <!-- inicio sesión -->
-                    <button class="boton btn-uno"> Inicia Sesion </button>
-                    
-                    <!-- registro -->
-                    <button class="boton btn-dos"> Registrate </button>
+                <!-- switch -->
+                <div class="contenido-switch">
+                    <label class="switch align-items-center">
+                        <input type="checkbox" class="input-banner">
+                        <span class="slider"></span>
+                    </label>
                 </div>
+                
+                <!-- inicio sesión -->
+                <button class="boton btn-uno"> Inicia Sesion </button>
+                
+                <!-- registro -->
+                <button class="boton btn-dos"> Registrate </button>
+                
+                <!-- Oculto -->
+                <button class="oculto boton">...</button> 
             </div>
         </nav>
     </header>
 
+    <!-- Contenido principal: Banner, Redes sociales, Herramientas -->
+    <main class="">
+
+        <!-- Banner -->
+        <section class="superbox">
+            <div class='box'>
+                <div class='wave -one'></div>
+                <div class='wave -two'></div>
+                <div class='wave -three'></div>
+            </div>
+            <div class="align-items-center ms-2 titulo-subtitulo-banner">
+                <h1>Carpe Diem</h1>
+                <h4>Varia</h4>
+            </div>
+        </section>
+
+        <!-- Redes sociales -->
+        <aside class="logos-redes-f-i position-fixed bottom-0 end-0">
+
+            <!-- Facebook -->
+            <div class="">
+                <img src="" alt="Facebook">
+            </div>
+
+            <!-- Imgtagram -->
+            <div>
+                <img src="" alt="instagram">
+            </div>
+        </aside>
+        <section>
+            <!-- Agenda -->
+            <article>
+
+                <!-- imagen. Agenda -->
+                <div>
+                    <img src="" alt="Agenda">
+                </div>
+
+                <!-- descripcion. Agenda -->
+                <div>
+                    <h3>¡Programa tus actividades!</h3>
+                    <p>Con nuestra herramienta Crear Agenda podras estructurar tu dia de la manera mas optima.</p>
+                </div>
+            </article>
+        </section>
+    </main>
     <!-- Scripts utilizados. -->
     <script src="./Bootstrap/bootstrap.bundle.min.js"></script>
 
