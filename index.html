@@ -4,167 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carp Diem</title>
+    <title> Carpe Diem | Inicio </title>
     <link rel="shortcut icon" href="./Imagenes/favicon.png" type="image/x-icon">
-
-    <!-- hojas de estilo personalizadas -->
 
     <!-- Bootstrap 5 -->
     <link rel="stylesheet" href="./Bootstrap/bootstrap.min.css">
-    <script src="./Bootstrap/bootstrap.bundle.min.js"></script>
 
-    <!-- Script´s y librerias importadas -->
+    <!-- hojas de estilo personalizadas -->
+    <link rel="stylesheet" href="/Estilos/style.css">
 
+    <!-- librerias importadas -->
+    
 </head>
 <body>
+
     <!-- Encabezado, botones y modo oscuro -->
-    <header>
-        <!-- logo -->
-        <div>
-            <img src="" alt="Logo">
-        </div>
-        <!-- botones -->
-        <div>
-            <!-- switch -->
-            <div>
-                <div>
-                    <input type="checkbox" name="ModoOscuro" id="modoOscuro">
+    <header class="align-items-center navbar navbar-expand-sm position-relative">
+        <nav class="container-fluid">
+
+            <!-- logo -->
+            <div class="">
+                <a href="index.html" target=""><img src="/Imagenes/favicon.png" alt="Logo" width="35px"></a>
+            </div>
+
+            <!-- Cosas de bootstrap -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Contenido de la barra de navegacion -->
+            <div class="collapse navbar-collapse">
+                
+                <!-- botones -->
+                <div class="navbar-nav d-inline align-items-end text-end position-absolute end-0 botones">
+                    <!-- switch -->
+                    <div  class="puto-switch">
+                        <label class="switch align-items-center">
+                            <input type="checkbox" class="input-banner">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <!-- inicio sesión -->
+                    <button class="boton btn-uno"> Inicia Sesion </button>
+                    
+                    <!-- registro -->
+                    <button class="boton btn-dos"> Registrate </button>
                 </div>
             </div>
-            <!-- inicio de sesión y registro -->
-            <div>
-                <!-- inicio sesión -->
-                <button>Login</button>
-                
-                <!-- registro -->
-                <button>Sing up</button>
-            </div>
-        </div>
+        </nav>
     </header>
 
-    <!-- Contenido principal: Banner, Redes sociales, Heerramientas -->
-    <main>
-        <!-- Banner -->
-        <section>
-            <img src="" alt="Banner">
-        </section>
+    <!-- Scripts utilizados. -->
+    <script src="./Bootstrap/bootstrap.bundle.min.js"></script>
 
-        <!-- Redes sociales -->
-        <aside>
-            <!-- Facebook -->
-            <div>
-                <img src="" alt="Facebook">
-            </div>
-            <!-- Imgtagram -->
-            <div>
-                <img src="" alt="instagram">
-            </div>
-        </aside>
-
-        <!-- Herramientas: Agenda, HerramientaDos, HerramientaTres, HerramientaCuatro -->
-        <section>
-            <!-- Agenda -->
-            <article>
-                <!-- imagen. Agenda -->
-                <div>
-                    <img src="" alt="Agenda">
-                </div>
-                <!-- descripcion. Agenda -->
-                <div>
-                    <h3>¡Programa tus actividades!</h3>
-                    <p>Con nuestra herramienta Crear Agenda podras estructurar tu dia de la manera mas optima.</p>
-                </div>
-            </article>
-            <!-- HerramientaDos -->
-            <article>
-                <div>
-                    <img src="" alt="HerramientaDos">
-                </div>
-                <!-- descripcion. HerramientaDos -->
-                <div>
-                    <h3>Lorem ipsum dolor sit amet.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet doloribus architecto quidem impedit odit natus!</p>
-                </div>
-            </article>
-            <!-- HerramientaTres -->
-            <article>
-                <div>
-                    <img src="" alt="HerramientaTres">
-                </div>
-                <!-- descripcion. HerramientaTres -->
-                <div>
-                    <h3>Lorem ipsum dolor sit amet.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet doloribus architecto quidem impedit odit natus!</p>
-                </div>
-            </article>
-            <!-- HerramientaCuatro -->
-            <article>
-                <div>
-                    <img src="" alt="HerramientaCuatro">
-                </div>
-                <!-- descripcion. HerramientaCuatro -->
-                <div>
-                    <h3>Lorem ipsum dolor sit amet.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet doloribus architecto quidem impedit odit natus!</p>
-                </div>
-            </article>
-        </section>
-    </main>
-    <!-- Pie de página -->
-    <footer>
-        <!-- lista de elementos -->
-        <ul>
-            <li>Contacto</li>
-            <li>¿Quienes Somos?</li>
-            <li>Dirección</li>
-        </ul>
-    </footer>
-    <!-- Formularios -->
-    <div>
-        <!-- Inicio sesión -->
-        <div>
-            <!-- boton de cerrar ventana -->
-            <span>X</span>
-            <!-- logo -->
-            <div>
-                <img src="" alt="Logo">
-            </div>
-            <!-- formulario. Inicio Sesión -->
-            <form action="">
-                <input type="text" name="UsuarioIS" id="usuarioIS" placeholder="Username">
-                <input type="password" name="ContrasenaIS" id="contrasenaIS" placeholder="Password">
-
-                <input type="submit" value="¡Login!">
-            </form>
-            <!-- logos de redes sociales -->
-            <div>
-                <img src="" alt="Facebook">
-                <img src="" alt="Google">
-            </div>
-        </div>
-        <!-- registro -->
-        <div>
-            <span>X</span>
-            <!-- Logo -->
-            <div>
-                <img src="" alt="Logo">
-            </div>
-            <!-- Formulario. Registro -->
-            <form action="">
-                <input type="text" name="UsuarioRN" id="usuarioR" placeholder="Username">
-                <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Email">
-                <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Password">
-                <input type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirm Password">
-                <input type="date" name="UsuarioRD" id="usuarioRD">
-                <input type="submit" value="Sing up">
-            </form>
-            <!-- Redes sociales -->
-            <div>
-                <img src="" alt="Facebook">
-                <img src="" alt="Google">
-            </div>
-        </div>
-    </div>
+    <!-- Scripts Temporales  -->
     <script src="./Descartables/John.js"></script>
 </body>
 </html>

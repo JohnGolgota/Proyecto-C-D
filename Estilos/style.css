@@ -1,0 +1,175 @@
+/* ----------------------------------------- Paleta De Colores Y Box-Sizing. ----------------------------------------- */
+* {
+    --color1: #06283D;
+    --color2: #1363DF;
+    --color3: #47B5FF;
+    --color4: #DFF6FF;
+    
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+/* --- OUTLINE --- */
+* {outline: auto;}
+
+
+
+/* -------------------------------------------- ESTILOS PERSONALIZADOS -------------------------------------------- */
+header {
+    background: linear-gradient(to left, var(--color2), var(--color3));
+    /* background: linear-gradient(to left, var(--color1), var(--color2)); */
+}
+
+.botones {
+    width: 340px;
+    height: 80%;
+    margin-right: 10px;
+}
+
+
+.switch {
+    margin-right: 75px;
+}
+
+.btn-uno {
+    margin-right: 5px;
+}
+
+
+
+/* -------------------------------------------- CONTENIDO IMPORTADO -------------------------------------------- */
+/* -------------------------- Subcategoria: Modo Oscuro -------------------------- */
+.puto-switch {
+    position: absolute;
+    width: 70px;
+    height: 100%;
+}
+.switch {
+    --width-of-switch: 3.5em;
+    --height-of-switch: 2em;
+    /* Medidas de los iconos -- sun and moon */
+
+    --size-of-icon: 1.4em;
+    /* inline-padding del switch(? */
+    --slider-offset: 0.3em;
+
+    position: relative;
+    width: var(--width-of-switch);
+    height: var(--height-of-switch);
+    top: 10%;
+}
+  
+/* Ocultar la casilla de verificacion HTML por defecto */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* el slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f4f4f5;
+    transition: .4s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: var(--size-of-icon,1.4em);
+    width: var(--size-of-icon,1.4em);
+    border-radius: 20px;
+    left: var(--slider-offset,0.3em);
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(40deg, var(--color2), var(--color3) 70%);
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #303136;
+}
+
+input:checked + .slider:before { /* Checket representa cualquier radio (radio, checkbox y options). */
+    left: calc(100% - (var(--size-of-icon,1.4em) + var(--slider-offset,0.3em)));
+    background: #303136;
+    /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
+    box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+}
+
+
+
+/* -------------------------- Subcategoria: Inicio y registro. -------------------------- */
+.boton {
+    height: 100%;
+
+    /* Borde */
+    border: unset;
+    border-radius: 35px;
+
+    color: #212121;
+
+    /* El z-index es la capa que representa. Entre mas alto, mas al arriba esta (se sobrepone). */
+    z-index: 1;
+    background: #e8e8e8;
+    position: relative;
+    font-weight: 1000;
+    font-size: 14px;
+
+    font-family: 'Indie Flower', cursive;
+    letter-spacing: 1px;
+
+    /* Sombra de la caja */
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+
+    /* Animacion */
+    transition: all 250ms;
+
+    overflow: hidden;
+}
+   
+.boton::before { /* Primer hijo del elemento seleccionado. */
+
+    /* La propiedad "content" genera contenido de forma dinamica. */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 3px;
+    background-color: var(--color2);
+    z-index: -1;
+
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms
+}
+   
+.boton:hover {
+    color: #e8e8e8;
+    border-radius: 3px;
+}
+   
+.boton:hover::before {
+    width: 100%;
+}
+
+
+.btn-uno, .btn-dos {
+    /* Ancho */
+    width: 120px;
+
+    /* Alto */
+    max-height: 100%;
+}
