@@ -24,6 +24,7 @@
 
 
 /* -------------------------------------------- ESTILOS PERSONALIZADOS -------------------------------------------- */
+
 /* -------------------------- Subcategoria: Nav-bar -------------------------- */
 header {
     background: linear-gradient(to left, var(--color2), var(--color3));
@@ -45,21 +46,35 @@ header {
     margin-right: 5px;
 }
 
+/* ----------------- Banner -------------------- */
 h1, 
 h4 {
     color: var(--color4);
     position: relative;
 }
+
 .titulo-subtitulo-banner {
     display: block;
 }
 
-/* main {
-    background-color: var(--color1);
-} */
-
-
-
+/* ----------------------- Logos flotantes ---------------------------------- */
+.sacar-derecha {
+    max-width: 200px;
+    opacity: 0;
+    transition: all 0.55s;
+    transform: translateX(30%);
+}
+.sacar {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    opacity: 1;
+    transform: none;
+}
+/* -----------------------------Herramientas --------------------------------- */
+.herramientas > article {
+    height: 50vh;
+}
 /* -------------------------------------------- CONTENIDO IMPORTADO -------------------------------------------- */
 /* -------------------------- Subcategoria: Modo Oscuro -------------------------- */
 .contenido-switch {

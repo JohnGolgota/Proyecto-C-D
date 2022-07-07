@@ -18,7 +18,6 @@
     
 </head>
 <body>
-
     <!-- Encabezado, botones y modo oscuro -->
     <header class="align-items-center navbar navbar-expand-sm position-relative">
         <nav class="container-fluid">
@@ -55,52 +54,108 @@
     <main class="">
 
         <!-- Banner -->
-        <section class="superbox">
+        <section class="superbox" id="bannerS">
             <div class='box'>
                 <div class='wave -one'></div>
                 <div class='wave -two'></div>
                 <div class='wave -three'></div>
             </div>
-            <div class="align-items-center ms-2 titulo-subtitulo-banner">
+            <div class="container-fluid titulo-subtitulo-banner">
                 <h1>Carpe Diem</h1>
                 <h4>Varia</h4>
             </div>
         </section>
 
         <!-- Redes sociales -->
-        <aside class="logos-redes-f-i position-fixed bottom-0 end-0">
+        <aside class="sacar-derecha">
 
             <!-- Facebook -->
             <div class="">
-                <img src="" alt="Facebook">
+                <a href="https://www.facebook.com/" target="_blank"><img src="./Imagenes/LogosRedes/facebook2-02.png" alt="Facebook" width="40px"></a>
             </div>
 
             <!-- Imgtagram -->
-            <div>
-                <img src="" alt="instagram">
+            <div class="">
+                <a href="https://www.instagram.com/" target="_blank"><img src="./Imagenes/LogosRedes/instagram2-03.png" alt="instagram" width="40px"></a>
             </div>
         </aside>
-        <section>
+        <section class="container-sm text-center my-2 herramientas">
             <!-- Agenda -->
-            <article>
+            <article class="row align-items-center bg-primary">
 
                 <!-- imagen. Agenda -->
-                <div>
+                <div class="col">
                     <img src="" alt="Agenda">
                 </div>
 
                 <!-- descripcion. Agenda -->
-                <div>
+                <div class="col">
                     <h3>¡Programa tus actividades!</h3>
                     <p>Con nuestra herramienta Crear Agenda podras estructurar tu dia de la manera mas optima.</p>
                 </div>
             </article>
+            <!-- HerramientaDos -->
+            <article class="row align-items-center bg-secondary my-2">
+
+                <!-- descripcion. HerramientaDos -->
+                <div class="col">
+                    <h3>Lorem ipsum dolor sit amet.</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet doloribus architecto quidem impedit odit natus!</p>
+                </div>
+                
+                <!-- imagen. HerramientaDos -->
+                <div class="col">
+                    <img src="" alt="HerramientaDos">
+                </div>
+            </article>
+            <article class="row align-items-center bg-primary">
+
+                <!-- imagen. HerramientaTres -->
+                <div class="col">
+                    <img src="" alt="HerramientaTres">
+                </div>
+
+                <!-- descripcion. HerramientaTres -->
+                <div class="col">
+                    <h3>Lorem ipsum dolor sit amet.</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut aliquam neque vel, dolorem et placeat.</p>
+                </div>
+            </article>
+            <article class="row align-items-center bg-secondary my-2">
+
+                <!-- descripcion. HerramientaCuatro -->
+                <div class="col">
+                    <h3>Lorem ipsum dolor sit amet.</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, quisquam deleniti. Dolore distinctio veritatis quos?</p>
+                </div>
+
+                <!-- imagen. HerramientaCuatro -->
+                <div class="col">
+                    <img src="" alt="HerramientaCuatro">
+                </div>
+            </article>
         </section>
     </main>
-    <!-- Scripts utilizados. -->
+
+    <!-- Pie de pagina -->
+    <footer>
+
+        <!-- Lista de Pie de página -->
+        <ul>
+            <li>Contactanos</li>
+            <li>¿Quienes somos?</li>
+            <li>Dirección</li>
+        </ul>
+    </footer>
+    <!-- Scripts Inportados:
+    Bootstrap -->
     <script src="./Bootstrap/bootstrap.bundle.min.js"></script>
 
-    <!-- Scripts Temporales  -->
+    <!-- Scripts perzonalizados:
+    scrollRevel de los botones flotantes -->
+    <script src="./Script's/app.js"></script>
+
+    <!-- Scripts Temporales:  -->
     <script src="./Descartables/John.js"></script>
 </body>
 </html>
