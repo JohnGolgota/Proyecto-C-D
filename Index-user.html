@@ -1,125 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Carpe Diem | Inicio <span>Usuario</span> </title>
-        <link rel="shortcut icon" href="./Imagenes/favicon.png" type="image/x-icon">
+    <!-- Esta linea de codigo no es un EasterEgg, para nada. -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Carpe Diem | Inicio </title>
+
+    <!-- Icono página -->
+    <link rel="shortcut icon" href="./Imagenes/favicon.png" type="image/x-icon">
+
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="./Bootstrap/bootstrap.min.css">
+
+    <!-- hojas de estilo personalizadas -->
+    <link rel="stylesheet" href="./Estilos/style.css">
+
+    <!-- librerias importadas -->
     
-        <!-- hojas de estilo personalizadas -->
-        
-        <!-- Bootstrap 5 -->
-        <link rel="stylesheet" href="./Bootstrap/bootstrap.min.css">
-    
-        <!-- librerias importadas -->
-        
-    </head>
 </head>
 <body>
+    <!-- Encabezado, botones y tema -->
+    <header class="align-items-center navbar navbar-expand-sm position-relative">
+        <nav class="container-xxl">
+            <!-- logo -->
+            <div><a href="./Index-user.html"><img src="./Imagenes/favicon.png" alt="Logo" width="35px"></a></div>
+            
+            <!-- botones -->
+            <div class="navbar-nav d-inline align-items-end text-end position-absolute end-0 botones">
+
+                <!-- switch -->
+                <div class="contenido-switch"><label class="switch align-items-center"><input type="checkbox" class="input-banner"><span class="slider"></span></label></div>
+
+                <!-- Boton uno -->
+                <button class="boton">...</button>
+
+                <!-- boton Dos -->
+                <button class="boton">...</button>
+            </div>
+        </nav>
+    </header>
     
+    <!--  -->
+    <main>
 
-        <!-- Herramientas: Agenda, HerramientaDos, HerramientaTres, HerramientaCuatro -->
-        <section>
+        <!--  -->
+        <section class="superbox bg-secondary">
+            <h1 class="container-sm top-50">¡¡ESTADISTICAS!!</h1>
+        </section>
+        
+        <!--  -->
+        <section class="text-center my-2 herramientas">
+            
+            <!--  -->
+            <article class="row align-items-center herramienta herramienta-uno">
 
+                <!--  -->
+                <div class="col"><img src="" alt="Agenda"></div>
 
-
-
-
-            <!-- HerramientaTres -->
-            <article>
-                <div>
-                    <img src="" alt="HerramientaTres">
-                </div>
-
-                <!-- descripcion. HerramientaTres -->
-                <div>
-                    <h3>Lorem ipsum dolor sit amet.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet doloribus architecto quidem impedit odit natus!</p>
+                <!--  -->
+                <div class="col">
+                    <h3>¡Programa tus actividades!</h3>
+                    <p>Con nuestra herramienta Crear Agenda podras estructurar tu dia de la manera mas optima.</p>
                 </div>
             </article>
             
-            <!-- HerramientaCuatro -->
-            <article>
-                <div>
-                    <img src="" alt="HerramientaCuatro">
+            <!--  -->
+            <article class="row align-items-center my-2 herramienta herramienta-dos">
+
+                <!--  -->
+                <div class="col">
+                    <h3>Lorem ipsum dolor sit amet.</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptas nihil minima odio cum nulla!</p>
+                </div>
+                
+                <!--  -->
+                <div class="col"><img src="" alt="Agenda"></div>
+            </article>
+            
+            <!--  -->
+            <article class="row align-items-center herramienta herramienta-tres">
+
+                <!--  -->
+                <div class="col"><img src="" alt="Agenda"></div>
+
+                <!--  -->
+                <div class="col">
+                    <h3>Lorem ipsum dolor sit amet.</h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat inventore sit hic dignissimos magni pariatur!</p>
+                </div>
+            </article>
+            
+            <!--  -->
+            <article class="row align-items-center my-2 herramienta herramienta-cuatro">
+                
+                <!--  -->
+                <div class="col">
+                    <h3>Lorem ipsum dolor sit amet.</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto necessitatibus officia, odio cum blanditiis facilis.</p>
                 </div>
 
-                <!-- descripcion. HerramientaCuatro -->
-                <div>
-                    <h3>Lorem ipsum dolor sit amet.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet doloribus architecto quidem impedit odit natus!</p>
-                </div>
+                <!--  -->
+                <div class="col"><img src="" alt="Agenda"></div>
             </article>
         </section>
     </main>
 
-    <!-- Pie de página -->
-    <footer>
-
-        <!-- lista de elementos -->
-        <ul>
-            <li>Contacto</li>
-            <li>¿Quienes Somos?</li>
-            <li>Dirección</li>
+    <!--  -->
+    <footer class="container-l pie-pagina py-3 d-flex">
+        <ul class="nav justify-content-center ul-pie-pagina">
+            <li class="nav-item"><a href="#contactanosOculto" class="nav-link" onclick="contactanos();"> Contactanos </a></li>
+            <li class="nav-item"><a href="#quienesOculto" class="nav-link" onclick="quienesSomos();"> ¿Quienes somos? </a></li>
+            <li class="nav-item"><a href="#direccionOculto" class="nav-link" onclick="direccionOculto();"> Dirección </a></li>
         </ul>
+        <span class="align-items-center text-center">    
+            <p id="contactanosOculto" style="display: none;"> despinal12@misena.edu.co </p>
+            <p id="quienesOculto" style="display: none;"> Somos Carpe Diem, el mejor equipo de desarrollo del SENA </p>
+            <p id="direccionOculto" style="display: none;"> Cll 57A #28-7 </p>
+        </span>
     </footer>
 
-    <!-- Formularios -->
-    <div>
+    <!-- Scripts Inportados: -->
+    <!-- Bootstrap -->
+    <script src="./Bootstrap/bootstrap.bundle.min.js"></script>
 
-        <!-- Inicio sesión -->
-        <div>
+    <!-- Scripts perzonalizados: -->
+    <!-- Animacion de los logos. -->
+    <!-- <script src="./Script's/iconrevel.min.js"></script> -->
+    <script src="./Script's/app.js"></script>
 
-            <!-- boton de cerrar ventana -->
-            <span>X</span>
-
-            <!-- logo -->
-            <div>
-                <img src="" alt="Logo">
-            </div>
-
-            <!-- formulario. Inicio Sesión -->
-            <form action="">
-                <input type="text" name="UsuarioIS" id="usuarioIS" placeholder="Username">
-                <input type="password" name="ContrasenaIS" id="contrasenaIS" placeholder="Password">
-
-                <input type="submit" value="¡Login!">
-            </form>
-
-            <!-- logos de redes sociales -->
-            <div>
-                <img src="" alt="Facebook">
-                <img src="" alt="Google">
-            </div>
-        </div>
-
-        <!-- registro -->
-        <div>
-            <span>X</span>
-
-            <!-- Logo -->
-            <div>
-                <img src="" alt="Logo">
-            </div>
-
-            <!-- Formulario. Registro -->
-            <form action="">
-                <input type="text" name="UsuarioRN" id="usuarioR" placeholder="Username">
-                <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Email">
-                <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Password">
-                <input type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirm Password">
-                <input type="date" name="UsuarioRD" id="usuarioRD">
-                <input type="submit" value="Sing up">
-            </form>
-            
-            <!-- Redes sociales -->
-            <div>
-                <img src="" alt="Facebook">
-                <img src="" alt="Google">
-            </div>
-        </div>
-    </div> 
+    <!-- Scripts Temporales:  -->
+    <script src="./Descartables/John.js"></script>
 </body>
 </html>

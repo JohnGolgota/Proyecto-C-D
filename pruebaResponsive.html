@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Prueba </title>
+<link rel="stylesheet" href="./Fuentes/Bass/bullseye-solid.svg">
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .btn {
+            text-align: right;
+        }
+
+        .contenido {
+            width: 50%;
+            background-color: red;
+            height: 90%;
+            transition: all 5s;
+            float: right;
+            /* position: absolute;
+            right: 0; */
+        }
+        button {
+            padding: 5px;
+        }
+        /* body * {
+            text-align: end;
+        }
+        hr {background-color: pink;}*/
+        
+    </style>
+</head>
+<body>
+    <div class="btn">
+        <button onclick="mostrar();"> ... </button>
+    </div>
+    
+    <div class="contenido" style="display:none;" id="a">
+        <p> Inicia sesion </p>
+        <p> Registrate </p><hr>
+        <p> Agenda </p>
+        <p> Reloj Pomodoro </p>
+        <p> Ley De Pareto </p>
+    </div>
+    <i class="fa-solid fa-bullseye"></i>
+    <script>
+        function mostrar(){
+            if(document.getElementById("a").style.display == "none"){
+                document.getElementById("a").style.display = "block";
+            }
+
+            else {
+                document.getElementById("a").style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

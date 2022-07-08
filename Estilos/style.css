@@ -1,7 +1,7 @@
 /* --------------------------------------------- Fuentes. --------------------------------------------- */
+@import url(/./Fuentes/ZFuentes.css);
 
-
-
+* {font-family: "Beacon", Times, serif;}
 
 /* ----------------------------------------- Paleta De Colores Y Box-Sizing. ----------------------------------------- */
 * {
@@ -14,11 +14,17 @@
     padding: 0;
     margin: 0;
 }
+
 body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+
+    background: linear-gradient(to bottom, var(--color4), var(--color3)); 
 }
+
+
 
 
 /* --- OUTLINE --- */
@@ -28,7 +34,6 @@ body {
 
 
 /* -------------------------------------------- ESTILOS PERSONALIZADOS -------------------------------------------- */
-
 /* -------------------------- Subcategoria: Nav-bar -------------------------- */
 header {
     background: linear-gradient(to left, var(--color2), var(--color3));
@@ -50,7 +55,9 @@ header {
     margin-right: 5px;
 }
 
-/* ----------------- Banner -------------------- */
+
+
+/* ----------------- Subcategoria: Banner -------------------- */
 h1, 
 h4 {
     color: var(--color4);
@@ -59,11 +66,16 @@ h4 {
 
 .titulo-subtitulo-banner {
     display: block;
+    font-family: 'Beacon';
 }
 
-/* ----------------------- Logos flotantes ---------------------------------- */
+
+
+/* ----------------------- Subcategoria: Logos flotantes ---------------------------------- */
 .sacar-derecha {
     position: absolute;
+    top: 50%;
+    right: 2px;
     max-width: 200px;
     opacity: 0;
     transition: all 0.55s;
@@ -72,24 +84,61 @@ h4 {
 .sacar {
     position: fixed;
     top: 50%;
-    right: 0;
+    right: 2px;
     opacity: 1;
     transform: none;
     transition: all 0.55s;
+    z-index: 1;
 }
-/* -----------------------------Herramientas --------------------------------- */
+
+
+
+/* ----------------------------- Subcategoria: Herramientas --------------------------------- */
 .herramientas > article {
-    height: 50vh;
-    border-radius: 5%;
+    width: 95%;
+    height: 70vh;
+    margin: auto;
+    border-radius: 12px;
 }
-/* ---------------------------- Pie de página ---------------------------------- */
+.herramienta {
+    background-color:#ffffff;
+}
+
+
+
+/* ---------------------------- Subcategoria: Formularios ---------------------------------- */
+.formularios > form > input {
+    display: block;
+    margin: 8px auto;
+    outline: none;
+
+    border: 1px outset var(--color4);
+    transition: all .5s;
+}
+
+.formularios > form > input:focus {
+    border-bottom: 1px outset var(--color3);
+    border-right: 1px outset var(--color3);
+}
+
+.modal-footer > a {
+    transition: .4s;
+}
+
+.modal-footer > a:hover {
+    transform: scale(1.3);
+}
+
+
+
+/* ---------------------------- Subcategoria: Pie de página ---------------------------------- */
 .pie-pagina {
     position: relative;
     bottom: 0;
     color: var(--color4);
     background-color: var(--color1);
-    border-top-left-radius: 80%;
-    border-top-right-radius: 80%;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
 }
 .pie-pagina a:link {
     color: var(--color4);
@@ -103,6 +152,9 @@ h4 {
 .pie-pagina a:active {
     color: var(--color2);
 }
+
+
+
 /* -------------------------------------------- CONTENIDO IMPORTADO -------------------------------------------- */
 /* -------------------------- Subcategoria: Modo Oscuro -------------------------- */
 .contenido-switch {
@@ -247,7 +299,9 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
     max-height: 92vh;
     overflow: hidden;
     z-index: -1000;
-    background-color: var(--color4);
+
+    /* background-color: var(--color4); */
+
     
 }
 .box {
@@ -412,7 +466,7 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 }
 
 @media (max-width: 575px){
-    .boton {
+    .btn-oculto-head {
         display: none;
     }
 
@@ -567,6 +621,73 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
         left: -480%;
     }
 }
+
+
+
+/* -------------------------- Subcategoria: Herramientas -------------------------- */
+@media (max-width: 500px){
+    .herramientas > article {
+        width: 98%;
+        height: 100vh;
+        display: block;
+    }
+}
+
+
+
+/* ---------------------------- Subcategoria: Pie de página ---------------------------------- */
+/* .pie-pagina {
+    position: relative;
+    bottom: 0;
+    color: var(--color4);
+    background-color: var(--color1);
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px; */
+
+@media (max-width: 450px){
+    .ul-pie-pagina {
+        display: block;
+        text-align: center;
+        font-size: larger;
+    }
+}
+
+
+
+/* -------------------------- Subcategoria: Menu desplegable -------------------------- */
+.contenido-menu {
+    z-index: 1;
+    position: absolute;
+    top: 49px;
+    right: 0;
+    background-color: var(--color3);
+    width: 50%;
+    height: 93vh;
+    opacity: 0.8;
+    text-align: right;
+    padding-right: 15px;
+}
+
+.contenido-menu > a {
+    text-decoration: none;
+    color: #ffffff;
+    opacity: 1;
+    font-size: larger;
+    font-style: bold;
+    margin-right: 10%;
+    margin: 0;
+}
+
+.contenido-menu > a:active {color: #ffffff; opacity: 1;}
+.contenido-menu > a:visited {color: #ffffff; opacity: 1;}
+.contenido-menu > a:link {color: #ffffff; opacity: 1;}
+
+.salto {
+    color: #ffffff;
+    font-size: 5px;
+}
+/* .contenido-menu * {outline: auto;} */
+
 
 
 

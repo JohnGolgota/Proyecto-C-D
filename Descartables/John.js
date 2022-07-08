@@ -1,12 +1,15 @@
+let Curiosidades = [    
 // let alturaPantalla = screen.height
 // let anchoPantalla = screen.width
 // let webAlturaVentana = window.innerHeight
 // let webAnchoVentana = window.innerWidth
+]
 
+let pruebasDeMostrarOcultar = [
 /* Aquí el primer intento de mostrar y ocultar elementos
 let iconosMalparidos = window.addEventListener("scroll",function(){
     console.log("buenas")
-
+    
     // selector de elementos por nombre de clase
     let imagen = document.querySelectorAll('.sacar-derecha')[0]
     console.log(imagen)
@@ -67,3 +70,44 @@ let iconosMalparidos = window.addEventListener("scroll",function(){
         // }
     })
 */
+
+/* Version 1: ocultar y mostrar iconos
+let iconosFlotantes = window.addEventListener("scroll",function(){
+    
+    let imagen = document.querySelectorAll('.sacar-derecha')[0]
+    
+    let banner = document.getElementById('bannerS')
+
+    let altura = window.innerHeight/1.5
+    
+    let distanciaImagen = imagen.getBoundingClientRect().top
+    
+    let distanciaBanner = banner.getBoundingClientRect().top
+    
+    if(distanciaImagen <= altura){
+        imagen.classList.add("sacar")
+    }
+    if(distanciaBanner >= 0){
+        imagen.classList.remove("sacar")
+    }
+})
+*/
+
+/* Version 2: ocultar y mostrar iconos
+let iconos = window.addEventListener("scroll",function(){
+
+    let banner = document.getElementById("bannerS")
+    
+    let distanciaBanner = banner.getBoundingClientRect().top
+    
+    let logos = document.querySelectorAll(".sacar-derecha")[0]
+    
+    if(distanciaBanner < 0){
+        logos.classList.add("sacar")
+    }
+    else {
+        logos.classList.remove("sacar")
+    }
+})
+*/
+]

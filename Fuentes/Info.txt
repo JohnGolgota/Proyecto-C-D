@@ -5,3 +5,5 @@ Para inprotar Fuentes desde un archivo .ttf o .otf
     src: url(./LaDireccionlocalOWebDelArchivo.ttf);
 }
 Y no se que mas poner aqui
+y importar a otro .css:
+@import url(ZFuentes.css);

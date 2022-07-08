@@ -14,19 +14,20 @@
     <link rel="stylesheet" href="./Bootstrap/bootstrap.min.css">
 
     <!-- hojas de estilo personalizadas -->
-    <link rel="stylesheet" href="/Estilos/style.css">
+    <link rel="stylesheet" href="./Estilos/style.css">
 
     <!-- librerias importadas -->
+    <script src="https://unpkg.com/scrollreveal"></script>
     
 </head>
 <body>
     <!-- Encabezado, botones y modo oscuro -->
-    <header class="align-items-center navbar navbar-expand-sm position-relative">
-        <nav class="container-fluid">
+    <header class="align-items-center navbar navbar-expand-sm position-relative header-reveal">
+        <nav class="container-xxl">
 
             <!-- logo -->
             <div class="">
-                <a href="index.html" target=""><img src="/Imagenes/favicon.png" alt="Logo" width="35px"></a>
+                <a href="index.html" target=""><img src="./Imagenes/favicon.png" alt="Logo" width="35px"></a>
             </div>
             
             <!-- botones -->
@@ -41,13 +42,13 @@
                 </div>
                 
                 <!-- inicio sesión -->
-                <button class="boton btn-uno"> Inicia Sesion </button>
+                <button type="button" class="boton btn-uno btn-oculto-head" data-bs-toggle="modal" data-bs-target="#inicioSesionU" data-bs-whatever="@getbootstrap"> Inicia Sesion </button>
                 
                 <!-- registro -->
-                <button class="boton btn-dos"> Registrate </button>
+                <button type="button" class="boton btn-dos btn-oculto-head" data-bs-toggle="modal" data-bs-target="#registroU" data-bs-whatever="@getbootstrap"> Registrate </button>
                 
                 <!-- Oculto -->
-                <button class="oculto boton">...</button> 
+                <button class="oculto boton" onclick="menuDesplegable();">...</button>
             </div>
         </nav>
     </header>
@@ -62,9 +63,9 @@
                 <div class='wave -two'></div>
                 <div class='wave -three'></div>
             </div>
-            <div class="container-fluid titulo-subtitulo-banner">
-                <h1>Carpe Diem</h1>
-                <h4>Varia</h4>
+            <div class="container-sm titulo-subtitulo-banner">
+                <h1 class="titulo-principal"> Carpe Diem </h1>
+                <h4 class="subtitulo-principal"> Varia </h4>
             </div>
         </section>
 
@@ -81,13 +82,14 @@
                 <a href="https://www.instagram.com/" target="_blank"><img src="./Imagenes/LogosRedes/instagram2-03.png" alt="instagram" width="40px"></a>
             </div>
         </aside>
-        <section class="container-sm text-center my-2 herramientas">
+        <section class="text-center my-2 herramientas fs-4">
+
             <!-- Agenda -->
-            <article class="row align-items-center bg-primary">
+            <article class="row align-items-center herramienta herramienta-uno">
 
                 <!-- imagen. Agenda -->
                 <div class="col">
-                    <img src="" alt="Agenda">
+                    <img class ="img-herramienta" src="" alt="Agenda">
                 </div>
 
                 <!-- descripcion. Agenda -->
@@ -96,44 +98,49 @@
                     <p>Con nuestra herramienta Crear Agenda podras estructurar tu dia de la manera mas optima.</p>
                 </div>
             </article>
+
             <!-- HerramientaDos -->
-            <article class="row align-items-center bg-secondary my-2">
+            <article class="row align-items-center my-2 herramienta herramienta-dos">
+                
+                <!-- imagen. HerramientaDos -->
+                <div class="col order-2">
+                    <img class ="img-herramienta" src="" alt="HerramientaDos">
+                </div>
 
                 <!-- descripcion. HerramientaDos -->
-                <div class="col">
+                <div class="col order-1">
                     <h3>Lorem ipsum dolor sit amet.</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet doloribus architecto quidem impedit odit natus!</p>
                 </div>
-                
-                <!-- imagen. HerramientaDos -->
-                <div class="col">
-                    <img src="" alt="HerramientaDos">
-                </div>
             </article>
-            <article class="row align-items-center bg-primary">
+
+            <!-- HerramientaTres -->
+            <article class="row align-items-center herramienta herramienta-tres">
 
                 <!-- imagen. HerramientaTres -->
                 <div class="col">
-                    <img src="" alt="HerramientaTres">
+                    <img class ="img-herramienta" src="" alt="HerramientaTres">
                 </div>
 
                 <!-- descripcion. HerramientaTres -->
                 <div class="col">
                     <h3>Lorem ipsum dolor sit amet.</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut aliquam neque vel, dolorem et placeat.</p>
+                    <p class="">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut aliquam neque vel, dolorem et placeat.</p>
                 </div>
             </article>
-            <article class="row align-items-center bg-secondary my-2">
 
-                <!-- descripcion. HerramientaCuatro -->
-                <div class="col">
-                    <h3>Lorem ipsum dolor sit amet.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, quisquam deleniti. Dolore distinctio veritatis quos?</p>
-                </div>
+            <!-- HerramientaCuatro -->
+            <article class="row align-items-center my-2 herramienta herramienta-cuatro">
 
                 <!-- imagen. HerramientaCuatro -->
-                <div class="col">
-                    <img src="" alt="HerramientaCuatro">
+                <div class="col order-2">
+                    <img class ="img-herramienta" src="" alt="HerramientaCuatro">
+                </div>
+
+                <!-- descripcion. HerramientaCuatro -->
+                <div class="col order-1">
+                    <h3>Lorem ipsum dolor sit amet.</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, quisquam deleniti. Dolore distinctio veritatis quos?</p>
                 </div>
             </article>
         </section>
@@ -144,18 +151,120 @@
 
         <!-- Lista de Pie de página -->
         <ul class="nav justify-content-center ul-pie-pagina">
-            <li class="nav-item"><a href="" class="nav-link">Contactanos</a></li>
-            <li class="nav-item"><a href="" class="nav-link">¿Quienes somos?</a></li>
-            <li class="nav-item"><a href="" class="nav-link">Dirección</a></li>
+            <li class="nav-item item-reveal">
+                <a href="#contactanosOculto" class="nav-link" onclick="contactanos();"> Contactanos </a>
+            </li>
+            <li class="nav-item item-reveal">
+                <a href="#quienesOculto" class="nav-link" onclick="quienesSomos();"> ¿Quienes somos? </a>
+            </li>
+            <li class="nav-item item-reveal">
+                <a href="#direccionOculto" class="nav-link" onclick="direccionOculto();"> Dirección </a>
+            </li>
         </ul>
+        <span class="align-items-center text-center">    
+            <p id="contactanosOculto" style="display: none;"> despinal12@misena.edu.co </p>
+            <p id="quienesOculto" style="display: none;"> Somos Carpe Diem, el mejor equipo de desarrollo del SENA </p>
+            <p id="direccionOculto" style="display: none;"> Cll 57A #28-7 </p>
+        </span>
     </footer>
-    <!-- Scripts Inportados:
-    Bootstrap -->
+
+
+    <!-- inicio de sesión y registro
+    bootstrap dialogo flotante -->
+
+    <!-- Inicio sesión -->
+    <div class="modal fede" id="inicioSesionU" tabindex="1" aria-labelledby="InicioLabel" aria-hidden="true">
+
+        <!-- Ventana -->
+        <div class="modal-dialog">
+
+        <!-- Contenido en la ventana -->
+        <div class="modal-content align-items-center">
+
+            <!-- Encabezado. Logo -->
+            <div class="modal-header">
+                <img src="./Imagenes/favicon.png" alt="Logo" width="60px">
+            </div>
+
+            <!-- Cuerpo. Formulario -->
+            <div class="modal-body formularios formulario-inicio">
+                <form action="" class="">
+                    <input type="text" name="UsuarioIS" id="usuarioIS" placeholder="Nombre De Usuario" class="">
+                    <input type="password" name="ContrasenaIS" id="contrasenaIS" placeholder="Contraseña" class="">
+    
+                    <input type="submit" value="¡Inicia Sesión!" class="">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="./Index-user.html"><img src="./Imagenes/LogosRedes/facebook2-02.png" alt="Facebook" width="50px"></a>
+                <a href="./pruebaResponsive.html"><img src="./Imagenes/LogosRedes/instagram2-03.png" alt="Google" width="50px"></a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- registro -->
+    <div class="modal fade inicio-sesion-registro" id="registroU" tabindex="-1" aria-labelledby="registroLabel" aria-hidden="true">
+        
+        <!-- ventana -->
+        <div class="modal-dialog">
+
+        <!-- contenido de la ventana -->
+        <div class="modal-content align-items-center">
+                
+            <!-- encabezado. Logo -->
+            <div class="modal-header">
+                <img src="./Imagenes/favicon.png" alt="Logo" width="60px">
+            </div>
+
+            <!-- Cuerpo. Formulario -->
+            <div class="modal-body formularios formulario-registro">
+                <form action="">
+                    <input type="text" name="UsuarioRN" id="usuarioR" placeholder="Nombre De Usuario">
+                    <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo">
+                    <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña">
+                    <input type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña">
+                    <input type="date" name="UsuarioRD" id="usuarioRD">
+                    
+                    <input type="submit" value="Registrarse">
+                </form>
+            </div>
+
+            <!-- Pie de página. Metodos de registro -->
+            <div class="modal-footer">
+                <a href="./Descartables/Web/i.html"><img src="./Imagenes/LogosRedes/facebook2-02.png" alt="Facebook" width="50px"></a>
+                <a href=""><img src="./Imagenes/LogosRedes/instagram2-03.png" alt="Google" width="50px"></a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Menu Desplegable. -->
+    <aside id="menuDesplegable" style="display:none;" class="menu-no">
+        <div class="contenido-menu">
+            <hr>
+            <a href="#" class="el-de-arriba"> ¡Inicia Sesion! </a>
+            <!-- <button type="button" class="boton btn-uno" data-bs-toggle="modal" data-bs-target="#inicioSesionU" data-bs-whatever="@getbootstrap"> Inicia Sesion </button> -->
+            <a href="#"><p> Registrate </p></a>
+            <hr class="salto">
+            <a href=".herramienta-uno"><p> Agenda </p></a>
+            <a href=".herramienta-dos"><p> Reloj Pomodoro </p> </a>
+            <a href=".herramienta-tres"><p> Ley De Pareto </p> </a>
+            <a href=".herramienta-cuatro"><p> ? </p></a>
+        </div>
+    </aside>
+
+    
+
+    <!-- Scripts Inportados: -->
+    <!-- Bootstrap -->
     <script src="./Bootstrap/bootstrap.bundle.min.js"></script>
 
-    <!-- Scripts perzonalizados:
-    scrollRevel de los botones flotantes -->
+    <!-- Scripts perzonalizados: -->
+    <!-- Animacion de los logos. -->
+    <script src="./Script's/iconrevel.min.js"></script>
     <script src="./Script's/app.js"></script>
+
 
     <!-- Scripts Temporales:  -->
     <script src="./Descartables/John.js"></script>
