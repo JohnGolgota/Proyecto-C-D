@@ -14,7 +14,11 @@
     padding: 0;
     margin: 0;
 }
-
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 
 /* --- OUTLINE --- */
@@ -59,6 +63,7 @@ h4 {
 
 /* ----------------------- Logos flotantes ---------------------------------- */
 .sacar-derecha {
+    position: absolute;
     max-width: 200px;
     opacity: 0;
     transition: all 0.55s;
@@ -70,10 +75,33 @@ h4 {
     right: 0;
     opacity: 1;
     transform: none;
+    transition: all 0.55s;
 }
 /* -----------------------------Herramientas --------------------------------- */
 .herramientas > article {
     height: 50vh;
+    border-radius: 5%;
+}
+/* ---------------------------- Pie de página ---------------------------------- */
+.pie-pagina {
+    position: relative;
+    bottom: 0;
+    color: var(--color4);
+    background-color: var(--color1);
+    border-top-left-radius: 80%;
+    border-top-right-radius: 80%;
+}
+.pie-pagina a:link {
+    color: var(--color4);
+}
+.pie-pagina a:visited {
+    color: var(--color4);
+}
+.pie-pagina a:hover {
+    color: var(--color3);
+}
+.pie-pagina a:active {
+    color: var(--color2);
 }
 /* -------------------------------------------- CONTENIDO IMPORTADO -------------------------------------------- */
 /* -------------------------- Subcategoria: Modo Oscuro -------------------------- */

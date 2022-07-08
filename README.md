@@ -1,12 +1,20 @@
 # Proyecto-C-D
 Repositorio del proyecto en equipo para SENA.edu
 - JOHN: 
-*Clonar repositorio y crear ramas para las modificaciones de ser posible
-*Solo aplicar cambios en la rama/branch prinsipal bajo la aprobacion de todos los mienbros del equipo
+*Clonar repositorio y crear ramas para las modificaciones grandes de ser posible
+*Solo aplicar cambios en la rama/branch prinsipal bajo la aprobación de todos los mienbros del equipo
 
-- 07/07/2022 16:26
+- 07/07/2022
 John:
 _estructuracion simple de apartado: Herramientas
 _Logos flotantes: posicionado, script para revelarlos al hacer scroll, script para ocultarlos al volver al banner
-*pendiente: arreglar el salto de banner a herramientas
-__ideas: *position: absolute antes del position: fixed
+_footer no esta en el fondo, de hecho el body no ocupa la totalidad de la página.
+*pendiente-arreglado: arreglar el salto de banner a herramientas
+__ideas: *usar el los iconos flotantes position: absolute antes del position: fixed Funciono XD
+
+- lista de pendientes:
+_pendiente: la desaparicion de los iconos es abrupta: ver que se pueda hacer al respecto
+__ideas: *no hacer nada *que lo haga duvan
+_overflow de las herramientas al reducir el ancho de la pantalla
+_fuente
+_averiguar por que funciona la linea 14: app.js porque no entendi
