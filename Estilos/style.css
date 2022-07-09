@@ -1,5 +1,5 @@
 /* --------------------------------------------- Fuentes. --------------------------------------------- */
-@import url(/./Fuentes/ZFuentes.css);
+@import url(..//Fuentes/ZFuentes.css);
 
 * {font-family: "Beacon", Times, serif;}
 
@@ -236,11 +236,11 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
     /* El z-index es la capa que representa. Entre mas alto, mas al arriba esta (se sobrepone). */
     z-index: 1;
     background: #e8e8e8;
+
     position: relative;
     font-weight: 1000;
     font-size: 14px;
 
-    font-family: 'Indie Flower', cursive;
     letter-spacing: 1px;
 
     /* Sombra de la caja */
@@ -480,7 +480,7 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 }
 
 @media (max-width: 190px){
-    .boton {
+    .btn-oculto-head {
         display: none;
     }
 
@@ -662,13 +662,22 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
     right: 0;
     background-color: var(--color3);
     width: 50%;
-    height: 93vh;
+    height: 500px;
     opacity: 0.8;
     text-align: right;
     padding-right: 15px;
 }
 
-.contenido-menu > a {
+.contenido-menu ul {
+    list-style: none;
+}
+
+.contenido-menu > button {
+    margin: 0;
+    height: fit-content;
+}
+
+.contenido-menu a {
     text-decoration: none;
     color: #ffffff;
     opacity: 1;
@@ -678,15 +687,14 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
     margin: 0;
 }
 
-.contenido-menu > a:active {color: #ffffff; opacity: 1;}
-.contenido-menu > a:visited {color: #ffffff; opacity: 1;}
-.contenido-menu > a:link {color: #ffffff; opacity: 1;}
+.contenido-menu a:active {color: #ffffff; opacity: 1;}
+.contenido-menu a:visited {color: #ffffff; opacity: 1;}
+.contenido-menu a:link {color: #ffffff; opacity: 1;}
 
 .salto {
     color: #ffffff;
     font-size: 5px;
 }
-/* .contenido-menu * {outline: auto;} */
 
 
 

@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="./Estilos/style.css">
 
     <!-- librerias importadas -->
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- <script src="https://unpkg.com/scrollreveal"></script> -->
     
 </head>
 <body>
@@ -195,6 +195,8 @@
                     <input type="submit" value="¡Inicia Sesión!" class="">
                 </form>
             </div>
+
+            <!-- Pie de pagina. metodos de inicio -->
             <div class="modal-footer">
                 <a href="./Index-user.html"><img src="./Imagenes/LogosRedes/facebook2-02.png" alt="Facebook" width="50px"></a>
                 <a href="./pruebaResponsive.html"><img src="./Imagenes/LogosRedes/instagram2-03.png" alt="Google" width="50px"></a>
@@ -241,16 +243,22 @@
 
     <!-- Menu Desplegable. -->
     <aside id="menuDesplegable" style="display:none;" class="menu-no">
+        
+        <!--  -->
         <div class="contenido-menu">
-            <hr>
-            <a href="#" class="el-de-arriba"> ¡Inicia Sesion! </a>
-            <!-- <button type="button" class="boton btn-uno" data-bs-toggle="modal" data-bs-target="#inicioSesionU" data-bs-whatever="@getbootstrap"> Inicia Sesion </button> -->
-            <a href="#"><p> Registrate </p></a>
             <hr class="salto">
-            <a href=".herramienta-uno"><p> Agenda </p></a>
-            <a href=".herramienta-dos"><p> Reloj Pomodoro </p> </a>
-            <a href=".herramienta-tres"><p> Ley De Pareto </p> </a>
-            <a href=".herramienta-cuatro"><p> ? </p></a>
+            <!-- <a href="#" class="el-de-arriba"> ¡Inicia Sesion! </a> -->
+            <!-- <a href="#"> Registrate </a> -->
+            <button type="button" class="boton btn-uno" data-bs-toggle="modal" data-bs-target="#inicioSesionU" data-bs-whatever="@getbootstrap"> Inicia Sesion </button>
+            <button type="button" class="boton btn-dos" data-bs-toggle="modal" data-bs-target="#registroU" data-bs-whatever="@getbootstrap"> Registrate </button>
+            
+            <hr class="salto">
+            <ul>
+                <li><a href=".herramienta-uno"> Agenda </a></li>
+                <li><a href=".herramienta-dos"> Reloj Pomodoro  </a></li>
+                <li><a href=".herramienta-tres"> Ley De Pareto  </a></li>
+                <li><a href=".herramienta-cuatro"> ? </a></li>
+            </ul>
         </div>
     </aside>
 
