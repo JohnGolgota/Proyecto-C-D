@@ -12,12 +12,6 @@ _footer no esta en el fondo, de hecho el body no ocupa la totalidad de la págin
 *pendiente-arreglado: arreglar el salto de banner a herramientas
 __ideas: *usar el los iconos flotantes position: absolute antes del position: fixed Funciono XD
 
-
-
-
-
-
-
 - 08/07/2022
 John & Duvan:
 _averiguar por que funciona la linea 14: app.js porque no entendi -lo remplace
@@ -30,9 +24,12 @@ __ideas: *no hacer nada *que lo haga duvan
 - 09/07/2022
 John
 
+
+- 12/07/2022
+_lista footer desplega contenido
 - lista de pendientes:
 _overflow de las herramientas al reducir el ancho de la pantalla
 _fuente
-_lista footer desplega contenido
-_pendiente: Agregar contonrno al icono de la ventana: en caso de que el usuario tenga modo claro pueda diferenciarlo.
+_pendiente: Agregar contorno al icono de la ventana: en caso de que el usuario tenga modo claro pueda diferenciarlo.
 _Como hacer que la web consuma el minimo de recursos posible *tarda demasiado en cargar
+_Validar que scrollReveal esta disponible. 

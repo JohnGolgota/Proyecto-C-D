@@ -4,7 +4,6 @@ let Curiosidades = [
 // let webAlturaVentana = window.innerHeight
 // let webAnchoVentana = window.innerWidth
 ]
-
 let pruebasDeMostrarOcultar = [
 /* Aquí el primer intento de mostrar y ocultar elementos
 let iconosMalparidos = window.addEventListener("scroll",function(){
@@ -110,4 +109,37 @@ let iconos = window.addEventListener("scroll",function(){
     }
 })
 */
+]
+let datosDesplegablesDePieDePagina = [
+    // Enlaces de barras de navegacion
+    /* 
+    function contactanos(){
+        if(document.getElementById("contactanosOculto").style.display == "none"){
+            document.getElementById("contactanosOculto").style.display = "block";
+        }
+        else {
+            document.getElementById("contactanosOculto").style.display = "none";
+        }
+    }
+    
+    function quienesSomos(){
+        if(document.getElementById("quienesOculto").style.display =="none"){
+            document.getElementById("quienesOculto").style.display = "block";
+        }
+        
+        else {
+            document.getElementById("quienesOculto").style.display = "none";
+        }
+    }
+
+    function direccionOculto(){
+        if(document.getElementById("direccionOculto").style.display == "none"){
+            document.getElementById("direccionOculto").style.display = "block";
+        }
+        
+        else {
+            document.getElementById("direccionOculto").style.display = "none";
+        }
+    }
+    */
 ]

@@ -17,11 +17,12 @@
     <link rel="stylesheet" href="./Estilos/style.css">
 
     <!-- librerias importadas -->
+    <script src="https://unpkg.com/scrollreveal"></script>
     
 </head>
 <body>
     <!-- Encabezado, botones y tema -->
-    <header class="align-items-center navbar navbar-expand-sm position-relative">
+    <header class="align-items-center navbar navbar-expand-sm position-relative cabeza">
         <nav class="container-xxl">
             <!-- logo -->
             <div><a href="./Index-user.html"><img src="./Imagenes/favicon.png" alt="Logo" width="35px"></a></div>
@@ -106,18 +107,26 @@
         </section>
     </main>
 
-    <!--  -->
-    <footer class="container-l pie-pagina py-3 d-flex">
-        <ul class="nav justify-content-center ul-pie-pagina">
-            <li class="nav-item"><a href="#contactanosOculto" class="nav-link" onclick="contactanos();"> Contactanos </a></li>
-            <li class="nav-item"><a href="#quienesOculto" class="nav-link" onclick="quienesSomos();"> ¿Quienes somos? </a></li>
-            <li class="nav-item"><a href="#direccionOculto" class="nav-link" onclick="direccionOculto();"> Dirección </a></li>
-        </ul>
-        <span class="align-items-center text-center">    
-            <p id="contactanosOculto" style="display: none;"> despinal12@misena.edu.co </p>
-            <p id="quienesOculto" style="display: none;"> Somos Carpe Diem, el mejor equipo de desarrollo del SENA </p>
-            <p id="direccionOculto" style="display: none;"> Cll 57A #28-7 </p>
-        </span>
+    <!-- Pie de pagina -->
+    <footer class="text-center py-3 pie-pagina">
+
+        <!-- details: para quitar javascript del pie de pagina -->
+        <details class=" ">
+
+            <!-- summary es basicamente el boton que despliega el resto de contenido -->
+            <summary>Contactanos</summary>
+
+            <!-- este es "el resto de contenido" -->
+            <p>despinal12@misena.edu.co</p>
+        </details>
+        <details class=" ">
+            <summary>¿Quienes somos?</summary>
+            <p>Somos Carpe Diem, el mejor equipo de desarrollo del SENA</p>
+        </details>
+        <details class="">
+            <summary> Dirección </summary>
+            <p> Cll 57A #28-7 </p>
+        </details>
     </footer>
 
     <!-- Scripts Inportados: -->
@@ -126,7 +135,7 @@
 
     <!-- Scripts perzonalizados: -->
     <!-- Animacion de los logos. -->
-    <!-- <script src="./Script's/iconrevel.min.js"></script> -->
+    <!-- <script src="./Script's/iconrevel.min.js">no hay</script> -->
     <script src="./Script's/app.js"></script>
 
     <!-- Scripts Temporales:  -->

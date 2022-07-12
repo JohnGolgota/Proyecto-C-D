@@ -17,13 +17,13 @@
     <link rel="stylesheet" href="./Estilos/style.css">
 
     <!-- librerias importadas -->
-    <!-- <script src="https://unpkg.com/scrollreveal"></script> -->
+    <script src="https://unpkg.com/scrollreveal"></script>
     
 </head>
 <body>
     <!-- Encabezado, botones y modo oscuro -->
-    <header class="align-items-center navbar navbar-expand-sm position-relative header-reveal">
-        <nav class="container-xxl">
+    <header class="align-items-center navbar navbar-expand-sm position-relative header-reveal cabeza">
+        <nav class="container-xxl cabeza-nav">
 
             <!-- logo -->
             <div class="">
@@ -49,7 +49,27 @@
                 
                 <!-- Oculto -->
                 <button class="oculto boton" onclick="menuDesplegable();">...</button>
+
             </div>
+            <!-- Menu Desplegable. -->
+            <aside id="menuDesplegable" style="display: none;" class="menu-no">
+                <!--  -->
+                <div class="contenido-menu">
+                    <hr class="salto">
+                    <!-- <a href="#" class="el-de-arriba"> ¡Inicia Sesion! </a> -->
+                    <!-- <a href="#"> Registrate </a> -->
+                    <button type="button" class="menu-boton-oculto" data-bs-toggle="modal" data-bs-target="#inicioSesionU" data-bs-whatever="@getbootstrap"> Inicia Sesion </button>
+                    <button type="button" class="menu-boton-oculto" data-bs-toggle="modal" data-bs-target="#registroU" data-bs-whatever="@getbootstrap"> Registrate </button>
+                    
+                    <hr class="salto">
+                    <ul>
+                        <li><a href=".herramienta-uno"> Agenda </a></li>
+                        <li><a href=".herramienta-dos"> Reloj Pomodoro  </a></li>
+                        <li><a href=".herramienta-tres"> Ley De Pareto  </a></li>
+                        <li><a href=".herramienta-cuatro"> ? </a></li>
+                    </ul>
+                </div>
+            </aside>
         </nav>
     </header>
 
@@ -74,14 +94,15 @@
 
             <!-- Facebook -->
             <div class="">
-                <a href="https://www.facebook.com/" target="_blank"><img src="./Imagenes/LogosRedes/facebook2-02.png" alt="Facebook" width="40px"></a>
+                <a href="https://www.facebook.com/" target="_blank"><img src="./Imagenes/LogosRedes/facebook.png" alt="Facebook" width="40px"></a>
             </div>
 
             <!-- Imgtagram -->
             <div class="">
-                <a href="https://www.instagram.com/" target="_blank"><img src="./Imagenes/LogosRedes/instagram2-03.png" alt="instagram" width="40px"></a>
+                <a href="https://www.instagram.com/" target="_blank"><img src="./Imagenes/LogosRedes/instagram.png" alt="instagram" width="40px"></a>
             </div>
         </aside>
+
         <section class="text-center my-2 herramientas fs-4">
 
             <!-- Agenda -->
@@ -147,31 +168,31 @@
     </main>
 
     <!-- Pie de pagina -->
-    <footer class="container-l pie-pagina py-3">
+    <footer class="text-center py-3 pie-pagina">
 
-        <!-- Lista de Pie de página -->
-        <ul class="nav justify-content-center ul-pie-pagina">
-            <li class="nav-item item-reveal">
-                <a href="#contactanosOculto" class="nav-link" onclick="contactanos();"> Contactanos </a>
-            </li>
-            <li class="nav-item item-reveal">
-                <a href="#quienesOculto" class="nav-link" onclick="quienesSomos();"> ¿Quienes somos? </a>
-            </li>
-            <li class="nav-item item-reveal">
-                <a href="#direccionOculto" class="nav-link" onclick="direccionOculto();"> Dirección </a>
-            </li>
-        </ul>
-        <span class="align-items-center text-center">    
-            <p id="contactanosOculto" style="display: none;"> despinal12@misena.edu.co </p>
-            <p id="quienesOculto" style="display: none;"> Somos Carpe Diem, el mejor equipo de desarrollo del SENA </p>
-            <p id="direccionOculto" style="display: none;"> Cll 57A #28-7 </p>
-        </span>
+        <!-- details: para quitar javascript del pie de pagina -->
+        <details class="">
+            
+            <!-- summary es basicamente el boton que despliega el resto de contenido -->
+            <summary>Contactanos</summary>
+            
+            <!-- este es "el resto de contenido" -->
+            <p>despinal12@misena.edu.co</p>
+        </details>
+
+        <details class=" ">
+            <summary>¿Quienes somos?</summary>
+            <p>Somos Carpe Diem, el mejor equipo de desarrollo del SENA</p>
+        </details>
+
+        <details class="">
+            <summary> Dirección </summary>
+            <p> Cll 57A #28-7 </p>
+        </details>
     </footer>
 
 
-    <!-- inicio de sesión y registro
-    bootstrap dialogo flotante -->
-
+    <!-- inicio de sesión y registro bootstrap dialogo flotante -->
     <!-- Inicio sesión -->
     <div class="modal fede" id="inicioSesionU" tabindex="1" aria-labelledby="InicioLabel" aria-hidden="true">
 
@@ -198,8 +219,8 @@
 
             <!-- Pie de pagina. metodos de inicio -->
             <div class="modal-footer">
-                <a href="./Index-user.html"><img src="./Imagenes/LogosRedes/facebook2-02.png" alt="Facebook" width="50px"></a>
-                <a href="./pruebaResponsive.html"><img src="./Imagenes/LogosRedes/instagram2-03.png" alt="Google" width="50px"></a>
+                <a href="./Index-user.html"><img src="./Imagenes/LogosRedes/facebook.png" alt="Facebook" width="50px"></a>
+                <a href="./pruebaResponsive.html"><img src="./Imagenes/LogosRedes/instagram.png" alt="Google" width="50px"></a>
             </div>
         </div>
         </div>
@@ -234,35 +255,12 @@
 
             <!-- Pie de página. Metodos de registro -->
             <div class="modal-footer">
-                <a href="./Descartables/Web/i.html"><img src="./Imagenes/LogosRedes/facebook2-02.png" alt="Facebook" width="50px"></a>
-                <a href=""><img src="./Imagenes/LogosRedes/instagram2-03.png" alt="Google" width="50px"></a>
+                <a href="./Descartables/Web/i.html"><img src="./Imagenes/LogosRedes/facebook.png" alt="Facebook" width="50px"></a>
+                <a href=""><img src="./Imagenes/LogosRedes/instagram.png" alt="Google" width="50px"></a>
             </div>
         </div>
         </div>
     </div>
-
-    <!-- Menu Desplegable. -->
-    <aside id="menuDesplegable" style="display:none;" class="menu-no">
-        
-        <!--  -->
-        <div class="contenido-menu">
-            <hr class="salto">
-            <!-- <a href="#" class="el-de-arriba"> ¡Inicia Sesion! </a> -->
-            <!-- <a href="#"> Registrate </a> -->
-            <button type="button" class="boton btn-uno" data-bs-toggle="modal" data-bs-target="#inicioSesionU" data-bs-whatever="@getbootstrap"> Inicia Sesion </button>
-            <button type="button" class="boton btn-dos" data-bs-toggle="modal" data-bs-target="#registroU" data-bs-whatever="@getbootstrap"> Registrate </button>
-            
-            <hr class="salto">
-            <ul>
-                <li><a href=".herramienta-uno"> Agenda </a></li>
-                <li><a href=".herramienta-dos"> Reloj Pomodoro  </a></li>
-                <li><a href=".herramienta-tres"> Ley De Pareto  </a></li>
-                <li><a href=".herramienta-cuatro"> ? </a></li>
-            </ul>
-        </div>
-    </aside>
-
-    
 
     <!-- Scripts Inportados: -->
     <!-- Bootstrap -->
