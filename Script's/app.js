@@ -1,4 +1,4 @@
-// Scroll Reveal
+// ------------------------------------------ Scroll Reveal ------------------------------------------ //
 ScrollReveal().reveal('.header-reveal', { delay: 350 });
 ScrollReveal().reveal('.superbox', { delay: 550 });
 ScrollReveal().reveal('.titulo-principal', { delay: 950 });
@@ -12,7 +12,9 @@ ScrollReveal().reveal('.img-herramienta', { delay: 550 });
 ScrollReveal().reveal('.pie-pagina', { delay: 350 });
 ScrollReveal().reveal('.item-reveal', { delay: 550 });
 
-// Acceder al inicio, registro y herramientas
+
+
+// ------------------------- Acceder al inicio, registro y herramientas ------------------------- //
 function menuDesplegable(){
     if(document.getElementById("menuDesplegable").style.display == "none"){
         document.getElementById("menuDesplegable").style.display = "block";
@@ -22,7 +24,9 @@ function menuDesplegable(){
     }
 }
 
-// "Aleatoriedad" de la frase principal.
+
+
+// -------------------------------------- "Aleatoriedad" de la frase principal. -------------------------------------- //
 var frasesCabecera = ["Programa tu tiempo. Programa Tu Vida", "Android > Iphone", "¿Tienes sueño? ¡Pues duerme!", "¿Estas triste? ¡Pues no lo estes!", "¿Sabias que se puede vivir sin celular?", "Google Calendar nos la pela, igual que tu vieja."];
 function aleatorio(){
 
@@ -39,7 +43,9 @@ function aleatorio(){
 // Cada cierto tiempo "aleatorio" se va a ejecutar.
 setInterval('aleatorio()', 30000);
 
-// Funcion para modo oscuro.
+
+
+// ----------------------------------- MODO OSCURO ----------------------------------- //
 const style = document.documentElement.style; /* Con esto accedemos al documento. */
 const darkMode = () => {
     if(style.getPropertyValue('--color1') == '#4C5F7A'){
@@ -58,5 +64,3 @@ const darkMode = () => {
         style.setProperty('--color4', '#321D2F');
     } 
 }
-
-// a
