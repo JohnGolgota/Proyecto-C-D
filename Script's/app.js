@@ -42,20 +42,20 @@ setInterval('aleatorio()', 30000);
 // Funcion para modo oscuro.
 const style = document.documentElement.style; /* Con esto accedemos al documento. */
 const darkMode = () => {
-    if(style.getPropertyValue('--color1') == '#06283D'){
-        // Paleta oscura
-        style.setProperty('--color1', '#4C5F7A');
-        style.setProperty('--color2', '#393E6F');
-        style.setProperty('--color3', '#3D2E4F');
-        style.setProperty('--color4', '#321D2F');
-    }
-
-    else {
+    if(style.getPropertyValue('--color1') == '#4C5F7A'){
         // Paleta normal.
         style.setProperty('--color1', '#06283D');
         style.setProperty('--color2', '#1363DF');
         style.setProperty('--color3', '#47B5FF');
         style.setProperty('--color4', '#DFF6FF');
+    }
+
+    else {
+        // Paleta oscura
+        style.setProperty('--color1', '#4C5F7A');
+        style.setProperty('--color2', '#393E6F');
+        style.setProperty('--color3', '#3D2E4F');
+        style.setProperty('--color4', '#321D2F');
     } 
 }
 
