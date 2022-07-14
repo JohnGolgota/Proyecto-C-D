@@ -1,14 +1,22 @@
 /* --------------------------------------------- Fuentes. --------------------------------------------- */
 @import url(..//Fuentes/ZFuentes.css);
 
-* {font-family: "Beacon", Times, serif;}
+* {font-family: "Montserrat Light", Times, serif;}
 
-/* ----------------------------------------- Paleta De Colores Y Box-Sizing. ----------------------------------------- */
-* {
+
+
+/* ----------------------------------------- Paleta De Colores ----------------------------------------- */
+:root {
     --color1: #06283D;
     --color2: #1363DF;
     --color3: #47B5FF;
     --color4: #DFF6FF;
+}
+
+
+
+/* ----------------------------------------- Box-Sizing. ----------------------------------------- */
+* {
     
     box-sizing: border-box;
     padding: 0;
@@ -135,8 +143,10 @@ h4 {
 }
 
 .titulo-subtitulo-banner {
+    position: absolute;
+    top: 50%;
+    width: 60%;
     display: block;
-    font-family: 'Beacon';
 }
 
 
@@ -569,129 +579,196 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 
 
 /* -------------------------- Subcategoria: Banner -------------------------- */
+@media(min-width: 0px){
+    h1, 
+    h4 {
+        margin-left: 8px;
+    }
+}
+
 @media (max-width: 1000px){
     .box {
         left: -80%;
     }
+
+    
 }
 
 @media (max-width: 900px){
     .box {
-        left: -100%;
+        left: -90%;
     }
 }
 
 @media (max-width: 800px){
     .box {
-        left: -120%;
+        left: -110%;
     }
 }
 
 @media (max-width: 745px){
     .box {
-        left: -150%;
+        left: -138%;
     }
 }
 
 @media (max-width: 650px){
     .box {
-        left: -175%;
+        left: -145%;
+    }
+}
+
+@media (max-width: 630px){
+    .box {
+        left: -155%;
+    }
+}
+
+@media (max-width: 600px){
+    .box {
+        left: -165%;
     }
 }
 
 @media (max-width: 580px){
     .box {
-        left: -200%;
+        left: -190%;
     }
 }
 
 @media (max-width: 540px){
     .box {
-        left: -205%;
+        left: -200%;
     }
 }
 
 @media (max-width: 530px){
     .box {
-        left: -235%;
+        left: -205%;
+    }
+}
+
+@media (max-width: 500px){
+    .box {
+        left: -218%;
     }
 }
 
 @media (max-width: 485px){
     .box {
-        left: -250%;
+        left: -225%;
     }
 }
 
-@media (max-width: 460px){
+@media (max-width: 470px){
     .box {
-        left: -280%;
+        left: -231%;
     }
 }
 
-@media (max-width: 430px){
+@media (max-width: 462px){
     .box {
-        left: -288%;
+        left: -240%;
+    }
+}
+
+@media (max-width: 450px){
+    .box {
+        left: -253%;
+    }
+}
+
+@media (max-width: 435px){
+    .box {
+        left: -260%;
+    }
+}
+
+@media (max-width: 425px){
+    .box {
+        left: -266%;
+    }
+}
+
+@media (max-width: 410px){
+    .box {
+        left: -275%;
     }
 }
 
 @media (max-width: 405px){
     .box {
-        left: -300%;
+        left: -288%;
     }
 }
 
-@media (max-width: 370px){
+@media (max-width: 388px){
     .box {
-        left: -330%;
+        left: -310%;
+    }
+
+    h1, 
+    h4 {
+        font-size: larger;
     }
 }
 
-@media (max-width: 360px){
+@media (max-width: 365px){
     .box {
-        left: -345%;
+        left: -335%;
     }
 }
 
 @media (max-width: 345px){
     .box {
-        left: -360%;
+        left: -350%;
     }
 }
 
 @media (max-width: 335px){
     .box {
-        left: -390%;
+        left: -365%;
     }
 }
 
 @media (max-width: 325px){
     .box {
-        left: -397%;
+        left: -383%;
     }
 }
 
 @media (max-width: 315px){
     .box {
-        left: -430%;
+        left: -395%;
     }
 }
 
 @media (max-width: 305px){
     .box {
-        left: -450%;
+        left: -405%;
     }
 }
 
 @media (max-width: 295px){
     .box {
-        left: -470%;
+        left: -415%;
     }
 }
 
 @media (max-width: 285px){
     .box {
-        left: -480%;
+        left: -430%;
+    }
+}
+
+@media(max-width: 280px){
+    
+    .box {
+        left: -200%;
+    }
+
+    .titulo-subtitulo-banner {
+        width: 100%;
     }
 }
 

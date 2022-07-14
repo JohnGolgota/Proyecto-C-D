@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./Bootstrap/bootstrap.min.css">
 
     <!-- hojas de estilo personalizadas -->
-    <link rel="stylesheet" href="./Estilos/style.css">
+    <link id="estilos" rel="stylesheet" href="./Estilos/style.css">
 
     <!-- librerias importadas -->
     <script src="https://unpkg.com/scrollreveal"></script>
@@ -34,9 +34,9 @@
             <div class="navbar-nav d-inline align-items-end text-end position-absolute end-0 botones">
                 
                 <!-- switch -->
-                <div class="contenido-switch">
+                <div class="contenido-switch" >
                     <label class="switch align-items-center">
-                        <input type="checkbox" class="input-banner">
+                        <input type="checkbox" class="input-banner" onclick="darkMode();">
                         <span class="slider"></span>
                     </label>
                 </div>
@@ -83,9 +83,9 @@
                 <div class='wave -two'></div>
                 <div class='wave -three'></div>
             </div>
-            <div class="container-sm titulo-subtitulo-banner">
-                <h1 class="titulo-principal"> Carpe Diem </h1>
-                <h4 class="subtitulo-principal"> Varia </h4>
+            <div class="titulo-subtitulo-banner">
+                <h1 class="titulo-principal" id="tituloPrincipal"> Carpe Diem </h1>
+                <h4 class="subtitulo-principal" id="subtituloPrincipal"> Programa tu tiempo. Programa tu vida. </h4>
             </div>
         </section>
 

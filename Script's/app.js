@@ -21,3 +21,40 @@ function menuDesplegable(){
         document.getElementById("menuDesplegable").style.display = "none";
     }
 }
+
+// "Aleatoriedad" de la frase principal.
+var frasesCabecera = ["Programa tu tiempo. Programa Tu Vida", "Android > Iphone", "¿Tienes sueño? ¡Pues duerme!", "¿Estas triste? ¡Pues no lo estes!", "¿Sabias que se puede vivir sin celular?", "Google Calendar nos la pela, igual que tu vieja."];
+function aleatorio(){
+
+    let maximo = frasesCabecera.length;
+    var numero = Math.random() * maximo;
+
+    console.log(numero);
+    // let minimo = 0;
+    
+    document.getElementById("subtituloPrincipal").innerHTML = frasesCabecera[parseInt(numero)];
+    console.log("Me he ejecutado " + numero);
+}
+
+// Cada cierto tiempo "aleatorio" se va a ejecutar.
+setInterval('aleatorio()', 30000);
+
+// Funcion para modo oscuro.
+const style = document.documentElement.style; /* Con esto accedemos al documento. */
+const darkMode = () => {
+    if(style.getPropertyValue('--color1') == '#06283D'){
+        // Paleta oscura
+        style.setProperty('--color1', '#4C5F7A');
+        style.setProperty('--color2', '#393E6F');
+        style.setProperty('--color3', '#3D2E4F');
+        style.setProperty('--color4', '#321D2F');
+    }
+
+    else {
+        // Paleta normal.
+        style.setProperty('--color1', '#06283D');
+        style.setProperty('--color2', '#1363DF');
+        style.setProperty('--color3', '#47B5FF');
+        style.setProperty('--color4', '#DFF6FF');
+    } 
+}
