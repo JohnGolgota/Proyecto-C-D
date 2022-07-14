@@ -1,9 +1,13 @@
 /* --------------------------------------------- Fuentes. --------------------------------------------- */
 @import url(..//Fuentes/ZFuentes.css);
-
 * {font-family: "Montserrat Light", Times, serif;}
 
 
+
+/* --------------------------------------------- Fuentes De GOOGLE FONTS. --------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap'); /* font-family: 'Dosis', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap'); /* font-family: 'Shadows Into Light', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap'); /* font-family: 'Caveat Brush', cursive; */
 
 /* ----------------------------------------- Paleta De Colores ----------------------------------------- */
 :root {
@@ -21,6 +25,8 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+
+    font-family: 'Caveat Brush', cursive;
 }
 
 body {
