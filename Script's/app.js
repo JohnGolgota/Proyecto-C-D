@@ -48,7 +48,7 @@ setInterval('aleatorio()', 30000);
 // ----------------------------------- MODO OSCURO ----------------------------------- //
 const style = document.documentElement.style; /* Con esto accedemos al documento. */
 const darkMode = () => {
-    if(style.getPropertyValue('--color1') == '#4C5F7A'){
+    if(style.getPropertyValue('--color1') == '#363062'){
         // Paleta normal.
         style.setProperty('--color1', '#06283D');
         style.setProperty('--color2', '#1363DF');
@@ -57,10 +57,22 @@ const darkMode = () => {
     }
 
     else {
-        // Paleta oscura
-        style.setProperty('--color1', '#4C5F7A');
-        style.setProperty('--color2', '#393E6F');
-        style.setProperty('--color3', '#3D2E4F');
-        style.setProperty('--color4', '#321D2F');
+        // Paleta oscura V1
+        // style.setProperty('--color1', '#041C32');
+        // style.setProperty('--color2', '#04293A');
+        // style.setProperty('--color3', '#064663');
+        // style.setProperty('--color4', '#ECB365');
+
+        // Paleta oscura V2
+        // style.setProperty('--color1', '#0F044C');
+        // style.setProperty('--color2', '#141E61');
+        // style.setProperty('--color3', '#787A91');
+        // style.setProperty('--color4', '#EEEEEE');
+
+        // Paleta oscura V3
+        style.setProperty('--color1', '#363062'); 
+        style.setProperty('--color2', '#4D4C7D');
+        style.setProperty('--color3', '#827397'); 
+        style.setProperty('--color4', '#D8B9C3');
     } 
 }
