@@ -1,0 +1,799 @@
+/* --------------------------------------------- Fuentes. --------------------------------------------- */
+@import url(..//Fuentes/ZFuentes.css);
+
+* {font-family: "Montserrat Light", Times, serif;}
+
+
+
+/* ----------------------------------------- Paleta De Colores ----------------------------------------- */
+:root {
+    --color1: #06283D;
+    --color2: #1363DF;
+    --color3: #47B5FF;
+    --color4: #DFF6FF;
+}
+
+
+
+/* ----------------------------------------- Box-Sizing. ----------------------------------------- */
+* {
+    
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    overflow-x: hidden;
+    background: linear-gradient(to bottom, var(--color4), var(--color3)); 
+}
+
+
+
+
+/* --- OUTLINE --- */
+/* * {outline: auto;} */
+/* main * {outline: auto;} */
+
+
+
+/* -------------------------------------------- ESTILOS PERSONALIZADOS -------------------------------------------- */
+/* -------------------------- Subcategoria: Nav-bar -------------------------- */
+.cabeza {
+    z-index: 10;
+    background: linear-gradient(to left, var(--color2), var(--color3));
+}
+
+.botones {
+    width: 375px;
+    height: 80%;
+    margin-right: 10px;
+}
+
+
+.switch {
+    margin-right: 75px;
+}
+
+.btn-uno {
+    margin-right: 5px;
+}
+
+
+
+/* -------------------------- Subcategoria: Menu desplegable -------------------------- */
+
+.contenido-menu {
+    z-index: -1;
+    position: absolute;
+    top: 49.5px;
+    right: 0;
+    background-color: var(--color3);
+    width: 50%;
+    height: 90vh;
+    min-height: 500px;
+    opacity: 0.8;
+    text-align: right;
+    padding-right: 15px;
+    
+    overflow: hidden;
+    
+    transition: all 5s;
+    /* transform: translateX(30%); */
+}
+
+.contenido-menu ul {
+    list-style: none;
+}
+
+.contenido-menu > button {
+    margin: 0;
+    height: fit-content;
+}
+
+.contenido-menu a {
+    text-decoration: none;
+    color: #ffffff;
+    opacity: 1;
+    font-size: larger;
+    font-style: bold;
+    margin-right: 10%;
+    margin: 0;
+}
+
+.contenido-menu a:active {color: #ffffff; opacity: 1;}
+.contenido-menu a:visited {color: #ffffff; opacity: 1;}
+.contenido-menu a:link {color: #ffffff; opacity: 1;}
+
+.salto {
+    color: #ffffff;
+    font-size: 5px;
+}
+
+
+
+/* ---------------------------- Subcategoria: Botones de Inicio y Registro Ocultos ---------------------------------- */
+.menu-boton-oculto {
+
+    /* padding-right: 15px; */
+    /* margin-right: 10%; */
+
+    position: relative;
+    right: 0;
+    text-align: right;
+    width: 100%;
+    border: 0;
+
+    font-size: larger;
+    font-style: bold;
+
+    /* outline: auto; */
+    display: block;
+
+    background: none;
+    color: #ffffff;
+}
+
+
+/* ----------------- Subcategoria: Banner -------------------- */
+h1, 
+h4 {
+    color: var(--color4);
+    position: relative;
+}
+
+.titulo-subtitulo-banner {
+    position: absolute;
+    top: 50%;
+    width: 60%;
+    display: block;
+}
+
+
+
+/* ----------------------- Subcategoria: Logos flotantes ---------------------------------- */
+.sacar-derecha {
+    position: absolute;
+    top: 50%;
+    right: 2px;
+    max-width: 200px;
+    opacity: 0;
+    transition: all 0.55s;
+    transform: translateX(30%);
+}
+.sacar {
+    position: fixed;
+    top: 50%;
+    right: 2px;
+    opacity: 1;
+    transform: none;
+    transition: all 0.55s;
+    z-index: 1;
+}
+
+
+
+/* ----------------------------- Subcategoria: Herramientas --------------------------------- */
+.herramientas > article {
+    width: 95%;
+    height: 70vh;
+    margin: auto;
+    border-radius: 12px;
+}
+.herramienta {
+    background-color:#ffffff;
+}
+
+
+
+/* ---------------------------- Subcategoria: Formularios ---------------------------------- */
+.formularios > form > input {
+    display: block;
+    margin: 8px auto;
+    outline: none;
+
+    border: 1px outset var(--color4);
+    transition: all .5s;
+}
+
+.formularios > form > input:focus {
+    border-bottom: 1px outset var(--color3);
+    border-right: 1px outset var(--color3);
+}
+
+.modal-footer > a {
+    transition: .4s;
+}
+
+.modal-footer > a:hover {
+    transform: scale(1.3);
+}
+
+
+
+/* ---------------------------- Subcategoria: Pie de página ---------------------------------- */
+.pie-pagina {
+    position: relative;
+    bottom: 0;
+    width: 98%;
+    margin: auto;
+    color: var(--color4);
+    font-size: small;
+    background-color: var(--color1);
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+}
+.pie-pagina a:link {
+    color: var(--color4);
+}
+.pie-pagina a:visited {
+    color: var(--color4);
+}
+.pie-pagina a:hover {
+    color: var(--color3);
+}
+.pie-pagina a:active {
+    color: var(--color2);
+}
+
+
+
+/* -------------------------------------------- CONTENIDO IMPORTADO -------------------------------------------- */
+/* -------------------------- Subcategoria: Modo Oscuro -------------------------- */
+.contenido-switch {
+    position: absolute;
+    width: 70px;
+    height: 100%;
+}
+.switch {
+    --width-of-switch: 3.5em;
+    --height-of-switch: 2em;
+    /* Medidas de los iconos -- sun and moon */
+
+    --size-of-icon: 1.4em;
+    /* inline-padding del switch(? */
+    --slider-offset: 0.3em;
+
+    position: relative;
+    width: var(--width-of-switch);
+    height: var(--height-of-switch);
+    top: 10%;
+}
+  
+/* Ocultar la casilla de verificacion HTML por defecto */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* el slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f4f4f5;
+    transition: .4s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: var(--size-of-icon,1.4em);
+    width: var(--size-of-icon,1.4em);
+    border-radius: 20px;
+    left: var(--slider-offset,0.3em);
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(40deg, var(--color2), var(--color3) 70%);
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #303136;
+}
+
+input:checked + .slider:before { /* Checket representa cualquier radio (radio, checkbox y options). */
+    left: calc(100% - (var(--size-of-icon,1.4em) + var(--slider-offset,0.3em)));
+    background: #303136;
+    /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
+    box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+}
+
+
+
+/* -------------------------- Subcategoria: Inicio y registro. -------------------------- */
+.boton {
+    height: 100%;
+
+    /* Borde */
+    border: unset;
+    border-radius: 35px;
+
+    color: #212121;
+
+    /* El z-index es la capa que representa. Entre mas alto, mas al arriba esta (se sobrepone). */
+    z-index: 1;
+    background: #e8e8e8;
+
+    position: relative;
+    font-weight: 1000;
+    font-size: 14px;
+
+    letter-spacing: 1px;
+
+    /* Sombra de la caja */
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+
+    /* Animacion */
+    transition: all 250ms;
+
+    overflow: hidden;
+}
+   
+.boton::before { /* Primer hijo del elemento seleccionado. */
+
+    /* La propiedad "content" genera contenido de forma dinamica. */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 3px;
+    background-color: var(--color3);
+    z-index: -1;
+
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms
+}
+   
+.boton:hover {
+    color: #e8e8e8;
+    border-radius: 5px;
+}
+   
+.boton:hover::before {
+    width: 100%;
+}
+
+.btn-uno, .btn-dos {
+    /* Ancho */
+    width: 150px;
+
+    /* Alto */
+    max-height: 100%;
+}
+
+
+
+
+/* -------------------------- Subcategoria: Banner -------------------------- */
+.superbox {
+    width: 99%;
+    max-width: 99%;
+    height: 92vh;
+    max-height: 92vh;
+    overflow: hidden;
+    z-index: -1000;
+
+    /* background-color: var(--color4); */
+
+    
+}
+.box {
+    position: relative;
+    top: -50%;
+    left: -60%;
+    /* transform: rotate(80deg); */
+    width: 50vh;
+    max-width: 80vh;
+    max-height: 50vh;
+    /* z-index: -10; */
+
+    background-color: var(--color3);
+}
+
+.wave {
+    position: sticky;
+    top: 0;
+    left: 0;
+    /* opacity: .4; */
+    /* position: relative; */
+    top: -30%;
+    left: 0;
+    background: var(--color3);
+    width: 1500px;
+    height: 1300px;
+    /* margin-left: -150px;
+    margin-top: -250px; */
+    transform-origin: 50% 48%;
+    border-radius: 43%;
+    animation: drift 5s infinite linear;
+}
+
+.wave.-three {
+    animation: drift 10500ms infinite linear;
+    position: relative;
+    background-color: var(--color1);
+}
+
+.wave.-two {
+    animation: drift 8000ms infinite linear;
+    /* opacity: .1; */
+    background: var(--color2);
+    position: absolute;
+}
+
+.wave.-one {
+    animation: drift 9000ms infinite linear;
+    /* opacity: .2; */
+    background: var(--color3);
+    position: absolute;
+}
+
+.box:after {
+    content: '';
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* z-index: 11; */
+    transform: translate3d(0, 0, 0);
+}
+
+@keyframes drift {
+    from { transform: rotate(0deg); }
+    from { transform: rotate(360deg); }
+}
+
+/*LOADING SPACE*/
+
+.contain {
+    animation-delay: 4s;
+    /* z-index: 1000; */
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+    background: #25a7d7;
+    background: -webkit-linear-gradient(#25a7d7, #2962FF);
+    background: linear-gradient(#25a7d7, #25a7d7);
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 5px;
+}
+
+/*Animation*/
+.icon:nth-child(2) img {-webkit-animation-delay: 0.2s;animation-delay: 0.2s}
+.icon:nth-child(3) img {-webkit-animation-delay: 0.3s;animation-delay: 0.3s}
+.icon:nth-child(4) img {-webkit-animation-delay: 0.4s;animation-delay: 0.4s}
+
+.icon img {
+    -webkit-animation: anim 5s ease infinite;
+    animation: anim 5s ease infinite;
+    -webkit-transform: scale(0,0) rotateZ(180deg);
+    transform: scale(0,0) rotateZ(180deg);
+}
+
+@-webkit-keyframes anim{
+    0% {
+        -webkit-transform: scale(0,0) rotateZ(-90deg);
+        transform: scale(0,0) rotateZ(-90deg);opacity:0
+    }
+    30% {
+        -webkit-transform: scale(1,1) rotateZ(0deg);
+        transform: scale(1,1) rotateZ(0deg);opacity:1
+    }
+    50% {
+        -webkit-transform: scale(1,1) rotateZ(0deg);
+        transform: scale(1,1) rotateZ(0deg);opacity:1
+    }
+    80% {
+        -webkit-transform: scale(0,0) rotateZ(90deg);
+        transform: scale(0,0) rotateZ(90deg);opacity:0
+    }
+}
+
+@keyframes anim{
+    0% {
+        -webkit-transform: scale(0,0) rotateZ(-90deg);
+        transform: scale(0,0) rotateZ(-90deg);opacity:0
+    }
+    30% {
+        -webkit-transform: scale(1,1) rotateZ(0deg);transform: scale(1,1) rotateZ(0deg);opacity:1
+    }
+    50% {
+        -webkit-transform: scale(1,1) rotateZ(0deg);
+        transform: scale(1,1) rotateZ(0deg);opacity:1
+    }
+    80% {
+        -webkit-transform: scale(0,0) rotateZ(90deg);
+        transform: scale(0,0) rotateZ(90deg);opacity:0
+    }
+}
+
+
+
+/* -------------------------------------------- DISEÑO RESPONSIVE -------------------------------------------- */
+/* -------------------------- Subcategoria: nav-bar -------------------------- */
+.oculto {
+    display: none;
+    border-radius: 0px;
+    width: 45px;
+    position: absolute;
+    right: 0;
+}
+
+@media (max-width: 575px){
+    .btn-oculto-head {
+        display: none;
+    }
+
+    .oculto {
+        display: block;
+    }
+    .contenido-switch {
+        position: absolute;
+        right: 50px;
+    }
+}
+
+@media (max-width: 190px){
+    .btn-oculto-head {
+        display: none;
+    }
+
+    .oculto {
+        display: block;
+    }
+
+    .contenido-switch {
+        display: none;
+    }
+}
+
+
+
+/* -------------------------- Subcategoria: Banner -------------------------- */
+@media(min-width: 0px){
+    h1, 
+    h4 {
+        margin-left: 8px;
+    }
+}
+
+@media (max-width: 1000px){
+    .box {
+        left: -80%;
+    }
+
+    
+}
+
+@media (max-width: 900px){
+    .box {
+        left: -90%;
+    }
+}
+
+@media (max-width: 800px){
+    .box {
+        left: -110%;
+    }
+}
+
+@media (max-width: 745px){
+    .box {
+        left: -138%;
+    }
+}
+
+@media (max-width: 650px){
+    .box {
+        left: -145%;
+    }
+}
+
+@media (max-width: 630px){
+    .box {
+        left: -155%;
+    }
+}
+
+@media (max-width: 600px){
+    .box {
+        left: -165%;
+    }
+}
+
+@media (max-width: 580px){
+    .box {
+        left: -190%;
+    }
+}
+
+@media (max-width: 540px){
+    .box {
+        left: -200%;
+    }
+}
+
+@media (max-width: 530px){
+    .box {
+        left: -205%;
+    }
+}
+
+@media (max-width: 500px){
+    .box {
+        left: -218%;
+    }
+}
+
+@media (max-width: 485px){
+    .box {
+        left: -225%;
+    }
+}
+
+@media (max-width: 470px){
+    .box {
+        left: -231%;
+    }
+}
+
+@media (max-width: 462px){
+    .box {
+        left: -240%;
+    }
+}
+
+@media (max-width: 450px){
+    .box {
+        left: -253%;
+    }
+}
+
+@media (max-width: 435px){
+    .box {
+        left: -260%;
+    }
+}
+
+@media (max-width: 425px){
+    .box {
+        left: -266%;
+    }
+}
+
+@media (max-width: 410px){
+    .box {
+        left: -275%;
+    }
+}
+
+@media (max-width: 405px){
+    .box {
+        left: -288%;
+    }
+}
+
+@media (max-width: 388px){
+    .box {
+        left: -310%;
+    }
+
+    h1, 
+    h4 {
+        font-size: larger;
+    }
+}
+
+@media (max-width: 365px){
+    .box {
+        left: -335%;
+    }
+}
+
+@media (max-width: 345px){
+    .box {
+        left: -350%;
+    }
+}
+
+@media (max-width: 335px){
+    .box {
+        left: -365%;
+    }
+}
+
+@media (max-width: 325px){
+    .box {
+        left: -383%;
+    }
+}
+
+@media (max-width: 315px){
+    .box {
+        left: -395%;
+    }
+}
+
+@media (max-width: 305px){
+    .box {
+        left: -405%;
+    }
+}
+
+@media (max-width: 295px){
+    .box {
+        left: -415%;
+    }
+}
+
+@media (max-width: 285px){
+    .box {
+        left: -430%;
+    }
+}
+
+@media(max-width: 280px){
+    
+    .box {
+        left: -200%;
+    }
+
+    .titulo-subtitulo-banner {
+        width: 100%;
+    }
+}
+
+
+
+/* -------------------------- Subcategoria: Herramientas -------------------------- */
+@media (max-width: 500px){
+    .herramientas > article {
+        width: 98%;
+        height: 100vh;
+        display: block;
+    }
+}
+
+
+
+/* ---------------------------- Subcategoria: Pie de página ---------------------------------- */
+@media (max-width: 450px){
+    .ul-pie-pagina {
+        display: block;
+        text-align: center;
+        font-size: larger;
+    }
+}
+
+
+
+/* -------------------------------------------- PANTALLA DE CARGA -------------------------------------------- */
