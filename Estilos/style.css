@@ -145,6 +145,7 @@ h1,
 h4 {
     color: var(--color4);
     position: relative;
+    /* transition: all 1s; */
 }
 
 .titulo-subtitulo-banner {

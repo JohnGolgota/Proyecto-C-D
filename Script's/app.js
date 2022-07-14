@@ -27,7 +27,7 @@ function menuDesplegable(){
 
 
 // -------------------------------------- "Aleatoriedad" de la frase principal. -------------------------------------- //
-var frasesCabecera = ["Programa tu tiempo. Programa Tu Vida", "Android > Iphone", "¿Tienes sueño? ¡Pues duerme!", "¿Estas triste? ¡Pues no lo estes!", "¿Sabias que se puede vivir sin celular?", "Google Calendar nos la pela, igual que tu vieja."];
+var frasesCabecera = ["Programa tu tiempo. Programa Tu Vida", "¿Tienes sueño? ¡Pues duerme!", "¿Estas triste? ¡Pues no lo estes!", "¿Sabias que se puede vivir sin celular?", "Soy El Numero 4", "La fama me persigue, pero yo soy mas rapido.", "Más vale tarde, porque por la mañana duermo", "A alguien le importas, no a mí, pero a alguien sí le importas"];
 function aleatorio(){
 
     let maximo = frasesCabecera.length;
@@ -41,7 +41,7 @@ function aleatorio(){
 }
 
 // Cada cierto tiempo "aleatorio" se va a ejecutar.
-setInterval('aleatorio()', 30000);
+setInterval('aleatorio()', 20000);
 
 
 
