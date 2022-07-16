@@ -1,3 +1,23 @@
+/*
+    REGLAS PARA LOS ESTILOS DE CARPE DIEM.
+
+    Selector {
+        Posicionamiento, En Este Orden: Primero Position y luego Top, left, right, etc y luego el display.
+        Dimensiones, Primero Ancho y luego Alto. Luego los Min y Max.
+        Espaciado: Primero Margin y Luego Padding.
+        Estilos (Color, Fondo, Borde, Text-Align, Fuente, Opacidad, Etc. Estos si pueden ser en cualquier orden).
+
+        Indice.
+
+        Animacion (Primero Transition, Luego Transform, Luego Animation)
+    }
+
+    NOTA: Si hay menos de 5 Propiedades por un selector, NO DEJAR ESPACIO. 
+          Caso contrario, separar por categorias con un espaciado.
+*/
+
+
+
 /* --------------------------------------------- Fuentes. --------------------------------------------- */
 @import url(..//Fuentes/ZFuentes.css);
 * {font-family: "Montserrat Light", Times, serif;}
@@ -36,30 +56,9 @@ body {
 
 
 
-
 /* --- OUTLINE --- */
 /* * {outline: auto;} */
 /* main * {outline: auto;} */
-
-
-
-/*
-    REGLAS PARA LOS ESTILOS DE CARPE DIEM.
-
-    Selector {
-        Posicionamiento, En Este Orden: Primero Position y luego Top, left, right, etc y luego el display.
-        Dimensiones, Primero Ancho y luego Alto. Luego los Min y Max.
-        Espaciado: Primero Margin y Luego Padding.
-        Estilos (Color, Fondo, Borde, Text-Align, Fuente, Opacidad, Etc. Estos si pueden ser en cualquier orden).
-
-        Indice.
-
-        Animacion (Primero Transition, Luego Transform, Luego Animation)
-    }
-
-    NOTA: Si hay menos de 5 Propiedades por un selector, NO DEJAR ESPACIO. 
-          Caso contrario, separar por categorias con un espaciado.
-*/
 
 
 
