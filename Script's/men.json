@@ -132,7 +132,8 @@
                 "Personales":{
                     "Alta":[],
                     "Media":[
-                        "Python"
+                        "Python",
+                        "Lua"
                     ],
                     "Baja":[
                         "Typescript"
