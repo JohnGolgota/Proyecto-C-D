@@ -62,8 +62,6 @@ const darkMode = () => {
         style.setProperty('--color1', '#383838'); // #000000
         // style.setProperty('--color2', '#041C32'); // #413F42
         // style.setProperty('--color3', '#000000'); // #7F8487
-        // style.setProperty('--color4', '#413F42'); // #041C32 Este es una especie de azul.
-
-        
+        // style.setProperty('--color4', '#413F42'); // #041C32 Este es una especie de azul.   
     } 
 }

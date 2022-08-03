@@ -19,7 +19,7 @@
 
 
 /* --------------------------------------------- Fuentes. --------------------------------------------- */
-/* @import url(..//Fuentes/ZFuentes.css); */
+@import url(..//Fuentes/ZFuentes.css);
 /* * {
     font-family: 'Caveat Brush', cursive;
 } */
@@ -39,6 +39,8 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+
+    font-family: 'Montserrat Medium', cursive;
 }
 
 body {
@@ -390,6 +392,7 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 .boton:hover {
     color: #e8e8e8;
     border-radius: 5px;
+    background: radial-gradient(to right, var(--color1), var(--color2));
 }
    
 .boton:hover::before {
@@ -607,6 +610,14 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 
 @media (max-width: 190px){
     .contenido-switch { display: none; }
+}
+
+@media (min-width:1400px){
+    .cabeza-nav {
+        margin-left: 0 !important; 
+    }
+    
+    .box { left: -30%; }
 }
 
 
