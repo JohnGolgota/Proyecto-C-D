@@ -254,7 +254,12 @@ h4 {
 .footer-cd-f {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  background-color: var(--color2);
 }
+
+/* .footer-cd-f {
+    background-color: var(--color2);
+} */
 
 a { text-decoration: none; }
 
