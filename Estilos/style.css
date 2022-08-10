@@ -12,7 +12,7 @@
         Animacion (Primero Transition, Luego Transform, Luego Animation)
     }
 
-    NOTA: Si hay menos de 5 Propiedades por un selector, NO DEJAR ESPACIO. 
+    NOTA: Si hay menos de 5 Propiedades por un selector, NO DEJAR ESPACIO.
           Caso contrario, separar por categorias con un espaciado.
 */
 
@@ -45,7 +45,7 @@
 
 body {
     overflow-x: hidden;
-    background: linear-gradient(to bottom, var(--color4), var(--color3)); 
+    background: linear-gradient(to bottom, var(--color4), var(--color3));
 }
 
 
@@ -121,7 +121,7 @@ body {
     opacity: 1;
     font-size: larger;
     font-style: bold;
-    
+
 }
 
 .contenido-menu a:active {color: #ffffff; opacity: 1;}
@@ -153,7 +153,7 @@ body {
 
 
 /* ----------------- Subcategoria: Banner -------------------- */
-h1, 
+h1,
 h4 {
     position: relative;
     color: var(--color4);
@@ -191,7 +191,7 @@ h4 {
     opacity: 1;
 
     z-index: 1;
-    
+
     transition: all 0.55s;
     transform: none;
 }
@@ -251,7 +251,10 @@ h4 {
 
 
 /* ---------------------------- Subcategoria: Pie de página ---------------------------------- */
-
+.footer-cd-f {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
 
 
 
@@ -277,7 +280,7 @@ h4 {
     width: var(--width-of-switch);
     height: var(--height-of-switch);
 }
-  
+
 /* Ocultar la casilla de verificacion HTML por defecto */
 .switch input {
     width: 0;
@@ -297,7 +300,7 @@ h4 {
     cursor: pointer;
     border-radius: 30px;
 
-    transition: .4s; 
+    transition: .4s;
 }
 
 .slider:before {
@@ -311,7 +314,7 @@ h4 {
     content: "";
     border-radius: 20px;
     background: linear-gradient(40deg, var(--color2), var(--color3) 70%);
-    
+
     transition: .4s;
     transform: translateY(-50%);
 }
@@ -349,34 +352,34 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
     overflow: hidden;
 
     /* Animacion */
-    transition: all 250ms; 
+    transition: all 250ms;
 }
-   
+
 .boton::before { /* Primer hijo del elemento seleccionado. */
     -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
 
     position: absolute;
     top: 0;
     left: 0;
-    
+
     width: 0;
     height: 100%;
 
     content: ""; /* La propiedad "content" genera contenido de forma dinamica. */
     border-radius: 3px;
     background-color: var(--color3);
-    z-index: -1;    
+    z-index: -1;
     box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
 
     transition: all 250ms
 }
-   
+
 .boton:hover {
     color: #e8e8e8;
     border-radius: 5px;
     background: radial-gradient(to right, var(--color1), var(--color2));
 }
-   
+
 .boton:hover::before {
     width: 100%;
 }
@@ -402,14 +405,14 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 
     z-index: -1000;
 
-    /* background-color: var(--color4); */  
+    /* background-color: var(--color4); */
 }
 
 .box {
     position: relative;
     top: -50%;
     left: -60%;
-    
+
     width: 50vh;
     max-width: 80vh;
     max-height: 50vh;
@@ -425,19 +428,19 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
     position: sticky; /* position: relative; */
     top: -30%; /* top: 0; */
     left: 0; /* left: 0; */
-    
+
     width: 1500px;
     height: 1300px;
-    
+
     /* margin-left: -150px; */
     /* margin-top: -250px; */
 
     /* opacity: .4; */
     background: var(--color3);
     border-radius: 43%;
-    
+
     animation: drift 5s infinite linear;
-    transform-origin: 50% 48%; 
+    transform-origin: 50% 48%;
 }
 
 .wave.-three {
@@ -450,7 +453,7 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
     position: absolute;
     /* opacity: .1; */
     background: var(--color2);
-    animation: drift 8000ms infinite linear;   
+    animation: drift 8000ms infinite linear;
 }
 
 .wave.-one {
@@ -469,7 +472,7 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
     height: 100%;
 
     content: '';
-    
+
     /* z-index: 11; */
 
     transform: translate3d(0, 0, 0);
@@ -507,7 +510,7 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 
     /* z-index: 1000; */
 
-    animation-delay: 4s;  
+    animation-delay: 4s;
 }
 
 .icon {
@@ -574,7 +577,7 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
     position: absolute;
     right: 0;
     display: none;
-    
+
     width: 45px;
 
     border-radius: 0px;
@@ -596,9 +599,9 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 
 @media (min-width:1400px){
     .cabeza-nav {
-        margin-left: 0 !important; 
+        margin-left: 0 !important;
     }
-    
+
     .box { left: -30%; }
 }
 
@@ -610,7 +613,7 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 }
 
 @media(max-width: 3840px){
-    h1, 
+    h1,
     h4 { margin-left: 8px; }
     .box { left: -20%; top: 5%; }
 
@@ -716,7 +719,7 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 @media (max-width: 388px){
     .box { left: -310%; }
 
-    h1, 
+    h1,
     h4 { font-size: larger; }
 }
 
