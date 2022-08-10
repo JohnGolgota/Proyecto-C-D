@@ -251,25 +251,7 @@ h4 {
 
 
 /* ---------------------------- Subcategoria: Pie de página ---------------------------------- */
-.pie-pagina {
-    position: relative;
-    bottom: 0;
 
-    width: 98%;
-
-    margin: auto;
-
-    color: var(--color4);
-    font-size: small;
-    background-color: var(--color1);
-    border-top-left-radius: 100px;
-    border-top-right-radius: 100px;
-}
-
-.pie-pagina a:link { color: var(--color4); }
-.pie-pagina a:visited { color: var(--color4); }
-.pie-pagina a:hover { color: var(--color3); }
-.pie-pagina a:active { color: var(--color2); }
 
 
 
@@ -624,20 +606,24 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 
 /* -------------------------- Subcategoria: Banner -------------------------- */
 @media(min-width: 0px){
+    .box { left: -10%}
+}
+
+@media(max-width: 3840px){
     h1, 
     h4 { margin-left: 8px; }
+    .box { left: -20%; top: 5%; }
+
 }
 
 @media(max-width: 2560px){
-    h1, 
-    h4 { margin-left: 8px; }
-    .box { left: -10%; }
+    .box { left: -17%; top: -5%;}
 }
 
 @media(max-width: 1920px){
-    .box { left: -20%; }
-    .box { top: -50%; }
+    .box { left: -20%; top: -12%; }
 }
+/* A partir de 1920 de ancho (para arriba), se debe modificar la altura para evitar bugs en la pagina. */
 
 @media(max-width: 1600px){
     .box { left: -30%; }
