@@ -626,7 +626,7 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 /* A partir de 1920 de ancho (para arriba), se debe modificar la altura para evitar bugs en la pagina. */
 
 @media(max-width: 1600px){
-    .box { left: -30%; }
+    .box { left: -30%; top: -50%; }
 }
 
 @media(max-width: 1440px){
