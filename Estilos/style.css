@@ -628,6 +628,23 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
     h4 { margin-left: 8px; }
 }
 
+@media(min-width: 2560px){
+    h1, 
+    h4 { margin-left: 8px; }
+    .box { left: -17%; }
+    .box { top: 5%; }
+}
+
+@media(max-width: 1440px){
+    .box { left: -50%; }
+    .box { top: -20%; }
+}
+
+@media(max-width: 1280px){
+    .box { left: -60%; }
+    .box { top: -10%; }
+}
+
 @media (max-width: 1000px){
     .box { left: -80%; }
 }
