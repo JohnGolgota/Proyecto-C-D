@@ -635,14 +635,20 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
     .box { top: 5%; }
 }
 
+@media(max-width: 1920px){
+    .box { left: -17%; }
+}
+
+@media(max-width: 1600px){
+    .box { left: -30%; }
+}
+
 @media(max-width: 1440px){
-    .box { left: -50%; }
-    .box { top: -20%; }
+    .box { left: -40%; }
 }
 
 @media(max-width: 1280px){
     .box { left: -60%; }
-    .box { top: -10%; }
 }
 
 @media (max-width: 1000px){
