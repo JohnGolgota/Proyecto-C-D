@@ -44,3 +44,7 @@
 @font-face {font-family: "Spiritual Lightning";src: url(./Fuentes/Spiritual\ Lightning.ttf);}
 @font-face {font-family: "Sweetie Summer";src: url(./Fuentes/Sweetie\ Summer\ -\ Display.ttf);}
 @font-face {font-family: "The Book Store";src: url(./Fuentes/The\ Book\ Store.otf);}
+/* --------------------------------------------- Fuentes De GOOGLE FONTS. --------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap'); /* font-family: 'Dosis', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap'); /* font-family: 'Shadows Into Light', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap'); /* font-family: 'Caveat Brush', cursive; */
