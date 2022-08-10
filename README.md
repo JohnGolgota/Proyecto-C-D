@@ -33,3 +33,6 @@ _fuente
 _pendiente: Agregar contorno al icono de la ventana: en caso de que el usuario tenga modo claro pueda diferenciarlo.
 _Como hacer que la web consuma el minimo de recursos posible *tarda demasiado en cargar
 _Validar que scrollReveal esta disponible. 
+
+- 10/08/2022
+_no se.

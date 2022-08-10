@@ -4,5 +4,23 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"editor.minimap.enabled": false,
+		"workbench.preferredLightColorTheme": "Default Dark+",
+		"terminal.explorerKind": "integrated",
+		"files.autoSave": "off"
+	},
+	"extensions": {
+		"recommendations": [
+			"chakrounanas.turbo-console-log",
+			"codezombiech.gitignore",
+			"donjayamanne.githistory",
+			"ritwickdey.liveserver",
+			"pranaygp.vscode-css-peek",
+			"tabnine.tabnine-vscode",
+			"xdebug.php-debug",
+			"bmewburn.vscode-intelephense-client",
+			"zobo.php-intellisense"
+		]
+	}
 }
