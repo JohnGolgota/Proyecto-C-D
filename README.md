@@ -1,6 +1,6 @@
 # Proyecto-C-D
 Repositorio del proyecto en equipo para SENA.edu
-- JOHN: 
+- JOHN:
 *Clonar repositorio y crear ramas para las modificaciones grandes de ser posible
 *Solo aplicar cambios en la rama/branch prinsipal bajo la aprobación de todos los mienbros del equipo
 
@@ -18,12 +18,8 @@ _averiguar por que funciona la linea 14: app.js porque no entendi -lo remplace
 _pendiente: la desaparicion de los iconos es abrupta: ver que se pueda hacer al respecto
 __ideas: *no hacer nada *que lo haga duvan
 
-
-
-
 - 09/07/2022
 John
-
 
 - 12/07/2022
 _lista footer desplega contenido
@@ -32,7 +28,9 @@ _overflow de las herramientas al reducir el ancho de la pantalla
 _fuente
 _pendiente: Agregar contorno al icono de la ventana: en caso de que el usuario tenga modo claro pueda diferenciarlo.
 _Como hacer que la web consuma el minimo de recursos posible *tarda demasiado en cargar
-_Validar que scrollReveal esta disponible. 
+_Validar que scrollReveal esta disponible.
 
 - 10/08/2022
-_no se.
+John:
+_from now on everything in English
+_nose.
