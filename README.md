@@ -18,12 +18,8 @@ _averiguar por que funciona la linea 14: app.js porque no entendi -lo remplace
 _pendiente: la desaparicion de los iconos es abrupta: ver que se pueda hacer al respecto
 __ideas: *no hacer nada *que lo haga duvan
 
-
-
-
 - 09/07/2022
 John
-
 
 - 12/07/2022
 _lista footer desplega contenido
