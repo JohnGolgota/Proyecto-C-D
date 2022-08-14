@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Esta linea de codigo no es un EasterEgg, para nada. -->
     <meta charset="UTF-8">
@@ -8,7 +9,7 @@
     <title> Carpe Diem | Inicio </title>
 
     <!-- Icono página -->
-    <link rel="shortcut icon" href="./Imagenes/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./Imagenes/faviconclaro.png" type="image/x-icon">
 
     <!-- Bootstrap 5 -->
     <link rel="stylesheet" href="./Bootstrap/bootstrap.min.css">
@@ -18,35 +19,36 @@
 
     <!-- librerias importadas -->
     <script src="https://unpkg.com/scrollreveal"></script>
-    
+
 </head>
+
 <body>
     <!-- Encabezado, botones y modo oscuro -->
     <header class="align-items-center navbar navbar-expand-sm position-relative header-reveal cabeza">
         <nav class="container-xxl cabeza-nav">
 
             <!-- logo -->
-            <div class="">
-                <a href="index.html" target=""><img src="./Imagenes/favicon.png" alt="Logo" width="35px"></a>
+            <div class="elemento-icon-cabeza">
+                <a href="index.html" target=""><img src="./Imagenes/favicon.png" alt="Logo" width="35px" class="nav-brand"></a>
             </div>
-            
+
             <!-- botones -->
             <div class="navbar-nav d-inline align-items-end text-end position-absolute end-0 botones">
-                
+
                 <!-- switch -->
-                <div class="contenido-switch" >
+                <div class="contenido-switch my-auto">
                     <label class="switch align-items-center">
                         <input type="checkbox" class="input-banner" onclick="darkMode();">
                         <span class="slider"></span>
                     </label>
                 </div>
-                
+
                 <!-- inicio sesión -->
                 <button type="button" class="boton btn-uno btn-oculto-head" data-bs-toggle="modal" data-bs-target="#inicioSesionU" data-bs-whatever="@getbootstrap"> Inicia Sesion </button>
-                
+
                 <!-- registro -->
                 <button type="button" class="boton btn-dos btn-oculto-head" data-bs-toggle="modal" data-bs-target="#registroU" data-bs-whatever="@getbootstrap"> Registrate </button>
-                
+
                 <!-- Oculto -->
                 <button class="oculto boton" onclick="menuDesplegable();">...</button>
 
@@ -60,13 +62,13 @@
                     <!-- <a href="#"> Registrate </a> -->
                     <button type="button" class="menu-boton-oculto" data-bs-toggle="modal" data-bs-target="#inicioSesionU" data-bs-whatever="@getbootstrap"> Inicia Sesion </button>
                     <button type="button" class="menu-boton-oculto" data-bs-toggle="modal" data-bs-target="#registroU" data-bs-whatever="@getbootstrap"> Registrate </button>
-                    
+
                     <hr class="salto">
                     <ul>
-                        <li><a href=".herramienta-uno"> Agenda </a></li>
-                        <li><a href=".herramienta-dos"> Reloj Pomodoro  </a></li>
-                        <li><a href=".herramienta-tres"> Ley De Pareto  </a></li>
-                        <li><a href=".herramienta-cuatro"> ? </a></li>
+                        <li><a href="#HerramientaUno"> Agenda </a></li>
+                        <li><a href="#HerramientaDos"> Reloj Pomodoro </a></li>
+                        <li><a href="#HerramientaTres"> Ley De Pareto </a></li>
+                        <li><a href="#HerramientaCuatro"> ? </a></li>
                     </ul>
                 </div>
             </aside>
@@ -74,7 +76,7 @@
     </header>
 
     <!-- Contenido principal: Banner, Redes sociales, Herramientas -->
-    <main class="">
+    <main class="hell-main">
 
         <!-- Banner -->
         <section class="superbox" id="bannerS">
@@ -106,11 +108,11 @@
         <section class="text-center my-2 herramientas fs-4">
 
             <!-- Agenda -->
-            <article class="row align-items-center herramienta herramienta-uno">
+            <article class="row align-items-center herramienta herramienta-uno" id="HerramientaUno">
 
                 <!-- imagen. Agenda -->
                 <div class="col">
-                    <img class ="img-herramienta" src="" alt="Agenda">
+                    <img class="herramienta-img" src="./Imagenes/herramientas/Agenda.png" alt="Agenda">
                 </div>
 
                 <!-- descripcion. Agenda -->
@@ -121,75 +123,156 @@
             </article>
 
             <!-- HerramientaDos -->
-            <article class="row align-items-center my-2 herramienta herramienta-dos">
-                
+            <article class="row align-items-center my-2 herramienta herramienta-dos" id="HerramientaDos">
+
                 <!-- imagen. HerramientaDos -->
                 <div class="col order-2">
-                    <img class ="img-herramienta" src="" alt="HerramientaDos">
+                    <img class="herramienta-img" src="./Imagenes/herramientas/pomodoro.png" alt="HerramientaDos">
                 </div>
 
                 <!-- descripcion. HerramientaDos -->
                 <div class="col order-1">
-                    <h3>Lorem ipsum dolor sit amet.</h3>
+                    <h3>Pomodoro</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet doloribus architecto quidem impedit odit natus!</p>
                 </div>
             </article>
 
             <!-- HerramientaTres -->
-            <article class="row align-items-center herramienta herramienta-tres">
+            <article class="row align-items-center herramienta herramienta-tres" id="HerramientaTres">
 
                 <!-- imagen. HerramientaTres -->
                 <div class="col">
-                    <img class ="img-herramienta" src="" alt="HerramientaTres">
+                    <img class="herramienta-img" src="./Imagenes/herramientas/pareto.png" alt="HerramientaTres">
                 </div>
 
                 <!-- descripcion. HerramientaTres -->
                 <div class="col">
-                    <h3>Lorem ipsum dolor sit amet.</h3>
+                    <h3>Ley de pareto</h3>
                     <p class="">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut aliquam neque vel, dolorem et placeat.</p>
                 </div>
             </article>
 
             <!-- HerramientaCuatro -->
-            <article class="row align-items-center my-2 herramienta herramienta-cuatro">
+            <article class="row align-items-center my-2 herramienta herramienta-cuatro" id="HerramientaCuatro">
 
                 <!-- imagen. HerramientaCuatro -->
                 <div class="col order-2">
-                    <img class ="img-herramienta" src="" alt="HerramientaCuatro">
+                    <img class="herramienta-img" src="./Imagenes/herramientas/doyouself.png" alt="HerramientaCuatro">
                 </div>
 
                 <!-- descripcion. HerramientaCuatro -->
                 <div class="col order-1">
-                    <h3>Lorem ipsum dolor sit amet.</h3>
+                    <h3>Do it Yourself</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, quisquam deleniti. Dolore distinctio veritatis quos?</p>
                 </div>
             </article>
         </section>
     </main>
 
-    <!-- Pie de pagina -->
-    <footer class="text-center py-3 pie-pagina">
+    <!-- Remove the containe if you want to extend the Footer to full width. -->
+    <!-- Footer -->
+    <div class="container-fluid px-4 mt-3 footer-cd">
 
-        <!-- details: para quitar javascript del pie de pagina -->
-        <details class="">
-            
-            <!-- summary es basicamente el boton que despliega el resto de contenido -->
-            <summary>Contactanos</summary>
-            
-            <!-- este es "el resto de contenido" -->
-            <p>despinal12@misena.edu.co</p>
-        </details>
+        <footer class="text-center text-lg-start text-white footer-cd-f">
+            <!-- Grid container -->
+            <div class="container p-4 footer-cd-d">
+                <!--Grid row-->
+                <div class="row my-4">
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
 
-        <details class=" ">
-            <summary>¿Quienes somos?</summary>
-            <p>Somos Carpe Diem, el mejor equipo de desarrollo del SENA</p>
-        </details>
+                        <div class="rounded-circle shadow-1-strong d-flex align-items-center justify-content-center mb-4 mx-auto" style="width: 150px; height: 150px;">
+                            <img src="./Imagenes/favicon.png" height="70" alt="" loading="lazy" />
+                        </div>
 
-        <details class="">
-            <summary> Dirección </summary>
-            <p> Cll 57A #28-7 </p>
-        </details>
-    </footer>
+                        <p class="text-center">Carpe Diem</p>
+
+                        <ul class="list-unstyled d-flex flex-row justify-content-center">
+                            <li>
+                                <a class="text-white px-2" href="#!">
+                                    <i class="fab fa-facebook-square"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="text-white px-2" href="#!">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase mb-4"> Herramientas </h5>
+
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <a href="#HerramientaUno" class="text-white"><i class="fas fa-duotone fa-calendar pe-3"></i> Agenda </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#HerramientaDos" class="text-white"><i class="fas fa-clock pe-3"></i> Reloj Pomodoro </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#HerramientaTres" class="text-white"><i class="fas fa-flag pe-3"></i> Ley de Pareto </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#HerramientaCuatro" class="text-white"><i class="fas fa-seedling pe-3"></i> Hazlo Tu Mismo </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase mb-4"> Desarroladores </h5>
+
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <a href="#!" class="text-white"><i class="fas fa-user pe-3"></i>John Steban</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#!" class="text-white"><i class="fas fa-user pe-3"></i>Duvan Arwen Lazar </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#!" class="text-white"><i class="fas fa-user pe-3"></i>Ivan</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase mb-4"> Contacto </h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                <p><i class="fas fa-envelope pe-2"></i>Correo@misena.edu.co</p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-map-marker-alt pe-2"></i> Complejo Norte - C.T.G.I </p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-phone pe-2 mb-0"></i> GitHub -> Proyecto-C-D </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </div>
+            <!-- Grid container -->
+
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+                <a class="text-white" href="#"> Carpe Diem </a>
+                © 2022 All Rights Reserved
+            </div>
+            <!-- Copyright -->
+        </footer>
+
+    </div>
 
 
     <!-- inicio de sesión y registro bootstrap dialogo flotante -->
@@ -198,81 +281,83 @@
 
         <!-- Ventana -->
         <div class="modal-dialog">
+            <!-- Contenido en la ventana -->
+            <div class="modal-content align-items-center">
 
-        <!-- Contenido en la ventana -->
-        <div class="modal-content align-items-center">
+                <!-- Encabezado. Logo -->
+                <div class="modal-header">
+                    <img src="./Imagenes/favicon.png" alt="Logo" width="60px">
+                </div>
 
-            <!-- Encabezado. Logo -->
-            <div class="modal-header">
-                <img src="./Imagenes/favicon.png" alt="Logo" width="60px">
+                <!-- Cuerpo. Formulario -->
+                <div class="modal-body formularios formulario-inicio">
+                    <form action="" class="">
+                        <input type="text" name="UsuarioIS" id="usuarioIS" placeholder="Nombre De Usuario"
+                            class="form-control">
+                        <input type="password" name="ContrasenaIS" id="contrasenaIS" placeholder="Contraseña"
+                            class="form-control">
+
+                        <input type="submit" value="¡Inicia Sesión!" class="btn btn-primary">
+                    </form>
+                </div>
+
+                <!-- Pie de pagina. metodos de inicio -->
+                <div class="modal-footer">
+                    <a href="./Index-user.html"><img src="./Imagenes/LogosRedes/facebook.png" alt="Facebook" width="50px"></a>
+                    <a href="./pruebaResponsive.html"><img src="./Imagenes/LogosRedes/instagram.png" alt="Google" width="50px"></a>
+                </div>
             </div>
-
-            <!-- Cuerpo. Formulario -->
-            <div class="modal-body formularios formulario-inicio">
-                <form action="" class="">
-                    <input type="text" name="UsuarioIS" id="usuarioIS" placeholder="Nombre De Usuario" class="">
-                    <input type="password" name="ContrasenaIS" id="contrasenaIS" placeholder="Contraseña" class="">
-    
-                    <input type="submit" value="¡Inicia Sesión!" class="">
-                </form>
-            </div>
-
-            <!-- Pie de pagina. metodos de inicio -->
-            <div class="modal-footer">
-                <a href="./Index-user.html"><img src="./Imagenes/LogosRedes/facebook.png" alt="Facebook" width="50px"></a>
-                <a href="./pruebaResponsive.html"><img src="./Imagenes/LogosRedes/instagram.png" alt="Google" width="50px"></a>
-            </div>
-        </div>
         </div>
     </div>
 
     <!-- registro -->
     <div class="modal fade inicio-sesion-registro" id="registroU" tabindex="-1" aria-labelledby="registroLabel" aria-hidden="true">
-        
+
         <!-- ventana -->
         <div class="modal-dialog">
 
-        <!-- contenido de la ventana -->
-        <div class="modal-content align-items-center">
-                
-            <!-- encabezado. Logo -->
-            <div class="modal-header">
-                <img src="./Imagenes/favicon.png" alt="Logo" width="60px">
-            </div>
+            <!-- contenido de la ventana -->
+            <div class="modal-content align-items-center">
 
-            <!-- Cuerpo. Formulario -->
-            <div class="modal-body formularios formulario-registro">
-                <form action="">
-                    <input type="text" name="UsuarioRN" id="usuarioR" placeholder="Nombre De Usuario">
-                    <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo">
-                    <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña">
-                    <input type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña">
-                    <input type="date" name="UsuarioRD" id="usuarioRD">
-                    
-                    <input type="submit" value="Registrarse">
-                </form>
-            </div>
+                <!-- encabezado. Logo -->
+                <div class="modal-header">
+                    <img src="./Imagenes/favicon.png" alt="Logo" width="60px">
+                </div>
 
-            <!-- Pie de página. Metodos de registro -->
-            <div class="modal-footer">
-                <a href="./Descartables/Web/i.html"><img src="./Imagenes/LogosRedes/facebook.png" alt="Facebook" width="50px"></a>
-                <a href=""><img src="./Imagenes/LogosRedes/instagram.png" alt="Google" width="50px"></a>
+                <!-- Cuerpo. Formulario -->
+                <div class="modal-body formularios formulario-registro">
+                    <form action="./bd/conexion-php/registrousu.php" method="POST">
+                        <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo" class="form-control">
+                        <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña" class="form-control">
+                        <input type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control">
+
+                        <input type="submit" value="Registrarse">
+                    </form>
+                </div>
+
+                <!-- Pie de página. Metodos de registro -->
+                <div class="modal-footer">
+                    <a href="./Descartables/Web/i.html"><img src="./Imagenes/LogosRedes/facebook.png" alt="Facebook" width="50px"></a>
+                    <a href=""><img src="./Imagenes/LogosRedes/instagram.png" alt="Google" width="50px"></a>
+                </div>
             </div>
-        </div>
         </div>
     </div>
 
     <!-- Scripts Inportados: -->
     <!-- Bootstrap -->
     <script src="./Bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/8a160a18f4.js" crossorigin="anonymous"></script>
 
     <!-- Scripts perzonalizados: -->
     <!-- Animacion de los logos. -->
-    <script src="./Script's/iconrevel.min.js"></script>
-    <script src="./Script's/app.js"></script>
-
+    <script src="./Scripts/sweetalert.min.js"></script>
+    <script src="./Scripts/iconrevel.min.js"></script>
+    <script src="./Scripts/app.js"></script>
+    <script src="./Scripts/main.js"></script>
 
     <!-- Scripts Temporales:  -->
-    <script src="./Descartables/John.js"></script>
+    <!-- <script src="./Descartables/John.js"></script> -->
 </body>
+
 </html>

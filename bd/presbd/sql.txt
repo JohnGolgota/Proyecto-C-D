@@ -1,0 +1,178 @@
+CREATE TABLE `tbl_eventos_config` (
+  `id_evn` int(11) NOT null,
+  `id_cfg` int(11) not null
+);
+
+CREATE TABLE `tbl_usuario` (
+  `id_usr` int(11) NOT null, PRIMARY KEY(id_usr),
+  `nombre_usr` varchar(30) not null,
+  `correo_usr` varchar(50),
+  `contrasena_usr` varchar(15) NOT NULL,
+  `id_evn` int(11),
+  `id_mpg` int(11)
+);
+
+CREATE TABLE `tbl_metodo_pago` (
+  `id_mpg` int(11) NOT null, PRIMARY KEY(id_mpg),
+  `tipo_mpg` varchar(30) not null,
+  `numero_mpg` varchar(19) not null,
+  `fecha_caducidad_mpg` date not null,
+  `codigo_cvv_mpg` varchar(3) not null,
+  `nombres_mpg` varchar(50) not null,
+  `apellidos_mpg` varchar(50) not null,
+  `pais_mpg` varchar(100) not null,
+  `codigo_postal_mpg` varchar(10) not null,
+  `direccion_mpg` varchar(100) not null
+);
+
+CREATE TABLE `tbl_pagos` (
+  `id_pg` int(11) not null, PRIMARY KEY(id_),
+  `descripcion_pg` varchar(255),
+  `cantidad_pg` float not null,
+  `impuestos_pg` float,
+  `id_mpg` int(11) not null
+);
+
+CREATE TABLE `tbl_comunicado_user` (
+  `id_rpu` int(11) NOT null, PRIMARY KEY(id_rpu),
+  `asunto_rpu` varchar(50) not null,
+  `descripcion_rpu` text not null,
+  `fecha_rpu` datetime not null,
+  `estado_rpu` varchar(10) not null,
+  `respuesta_rpu` varchar(100),
+  `id_adm` int(11) not null,
+  `id_usr` int(11) not null
+);
+
+CREATE TABLE `tbl_administrador` (
+  `id_adm` int(11) NOT NULL, PRIMARY KEY(id_adm),
+  `nombre_adm` varchar(100) NOT NULL,
+  `correo_adm` varchar(50),
+  `otro_contacto` varchar(150),
+  `contrasena_adm` varchar(15) NOT NULL
+);
+
+CREATE TABLE `tbl_comunicado_admin` (
+  `id_com` int(11) NOT NULL, PRIMARY KEY(id_com),
+  `asunto_com` varchar(15) NOT NULL,
+  `texto_com` text,
+  `visibilidad` boolean NOT NULL,
+  `fecha_com` date,
+  `prioridad_com` varchar(15),
+  `id_adm` int(11) NOT NULL
+);
+
+CREATE TABLE `tbl_desarrolladores` (
+  `di_des` varchar(11) NOT NULL, PRIMARY KEY(id_des),
+  `tipodi_des` varchar(30) NOT NULL,
+  `nombre_des` varchar(100) NOT NULL,
+  `apellidos_des` varchar(100) NOT NULL,
+  `horario_des` varchar(15),
+  `sueldo_des` float NOT NULL,
+  `id_com` int(11)
+);
+
+CREATE TABLE `tbl_e_desarrolladora` (
+  `id_edes` int(11) NOT NULL,
+  `nombre_edes` varchar(15),
+  `di_des` varchar(11)
+);
+
+CREATE TABLE `tbl_actualizaciones` (
+  `version_id_act` varchar(15) NOT NULL,
+  `nombre_act` varchar(15),
+  `novedades_act` varchar(140),
+  `comentarios_act` varchar(140),
+  `di_des` varchar(10) NOT NULL
+);
+
+INTENTO 2
+CREATE TABLE `tbl_eventos_config` (
+  `id_evn` int(11) NOT null,
+  `id_cfg` int(11) not null
+);
+
+CREATE TABLE `tbl_usuario` (
+  `id_usr` int(11) NOT null, PRIMARY KEY(id_usr),
+  `nombre_usr` varchar(30) not null,
+  `correo_usr` varchar(50),
+  `contrasena_usr` varchar(15) NOT NULL,
+  `id_evn` int(11),
+  `id_mpg` int(11)
+);
+
+CREATE TABLE `tbl_metodo_pago` (
+  `id_mpg` int(11) NOT null, PRIMARY KEY(id_mpg),
+  `tipo_mpg` varchar(30) not null,
+  `numero_mpg` varchar(19) not null,
+  `fecha_caducidad_mpg` date not null,
+  `codigo_cvv_mpg` varchar(3) not null,
+  `nombres_mpg` varchar(50) not null,
+  `apellidos_mpg` varchar(50) not null,
+  `pais_mpg` varchar(100) not null,
+  `codigo_postal_mpg` varchar(10) not null,
+  `direccion_mpg` varchar(100) not null
+);
+
+CREATE TABLE `tbl_pagos` (
+  `id_pg` int(11) not null, PRIMARY KEY(id_pg),
+  `descripcion_pg` varchar(255),
+  `cantidad_pg` float not null,
+  `impuestos_pg` float,
+  `id_mpg` int(11) not null
+);
+
+CREATE TABLE `tbl_comunicado_user` (
+  `id_rpu` int(11) NOT null, PRIMARY KEY(id_rpu),
+  `asunto_rpu` varchar(50) not null,
+  `descripcion_rpu` text not null,
+  `fecha_rpu` datetime not null,
+  `estado_rpu` varchar(10) not null,
+  `respuesta_rpu` varchar(100),
+  `id_adm` int(11) not null,
+  `id_usr` int(11) not null
+);
+
+CREATE TABLE `tbl_administrador` (
+  `id_adm` int(11) NOT NULL, PRIMARY KEY(id_adm),
+  `nombre_adm` varchar(100) NOT NULL,
+  `correo_adm` varchar(50),
+  `otro_contacto` varchar(150),
+  `contrasena_adm` varchar(15) NOT NULL
+);
+
+CREATE TABLE `tbl_comunicado_admin` (
+  `id_com` int(11) NOT NULL, PRIMARY KEY(id_com),
+  `asunto_com` varchar(15) NOT NULL,
+  `texto_com` text,
+  `visibilidad` boolean NOT NULL,
+  `fecha_com` date,
+  `prioridad_com` varchar(15),
+  `id_adm` int(11) NOT NULL
+);
+
+CREATE TABLE `tbl_desarrolladores` (
+  `di_des` varchar(11) NOT NULL, PRIMARY KEY(di_des),
+  `tipodi_des` varchar(30) NOT NULL,
+  `nombre_des` varchar(100) NOT NULL,
+  `apellidos_des` varchar(100) NOT NULL,
+  `horario_des` varchar(15),
+  `sueldo_des` float NOT NULL,
+  `id_com` int(11)
+);
+
+CREATE TABLE `tbl_e_desarrolladora` (
+  `id_edes` int(11) NOT NULL, PRIMARY KEY (id_edes),
+  `nombre_edes` varchar(15),
+  `di_des` varchar(11)
+);
+
+CREATE TABLE `tbl_actualizaciones` (
+  `version_id_act` varchar(15) NOT NULL, PRIMARY KEY (version_id_act),
+  `nombre_act` varchar(15),
+  `novedades_act` varchar(140),
+  `comentarios_act` varchar(140),
+  `di_des` varchar(10) NOT NULL
+);
+
+Resto

@@ -17,7 +17,10 @@
 			"donjayamanne.githistory",
 			"ritwickdey.liveserver",
 			"pranaygp.vscode-css-peek",
-			"TabNine.tabnine-vscode"
+			"tabnine.tabnine-vscode",
+			"xdebug.php-debug",
+			"bmewburn.vscode-intelephense-client",
+			"zobo.php-intellisense"
 		]
 	}
 }
