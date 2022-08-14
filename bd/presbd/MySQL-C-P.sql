@@ -1,5 +1,5 @@
 CREATE TABLE `tbl_config` (
-  `id_cfg` int(11) PRIMARY KEY NOT NULL,
+  `id_cfg` int(11), PRIMARY KEY (`id_cfg`),
   `nombre_cfg` varchar(50),
   `descripcion_cfg` varchar(255),
   `color_cfg` varchar(8),
@@ -9,7 +9,7 @@ CREATE TABLE `tbl_config` (
 );
 
 CREATE TABLE `tbl_eventos` (
-  `id_evn` int(11) PRIMARY KEY NOT NULL,
+  `id_evn` int(11), PRIMARY KEY(id_evn),
   `fecha_evn` datatime DEFAULT (now())
 );
 
@@ -19,7 +19,7 @@ CREATE TABLE `tbl_eventos_config` (
 );
 
 CREATE TABLE `tbl_usuario` (
-  `id_usr` int(11) PRIMARY KEY NOT NULL,
+  `id_usr` int(11), PRIMARY KEY(id_usr),
   `nombre_usr` varchar(30),
   `correo_usr` varchar(50),
   `contrasena_usr` varchar(15) NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE `tbl_usuario` (
 );
 
 CREATE TABLE `tbl_metodo_pago` (
-  `id_mpg` int(11) PRIMARY KEY NOT NULL,
+  `id_mpg` int(11), PRIMARY KEY(id_mpg),
   `tipo_mpg` varchar(30),
   `numero_mpg` varchar(19),
   `fecha_caducidad_mpg` date,
@@ -41,7 +41,7 @@ CREATE TABLE `tbl_metodo_pago` (
 );
 
 CREATE TABLE `tbl_pagos` (
-  `id_pg` int(11) PRIMARY KEY NOT NULL,
+  `id_pg` int(11), PRIMARY KEY(id_),
   `descripcion_pg` varchar(255),
   `cantidad_pg` float,
   `impuestos_pg` float,
@@ -49,7 +49,7 @@ CREATE TABLE `tbl_pagos` (
 );
 
 CREATE TABLE `tbl_comunicado_user` (
-  `id_rpu` int(11) PRIMARY KEY NOT NULL,
+  `id_rpu` int(11) PRIMARY KEY(id_) NOT NULL,
   `asunto_rpu` varchar(50),
   `descripcion_rpu` text,
   `fecha_rpu` datetime,
@@ -60,7 +60,7 @@ CREATE TABLE `tbl_comunicado_user` (
 );
 
 CREATE TABLE `tbl_administrador` (
-  `id_adm` int(11) PRIMARY KEY NOT NULL,
+  `id_adm` int(11) PRIMARY KEY(id_) NOT NULL,
   `nombre_adm` varchar(100),
   `correo_adm` varchar(50) NOT NULL,
   `otro_contacto` varchar(150),
@@ -68,7 +68,7 @@ CREATE TABLE `tbl_administrador` (
 );
 
 CREATE TABLE `tbl_comunicado_admin` (
-  `id_com` int(11) PRIMARY KEY NOT NULL,
+  `id_com` int(11) PRIMARY KEY(id_) NOT NULL,
   `asunto_com` varchar(15),
   `texto_com` text,
   `visibilidad` boolean,
@@ -78,7 +78,7 @@ CREATE TABLE `tbl_comunicado_admin` (
 );
 
 CREATE TABLE `tbl_desarrolladores` (
-  `di_des` varchar(11) PRIMARY KEY NOT NULL,
+  `di_des` varchar(11) PRIMARY KEY(id_) NOT NULL,
   `tipodi_des` varchar(30) NOT NULL,
   `nombre_des` varchar(100) NOT NULL,
   `apellidos_des` varchar(100) NOT NULL,
