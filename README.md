@@ -34,3 +34,6 @@ _Validar que scrollReveal esta disponible.
 John:
 _from now on everything in English
 _nose.
+
+- 14/08/2022
+ahí vamos
