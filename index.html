@@ -326,12 +326,10 @@
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-registro">
-                    <form action="">
-                        <input type="text" name="UsuarioRN" id="usuarioR" placeholder="Nombre De Usuario" class="form-control">
+                    <form action="./bd/conexion-php/registrousu.php" method="POST">
                         <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo" class="form-control">
                         <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña" class="form-control">
                         <input type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control">
-                        <input type="date" name="UsuarioRD" id="usuarioRD">
 
                         <input type="submit" value="Registrarse">
                     </form>
