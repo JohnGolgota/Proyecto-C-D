@@ -11,6 +11,7 @@
         
         public function RegistroSQL(){
            $sql = "INSERT INTO tbl_usuario (nombre_usr, email_usr, contrasena_usr) VALUES ('$this->nombre_usr', '$this->email_usr', '$this->pass_usr')";
+           return $sql;
         }
 
         public function AsignarNombre(){
@@ -22,12 +23,14 @@
 
         public function cifrarContrasena(){
             # Ciframos las contraseñas. De esta manera cualquier persona que entre a la base de datos no podra verlas sin mas.
-            $this->pass_usr = password_hash($this->pass_usr = $_POST['usuarioRC'], PASSWORD_BCRYPT);
-            echo $this->pass_usr;
+            $this->pass_usr = password_hash($_POST['UsuarioRC'], PASSWORD_BCRYPT);
+            // echo $this->pass_usr . "<br>" . strlen($this->pass_usr);
         }
     }
     
     $RegistroComit = new Registro();
+    $conexion = new Conexion();
+    $conexion->BdConnect();
     
     # Verificar si algun valor esta vacio o no.
     if(!empty($_POST['UsuarioRE']) && !empty($_POST['UsuarioRC']) && !empty($_POST['UsuarioRCC'])){
@@ -36,11 +39,13 @@
             // $RegistroComit->pass_usr = $_POST['UsuarioRC'];
             $RegistroComit->cifrarContrasena();
             // $RegistroComit->confirmpass_usr = $_POST['UsuarioRCC'];
-
             $RegistroComit->AsignarNombre();
+
+            $conexion->stm->prepare($RegistroComit->RegistroSQL());
+            $conexion->stm->execute();
+            
         } else {
-            echo "<script src='../../Scripts/sweetalert.min.js'></script> <script> swal('Las contraseñas NO coinciden D:'); </script>";            
-            header('location: ../../index.html');
+            echo 'la cagaste xd';
         }
     }
     
