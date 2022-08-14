@@ -51,6 +51,4 @@
             echo 'la cagaste xd';
         }
     }
-    
-    
 ?>
