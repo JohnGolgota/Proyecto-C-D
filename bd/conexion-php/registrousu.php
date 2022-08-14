@@ -10,15 +10,16 @@
         // public $confirmpass_usr;
         
         public function RegistroSQL(){
-           $sql = "INSERT INTO tbl_usuario (nombre_usr, email_usr, contrasena_usr) VALUES ('$this->nombre_usr', '$this->email_usr', '$this->pass_usr')";
+           $sql = "INSERT INTO tbl_usuario (nombre_usr, correo_usr, contrasena_usr) VALUES ('$this->nombre_usr', '$this->email_usr', '$this->pass_usr')";
            return $sql;
         }
 
         public function AsignarNombre(){
+            $nombreUsuario;
             $linea = $this->email_usr;
-            $this->nombre_usr = explode("@",$linea);
-            // return $this->nombre_usr[0];
-            // echo $this->nombre_usr[0];
+            $nombreUsuario = explode("@",$linea);
+            $this->nombre_usr = $nombreUsuario[0];
+            return $this->nombre_usr;
         }
 
         public function cifrarContrasena(){
@@ -35,15 +36,17 @@
     # Verificar si algun valor esta vacio o no.
     if(!empty($_POST['UsuarioRE']) && !empty($_POST['UsuarioRC']) && !empty($_POST['UsuarioRCC'])){
         if($_POST['UsuarioRC'] == $_POST['UsuarioRCC']){
+            # Correo Electronico.
             $RegistroComit->email_usr = $_POST['UsuarioRE'];
-            // $RegistroComit->pass_usr = $_POST['UsuarioRC'];
+
+            # Contraseña, Confirmar Contraseña.
             $RegistroComit->cifrarContrasena();
-            // $RegistroComit->confirmpass_usr = $_POST['UsuarioRCC'];
             $RegistroComit->AsignarNombre();
 
-            $conexion->stm->prepare($RegistroComit->RegistroSQL());
-            $conexion->stm->execute();
+            $sentence = $conexion->stm->prepare($RegistroComit->RegistroSQL());
+            $sentence->execute();
             
+            header('location: ../../index-user.html');
         } else {
             echo 'la cagaste xd';
         }
