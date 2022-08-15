@@ -1,6 +1,6 @@
 <head></head><body><h1>Hola</h1></body>
 <?php
-    include 'conexiondb.php';
+    include 'conexiondb.php'; 
 
     # Clase: Registro. Tiene todos los parametros para iniciar sesion.
     class Registro {
@@ -26,6 +26,10 @@
             # Ciframos las contraseñas. De esta manera cualquier persona que entre a la base de datos no podra verlas sin mas.
             $this->pass_usr = password_hash($_POST['UsuarioRC'], PASSWORD_BCRYPT);
             // echo $this->pass_usr . "<br>" . strlen($this->pass_usr);
+        }
+        public function ComprobarCorreo(){
+            $email = "SELECT correo_usr FROM tbl_usuario WHERE correo_usr = '$this->email_usr'";
+            return $email;
         }
     }
     
@@ -58,7 +62,7 @@
             if ($_POST['UsuarioRC'] !== $_POST['UsuarioRCC']) {
                 die('Las contraseñas no coinciden.');
             }
-            if
+
             # Correo Electronico.
             $RegistroComit->email_usr = $_POST['UsuarioRE'];
 
@@ -66,10 +70,9 @@
             $RegistroComit->cifrarContrasena();
             $RegistroComit->AsignarNombre();
 
+
             $sentence = $conexion->stm->prepare($RegistroComit->RegistroSQL());
-            // $sentence->execute();
-
-
+            $sentence->execute();
             
         } else {
             echo 'la cagaste xd';
