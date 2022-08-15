@@ -12,7 +12,19 @@
         $nombre = $_POST['UsuarioIS'];
         $contrasena = $_POST['ContrasenaIS'];
 
+        # Hacemos una consulta.
         $sql = "SELECT * FROM tbl_usuario WHERE nombre_usr = '$nombre' AND contrasena_usr = '$contrasena";
+
+        $consulta = $conexion->stm->prepare($sql);
+        $consulta->execute();
+
+        $fila = mysql_num_rows($consulta);
+
+        if($fila == 1){
+            header('location: ../../index-user');
+        } else {
+            echo 'no existis capo';
+        }
 
         // # Creacion y preparamos la sentencia inmediatamente (en la misma linea).
         // $conexion->stm->prepare("SELECT id_usr, nombre_usr, correo_usr, contrasena_usr FROM tbl_usuario WHERE nombre_usr=:UsuarioIS");
