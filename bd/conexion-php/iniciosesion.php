@@ -24,7 +24,9 @@
         # Hacemos una consulta (con un metodo distinto, que funciona masomenos igual que el otro).
         $query = mysqli_query($conn, "SELECT * FROM tbl_usuario WHERE nombre_usr = '.$nombre' AND contrasena_usr = '.$contrasena'");
         $fila = mysqli_num_rows($query);
-        $pssvalida = password_verify($_POST['ContrasenaIS'], $resultado['contrasena_usr']))
+
+        # TENGO QUE MODIFICAR ESTO
+        // $pssvalida = password_verify($_POST['ContrasenaIS'], $resultado['contrasena_usr']);
 
         # Si es 1, significa que se encontro un resultado. Lo que sugiere que si esta registrada esa persona.
         if($fila == 1){
