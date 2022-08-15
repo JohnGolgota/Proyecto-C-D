@@ -58,7 +58,7 @@
             if ($_POST['UsuarioRC'] !== $_POST['UsuarioRCC']) {
                 die('Las contraseñas no coinciden.');
             }
-
+            if
             # Correo Electronico.
             $RegistroComit->email_usr = $_POST['UsuarioRE'];
 
@@ -67,16 +67,9 @@
             $RegistroComit->AsignarNombre();
 
             $sentence = $conexion->stm->prepare($RegistroComit->RegistroSQL());
+            // $sentence->execute();
 
-            try {
-                $sentence->execute();
-                // header('location: ../../index-user.html');
-            } catch (PDOException $e) {
-                echo "Error: ". $e->getMessage();
-                if (condition) {
-                    # code...
-                }
-            }
+
             
         } else {
             echo 'la cagaste xd';
