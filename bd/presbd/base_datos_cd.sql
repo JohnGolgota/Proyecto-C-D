@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 15-08-2022 a las 21:44:28
+-- Tiempo de generación: 14-08-2022 a las 17:11:48
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -215,26 +215,14 @@ CREATE TABLE IF NOT EXISTS `tbl_pagos` (
 
 DROP TABLE IF EXISTS `tbl_usuario`;
 CREATE TABLE IF NOT EXISTS `tbl_usuario` (
-  `id_usr` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usr` int(11) NOT NULL,
   `nombre_usr` varchar(30) NOT NULL,
   `correo_usr` varchar(50) DEFAULT NULL,
-  `contrasena_usr` varchar(255) NOT NULL,
+  `contrasena_usr` varchar(15) NOT NULL,
   `id_evn` int(11) DEFAULT NULL,
   `id_mpg` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_usr`),
-  UNIQUE KEY `correo_usr` (`correo_usr`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tbl_usuario`
---
-
-INSERT INTO `tbl_usuario` (`id_usr`, `nombre_usr`, `correo_usr`, `contrasena_usr`, `id_evn`, `id_mpg`) VALUES
-(1, 'aa', 'aa@aa.aa', '$2y$10$ZcDpXyP0neafcrCyDaNm.ulLlwjraI7mNr/zBrXnCuRH28uZR9IJG', NULL, NULL),
-(2, 'hola', 'hola@gmail.com', '$2y$10$grt3SS8jggUmMnorXjBKpOCMRpAlr8Hpr.SJpyaOe81Werp4htMd6', NULL, NULL),
-(3, 'g', 'g@g.g', '$2y$10$.lVorqR.50FQHnnza1FoTuY6f/yowiTkVV6ahC7iBixedm6jn.6JS', NULL, NULL),
-(4, 'juanguarnizo', 'juanguarnizo@gmail.com', '$2y$10$LIGyv0vOTVjkECz/Dwta7eJa0kEEMQK6zjGDGaGJsFXT0gnQROA/.', NULL, NULL),
-(5, 'xd', 'xd@gmail.com', '$2y$10$VohPbl1eM1TNJuTQ50R/xO9RYRs68/41qvhcpxhbOAbFKrVsCxbUK', NULL, NULL);
+  PRIMARY KEY (`id_usr`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
