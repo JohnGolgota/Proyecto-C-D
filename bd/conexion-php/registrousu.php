@@ -70,7 +70,6 @@
             $RegistroComit->cifrarContrasena();
             $RegistroComit->AsignarNombre();
 
-
             $sentence = $conexion->stm->prepare($RegistroComit->RegistroSQL());
             $sentence->execute();
             
