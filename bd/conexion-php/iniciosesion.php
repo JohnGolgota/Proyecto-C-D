@@ -13,14 +13,15 @@
         $contrasena = $_POST['ContrasenaIS'];
 
         # Hacemos una consulta.
-        $sql = "SELECT * FROM tbl_usuario WHERE nombre_usr = '$nombre' AND contrasena_usr = '$contrasena";
+        $sql = "SELECT * FROM tbl_usuario WHERE nombre_usr = '.$nombre' AND contrasena_usr = '.$contrasena'";
 
         $consulta = $conexion->stm->prepare($sql);
         $consulta->execute();
 
-        $fila = mysql_num_rows($consulta);
+        $objeto = $consulta->fetch(PDO::FETCH_OBJ);
+        // var_dump($objeto);
 
-        if($fila == 1){
+        if($objeto == TRUE){
             header('location: ../../index-user');
         } else {
             echo 'no existis capo';
