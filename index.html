@@ -291,11 +291,9 @@
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-inicio">
-                    <form action="" class="">
-                        <input type="text" name="UsuarioIS" id="usuarioIS" placeholder="Nombre De Usuario"
-                            class="form-control">
-                        <input type="password" name="ContrasenaIS" id="contrasenaIS" placeholder="Contraseña"
-                            class="form-control">
+                    <form action="./bd/conexion-php/iniciosesion.php" class="" method="POST">
+                        <input type="text" name="UsuarioIS" id="usuarioIS" placeholder="Nombre De Usuario" class="form-control">
+                        <input type="password" name="ContrasenaIS" id="contrasenaIS" placeholder="Contraseña" class="form-control">
 
                         <input type="submit" value="¡Inicia Sesión!" class="btn btn-primary">
                     </form>
@@ -326,12 +324,12 @@
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-registro">
-                    <form action="./bd/conexion-php/registrousu.php" method="POST">
-                        <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo" class="form-control">
-                        <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña" class="form-control">
-                        <input type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control">
+                    <form action="./bd/conexion-php/registrousu.php" method="POST" novalidate>
+                        <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo" class="form-control" required>
+                        <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña" class="form-control" required maxlength="10" minlength="4">
+                        <input type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control" required maxlength="10" minlength="4">
 
-                        <input type="submit" value="Registrarse">
+                        <input type="submit" value="Registrarse" class="btn btn-primary">
                     </form>
                 </div>
 
