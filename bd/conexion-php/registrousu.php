@@ -15,7 +15,7 @@
         }
 
         public function AsignarNombre(){
-            $nombreUsuario;
+            $nombreUsuario = "";
             $linea = $this->email_usr;
             $nombreUsuario = explode("@",$linea);
             $this->nombre_usr = $nombreUsuario[0];
