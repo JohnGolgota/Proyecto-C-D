@@ -72,6 +72,8 @@
 
             $sentence = $conexion->stm->prepare($RegistroComit->RegistroSQL());
             $sentence->execute();
+
+            header('location: ../../index-user.html');
             
         } else {
             echo 'la cagaste xd';
