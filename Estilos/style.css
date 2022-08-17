@@ -130,7 +130,7 @@ body {
 
 .salto {
     color: #ffffff;
-    font-size: 5px;
+    font-size: 0.313rem;
 }
 
 
@@ -354,7 +354,7 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
     z-index: 1; /* El z-index es la capa que representa. Entre mas alto, mas al arriba esta (se sobrepone). */
     background: #e8e8e8;
     font-weight: 1000;
-    font-size: 14px;
+    font-size: 0.875rem;
     letter-spacing: 1px;
     overflow: hidden;
 
