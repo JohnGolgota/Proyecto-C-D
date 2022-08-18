@@ -33,11 +33,11 @@ function aleatorio(){
     let maximo = frasesCabecera.length;
     var numero = Math.random() * maximo;
 
-    console.log(numero);
+    // console.log(numero);
     // let minimo = 0;
     
     document.getElementById("subtituloPrincipal").innerHTML = frasesCabecera[parseInt(numero)];
-    console.log("Me he ejecutado " + numero);
+    // console.log("Me he ejecutado " + numero);
 }
 
 // Cada cierto tiempo "aleatorio" se va a ejecutar.
