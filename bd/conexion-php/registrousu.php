@@ -38,7 +38,7 @@
     $conexion->BdConnect();
     
     # Verificar si algun valor esta vacio o no.
-    if(!empty($_POST['UsuarioRE']) && !empty($_POST['UsuarioRC']) && !empty($_POST['UsuarioRCC'])){
+    if(!empty($_POST['UsuarioRE']) && !empty($_POST['UsuarioRC']) && !empty($_POST['UsuarioRCC'] && $_POST['terminosycondiciones'])){
         if($_POST['UsuarioRC'] == $_POST['UsuarioRCC']){
             # Comprueba que el correo sea valido. en caso de retirarse el required del input
             if (!filter_var($_POST['UsuarioRE'], FILTER_VALIDATE_EMAIL)) {
@@ -78,6 +78,9 @@
         } else {
             echo 'la cagaste xd';
         }
+    }
+    else {
+        echo 'Rellene los campos por favor ʕっ•ᴥ•ʔっ ♡';
     }
 
 ?>

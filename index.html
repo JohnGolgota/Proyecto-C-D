@@ -324,11 +324,15 @@
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-registro">
-                    <form action="./bd/conexion-php/registrousu.php" method="POST" novalidate>
+                    <form action="./bd/conexion-php/registrousu.php" method="POST" >
                         <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo" class="form-control" required>
                         <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña" class="form-control" required maxlength="10" minlength="4">
                         <input type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control" required maxlength="10" minlength="4">
-
+                        <div class="form-group">
+                            <input required type="checkbox" name="terminosycondiciones" id="terminosycondiciones" class="form-check-input" value="aceptarteminos">
+                            <label for="terminosycondiciones" id="terminosycondiciones" class="form-check-label">Aceptar los terminos y condiciones</label>
+                            <a href="#">Detalles.</a>
+                        </div>
                         <input type="submit" value="Registrarse" class="btn btn-primary">
                     </form>
                 </div>
