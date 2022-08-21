@@ -803,29 +803,27 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 body.dark-mode{ background: linear-gradient(to top, var(--dkmode2), var(--dkmode3)) }
 
 /* ---------------------------- Subcategoria: Barra de navegacion. ---------------------------------- */
-.cabeza { background: linear-gradient(to left, var(--dkalt), var(--dkalt)); }
+.cabeza-dark-mode { background: linear-gradient(to left, var(--dkalt), var(--dkalt)); }
 
 /* ---------------------------- Subcategoria: Botones. ---------------------------------- */
-.boton:hover { background: radial-gradient(to right, var(--dkmode3), var(--dkmode3)); }
+.boton-dark-mode:hover { background: radial-gradient(to right, var(--dkmode3), var(--dkmode3)); }
 
 /* -------------------------- Subcategoria: Menu desplegable -------------------------- */
-.contenido-menu { background-color: var(--dkmode3); }
+.contenido-menu-dark-mode { background-color: var(--dkmode3); }
 
 /* ---------------------------- Subcategoria: Banner animado. ---------------------------------- */
-.box { background-color: var(--dkmode3); }
-.wave { background: var(--dkmode3); }
-.wave.-three { background-color: var(--dkmode2); }
-.wave.-two { background: var(--dkmode1); }
-.wave.-one { background: var(--dkalt); }
+.box-dark-mode { background-color: var(--dkmode3); }
+.wave-dark-mode { background: var(--dkmode3); }
+.wave.-three-dark-mode { background-color: var(--dkmode2); }
+.wave.-two-dark-mode { background: var(--dkmode1); }
+.wave.-one-dark-mode { background: var(--dkalt); }
 
 /* ---------------------------- Subcategoria: Herramientas. ---------------------------------- */
-.herramienta { background-color: var(--dkmode3); color: var(--color4); }
-.herramienta-img { border: none; }
+.herramienta-dark-mode { background-color: var(--dkmode3); color: var(--color4); }
+.herramienta-img-dark-mode { border: none; }
 
 /* ---------------------------- Subcategoria: Footer. ---------------------------------- */
-.footer-cd-f { background-color: var(--dkalt); }
+.footer-cd-f-dark-mode { background-color: var(--dkalt); }
 
-.modal-content { background-color: var(--dkmode3); color: var(--color4); }
-.boton-modal { background-color: var(--dkmode2); color: var(--color4); }
-
-
+.modal-content-dark-mode { background-color: var(--dkmode3); color: var(--color4); }
+.boton-modal-dark-mode { background-color: var(--dkmode2); color: var(--color4); }

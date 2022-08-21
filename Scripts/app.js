@@ -46,24 +46,23 @@ setInterval('aleatorio()', 20000);
 
 
 // ----------------------------------- MODO OSCURO ----------------------------------- //
-const bodydm = document.querySelector("body");
-const boton = document.getElementById("boton-dark-mode");
 
-boton.addEventListener('click', e => {
+// boton.addEventListener('click', e => {
+//     bodydm.classList.toggle('dark-mode');
+// })
+
+const darkMode = () => {
+    const bodydm = document.querySelector("body");
+    const boton = document.getElementById("boton-dark-mode");
+
     bodydm.classList.toggle('dark-mode');
-})
-// const style = document.documentElement.style; /* Con esto accedemos al documento. */
-// const darkMode = () => {
-//     if(style.getPropertyValue('--color1') == '#CA3E47'){
-//         // Paleta normal.
-//         style.setProperty('--color1', '#06283D');
-//         style.setProperty('--color2', '#1363DF');
-//         style.setProperty('--color3', '#47B5FF');
-//         style.setProperty('--color4', '#DFF6FF');
+    document.getElementById('cabeza').classList.toggle('cabeza-dark-mode');
+    // if(style.getPropertyValue('--color1') == '#CA3E47'){
+    //     // Paleta normal.
+    //     style.setProperty('--color1', '#06283D');
+    //     style.setProperty('--color2', '#1363DF');
+    //     style.setProperty('--color3', '#47B5FF');
+    //     style.setProperty('--color4', '#DFF6FF');
         
-//     }
-
-//     else {
-
-//     } 
-// }
+    // }
+}
