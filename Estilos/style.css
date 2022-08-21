@@ -825,4 +825,7 @@ body.dark-mode{ background: linear-gradient(to top, var(--dkmode2), var(--dkmode
 /* ---------------------------- Subcategoria: Footer. ---------------------------------- */
 .footer-cd-f { background-color: var(--dkalt); }
 
+.modal-content { background-color: var(--dkmode3); color: var(--color4); }
+.boton-modal { background-color: var(--dkmode2); color: var(--color4); }
+
 
