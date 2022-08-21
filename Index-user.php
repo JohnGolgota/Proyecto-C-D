@@ -1,8 +1,21 @@
 <?php
 $id = $_GET['id'];
+
 include './bd/conexion-php/conexiondb.php';
 $conexion = new Conexion();
 $conexion->BdConnect();
+
+$sql = "SELECT * FROM tbl_usuario WHERE id_usr=$id";
+
+$buscar = $conexion->stm->prepare($sql);
+$buscar->execute();
+
+$rowUser = $buscar->fetchAll(PDO::FETCH_OBJ);
+foreach ($rowUser as $user) {
+}
+
+// var_dump($user);
+# nice code.
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +25,7 @@ $conexion->BdConnect();
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Carpe Diem | <?php $user = 0;echo '$user'; ?> </title>
+  <title> Carpe Diem | <?php echo $user->nombre_usr; ?> </title>
 
   <!-- Icono página -->
   <link rel="shortcut icon" href="./Imagenes/favicon.png" type="image/x-icon">
@@ -37,15 +50,22 @@ $conexion->BdConnect();
 
       <!-- botones -->
       <div class="navbar-nav d-inline align-items-end text-end position-absolute end-0 botones">
+        <!-- Boton uno -->
+        <button class="boton">+</button>
 
         <!-- switch -->
         <div class="contenido-switch"><label class="switch align-items-center"><input type="checkbox" class="input-banner"><span class="slider"></span></label></div>
 
-        <!-- Boton uno -->
-        <button class="boton">...</button>
-
+        <!-- Boton user -->
+        <label for=""><?php echo $user->nombre_usr . $user->id_usr; ?></label>
         <!-- boton Dos -->
-        <button class="boton">...</button>
+        <!-- <button class="boton">Menu</button> -->
+        <button type="button" class="btn btn-secondary dropdown-toggle boton" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">Menu</button>
+        <ul class="dropdown-menu dropdown-menu-lg-end">
+          <li><button class="dropdown-item" type="button">Action</button></li>
+          <li><button class="dropdown-item" type="button">Another action</button></li>
+          <li><button class="dropdown-item" type="button">Something else here</button></li>
+        </ul>
       </div>
     </nav>
   </header>
@@ -244,7 +264,7 @@ $conexion->BdConnect();
   <!-- Animacion de los logos. -->
   <!-- <script src="./Script's/iconrevel.min.js">no hay</script> -->
   <script src="./Scripts/app.min.js"></script>
-  <script src="./Scripts/main.min.js"></script>
+  <script src="./Scripts/main.js"></script>
 
   <!-- Scripts Temporales:  -->
 </body>

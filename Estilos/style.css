@@ -30,6 +30,11 @@
     --color2: #1363DF;
     --color3: #47B5FF;
     --color4: #DFF6FF;
+
+    --dkmode1: #0c0b0b;
+    --dkmode2: #121212;
+    --dkmode3: #444444;
+    --dkmode4: #EDEDED;
 }
 
 
@@ -791,4 +796,27 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 
 
 
-/* -------------------------------------------- PANTALLA DE CARGA -------------------------------------------- */
+/* -------------------------------------------- MODO OSCURO -------------------------------------------- */
+/* ---------------------------- Subcategoria: Body---------------------------------- */
+body.dark-mode{ background: linear-gradient(to bottom, var(--dkmode2), var(--dkmode3)) }
+
+/* ---------------------------- Subcategoria: Barra de navegacion. ---------------------------------- */
+.cabeza-dark { background: linear-gradient(to left, var(--color2), var(--color1)); }
+
+/* ---------------------------- Subcategoria: Banner animado. ---------------------------------- */
+.herramienta {
+    background-color:#ffffff;
+    overflow: auto;
+}
+
+.herramienta-img {
+    /* position: relative; */
+
+    width: 60%;
+    height: auto;
+
+    padding: 8px;
+    border: 1px solid var(--color1);
+}
+
+/* ---------------------------- Subcategoria: Herramientas. ---------------------------------- */

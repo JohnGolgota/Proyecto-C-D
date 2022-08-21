@@ -46,22 +46,24 @@ setInterval('aleatorio()', 20000);
 
 
 // ----------------------------------- MODO OSCURO ----------------------------------- //
-const style = document.documentElement.style; /* Con esto accedemos al documento. */
-const darkMode = () => {
-    if(style.getPropertyValue('--color1') == '#CA3E47'){
-        // Paleta normal.
-        style.setProperty('--color1', '#06283D');
-        style.setProperty('--color2', '#1363DF');
-        style.setProperty('--color3', '#47B5FF');
-        style.setProperty('--color4', '#DFF6FF');
-        
-    }
+const bodydm = document.querySelector("body");
+const boton = document.getElementById("boton-dark-mode");
 
-    else {
-        // Paleta Oscura.
-        style.setProperty('--color1', '#CA3E47');
-        // style.setProperty('--color2', '#ffffff');
-        // style.setProperty('--color3', '#313131');
-        // style.setProperty('--color4', '#ffffff');  
-    } 
-}
+boton.addEventListener('click', e => {
+    bodydm.classList.toggle('dark-mode');
+})
+// const style = document.documentElement.style; /* Con esto accedemos al documento. */
+// const darkMode = () => {
+//     if(style.getPropertyValue('--color1') == '#CA3E47'){
+//         // Paleta normal.
+//         style.setProperty('--color1', '#06283D');
+//         style.setProperty('--color2', '#1363DF');
+//         style.setProperty('--color3', '#47B5FF');
+//         style.setProperty('--color4', '#DFF6FF');
+        
+//     }
+
+//     else {
+
+//     } 
+// }
