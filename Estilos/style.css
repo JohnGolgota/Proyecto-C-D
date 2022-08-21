@@ -35,6 +35,8 @@
     --dkmode2: #121212;
     --dkmode3: #444444;
     --dkmode4: #EDEDED;
+
+    --dkalt: #212121;
 }
 
 
@@ -798,25 +800,29 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 
 /* -------------------------------------------- MODO OSCURO -------------------------------------------- */
 /* ---------------------------- Subcategoria: Body---------------------------------- */
-body.dark-mode{ background: linear-gradient(to bottom, var(--dkmode2), var(--dkmode3)) }
+body.dark-mode{ background: linear-gradient(to top, var(--dkmode2), var(--dkmode3)) }
 
 /* ---------------------------- Subcategoria: Barra de navegacion. ---------------------------------- */
-.cabeza-dark { background: linear-gradient(to left, var(--color2), var(--color1)); }
+.cabeza { background: linear-gradient(to left, var(--dkalt), var(--dkalt)); }
+
+/* ---------------------------- Subcategoria: Botones. ---------------------------------- */
+.boton:hover { background: radial-gradient(to right, var(--dkmode3), var(--dkmode3)); }
+
+/* -------------------------- Subcategoria: Menu desplegable -------------------------- */
+.contenido-menu { background-color: var(--dkmode3); }
 
 /* ---------------------------- Subcategoria: Banner animado. ---------------------------------- */
-.herramienta {
-    background-color:#ffffff;
-    overflow: auto;
-}
-
-.herramienta-img {
-    /* position: relative; */
-
-    width: 60%;
-    height: auto;
-
-    padding: 8px;
-    border: 1px solid var(--color1);
-}
+.box { background-color: var(--dkmode3); }
+.wave { background: var(--dkmode3); }
+.wave.-three { background-color: var(--dkmode2); }
+.wave.-two { background: var(--dkmode1); }
+.wave.-one { background: var(--dkalt); }
 
 /* ---------------------------- Subcategoria: Herramientas. ---------------------------------- */
+.herramienta { background-color: var(--dkmode3); color: var(--color4); }
+.herramienta-img { border: none; }
+
+/* ---------------------------- Subcategoria: Footer. ---------------------------------- */
+.footer-cd-f { background-color: var(--dkalt); }
+
+

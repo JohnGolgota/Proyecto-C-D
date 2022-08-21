@@ -59,13 +59,25 @@ foreach ($rowUser as $user) {
         <!-- Boton user -->
         <label for=""><?php echo $user->nombre_usr . $user->id_usr; ?></label>
         <!-- boton Dos -->
-        <!-- <button class="boton">Menu</button> -->
-        <button type="button" class="btn btn-secondary dropdown-toggle boton" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">Menu</button>
-        <ul class="dropdown-menu dropdown-menu-lg-end">
-          <li><button class="dropdown-item" type="button">Action</button></li>
-          <li><button class="dropdown-item" type="button">Another action</button></li>
-          <li><button class="dropdown-item" type="button">Something else here</button></li>
-        </ul>
+        <button class="boton" onclick="menuDesplegable();">Menu</button>
+        <aside id="menuDesplegable" style="display: none;" class="menu-no">
+          <!--  -->
+          <div class="contenido-menu">
+            <ul>
+              <hr class="salto">
+              <li><a href="#"><?php echo "$user->nombre_usr"; ?></a></li>
+              <li><a href="">Cuenta</a></li>
+              <hr class="salto">
+              
+              <li><a href="#HerramientaUno"> Agenda </a></li>
+              <li><a href="#HerramientaDos"> Reloj Pomodoro </a></li>
+              <li><a href="#HerramientaTres"> Ley De Pareto </a></li>
+              <li><a href="#HerramientaCuatro"> ? </a></li>
+              <hr class="salto">
+              <li><a href="index.html"> Cerrar sesión </a></li>
+            </ul>
+          </div>
+        </aside>
       </div>
     </nav>
   </header>
