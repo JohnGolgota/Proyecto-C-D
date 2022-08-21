@@ -46,11 +46,6 @@ setInterval('aleatorio()', 20000);
 
 
 // ----------------------------------- MODO OSCURO ----------------------------------- //
-
-// boton.addEventListener('click', e => {
-//     bodydm.classList.toggle('dark-mode');
-// })
-
 function modoOscuro(){
     document.querySelector("body").classList.toggle('dark-mode');
     document.querySelector(".cabeza").classList.toggle('cabeza-dark-mode');
