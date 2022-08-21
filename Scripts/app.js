@@ -48,20 +48,20 @@ setInterval('aleatorio()', 20000);
 // ----------------------------------- MODO OSCURO ----------------------------------- //
 const style = document.documentElement.style; /* Con esto accedemos al documento. */
 const darkMode = () => {
-    if(style.getPropertyValue('--color1') == '#383838'){
+    if(style.getPropertyValue('--color1') == '#CA3E47'){
         // Paleta normal.
         style.setProperty('--color1', '#06283D');
         style.setProperty('--color2', '#1363DF');
         style.setProperty('--color3', '#47B5FF');
         style.setProperty('--color4', '#DFF6FF');
+        
     }
 
     else {
         // Paleta Oscura.
-        style.setProperty('.cabeza', '#000000');
-        style.setProperty('--color1', '#383838'); // #000000
-        // style.setProperty('--color2', '#041C32'); // #413F42
-        // style.setProperty('--color3', '#000000'); // #7F8487
-        // style.setProperty('--color4', '#413F42'); // #041C32 Este es una especie de azul.   
+        style.setProperty('--color1', '#CA3E47');
+        // style.setProperty('--color2', '#ffffff');
+        // style.setProperty('--color3', '#313131');
+        // style.setProperty('--color4', '#ffffff');  
     } 
 }

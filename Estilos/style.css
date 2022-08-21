@@ -19,7 +19,7 @@
 
 
 /* --------------------------------------------- Fuentes. --------------------------------------------- */
-@import url(..//Fuentes/ZFuentes.css);
+@import url(./Fuentes/ZFuentes.css);
 /* * {
     font-family: 'Caveat Brush', cursive;
 } */
@@ -35,7 +35,7 @@
 
 
 /* ----------------------------------------- Box-Sizing. ----------------------------------------- */
-* {
+* { 
     box-sizing: border-box;
     padding: 0;
     margin: 0;

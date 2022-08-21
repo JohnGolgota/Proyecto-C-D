@@ -23,15 +23,16 @@
         foreach ($r as $row){
             $contrasenadb = $row->contrasena_usr;
             $usuariodb = $row->nombre_usr;
+            $iddb = $row->id_usr;
         }
 
         if(($usuariodb == $nombreUsuario) && (password_verify($contrasena, $contrasenadb))){
-            header('Location: ../../index-user.html');
+            header('Location: ../../index-user.php?id='.$iddb);
         } else {
-
+            header('Location: ../../index.html');
         }
     } else {
-        echo "<script src='../../scripts/sweetalert.min.js'></script>
-              <script></script>";    
+        echo "<script src='../../scripts/sweetalert.min.js'></script><script></script>";
+        header('Location: ../../index.html');
     }
 ?>
