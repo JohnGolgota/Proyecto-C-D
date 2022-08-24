@@ -73,13 +73,15 @@
             $sentence = $conexion->stm->prepare($RegistroComit->RegistroSQL());
             $sentence->execute();
 
-            // $buscar = $sentence->fetchAll(PDO::FETCH_OBJ);
-            // foreach ($buscar as $b){
-            //     $id_usr = $b->id_usr;
-            // }
+            $comprobacion = $conexion->stm->prepare($RegistroComit->ComprobarCorreo());
+            $comprobacion->execute();
             
+            $objcorreo = $comprobacion->fetchAll(PDO::FETCH_OBJ);
+            // var_dump($objcorreo);
 
-            header('location: ../../validacion.php');
+            # Recorremos el correo, el foreach esta vacio debido a que usamos su propiedad fuera.
+            foreach ($objcorreo as $correo){}
+            header("location: validacion.php?correo_usr=$correo");
             
         } else {
             echo 'la cagaste xd';

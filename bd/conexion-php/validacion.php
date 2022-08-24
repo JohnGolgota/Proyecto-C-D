@@ -11,12 +11,11 @@
     $consulta = $conexion->stm->prepare($sql);
     $consulta->execute();
 
-    $buscar = $bconsulta->fetchAll(PDO::FETCH_OBJ);
+    $buscar = $consulta->fetchAll(PDO::FETCH_OBJ);
+    var_dump($buscar);
 
     # Lo recorremos y accedemos a una de sus propiedades.
-    foreach ($buscar as $b){
-        $id_usr = $b->id_usr;
-    }
+    foreach ($buscar as $b){}
 
-    header("location: index-user.php?id=$id_usr");
+    // header("location: index-user.php?id=$b->id_usr");
 ?>
