@@ -73,7 +73,13 @@
             $sentence = $conexion->stm->prepare($RegistroComit->RegistroSQL());
             $sentence->execute();
 
-            header('location: ../../index-user.php');
+            // $buscar = $sentence->fetchAll(PDO::FETCH_OBJ);
+            // foreach ($buscar as $b){
+            //     $id_usr = $b->id_usr;
+            // }
+            
+
+            header('location: ../../validacion.php');
             
         } else {
             echo 'la cagaste xd';
