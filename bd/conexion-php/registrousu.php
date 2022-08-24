@@ -81,7 +81,7 @@
 
             # Recorremos el correo, el foreach esta vacio debido a que usamos su propiedad fuera.
             foreach ($objcorreo as $correo){}
-            header("location: validacion.php?correo_usr=$correo");
+            header("location: validacion.php?correo_usr=$correo->correo_usr");
             
         } else {
             echo 'la cagaste xd';
