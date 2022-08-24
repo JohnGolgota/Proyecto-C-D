@@ -43,23 +43,26 @@ foreach ($rowUser as $user) {
 
 <body>
   <!-- Encabezado, botones y tema -->
-  <header class="align-items-center navbar navbar-expand-sm position-relative cabeza">
+  <header class="align-items-center navbar navbar-expand-sm position-relative cabeza d-flex">
     <nav class="container-xxl">
       <!-- logo -->
-      <div><a href="./Index-user.html"><img src="./Imagenes/favicon.png" alt="Logo" width="35px"></a></div>
+      <div><a href="./Index-user.html"><img src="./Imagenes/favicon-min.png" alt="Logo" width="35px"></a></div>
 
       <!-- botones -->
       <div class="navbar-nav d-inline align-items-end text-end position-absolute end-0 botones">
-        <!-- Boton uno -->
-        <button class="boton">+</button>
+        <!-- Boton "+" -->
+        <!-- <button class="boton-mas">+</button> -->
 
         <!-- switch -->
         <div class="contenido-switch"><label class="switch align-items-center"><input type="checkbox" class="input-banner"><span class="slider"></span></label></div>
 
         <!-- Boton user -->
-        <label for=""><?php echo $user->nombre_usr . $user->id_usr; ?></label>
-        <!-- boton Dos -->
-        <button class="boton" onclick="menuDesplegable();">Menu</button>
+        <div class="mt-2 usuario" style="outline:2px solid red;">
+          <i class="fa-solid fa-user icono"></i><label for="" class="user-nav"><?php echo "$user->nombre_usr$user->id_usr"; ?></label>
+        </div>
+
+        <!-- boton Menu Desplegable. -->
+        <button class="boton menu-user" onclick="menuDesplegable();"> ... </button>
         <aside id="menuDesplegable" style="display: none;" class="menu-no">
           <!--  -->
           <div class="contenido-menu">
@@ -71,7 +74,7 @@ foreach ($rowUser as $user) {
               
               <li><a href="#HerramientaUno"> Agenda </a></li>
               <li><a href="#HerramientaDos"> Reloj Pomodoro </a></li>
-              <li><a href="#HerramientaTres"> Ley De Pareto </a></li>
+              <hr class="salto">
               <li><a href="#HerramientaCuatro"> ? </a></li>
               <hr class="salto">
               <li><a href="index.html"> Cerrar sesión </a></li>
