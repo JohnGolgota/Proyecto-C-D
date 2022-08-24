@@ -1,4 +1,4 @@
-@import url(style.css);
+/* @import url(style.css); */
 /* * {outline:auto;} */
 
 /* ----------------------------------- Esitlos Del INDEX-USER ------------------------------------------------------- */
@@ -54,28 +54,53 @@
 }
 
 .boton-mas {
+    border: none;
+    background: none;
+    color: #fff;  
+}
+
+.boton-mas:hover {
+    border-bottom: 1px solid #fff;
+}
+
+.nav-item {
     position: absolute;
     top: -2px;
     right: 310px;
 
     padding: 2px 8px;
-    border: none;
-    background: none;
-
+    
     font-size: 28px;
-
-    color: #fff;
-}
-
-.boton-mas:hover {
-    border-bottom: 1px solid #fff;
-    transition: .2s;
 }
 
 .contenido-switch {
+    outline: 1px solid red;
     position: absolute;
     right: 223px;
     /* outline: 1px solid red; */
+}
+
+.switch {
+    --width-of-switch: 3.5em;
+    --height-of-switch: 2em;
+    /* Medidas de los iconos -- sun and moon */
+
+    --size-of-icon: 1.4em;
+    /* inline-padding del switch(? */
+    --slider-offset: 0.3em;
+
+    position: relative;
+    top: 10%;
+
+    width: var(--width-of-switch);
+    height: var(--height-of-switch);
+}
+
+/* Ocultar la casilla de verificacion HTML por defecto */
+.switch input {
+    width: 0;
+    height: 0;
+    opacity: 0;
 }
 
 
