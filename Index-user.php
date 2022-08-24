@@ -51,7 +51,7 @@ foreach ($rowUser as $user) {
       <!-- botones -->
       <div class="navbar-nav d-inline align-items-end text-end position-absolute end-0 botones">
         <!-- Boton "+" -->
-        <div>
+        <div class="nav-item">
           <button class="boton-mas"> + </button>
         </div>
 

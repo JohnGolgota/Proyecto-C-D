@@ -39,7 +39,7 @@
 
 .user-nav {
     position: relative;
-    margin-right: 65px;
+    margin-right: -30px;
 }
 
 .icono {
@@ -50,11 +50,37 @@
 .usuario {
     position: relative;
     max-width: 250px;
-    margin-left: 65px;
+    margin-left: 25px;
 }
 
 .boton-mas {
     position: absolute;
-    top: 6px;
-    right: 400px;
+    top: -2px;
+    right: 310px;
+
+    padding: 2px 8px;
+    border: none;
+    background: none;
+
+    font-size: 28px;
+
+    color: #fff;
+}
+
+.boton-mas:hover {
+    border-bottom: 1px solid #fff;
+    transition: .2s;
+}
+
+.contenido-switch {
+    position: absolute;
+    right: 223px;
+    /* outline: 1px solid red; */
+}
+
+
+
+/* ---------------------------- Subcategoria: Contenido Responsive ---------------------------------- */
+@media (max-width: 575px){
+    .contenido-switch { right: 223px; }
 }
