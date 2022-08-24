@@ -51,13 +51,15 @@ foreach ($rowUser as $user) {
       <!-- botones -->
       <div class="navbar-nav d-inline align-items-end text-end position-absolute end-0 botones">
         <!-- Boton "+" -->
-        <!-- <button class="boton-mas">+</button> -->
+        <div>
+          <button class="boton-mas"> + </button>
+        </div>
 
         <!-- switch -->
         <div class="contenido-switch"><label class="switch align-items-center"><input type="checkbox" class="input-banner"><span class="slider"></span></label></div>
 
         <!-- Boton user -->
-        <div class="mt-2 usuario" style="outline:2px solid red;">
+        <div class="mt-2 usuario">
           <i class="fa-solid fa-user icono"></i><label for="" class="user-nav"><?php echo "$user->nombre_usr$user->id_usr"; ?></label>
         </div>
 
