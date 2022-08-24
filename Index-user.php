@@ -34,7 +34,7 @@ foreach ($rowUser as $user) {
   <link rel="stylesheet" href="./Bootstrap/bootstrap.min.css">
 
   <!-- hojas de estilo personalizadas -->
-  <link rel="stylesheet" href="./Estilos/style.min.css">
+  <link rel="stylesheet" href="./Estilos/style-user.css">
 
   <!-- librerias importadas -->
   <script src="./Scripts/scrollreveal.min.js"></script>
