@@ -13,7 +13,7 @@
     }
 
     NOTA: Si hay menos de 5 Propiedades por un selector, NO DEJAR ESPACIO.
-          Caso contrario, separar por categorias con un espaciado.
+    Caso contrario, separar por categorias con un espaciado.
 */
 
 
@@ -259,9 +259,9 @@ h4 {
 
 /* ---------------------------- Subcategoria: Pie de página ---------------------------------- */
 .footer-cd-f {
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  background-color: var(--color2);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: var(--color2);
 }
 
 /* .footer-cd-f {
