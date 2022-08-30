@@ -1,4 +1,4 @@
-/* @import url(style.css); */
+@import url(style.css);
 /* * {outline:auto;} */
 
 /* ----------------------------------- Esitlos Del INDEX-USER ------------------------------------------------------- */
@@ -108,4 +108,17 @@
 /* ---------------------------- Subcategoria: Contenido Responsive ---------------------------------- */
 @media (max-width: 575px){
     .contenido-switch { right: 223px; }
+}
+
+@media (min-width: 1400px){
+    .cabeza-nav-user {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 450px){
+    .label-nav { display: none; }
+    .usuario { right: -40px; top: 2px; }
+    .contenido-switch { right: 100px; }
+    .nav-item { top: -2px; right: 310px; }
 }

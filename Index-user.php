@@ -45,7 +45,7 @@ foreach ($rowUser as $user) {
 <body>
   <!-- Encabezado, botones y tema -->
   <header class="align-items-center navbar navbar-expand-sm position-relative cabeza d-flex">
-    <nav class="container-xxl">
+    <nav class="container-xxl cabeza-nav-user">
       <!-- logo -->
       <section><a href="./Index-user.html"><img src="./Imagenes/favicon-min.png" alt="Logo" width="35px"></a></section>
 
@@ -61,7 +61,7 @@ foreach ($rowUser as $user) {
 
         <!-- Boton user -->
         <section class="mt-2 usuario">
-          <i class="fa-solid fa-user icono"></i><label for="" class="user-nav"><?php echo "$user->nombre_usr$user->id_usr"; ?></label>
+          <i class="fa-solid fa-user icono"></i><label for="" class="user-nav label-nav"><?php echo "$user->nombre_usr$user->id_usr"; ?></label>
         </section>
 
         <!-- boton Menu Desplegable. -->
@@ -281,8 +281,8 @@ foreach ($rowUser as $user) {
   <!-- Scripts perzonalizados: -->
   <!-- Animacion de los logos. -->
   <!-- <script src="./Script's/iconrevel.min.js">no hay</script> -->
-  <script src="./Scripts/app.min.js"></script>
-  <script src="./Scripts/main.js"></script>
+  <!-- <script src="./Scripts/app.min.js"></script>
+  <script src="./Scripts/main.js"></script> -->
 
   <!-- Scripts Temporales:  -->
 </body>
