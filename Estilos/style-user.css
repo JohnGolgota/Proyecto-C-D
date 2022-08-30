@@ -1,4 +1,4 @@
-@import url(style.css);
+/* @import url(style.css); */
 /* * {outline:auto;} */
 
 /* ----------------------------------- Esitlos Del INDEX-USER ------------------------------------------------------- */
@@ -74,7 +74,7 @@
 }
 
 .contenido-switch {
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
     position: absolute;
     right: 223px;
     /* outline: 1px solid red; */
@@ -105,6 +105,23 @@
 
 
 
+/* ---------------------------- Subcategoria: Nav-bar ---------------------------------- */
+.calendar-box {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.calendar-content {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 7px;
+}
+
+
+
 /* ---------------------------- Subcategoria: Contenido Responsive ---------------------------------- */
 @media (max-width: 575px){
     .contenido-switch { right: 223px; }
@@ -119,6 +136,6 @@
 @media (max-width: 450px){
     .label-nav { display: none; }
     .usuario { right: -40px; top: 2px; }
-    .contenido-switch { right: 100px; }
-    .nav-item { top: -2px; right: 310px; }
+    .contenido-switch { right: 90px; }
+    .nav-item { top: -2px; right: 172px; }
 }
