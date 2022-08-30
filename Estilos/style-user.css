@@ -2,9 +2,6 @@
 /* * {outline:auto;} */
 
 /* ----------------------------------- Esitlos Del INDEX-USER ------------------------------------------------------- */
-
-
-
 /*
     REGLAS PARA LOS ESTILOS DE CARPE DIEM.
 
@@ -22,6 +19,22 @@
     NOTA: Si hay menos de 5 Propiedades por un selector, NO DEJAR ESPACIO.
           Caso contrario, separar por categorias con un espaciado.
 */
+
+
+
+:root {
+    --color1: #06283D;
+    --color2: #1363DF;
+    --color3: #47B5FF;
+    --color4: #DFF6FF;
+
+    --dkmode1: #0c0b0b;
+    --dkmode2: #121212;
+    --dkmode3: #444444;
+    --dkmode4: #EDEDED;
+
+    --dkalt: #212121;
+}
 
 
 
@@ -111,6 +124,7 @@
     position: relative;
     width: 100%;
     height: 100vh;
+    background-color: var(--color2);
 }
 
 .calendar-content {
