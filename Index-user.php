@@ -47,7 +47,7 @@ foreach ($rowUser as $user) {
   <header class="align-items-center navbar navbar-expand-sm position-relative cabeza d-flex">
     <nav class="container-xxl cabeza-nav-user">
       <!-- logo -->
-      <section><a href="./Index-user.html"><img src="./Imagenes/favicon-min.png" alt="Logo" width="35px"></a></section>
+      <section><a href="#"><img src="./Imagenes/favicon-min.png" alt="Logo" width="35px"></a></section>
 
       <!-- botones -->
       <section class="navbar-nav d-inline align-items-end text-end position-absolute end-0 botones">
@@ -100,48 +100,25 @@ foreach ($rowUser as $user) {
     <section class="text-center my-2 herramientas">
 
       <!--  -->
-      <article class="row align-items-center herramienta herramienta-uno">
-        <section id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-          <section class="carousel-inner">
-            <section class="carousel-item active">
-              <img src="Imagenes/1.jpg" width="1360px" height="400px" class="d-block w-100" alt="...">
-            </section>
-            <section class="carousel-item">
-              <img src="Imagenes/2.jpg" width="1360px" height="400px" class="d-block w-100" alt="...">
-            </section>
-            <section class="carousel-item">
-              <img src="Imagenes/3.jpg" width="1360px" height="400px" class="d-block w-100" alt="...">
-            </section>
-          </section>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </section>
-      </article>
-
-      <!--  -->
       <article class="row align-items-center my-2 herramienta herramienta-dos">
 
         <!--  -->
         <section class="col">
-          <h3>Lorem ipsum dolor sit amet.</h3>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptas nihil minima odio cum nulla!</p>
+          <h3></h3>
+          <p></p>
         </section>
 
         <!--  -->
-        <section class="col"><img src="" alt="Agenda"></section>
+        <!-- <section class="col"><img src="" alt="Agenda"></section> -->
       </article>
 
       <!--  -->
       <article class="row align-items-center herramienta herramienta-tres">
 
         <!--  -->
-        <section class="col"><img src="" alt="Agenda"></section>
+        <!-- <section class="col">
+          <img src="" alt="Agenda">
+        </section> -->
 
         <!--  -->
         <section class="col">
