@@ -67,3 +67,13 @@ function modoOscuro(){
 
 // ----------------------------------- VALIDACION ----------------------------------- //
 
+// Mas que organiza duvan
+function ValidarContraseña() {
+    let contrasena = document.getElementById('usuarioRC').value
+    let comprobarContrasena = document.getElementById('usuarioRCC').value
+    let mensajeConfirmacion = document.getElementById('MensajeConfirmarContrasena')
+    
+    if (contrasen == comprobarContrasena) {
+        mensajeConfirmacion.textContent = "A"
+    }
+}

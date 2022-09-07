@@ -833,8 +833,8 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 
 /* ---------------------------- Subcategoria: Validaciones. ---------------------------------- */
 .formularios input:focus:invalid{
-    border-bottom: 1.4px solid #EB1D36;
+    border-bottom: 1.3px solid #EB1D36;
 }
 .formularios input:required:valid{
-    border-bottom: 1.4px solid #5BB318;
+    border-bottom: 1.3px solid #5BB318;
 }
