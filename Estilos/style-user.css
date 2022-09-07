@@ -2,9 +2,6 @@
 /* * {outline:auto;} */
 
 /* ----------------------------------- Esitlos Del INDEX-USER ------------------------------------------------------- */
-
-
-
 /*
     REGLAS PARA LOS ESTILOS DE CARPE DIEM.
 
@@ -22,6 +19,22 @@
     NOTA: Si hay menos de 5 Propiedades por un selector, NO DEJAR ESPACIO.
           Caso contrario, separar por categorias con un espaciado.
 */
+
+
+
+:root {
+    --color1: #06283D;
+    --color2: #1363DF;
+    --color3: #47B5FF;
+    --color4: #DFF6FF;
+
+    --dkmode1: #0c0b0b;
+    --dkmode2: #121212;
+    --dkmode3: #444444;
+    --dkmode4: #EDEDED;
+
+    --dkalt: #212121;
+}
 
 
 
@@ -74,7 +87,7 @@
 }
 
 .contenido-switch {
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
     position: absolute;
     right: 223px;
     /* outline: 1px solid red; */
@@ -105,7 +118,38 @@
 
 
 
+/* ---------------------------- Subcategoria: Nav-bar ---------------------------------- */
+.calendar-box {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color2);
+}
+
+.calendar-content {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 7px;
+}
+
+
+
 /* ---------------------------- Subcategoria: Contenido Responsive ---------------------------------- */
 @media (max-width: 575px){
     .contenido-switch { right: 223px; }
+}
+
+@media (min-width: 1400px){
+    .cabeza-nav-user {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 450px){
+    .label-nav { display: none; }
+    .usuario { right: -40px; top: 2px; }
+    .contenido-switch { right: 90px; }
+    .nav-item { top: -2px; right: 172px; }
 }

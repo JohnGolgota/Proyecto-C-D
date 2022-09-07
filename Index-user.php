@@ -45,15 +45,15 @@ foreach ($rowUser as $user) {
 <body>
   <!-- Encabezado, botones y tema -->
   <header class="align-items-center navbar navbar-expand-sm position-relative cabeza d-flex">
-    <nav class="container-xxl">
+    <nav class="container-xxl cabeza-nav-user">
       <!-- logo -->
-      <section><a href="./Index-user.html"><img src="./Imagenes/favicon-min.png" alt="Logo" width="35px"></a></section>
+      <section><a href="#"><img src="./Imagenes/favicon-min.png" alt="Logo" width="35px"></a></section>
 
       <!-- botones -->
       <section class="navbar-nav d-inline align-items-end text-end position-absolute end-0 botones">
         <!-- Boton "+" -->
         <section class="nav-item">
-          <button class="boton-mas" style="outline: 1px solid red;"> + </button>
+          <button class="boton-mas" style=""> + </button>
         </section>
 
         <!-- switch -->
@@ -61,7 +61,7 @@ foreach ($rowUser as $user) {
 
         <!-- Boton user -->
         <section class="mt-2 usuario">
-          <i class="fa-solid fa-user icono"></i><label for="" class="user-nav"><?php echo "$user->nombre_usr$user->id_usr"; ?></label>
+          <i class="fa-solid fa-user icono"></i><label for="" class="user-nav label-nav"><?php echo "$user->nombre_usr$user->id_usr"; ?></label>
         </section>
 
         <!-- boton Menu Desplegable. -->
@@ -92,57 +92,33 @@ foreach ($rowUser as $user) {
   <main>
 
     <!--  -->
-    <section class="superbox bg-secondary">
-      <h1 class="container-sm top-50">Estamos haciendo la pagina, por favor esperar 3 años masomenos </h1>
-
+    <section class="superbox bg-secondary calendar-box">
+      <iframe src="https://calendar.google.com/calendar/embed?height=720&wkst=1&bgcolor=%231363df&ctz=America%2FBogota&showTitle=0&showNav=1&src=M2R0dW5pbmdkdXZhbkBnbWFpbC5jb20&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZXMuY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&src=ZW4uY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%2333B679&color=%230B8043&color=%230B8043" width="1280" height="720" frameborder="0" scrolling="no" class="calendar-content"></iframe>
     </section>
 
     <!--  -->
     <section class="text-center my-2 herramientas">
 
       <!--  -->
-      <article class="row align-items-center herramienta herramienta-uno">
-        <section id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-          <section class="carousel-inner">
-            <section class="carousel-item active">
-              <img src="Imagenes/1.jpg" width="1360px" height="400px" class="d-block w-100" alt="...">
-            </section>
-            <section class="carousel-item">
-              <img src="Imagenes/2.jpg" width="1360px" height="400px" class="d-block w-100" alt="...">
-            </section>
-            <section class="carousel-item">
-              <img src="Imagenes/3.jpg" width="1360px" height="400px" class="d-block w-100" alt="...">
-            </section>
-          </section>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </section>
-      </article>
-
-      <!--  -->
       <article class="row align-items-center my-2 herramienta herramienta-dos">
 
         <!--  -->
         <section class="col">
-          <h3>Lorem ipsum dolor sit amet.</h3>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptas nihil minima odio cum nulla!</p>
+          <h3></h3>
+          <p></p>
         </section>
 
         <!--  -->
-        <section class="col"><img src="" alt="Agenda"></section>
+        <!-- <section class="col"><img src="" alt="Agenda"></section> -->
       </article>
 
       <!--  -->
       <article class="row align-items-center herramienta herramienta-tres">
 
         <!--  -->
-        <section class="col"><img src="" alt="Agenda"></section>
+        <!-- <section class="col">
+          <img src="" alt="Agenda">
+        </section> -->
 
         <!--  -->
         <section class="col">
@@ -281,8 +257,8 @@ foreach ($rowUser as $user) {
   <!-- Scripts perzonalizados: -->
   <!-- Animacion de los logos. -->
   <!-- <script src="./Script's/iconrevel.min.js">no hay</script> -->
-  <script src="./Scripts/app.min.js"></script>
-  <script src="./Scripts/main.js"></script>
+  <!-- <script src="./Scripts/app.min.js"></script>
+  <script src="./Scripts/main.js"></script> -->
 
   <!-- Scripts Temporales:  -->
 </body>
