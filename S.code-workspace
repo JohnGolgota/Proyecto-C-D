@@ -19,7 +19,8 @@
         "editor.minimap.enabled": false,
         "editor.minimap.autohide": true,
         "files.encoding": "utf8",
-        "terminal.explorerKind": "integrated"
+        "terminal.explorerKind": "integrated",
+        "workbench.iconTheme": "material-icon-theme"
     },
 	"extensions": {
 		"recommendations": [
@@ -34,12 +35,10 @@
             "dbaeumer.vscode-eslint",
             "oderwat.indent-rainbow",
             "jock.svg",
-            "eyebonk.subtle-pink",
             "tabnine.tabnine-vscode",
             "ms-python.python",
             "zobo.php-intellisense",
             "xdebug.php-debug",
-            "samrc.night-pink",
             "dzhavat.css-flexbox-cheatsheet",
             "pkief.material-icon-theme",
             "bmewburn.vscode-intelephense-client",
