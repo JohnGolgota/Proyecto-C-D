@@ -16,7 +16,7 @@
 
     <!-- hojas de estilo personalizadas -->
     <!-- <link rel="stylesheet" href="./Estilos/style.css"> -->
-    <link rel="stylesheet" href="./Estilos/style.min.css">
+    <link rel="stylesheet" href="./Estilos/style.css">
 
     <!-- librerias importadas -->
     <script src="./Scripts/scrollreveal.min.js"></script>
@@ -292,9 +292,9 @@
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-inicio">
-                    <form action="./bd/conexion-php/iniciosesion.php" class="" method="POST">
-                        <input type="text" name="UsuarioIS" id="usuarioIS" placeholder="Nombre De Usuario" class="form-control">
-                        <input type="password" name="ContrasenaIS" id="contrasenaIS" placeholder="Contraseña" class="form-control">
+                    <form action="./bd/conexion-php/iniciosesion.php" class="" method="POST" novalidate>
+                        <input type="text" name="UsuarioIS" id="usuarioIS" placeholder="Nombre De Usuario" class="form-control shadow-none" required>
+                        <input type="password" name="ContrasenaIS" id="contrasenaIS" placeholder="Contraseña" class="form-control shadow-none" required>
 
                         <input type="submit" value="¡Inicia Sesión!" class="btn btn-primary boton-modal">
                     </form>
@@ -325,16 +325,16 @@
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-registro">
-                    <form action="./bd/conexion-php/registrousu.php" method="POST" >
-                        <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo" class="form-control" required>
-                        <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña" class="form-control" required maxlength="10" minlength="4">
-                        <input type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control" required maxlength="10" minlength="4">
+                    <form action="./bd/conexion-php/registrousu.php" method="POST" novalidate id="formulario-registro" >
+                        <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo" class="form-control shadow-none" required>
+                        <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
+                        <input type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
                         <div class="form-group">
                             <input required type="checkbox" name="terminosycondiciones" id="terminosycondiciones" class="form-check-input" value="aceptarteminos">
                             <label for="terminosycondiciones" id="terminosycondiciones" class="form-check-label">Aceptar los terminos y condiciones</label>
                             <a href="#" onclick="detallesTC();">Detalles.</a>
                         </div>
-                        <input type="submit" value="Registrarse" class="btn btn-primary boton-modal">
+                        <input type="submit" value="Registrarse" class="btn btn-primary boton-modal" id="btn-registro">
                     </form>
                 </div>
 

@@ -65,3 +65,5 @@ function modoOscuro(){
     document.querySelector(".boton-modal").classList.toggle('boton-modal-dark-mode');
 }
 
+// ----------------------------------- VALIDACION ----------------------------------- //
+

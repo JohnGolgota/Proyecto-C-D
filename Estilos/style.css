@@ -828,3 +828,13 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 .modal-content-dark-mode { background-color: var(--dkmode3); color: var(--color4); }
 .modal-content-dark-mode { background-color: var(--dkmode3); color: var(--color4); }
 .boton-modal-dark-mode { background-color: var(--dkmode2); color: var(--color4); }
+
+
+
+/* ---------------------------- Subcategoria: Validaciones. ---------------------------------- */
+.formularios input:focus:invalid{
+    border-bottom: 1.4px solid #EB1D36;
+}
+.formularios input:required:valid{
+    border-bottom: 1.4px solid #5BB318;
+}
