@@ -42,7 +42,7 @@ foreach ($rowUser as $user) {
 
 </head>
 
-<body>
+<body onload="">
   <!-- Encabezado, botones y tema -->
   <header class="align-items-center navbar navbar-expand-sm position-relative cabeza d-flex">
     <nav class="container-xxl cabeza-nav-user">
