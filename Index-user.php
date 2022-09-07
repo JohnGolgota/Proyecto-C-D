@@ -1,21 +1,21 @@
 <?php
-$id = $_GET['id'];
+    $id = $_GET['id'];
 
-include './bd/conexion-php/conexiondb.php';
-$conexion = new Conexion();
-$conexion->BdConnect();
+    include './bd/conexion-php/conexiondb.php';
+    $conexion = new Conexion();
+    $conexion->BdConnect();
 
-$sql = "SELECT * FROM tbl_usuario WHERE id_usr=$id";
+    $sql = "SELECT * FROM tbl_usuario WHERE id_usr=$id";
 
-$buscar = $conexion->stm->prepare($sql);
-$buscar->execute();
+    $buscar = $conexion->stm->prepare($sql);
+    $buscar->execute();
 
-$rowUser = $buscar->fetchAll(PDO::FETCH_OBJ);
-foreach ($rowUser as $user) {
-}
+    $rowUser = $buscar->fetchAll(PDO::FETCH_OBJ);
+    foreach ($rowUser as $user) {
+    }
 
-// var_dump($user);
-# nice code.
+    // var_dump($user);
+    # nice code.
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -259,8 +259,8 @@ foreach ($rowUser as $user) {
   <!-- <script src="./Script's/iconrevel.min.js">no hay</script> -->
   <!-- <script src="./Scripts/app.min.js"></script>
   <script src="./Scripts/main.js"></script> -->
-
+        <!-- Pomodoro -->
+        <script src="./Scripts/pomodoro-funct.js"></script>
   <!-- Scripts Temporales:  -->
 </body>
-
 </html>
