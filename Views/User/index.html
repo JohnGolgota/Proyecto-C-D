@@ -14,11 +14,11 @@
     <link rel="stylesheet" href="../Public/Css/bootstrap.min.css">
 
     <!-- hojas de estilo personalizadas -->
-    <!-- <link rel="stylesheet" href="./Estilos/style.css"> -->
-    <link rel="stylesheet" href="./Estilos/style.css">
+    <link rel="stylesheet" href="../Public/Css/style.css">
 
     <!-- librerias importadas -->
-    <script src="./Scripts/scrollreveal.min.js"></script>
+    <!-- ScrollReveal -->
+    <script src="../Public/Js/scrollreveal.min.js"></script>
 </head>
 <body class="" onload="OnloadFunction();">
     <!-- Encabezado, botones y modo oscuro -->
@@ -27,7 +27,7 @@
 
             <!-- logo -->
             <div class="elemento-icon-cabeza">
-                <a href="index.html" target=""><img src="./Imagenes/favicon-min.png" alt="Logo" width="35px" class="nav-brand"></a>
+                <a href="UserController.php" target=""><img src="../Public/Img/favicon-min.png" alt="Logo" width="35px" class="nav-brand"></a>
             </div>
 
             <!-- botones -->
@@ -94,12 +94,12 @@
 
             <!-- Facebook -->
             <div class="">
-                <a href="https://www.facebook.com/" target="_blank"><img src="./Imagenes/LogosRedes/facebook.png" alt="Facebook" width="40px"></a>
+                <a href="https://www.facebook.com/" target="_blank"><img src="../Public/Img/LogosRedes/facebook.png" alt="Facebook" width="40px"></a>
             </div>
 
             <!-- Imgtagram -->
             <div class="">
-                <a href="https://www.instagram.com/" target="_blank"><img src="./Imagenes/LogosRedes/instagram.png" alt="instagram" width="40px"></a>
+                <a href="https://www.instagram.com/" target="_blank"><img src="../Public/Img/LogosRedes/instagram.png" alt="instagram" width="40px"></a>
             </div>
         </aside>
 
@@ -110,7 +110,7 @@
 
                 <!-- imagen. Agenda -->
                 <div class="col">
-                    <img class="herramienta-img" src="./Imagenes/herramientas/Agenda.png" alt="Agenda">
+                    <img class="herramienta-img" src="../Public/Img/herramientas/Agenda.png" alt="Agenda">
                 </div>
 
                 <!-- descripcion. Agenda -->
@@ -125,7 +125,7 @@
 
                 <!-- imagen. HerramientaDos -->
                 <div class="col order-2">
-                    <img class="herramienta-img" src="./Imagenes/herramientas/pomodoro-min.png" alt="HerramientaDos">
+                    <img class="herramienta-img" src="../Public/Img/herramientas/pomodoro-min.png" alt="HerramientaDos">
                 </div>
 
                 <!-- descripcion. HerramientaDos -->
@@ -140,7 +140,7 @@
 
                 <!-- imagen. HerramientaTres -->
                 <div class="col">
-                    <img class="herramienta-img" src="./Imagenes/herramientas/pareto-min.png" alt="HerramientaTres">
+                    <img class="herramienta-img" src="../Public/Img/herramientas/pareto-min.png" alt="HerramientaTres">
                 </div>
 
                 <!-- descripcion. HerramientaTres -->
@@ -155,7 +155,7 @@
 
                 <!-- imagen. HerramientaCuatro -->
                 <div class="col order-2">
-                    <img class="herramienta-img" src="./Imagenes/herramientas/doyouself-min.png" alt="HerramientaCuatro">
+                    <img class="herramienta-img" src="../Public/Img/herramientas/doyouself-min.png" alt="HerramientaCuatro">
                 </div>
 
                 <!-- descripcion. HerramientaCuatro -->
@@ -180,7 +180,7 @@
                     <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
 
                         <div class="rounded-circle shadow-1-strong d-flex align-items-center justify-content-center mb-4 mx-auto" style="width: 150px; height: 150px;">
-                            <img src="./Imagenes/favicon-min.png" height="70" alt="" loading="lazy" />
+                            <img src="../Public/Img/favicon-min.png" height="70" alt="" loading="lazy" />
                         </div>
 
                         <p class="text-center">Carpe Diem</p>
@@ -284,11 +284,12 @@
 
                 <!-- Encabezado. Logo -->
                 <div class="modal-header">
-                    <img src="./Imagenes/favicon.png" alt="Logo" width="60px">
+                    <img src="../Public/Img/favicon.png" alt="Logo" width="60px">
                 </div>
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-inicio">
+<!-- Aqui -->
                     <form action="./bd/conexion-php/iniciosesion.php" class="" method="POST" novalidate>
                         <input type="text" name="UsuarioIS" id="usuarioIS" placeholder="Nombre De Usuario" class="form-control shadow-none" required>
                         <input type="password" name="ContrasenaIS" id="contrasenaIS" placeholder="Contraseña" class="form-control shadow-none" required>
@@ -299,8 +300,8 @@
 
                 <!-- Pie de pagina. metodos de inicio -->
                 <div class="modal-footer">
-                    <a href="./Index-user.html"><img src="./Imagenes/LogosRedes/facebook.png" alt="Facebook" width="50px"></a>
-                    <a href="./pruebaResponsive.html"><img src="./Imagenes/LogosRedes/instagram.png" alt="Google" width="50px"></a>
+                    <a href="UserController.php"><img src="../Public/Img/LogosRedes/facebook.png" alt="Facebook" width="50px"></a>
+                    <a href="#"><img src="../Public/Img/LogosRedes/instagram.png" alt="Google" width="50px"></a>
                 </div>
             </div>
         </div>
@@ -317,11 +318,12 @@
 
                 <!-- encabezado. Logo -->
                 <div class="modal-header">
-                    <img src="./Imagenes/favicon.png" alt="Logo" width="60px">
+                    <img src="../Public/Img/favicon.png" alt="Logo" width="60px">
                 </div>
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-registro">
+<!-- Aqui -->
                     <form action="./bd/conexion-php/registrousu.php" method="POST" novalidate id="formulario-registro" >
                         <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo" class="form-control shadow-none" required>
                         <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
@@ -338,8 +340,8 @@
 
                 <!-- Pie de página. Metodos de registro -->
                 <div class="modal-footer">
-                    <a href="./Descartables/Web/i.html"><img src="./Imagenes/LogosRedes/facebook.png" alt="Facebook" width="50px"></a>
-                    <a href=""><img src="./Imagenes/LogosRedes/instagram.png" alt="Google" width="50px"></a>
+                    <a href=""><img src="../Public/Img/LogosRedes/facebook.png" alt="Facebook" width="50px"></a>
+                    <a href=""><img src="../Public/Img/LogosRedes/instagram.png" alt="Google" width="50px"></a>
                 </div>
             </div>
         </div>
@@ -347,24 +349,22 @@
 
     <!-- Scripts Inportados: -->
     <!-- Bootstrap -->
-    <script src="./Bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../Public/Js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/8a160a18f4.js" crossorigin="anonymous"></script>
 
     <!-- Scripts perzonalizados: -->
     <!-- Animacion de los logos. -->
-    <script src="./Scripts/sweetalert.min.js"></script>
+    <script src="../Public/Js/sweetalert.min.js"></script>
     <script>
         function detallesTC() {
             swal('No hay.')
         }
     </script>
-    <script src="./Scripts/iconrevel.min.js"></script>
-    <script src="./Scripts/app.js"></script>
-    <!-- <script src="./Scripts/app.js"></script> -->
+    <script src="../Public/Js/iconrevel.min.js"></script>
+    <script src="../Public/Js/app.js"></script>
 
     <!-- Scripts Temporales:  -->
-    <script src="./Scripts/main.js"></script>
-    <!-- <script src="./Scripts/main.app.js"></script> -->
+    <script src="../Public/Js/main.js"></script>
 </body>
 
 </html>

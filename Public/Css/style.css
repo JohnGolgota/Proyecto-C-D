@@ -19,10 +19,7 @@
 
 
 /* --------------------------------------------- Fuentes. --------------------------------------------- */
-@import url(./Fuentes/ZFuentes.css);
-/* * {
-    font-family: 'Caveat Brush', cursive;
-} */
+@font-face {font-family: "Montserrat Medium";src: url(./Font/MontserratAlternates-Medium.ttf);}
 
 /* ----------------------------------------- Paleta De Colores ----------------------------------------- */
 :root {

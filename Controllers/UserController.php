@@ -1,5 +1,5 @@
 <head>
-    
+    <!-- Un problema a Arreglar -->
 <link rel="shortcut icon" href="../Public/Img/favicon.png" type="image/x-icon">
 </head>
 <?php
@@ -33,7 +33,7 @@ class UserController extends User{
     }
 }
 if(!session_status() == FALSE){
-    echo "no hay sesión" . session_status();
+    // echo "no hay sesión" . session_status();
     $usercontroler = new UserController();
     $usercontroler->VistaIndex();
 }
@@ -42,6 +42,7 @@ if(isset($_GET['action']) && $_GET['action']=='registrar'){
     $usercontroler->VistaRegistro();
 }
 if(isset($_GET['a']) && $_GET['a']=='a'){
-    echo "a";
+    $usercontroler = new UserController();
+    $usercontroler->VistaIndex();
 }
 ?>
