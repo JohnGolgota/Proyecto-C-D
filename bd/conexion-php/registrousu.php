@@ -10,8 +10,8 @@
         // public $confirmpass_usr;
         
         public function RegistroSQL(){
-           $sql = "INSERT INTO tbl_usuario (nombre_usr, correo_usr, contrasena_usr) VALUES ('$this->nombre_usr', '$this->email_usr', '$this->pass_usr')";
-           return $sql;
+            $sql = "INSERT INTO tbl_usuario (nombre_usr, correo_usr, contrasena_usr) VALUES ('$this->nombre_usr', '$this->email_usr', '$this->pass_usr')";
+            return $sql;
         }
 
         public function AsignarNombre(){
