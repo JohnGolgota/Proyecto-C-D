@@ -19,12 +19,20 @@ class UserController extends User{
     {
         include '../Views/User/login.php';
     }
-    function AlistarInformacion($email,$contrasena)
+    function AlistarInformacion($email,$contrasena,$cContrasena)
     {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            die("Introduzca una dirección de correo electronico valido");
+        }
         $comprobacion = $this->ComprobarCorreo($email);
         if ($comprobacion != "") {
-            $resultado = "Ya existe una cuenta con este correo";
-            die($resultado);
+            die("Ya existe una cuenta con este correo");
+        }
+        if ($cContrasena != $contrasena) {
+            die("Las Contraseñas no coinciden");
+        }
+        if (strlen($contrasena) < 4 || strlen($contrasena) > 10) {
+            die("la contraseña debe tener minimo 4 o no sobre pasar los 10 caracteres");
         }
         $this->correo_usr = $email;
         $alias = explode("@",$email);
@@ -36,11 +44,14 @@ class UserController extends User{
         return;
     }
 }
-if(isset($_GET['action']) && $_GET['action']=='registrar'){
+if(isset($_GET['action']) && $_GET['action']=='registrar' && !empty($_POST['UsuarioRE'] && $_POST['UsuarioRC'] && $_POST['UsuarioRCC'] && $_POST['terminosycondiciones'])){
     $usercontroler = new UserController();
-    $usercontroler->AlistarInformacion($_POST['UsuarioRE'],$_POST['UsuarioRC']);
+    $usercontroler->AlistarInformacion($_POST['UsuarioRE'],$_POST['UsuarioRC'],$_POST['UsuarioRCC']);
     $usercontroler->RedirectLogin();
     return;
+}
+if (isset($_GET['action']) && $_GET['action']=='registrar' && empty($_POST['UsuarioRE'] || $_POST['UsuarioRC'] || $_POST['UsuarioRCC'])) {
+    die("Por favor rellene todos los campos de registro.");
 }
 if(session_status() == 1){
     $usercontroler = new UserController();
