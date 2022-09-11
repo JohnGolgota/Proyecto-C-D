@@ -104,8 +104,22 @@
 
         <!--  -->
         <section class="col">
-          <input type="text" class="nombre-pomodoro" placeholder="Nombre Actividad" maxlength="10">
-        </section>
+            <input type="text" class="nombre-pomodoro" placeholder="Nombre Actividad" maxlength="24">
+            <div class="config-pomodoro">
+                <input type="number" class="nombre-pomodoro left-input" id="minutes" placeholder="Tiempo De Actividad" maxlength="24">
+                <input type="number" class="nombre-pomodoro left-input" id="shortbreak" placeholder="Pausa Corta" maxlength="24">
+                <input type="number" class="nombre-pomodoro left-input" id="longbreak" placeholder="Pausa Larga" maxlength="24">
+            </div>
+            <div class="reloj-pomodoro">
+                <div class="circulo-pomodoro">
+                    <h3 class="timer-pomodoro" id="timer-funct">00:00<h3/>
+                </div>
+            </div>
+            <div class="div-content-btn">
+                <button class="btn btn-primary btn-continuar-pomodoro" id="btn-continuar-pomodoro" onclick="pomodoroFunction();" style="display:block;"> Continuar </button>
+                <button class="btn btn-primary btn-parar-pomodoro" id="btn-parar-pomodoro" onclick="pomodoroStop();" style="display: none;"> Parar </button>
+            </div>
+            </section>
 
         <!--  -->
         <!-- <section class="col"><img src="" alt="Agenda"></section> -->
@@ -260,6 +274,7 @@
   <script src="./Scripts/main.js"></script> -->
         <!-- Pomodoro -->
         <script src="./Scripts/pomodoro-funct.js"></script>
+        <script src="./Scripts/sweetalert.min.js"></script>
   <!-- Scripts Temporales:  -->
 </body>
 </html>
