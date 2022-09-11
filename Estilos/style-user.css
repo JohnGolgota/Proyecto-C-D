@@ -118,7 +118,7 @@
 
 
 
-/* ---------------------------- Subcategoria: Nav-bar ---------------------------------- */
+/* ---------------------------- Subcategoria: Iframe. ---------------------------------- */
 .calendar-box {
     text-align: center;
     position: relative;
@@ -134,6 +134,19 @@
     padding: 7px;
 }
 
+
+
+/* ---------------------------- Subcategoria:  ---------------------------------- */
+.herramienta-pomodoro {
+    text-align: center;
+}
+
+.nombre-pomodoro {
+    border: none;
+    border-bottom: 2px solid var(--color2);
+    outline: none;
+    background: none;
+}
 
 
 /* ---------------------------- Subcategoria: Contenido Responsive ---------------------------------- */
@@ -153,3 +166,4 @@
     .contenido-switch { right: 90px; }
     .nav-item { top: -2px; right: 172px; }
 }
+
