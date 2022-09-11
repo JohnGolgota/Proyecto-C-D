@@ -35,7 +35,7 @@
     
     $RegistroComit = new Registro();
     $conexion = new Conexion();
-    $conexion->BdConnect();
+    // $conexion->BdConnect();
     
     # Verificar si algun valor esta vacio o no.
     if(!empty($_POST['UsuarioRE']) && !empty($_POST['UsuarioRC']) && !empty($_POST['UsuarioRCC'] && $_POST['terminosycondiciones'])){

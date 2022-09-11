@@ -17,6 +17,7 @@ class User{
         $insert->bindParam(2,$this->correo_usr);
         $insert->bindParam(3,$this->contrasena_usr);
         $insert->execute();
+        // header("location: UserController.php?action=login");
     }
     public function ComprobarCorreo($email)
     {
@@ -32,6 +33,22 @@ class User{
             return $prueba->correo_usr;
         }
         return;
+    }
+    public function ConsultarUsuario($nombre_usr)
+    {
+        include_once '../Config/conexiondb.php';
+        $conexion = new Conexion();
+        
+        $sql = "SELECT * FROM tbl_usuario WHERE nombre_usr='$nombre_usr'";
+        $usuario = $conexion->stm->prepare($sql);
+        $usuario->execute();
+        $usuarioObjeto = $usuario->fetchAll(PDO::FETCH_OBJ);
+        if ($usuarioObjeto) {
+            return $usuarioObjeto;
+        }
+        else {
+            die("No se a encontrado el usuario en la base de datos");
+        }
     }
 }
 ?>
