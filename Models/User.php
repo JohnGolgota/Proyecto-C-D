@@ -27,7 +27,11 @@ class User{
         $result = $conexion->stm->prepare($sql);
         $result->execute();
         $usuario = $result->fetchAll(PDO::FETCH_OBJ);
-        return $usuario;
+        if ($usuario) {
+            foreach($usuario as $prueba){}
+            return $prueba->correo_usr;
+        }
+        return;
     }
 }
 ?>

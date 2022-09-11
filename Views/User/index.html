@@ -5,20 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Carpe Diem | Inicio </title>
-
+    
     <!-- Icono página -->
     <link rel="shortcut icon" href="../Public/Img/favicon.png" type="image/x-icon">
-
+    
     <!-- Bootstrap 5 -->
     <link rel="stylesheet" href="../Public/Css/bootstrap.min.css">
-
+    
     <!-- hojas de estilo personalizadas -->
     <link rel="stylesheet" href="../Public/Css/style.css">
-
+    
     <!-- librerias importadas -->
     <!-- ScrollReveal -->
     <script src="../Public/Js/scrollreveal.min.js"></script>
+
+    <title> Carpe Diem | Inicio </title>
 </head>
 <body class="" onload="OnloadFunction();">
     <!-- Encabezado, botones y modo oscuro -->
@@ -324,7 +325,8 @@
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-registro">
 <!-- Aqui -->
-                    <form action="./bd/conexion-php/registrousu.php" method="POST" novalidate id="formulario-registro" >
+                    <form action="UserController.php?action=registrar" method="POST" novalidate id="formulario-registro">
+                        <input type="hidden" name="action" value="registrar">
                         <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo" class="form-control shadow-none" required>
                         <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
                         <input onkeypress="ValidarContraseña();" type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">

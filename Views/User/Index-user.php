@@ -1,18 +1,18 @@
 <?php
-$id = $_GET['id'];
+// $id = $_GET['id'];
 
-include './bd/conexion-php/conexiondb.php';
-$conexion = new Conexion();
-$conexion->BdConnect();
+// include './bd/conexion-php/conexiondb.php';
+// $conexion = new Conexion();
+// $conexion->BdConnect();
 
-$sql = "SELECT * FROM tbl_usuario WHERE id_usr=$id";
+// $sql = "SELECT * FROM tbl_usuario WHERE id_usr=$id";
 
-$buscar = $conexion->stm->prepare($sql);
-$buscar->execute();
+// $buscar = $conexion->stm->prepare($sql);
+// $buscar->execute();
 
-$rowUser = $buscar->fetchAll(PDO::FETCH_OBJ);
-foreach ($rowUser as $user) {
-}
+// $rowUser = $buscar->fetchAll(PDO::FETCH_OBJ);
+// foreach ($rowUser as $user) {
+// }
 
 // var_dump($user);
 # nice code.
@@ -25,7 +25,7 @@ foreach ($rowUser as $user) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Carpe Diem | <?php echo $user->nombre_usr; ?> </title>
+  <title> Carpe Diem | <?php // echo $user->nombre_usr; ?> </title>
 
   <!-- Icono página -->
   <link rel="shortcut icon" href="./Imagenes/favicon.png" type="image/x-icon">
@@ -53,7 +53,7 @@ foreach ($rowUser as $user) {
       <section class="navbar-nav d-inline align-items-end text-end position-absolute end-0 botones">
         <!-- Boton "+" -->
         <section class="nav-item">
-          <button class="boton-mas" style=""> + </button>
+          <button class="boton-mas"> + </button>
         </section>
 
         <!-- switch -->
@@ -61,7 +61,7 @@ foreach ($rowUser as $user) {
 
         <!-- Boton user -->
         <section class="mt-2 usuario">
-          <i class="fa-solid fa-user icono"></i><label for="" class="user-nav label-nav"><?php echo "$user->nombre_usr$user->id_usr"; ?></label>
+          <i class="fa-solid fa-user icono"></i><label for="" class="user-nav label-nav"><?php // echo "$user->nombre_usr$user->id_usr"; ?></label>
         </section>
 
         <!-- boton Menu Desplegable. -->
@@ -71,7 +71,7 @@ foreach ($rowUser as $user) {
           <section class="contenido-menu">
             <ul>
               <hr class="salto">
-              <li><a href="#"><?php echo "$user->nombre_usr"; ?></a></li>
+              <li><a href="#"><?php // echo "$user->nombre_usr"; ?></a></li>
               <li><a href="">Cuenta</a></li>
               <hr class="salto">
               
