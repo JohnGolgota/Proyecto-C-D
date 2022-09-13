@@ -99,6 +99,7 @@ if (isset($_GET['action']) && $_GET['action']=='session' && empty($_POST['Usuari
 if (isset($_GET['action']) && $_GET['action']=='inicio') {
     $usercontroler = new UserController();
     $usercontroler->VistaUsuario();
+    return;
 }
 // Action vista predefinida
 if(session_status() == 1){
