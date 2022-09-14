@@ -49,7 +49,10 @@
 
 body {
     overflow-x: hidden;
-    background: linear-gradient(to bottom, var(--color4), var(--color3));
+    /* border: 10px solid green; */
+    background: linear-gradient(to bottom, var(--color2), var(--color3));
+    
+    
 }
 
 

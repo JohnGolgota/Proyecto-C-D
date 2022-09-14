@@ -18,3 +18,4 @@
     <!-- librerias importadas -->
     <!-- ScrollReveal -->
     <script src="../Public/Js/scrollreveal.min.js"></script>
+<head>
