@@ -19,7 +19,7 @@
 ?>
 <?php include '../Inc/header.php'; ?>
 
-<title> Carpe Diem | <?php // echo $user->nombre_usr; ?> </title>
+<title> Carpe Diem | <?php  ?> </title>
 
 <?php include '../Inc/nav.php'; ?>
 

@@ -82,8 +82,8 @@ class UserController extends User{
         if (password_verify($contrasena,$dU->contrasena_usr)) {
             session_start();
             $_SESSION['nombre_usr'] = $dU->nombre_usr;
-            header("location: UserController.php?action=inicio");
-            return;
+            var_dump($datosUsuario);
+            return $_SESSION;
         }
 
         # Si no funciona el inicio de sesion pero devuelve un objeto.
@@ -111,6 +111,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'session' && !empty($_POST['Usu
     echo "holiwi";
     $usercontroler = new UserController();
     $usercontroler->VerificaInicio($_POST['UsuarioIS'],$_POST['ContrasenaIS']);
+    $usercontroler->VistaUsuario();
     return;
 }
 //  inicio de session fallido
