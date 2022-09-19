@@ -416,6 +416,17 @@ CREATE TABLE tbl_pagos(
     FOREIGN KEY (id_mpg) REFERENCES tbl_metodo_pago(id_mpg)
 );
 
+CREATE TABLE tbl_pomodoro(
+    id_pmd int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    fechahora_pmd datetime NOT NULL DEFAULT current_timestamp(), 
+    nombre_pmd varchar(50) NOT NULL, 
+    actividad_pmd varchar(8),
+    pausa_corta_pmd varchar(8) NOT NULL,
+    pausa_larga_pmd varchar(8) NOT NULL,
+    id_usr int(11) NOT NULL, 
+    FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr)
+);
+
 -- Atributo añadido (Estaba pendiente de corregir)
 ALTER TABLE tbl_comunicado_admin ADD FOREIGN KEY (di_des) REFERENCES tbl_desarrolladores(di_des);
                                 ADD FOREIGN KEY (id_mpg) REFERENCES tbl_metodo_pago(id_mpg);
