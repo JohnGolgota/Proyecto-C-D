@@ -29,7 +29,7 @@
 <header class="align-items-center navbar navbar-expand-sm position-relative cabeza d-flex">
     <nav class="container-xxl cabeza-nav-user">
         <!-- logo -->
-        <section><a href="#"><img src="./Imagenes/favicon-min.png" alt="Logo" width="35px"></a></section>
+        <section class="col-md-3"><a href="#"><img src="./Imagenes/favicon-min.png" alt="Logo" width="35px"></a></section>
 
         <!-- botones -->
         <section class="navbar-nav d-inline align-items-end text-end position-absolute end-0 botones">
@@ -43,8 +43,24 @@
 
             <!-- Boton user -->
             <section class="mt-2 usuario">
-                <i class="fa-solid fa-user icono"></i><label for="" class="user-nav label-nav"><?php // echo "$user->nombre_usr$user->id_usr"; ?></label>
+                <i class="fa-solid fa-user icono"></i><label onclick="configDesplegable();" for="" class="user-nav label-nav"> <?php echo $_SESSION['nombre_usr']; ?> </label>
             </section>
+            <aside id="configDesplegable" style="display: none;" class="menu-no">
+                <!--  -->
+                <section class="contenido-menu">
+                    <ul>
+                        <hr class="salto">
+                        <li><a href="#"></a></li>
+                        <li><a href=""> Configuracion </a></li>
+                        <hr class="salto">
+                        <li><a href="#HerramientaUno"> Personalizacion </a></li>
+                        <li><a href="#HerramientaDos"> Actualizar Informacion </a></li>
+                        <hr class="salto">
+                        <li><a href="#HerramientaCuatro"> ? </a></li>
+                        <hr class="salto">
+                        <li><a href="index.html"> Cerrar sesión </a></li>
+                    </ul>
+                </section>
 
             <!-- boton Menu Desplegable. -->
             <button class="boton menu-user" onclick="menuDesplegable();"> ... </button>
@@ -53,7 +69,7 @@
                 <section class="contenido-menu">
                     <ul>
                         <hr class="salto">
-                        <li><a href="#"><?php // echo "$user->nombre_usr"; ?></a></li>
+                        <li><a href="#"></a></li>
                         <li><a href="">Cuenta</a></li>
                         <hr class="salto">
                         <li><a href="#HerramientaUno"> Agenda </a></li>

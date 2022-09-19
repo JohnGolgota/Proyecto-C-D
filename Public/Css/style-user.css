@@ -36,9 +36,22 @@
     --dkalt: #212121;
 }
 
+body {
+    overflow-x: hidden;
+    background: linear-gradient(to left, var(--color3), var(--color4)); 
+}
+
 
 
 /* ---------------------------- Subcategoria: Nav-bar ---------------------------------- */
+.cabeza-nav-user {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+/*
 .menu-user {
     position: absolute;
     top: 0;
@@ -87,11 +100,11 @@
 }
 
 .contenido-switch {
-    /* outline: 1px solid red; */
+    outline: 1px solid red;
     position: absolute;
     right: 223px;
-    /* outline: 1px solid red; */
-}
+    outline: 1px solid red;
+}  */
 
 .switch {
     --width-of-switch: 3.5em;
