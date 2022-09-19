@@ -316,14 +316,14 @@ ALTER TABLE tbl_pagos
 
 -- VERSION :: DuvanArwenLazar ->  ---------------------------------------------------------------------------------------
 CREATE TABLE tbl_usuario (
-    id_usr int(11) NOT NULL PRIMARY KEY,
+    id_usr int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre_usr varchar(30) NOT NULL,
     correo_usr varchar(50) NOT NULL UNIQUE,
     contrasena_usr varchar(255) NOT NULL
 );
 
 CREATE TABLE tbl_eventos (
-    id_evn int(11) NOT NULL PRIMARY KEY,
+    id_evn int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     fechahora_evn datetime NOT NULL DEFAULT current_timestamp(), 
     nombre_evn varchar(50) NOT NULL, 
     descripcion_evn varchar(255),
@@ -335,7 +335,7 @@ CREATE TABLE tbl_eventos (
 );
 
 CREATE TABLE tbl_administrador(
-    id_adm int(11) NOT NULL PRIMARY KEY,
+    id_adm int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre_adm varchar(100) NOT NULL,
     correo_adm varchar(50) NOT NULL,
     contacto_ext_adm varchar(150) NOT NULL,
@@ -343,7 +343,7 @@ CREATE TABLE tbl_administrador(
 );
 
 CREATE TABLE tbl_comunicado_admin(
-    id_com int(11) NOT NULL PRIMARY KEY,
+    id_com int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     asunto_com varchar(15) NOT NULL,
     texto_com text NOT NULL,
     visibilidad_com tinyint(1) NOT NULL,
@@ -355,7 +355,7 @@ CREATE TABLE tbl_comunicado_admin(
 );
 
 CREATE TABLE tbl_e_desarrolladora(
-    id_edes int(11) NOT NULL PRIMARY KEY,
+    id_edes int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre_edes varchar(15) NOT NULL
 );
 
@@ -380,7 +380,7 @@ CREATE TABLE tbl_actualizaciones(
 );
 
 CREATE TABLE tbl_comunicado_user(
-    id_rpu int(11) NOT NULL PRIMARY KEY,
+    id_rpu int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     asunto_rpu varchar(50) NOT NULL,
     descripcion_rpu text NOT NULL,
     fecha_rpu datetime NOT NULL,
@@ -393,7 +393,7 @@ CREATE TABLE tbl_comunicado_user(
 );
 
 CREATE TABLE tbl_metodo_pago(
-    id_mpg int(11) NOT NULL PRIMARY KEY,
+    id_mpg int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     tipo_mpg varchar(30) NOT NULL,
     numero_mpg varchar(19) NOT NULL,
     fecha_caducidad_mpg date NOT NULL,
@@ -408,7 +408,7 @@ CREATE TABLE tbl_metodo_pago(
 );
 
 CREATE TABLE tbl_pagos(
-    id_pg int(11) NOT NULL PRIMARY KEY,
+    id_pg int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     descripcion_pg varchar(255),
     cantidad_pg float NOT NULL,
     impuestos_pg float NOT NULL,
