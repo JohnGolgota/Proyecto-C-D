@@ -209,7 +209,7 @@
                             <a href="https://github.com/DuvanArwenLazar" target="_blank" class="text-white"><i class="fas fa-user pe-3"></i>Duvan Arwen Lazar </a>
                         </li>
                         <li class="mb-2">
-                            <a href="#!" class="text-white"><i class="fas fa-user pe-3"></i>Ivan</a>
+                            <!-- <a href="#!" class="text-white"><i class="fas fa-user pe-3"></i>Ivan</a> -->
                         </li>
                     </ul>
                 </section>
