@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1> ¿Seguro que quieres eliminar tu cuenta? </h1>
-    <a href=""><button> Si </button></a>
+    <a href="../Controllers/UserController.php?action=confirm_delete"><button> Si </button></a>
     <a href=""><button> Cancelar </button></a>
 </body>
 </html>

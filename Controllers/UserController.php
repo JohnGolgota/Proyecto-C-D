@@ -77,7 +77,6 @@ class UserController extends User{
         // $_SESSION['nombre_usr'] = $dU->nombre_usr;
 
         return;
-        # Roto: Arreglar porque no redirige al Pagina index del usuario.
     }
 
     # Verificamos la informacion de inicio de sesion.
@@ -92,6 +91,7 @@ class UserController extends User{
         if (password_verify($contrasena,$dU->contrasena_usr)) {
             session_start();
             $_SESSION['nombre_usr'] = $dU->nombre_usr;
+            $_SESSION['id_usr'] = $dU->id_usr;
             var_dump($datosUsuario);
             return $_SESSION;
         }
@@ -147,7 +147,14 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 # Confirmar Eliminar Cuenta
 if (isset($_GET['action']) && $_GET['action'] == 'confirm_delete') {
     $usercontroler = new UserController();
-    $usercontroler->RedirectDelete();
+
+    session_start();
+    // $_SESSION['id_usr'];
+    
+    # Accedemos a la funcion de "Eliminar Usuario".
+    $usercontroler->EliminarUsuario();
+    $usercontroler->VistaIndex();
+
     return;
 }
 
