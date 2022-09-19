@@ -112,11 +112,11 @@
             </div>
             <div class="reloj-pomodoro">
                 <div class="circulo-pomodoro">
-                    <h3 class="timer-pomodoro" id="timer-funct">00:00<h3/>
+                    <h3 class="timer-pomodoro" id="timer-funct">00:00<h3>
                 </div>
             </div>
             <div class="div-content-btn">
-                <button class="btn btn-primary btn-continuar-pomodoro" id="btn-continuar-pomodoro" onclick="pomodoroFunction();" style="display:block;"> Continuar </button>
+                <button class="btn btn-primary btn-continuar-pomodoro" id="btn-continuar-pomodoro" onclick="startPomodoro();" style="display:block;"> Continuar </button>
                 <button class="btn btn-primary btn-parar-pomodoro" id="btn-parar-pomodoro" onclick="pomodoroStop();" style="display: none;"> Parar </button>
             </div>
             </section>
