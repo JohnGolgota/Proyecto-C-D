@@ -55,7 +55,7 @@
                         <hr class="salto">
                         <li><a href="#HerramientaUno"> Personalizacion </a></li>
                         <hr class="salto">
-                        <li><a href="../../Controllers/UserController.php?"> Actualizar Informacion </a></li>
+                        <li><details href="../../Controllers/UserController.php?"> Actualizar Informacion </details></li>
                         <li><a href="../Controllers/UserController.php?action=delete"> Eliminar Cuenta </a></li>
                         <li><a href="#"> Cerrar sesión </a></li>
                     </ul>
