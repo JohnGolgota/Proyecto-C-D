@@ -800,7 +800,7 @@ input:checked + .slider:before { /* Checket representa cualquier radio (radio, c
 
 /* -------------------------------------------- MODO OSCURO -------------------------------------------- */
 /* ---------------------------- Subcategoria: Body---------------------------------- */
-/* .dark-mode{ background: linear-gradient(to right, var(--dkmode2), var(--dkmode3)) } */
+.dark-mode{ background: linear-gradient(to right, var(--dkmode2), var(--dkmode3)) }
 
 /* ---------------------------- Subcategoria: Barra de navegacion. ---------------------------------- */
 .cabeza-dark-mode { background: linear-gradient(to left, var(--dkalt), var(--dkalt)); }
