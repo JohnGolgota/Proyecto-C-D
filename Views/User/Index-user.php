@@ -54,11 +54,10 @@
                         <li><a href=""> Configuracion </a></li>
                         <hr class="salto">
                         <li><a href="#HerramientaUno"> Personalizacion </a></li>
-                        <li><a href="#HerramientaDos"> Actualizar Informacion </a></li>
                         <hr class="salto">
-                        <li><a href="#HerramientaCuatro"> ? </a></li>
-                        <hr class="salto">
-                        <li><a href="index.html"> Cerrar sesión </a></li>
+                        <li><a href="../../Controllers/UserController.php?"> Actualizar Informacion </a></li>
+                        <li><a href="../Controllers/UserController.php?action=delete"> Eliminar Cuenta </a></li>
+                        <li><a href="#"> Cerrar sesión </a></li>
                     </ul>
                 </section>
 

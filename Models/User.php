@@ -50,5 +50,15 @@ class User{
             die("No se a encontrado el usuario en la base de datos");
         }
     }
+
+    public function EliminarUsuario($id_usr){
+        include_once '../Config/conexiondb.php';
+        $conexion = new Conexion();
+
+        $sql = "DELETE FROM tbl_usuario WHERE id_usr = $id_usr";
+        $insert = $conexion->stm->prepare($sql);
+
+        $insert->execute();
+    }
 }
 ?>

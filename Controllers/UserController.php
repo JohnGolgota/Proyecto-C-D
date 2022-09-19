@@ -25,6 +25,10 @@ class UserController extends User{
         include '../Views/User/login.php';
     }
 
+    public function RedirectDelete(){
+        include '../Views/User/deleteUser.php';
+    }
+
     # Alistar informacion para registrarse
     function AlistarInformacion($email,$contrasena,$cContrasena)
     {
@@ -132,6 +136,21 @@ if (isset($_GET['action']) && $_GET['action'] == 'inicio') {
     $usercontroler->VistaUsuario();
     return;
 }
+
+# Redireccion a Eliminar Cuenta
+if (isset($_GET['action']) && $_GET['action'] == 'delete') {
+    $usercontroler = new UserController();
+    $usercontroler->RedirectDelete();
+    return;
+}
+
+# Confirmar Eliminar Cuenta
+if (isset($_GET['action']) && $_GET['action'] == 'confirm_delete') {
+    $usercontroler = new UserController();
+    $usercontroler->RedirectDelete();
+    return;
+}
+
 // Action vista predefinida
 if(session_status() == 1){
     $usercontroler = new UserController();
