@@ -26,7 +26,11 @@ class UserController extends User{
     }
 
     public function RedirectDelete(){
-        include '../Views/User/deleteUser.php';
+        include '../Views/User/deleteUser.html';
+    }
+
+    public function RedirectUpdate(){
+        include '../Views/User/updateUser.php';
     }
 
     # Alistar informacion para registrarse
@@ -157,6 +161,15 @@ if (isset($_GET['action']) && $_GET['action'] == 'confirm_delete') {
 
     return;
 }
+
+# Redireccion a Actualizar Nombre.
+if (isset($_GET['action']) && $_GET['action'] == 'update') {
+    $usercontroler = new UserController();
+    $usercontroler->RedirectDelete();
+    return;
+}
+
+
 
 // Action vista predefinida
 if(session_status() == 1){
