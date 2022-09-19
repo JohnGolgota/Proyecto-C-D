@@ -45,6 +45,7 @@
             <section class="mt-2 usuario">
                 <i class="fa-solid fa-user icono"></i><label onclick="configDesplegable();" for="" class="user-nav label-nav"> <?php echo $_SESSION['nombre_usr']; ?> </label>
             </section>
+          
             <aside id="configDesplegable" style="display: none;" class="menu-no">
                 <!--  -->
                 <section class="contenido-menu">
@@ -57,14 +58,11 @@
                         <hr class="salto">
                         <li><details>
                                 <summary> Actualizar Informacion </summary>
-                                <a href="../Controllers/UserController.php?action=update"> Nombre De Usuario </a>
-
-                            
-
+                                <a href=""  data-bs-toggle="modal" data-bs-target="#exampleModal">Nombre De Usuario </a>
                             </details>
                         </li>
                         <li><a href="../Controllers/UserController.php?action=delete"> Eliminar Cuenta </a></li>
-                        <li><a href="#"> Cerrar sesión </a></li>
+                        <li><a href="./UserController.php"> Cerrar sesión </a></li>
                     </ul>
                 </section>
 
@@ -90,7 +88,30 @@
         </section>
     </nav>
 </header>
-
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Actualiza Nombre De Usuario </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <form action="UserController.php" method="POST">
+            <input type="hidden" name="action" value="actualizar">
+            <div class="modal-body">
+                <label for="nombre"> Nombre Actual </label>
+                <input type="text" class="form-control" value="<?php echo $_SESSION['nombre_usr']; ?>" readonly>
+                <hr class="salto">
+                <label for="nombre"> Nuevo Nombre De Usuario </label>
+                <input type="text" placeholder="SpiritDark1164" class="form-control shadow-none" name="nombre_usr">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
 <!--  -->
 <main>
 

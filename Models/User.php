@@ -73,5 +73,18 @@ class User{
 
         return $busquedaObjeto;
     }
+
+    public function updateNombreUsuario($nuevo_nombre){
+        include_once '../Config/conexiondb.php';
+        $conexion = new Conexion();
+
+        $sql = "UPDATE tbl_usuario SET nombre_usr = '$nuevo_nombre' WHERE id_usr = '$_SESSION[id_usr]'";
+        $insert = $conexion->stm->prepare($sql);
+
+        session_start();
+        $_SESSION['nombre_usr'] = $nuevo_nombre;
+
+        $insert->execute();
+    }
 }
 ?>

@@ -177,6 +177,18 @@ if (isset($_GET['action']) && $_GET['action'] == 'update') {
     return;
 }
 
+if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
+    $usercontroler = new UserController();
+    session_start();
+
+    $usercontroler->updateNombreUsuario($_POST['nombre_usr']);
+
+    $usercontroler->VistaUsuario();
+
+    // $usercontroler->RedirectUpdate();
+    return;
+}
+
 // Action vista predefinida
 if(session_status() == 1){
     $usercontroler = new UserController();
