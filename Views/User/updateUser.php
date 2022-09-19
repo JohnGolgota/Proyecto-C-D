@@ -9,7 +9,11 @@
 <body>
     <h1> ¿Deseas Actualizar tu Nombre? </h1>
 
-    <label for=""> Nombre Actual </label>
-    <input type="text" <?php include '../Controllers/UserController.php'; ?>>
+    <label for=""> Nombre Actual: 
+    <?php 
+        echo $_SESSION[nombre_usr]; 
+    ?>
+    </label>
+    <input type="text" value="<?php echo $_SESSION[id_usr]; ?>">
 </body>
 </html>

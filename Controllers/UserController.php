@@ -165,11 +165,13 @@ if (isset($_GET['action']) && $_GET['action'] == 'confirm_delete') {
 # Redireccion a Actualizar Nombre.
 if (isset($_GET['action']) && $_GET['action'] == 'update') {
     $usercontroler = new UserController();
-    $usercontroler->RedirectDelete();
+    session_start();
+    $busquedaObjeto = $this->TraerNombreUsuario();
+    foreach ($busquedaObjeto as $obj) {}
+
+    $usercontroler->RedirectUpdate();
     return;
 }
-
-
 
 // Action vista predefinida
 if(session_status() == 1){
