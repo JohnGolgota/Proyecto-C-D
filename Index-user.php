@@ -116,7 +116,7 @@
                 </div>
             </div>
             <div class="div-content-btn">
-                <button class="btn btn-primary btn-continuar-pomodoro" id="btn-continuar-pomodoro" onclick="startPomodoro();" style="display:block;"> Continuar </button>
+                <button class="btn btn-primary btn-continuar-pomodoro" id="btn-continuar-pomodoro" onclick="pomodoroExecute();" style="display:block;"> Continuar </button>
                 <button class="btn btn-primary btn-parar-pomodoro" id="btn-parar-pomodoro" onclick="pomodoroStop();" style="display: none;"> Parar </button>
             </div>
             </section>
