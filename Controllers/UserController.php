@@ -67,10 +67,10 @@ class UserController extends User{
         $this->RegistrarUsuario();
         $this->VistaUsuario();
 
-        $datosUsuario = $this->ConsultarUsuario($nombre);
-        
-        session_start();
-        $_SESSION['nombre_usr'] = $dU->nombre_usr;
+        // $datosUsuario = $this->ConsultarUsuario($nombre);
+
+        // session_start();
+        // $_SESSION['nombre_usr'] = $dU->nombre_usr;
 
         return;
         # Roto: Arreglar porque no redirige al Pagina index del usuario.
