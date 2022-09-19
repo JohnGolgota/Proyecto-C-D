@@ -20,19 +20,19 @@
 <?php 
     include '../Inc/header.php'; 
     session_start();
+    
 ?>
 <title> Carpe Diem | <?php echo $_SESSION['nombre_usr']; ?> </title>
-
 <?php include '../Inc/nav.php'; ?>
 
 <!-- Encabezado, botones y tema -->
 <header class="align-items-center navbar navbar-expand-sm position-relative cabeza d-flex">
     <nav class="container-xxl cabeza-nav-user">
         <!-- logo -->
-        <section class="col-md-3"><a href="#"><img src="./Imagenes/favicon-min.png" alt="Logo" width="35px"></a></section>
+        <section class=""><a href="#"><img src="./Imagenes/favicon-min.png" alt="Logo" width="35px"></a></section>
 
         <!-- botones -->
-        <section class="navbar-nav d-inline align-items-end text-end position-absolute end-0 botones">
+        <section class="d-inline align-items-end text-end position-absolute end-0 botones row">
             <!-- Boton "+" -->
             <section class="nav-item">
                 <button class="boton-mas"> + </button>
