@@ -17,9 +17,11 @@
 // var_dump($user);
 # nice code.
 ?>
-<?php include '../Inc/header.php'; ?>
-
-<title> Carpe Diem | <?php  ?> </title>
+<?php 
+    include '../Inc/header.php'; 
+    session_start();
+?>
+<title> Carpe Diem | <?php echo $_SESSION['nombre_usr']; ?> </title>
 
 <?php include '../Inc/nav.php'; ?>
 

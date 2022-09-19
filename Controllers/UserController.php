@@ -65,7 +65,13 @@ class UserController extends User{
         $contrasenaEncript = password_hash($contrasena,PASSWORD_ARGON2ID);
         $this->contrasena_usr = $contrasenaEncript;
         $this->RegistrarUsuario();
-        $this->RedirectLogin();
+        $this->VistaUsuario();
+
+        $datosUsuario = $this->ConsultarUsuario($nombre);
+        
+        session_start();
+        $_SESSION['nombre_usr'] = $dU->nombre_usr;
+
         return;
         # Roto: Arreglar porque no redirige al Pagina index del usuario.
     }
