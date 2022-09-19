@@ -58,6 +58,9 @@
                         <li><details>
                                 <summary> Actualizar Informacion </summary>
                                 <a href="../Controllers/UserController.php?action=update"> Nombre De Usuario </a>
+
+                            
+
                             </details>
                         </li>
                         <li><a href="../Controllers/UserController.php?action=delete"> Eliminar Cuenta </a></li>

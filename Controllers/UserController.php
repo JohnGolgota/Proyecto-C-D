@@ -126,6 +126,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'session' && !empty($_POST['Usu
     $usercontroler = new UserController();
     $usercontroler->VerificaInicio($_POST['UsuarioIS'],$_POST['ContrasenaIS']);
     $usercontroler->VistaUsuario();
+    $objetoPrueba = $usercontroler->traerNombreUsuario();
+    var_dump($objetoPrueba);
+    
     return;
 }
 //  inicio de session fallido
@@ -166,10 +169,11 @@ if (isset($_GET['action']) && $_GET['action'] == 'confirm_delete') {
 if (isset($_GET['action']) && $_GET['action'] == 'update') {
     $usercontroler = new UserController();
     session_start();
-    $busquedaObjeto = $this->TraerNombreUsuario();
+
+    $busquedaObjeto = $usercontroler->TraerNombreUsuario();
     foreach ($busquedaObjeto as $obj) {}
 
-    $usercontroler->RedirectUpdate();
+    // $usercontroler->RedirectUpdate();
     return;
 }
 

@@ -65,11 +65,13 @@ class User{
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
-        $sql = "SELECT nombre_usr FROM tbl_usuario WHERE id_usr = '$_SESSION[id_usr]'";
+        $sql = "SELECT * FROM tbl_usuario WHERE id_usr = '$_SESSION[id_usr]'";
         $insert = $conexion->stm->prepare($sql);
 
         $insert->execute();
         $busquedaObjeto = $insert->fetchAll(PDO::FETCH_OBJ);
+
+        return $busquedaObjeto;
     }
 }
 ?>
