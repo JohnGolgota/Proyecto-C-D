@@ -189,6 +189,15 @@ if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
     return;
 }
 
+# Cerrar Sesion.
+if (isset($_GET['action']) && $_GET['action'] == 'abort') {
+    $usercontroler = new UserController();
+    $usercontroler->VistaRegistro();
+
+    session_destroy();
+    return;
+}
+
 // Action vista predefinida
 if(session_status() == 1){
     $usercontroler = new UserController();
