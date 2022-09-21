@@ -4,7 +4,7 @@
 </head>
 <body>
 <?php
-// session_start();
+session_start();
 
 include_once '../Models/User.php';
 class UserController extends User{
@@ -17,7 +17,7 @@ class UserController extends User{
         include '../Views/User/index.html';
     }
     public function VistaUsuario()
-    {
+    {   
         include '../Views/User/Index-user.php';
     }
     public function RedirectLogin()
@@ -72,9 +72,11 @@ class UserController extends User{
         $this->nombre_usr = $alias[0];
         $contrasenaEncript = password_hash($contrasena,PASSWORD_ARGON2ID);
         $this->contrasena_usr = $contrasenaEncript;
-        $this->RegistrarUsuario();
+
+        $this->RegistrarUsuario();  
         $this->VistaUsuario();
 
+        
         // $datosUsuario = $this->ConsultarUsuario($nombre);
 
         // session_start();
@@ -93,7 +95,7 @@ class UserController extends User{
         # Recorremos el objeto que obtenemos en el model.
         foreach ($datosUsuario as $dU) {}
         if (password_verify($contrasena,$dU->contrasena_usr)) {
-            session_start();
+            // session_start();
             $_SESSION['nombre_usr'] = $dU->nombre_usr;
             $_SESSION['id_usr'] = $dU->id_usr;
             var_dump($datosUsuario);
@@ -122,7 +124,7 @@ if (isset($_GET['action']) && $_GET['action'] =='registrar' && empty($_POST['Usu
 
 // inicio de sesion.
 if (isset($_GET['action']) && $_GET['action'] == 'session' && !empty($_POST['UsuarioIS']) && !empty($_POST['ContrasenaIS'])) {
-    echo "holiwi";
+    // echo "holiwi";
     $usercontroler = new UserController();
     $usercontroler->VerificaInicio($_POST['UsuarioIS'],$_POST['ContrasenaIS']);
     $usercontroler->VistaUsuario();
@@ -133,7 +135,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'session' && !empty($_POST['Usu
 }
 //  inicio de session fallido
 if (isset($_GET['action']) && $_GET['action'] =='session' && empty($_POST['UsuarioIS'] || $_POST['ContrasenaIS'])) {
-    echo "Camopos no validos";
+    echo "Campos no validos";
     return;
 }
 
@@ -155,7 +157,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 if (isset($_GET['action']) && $_GET['action'] == 'confirm_delete') {
     $usercontroler = new UserController();
 
-    session_start();
+    // session_start();
     // $_SESSION['id_usr'];
     
     # Accedemos a la funcion de "Eliminar Usuario".
@@ -168,7 +170,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'confirm_delete') {
 # Redireccion a Actualizar Nombre.
 if (isset($_GET['action']) && $_GET['action'] == 'update') {
     $usercontroler = new UserController();
-    session_start();
+    // session_start();
 
     $busquedaObjeto = $usercontroler->TraerNombreUsuario();
     foreach ($busquedaObjeto as $obj) {}
@@ -179,7 +181,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'update') {
 
 if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
     $usercontroler = new UserController();
-    session_start();
+    // session_start();
 
     $usercontroler->updateNombreUsuario($_POST['nombre_usr']);
 
@@ -199,7 +201,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'abort') {
 }
 
 // Action vista predefinida
-if(session_status() == 1){
+if(isset($_GET) || !isset($_GET)){
     $usercontroler = new UserController();
     $usercontroler->VistaIndex();
     return;
