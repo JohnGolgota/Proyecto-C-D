@@ -28,21 +28,21 @@
             "donjayamanne.githistory",
             "codezombiech.gitignore",
             "ritwickdey.liveserver",
-            "ms-vsliveshare.vsliveshare",
-            "hookyqr.minify",
-            "ms-vscode-remote.remote-containers",
-            "chakrounanas.turbo-console-log",
+            // "ms-vsliveshare.vsliveshare",
+            // "hookyqr.minify",
+            // "ms-vscode-remote.remote-containers",
+            // "chakrounanas.turbo-console-log",
             "dbaeumer.vscode-eslint",
             "oderwat.indent-rainbow",
-            "jock.svg",
+            // "jock.svg",
             "tabnine.tabnine-vscode",
-            "ms-python.python",
+            // "ms-python.python",
             "zobo.php-intellisense",
             "xdebug.php-debug",
-            "dzhavat.css-flexbox-cheatsheet",
+            // "dzhavat.css-flexbox-cheatsheet",
             "pkief.material-icon-theme",
-            "bmewburn.vscode-intelephense-client",
-            "eamodio.gitlens"
+            // "eamodio.gitlens",
+            "bmewburn.vscode-intelephense-client"
         ]
 	}
 }
