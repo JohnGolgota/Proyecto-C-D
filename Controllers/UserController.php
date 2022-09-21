@@ -5,7 +5,6 @@
 <body>
 <?php
 session_start();
-
 include_once '../Models/User.php';
 class UserController extends User{
     public function VistaIndex()
