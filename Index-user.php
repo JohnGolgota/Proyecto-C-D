@@ -107,7 +107,7 @@
             <input type="text" class="nombre-pomodoro" placeholder="Nombre Actividad" maxlength="24">
             <div class="config-pomodoro">
                 <input type="number" class="nombre-pomodoro left-input" id="minutes" placeholder="Tiempo De Actividad" maxlength="24">
-                <input type="number" class="nombre-pomodoro left-input" id="shortbreak" placeholder="Pausa Corta" maxlength="24">
+                <input type="number" class="nombre-pomodoro left-input" id="shortbreak" placeholder="Pausa Corta" maxlength="24" value="5">
                 <input type="number" class="nombre-pomodoro left-input" id="longbreak" placeholder="Pausa Larga" maxlength="24">
             </div>
             <div class="reloj-pomodoro">
@@ -116,7 +116,7 @@
                 </div>
             </div>
             <div class="div-content-btn">
-                <button class="btn btn-primary btn-continuar-pomodoro" id="btn-continuar-pomodoro" onclick="pomodoroExecute();" style="display:block;"> Continuar </button>
+                <button class="btn btn-primary btn-continuar-pomodoro" id="btn-continuar-pomodoro" onclick="prueba(minutes);" style="display:block;"> Continuar </button>
                 <button class="btn btn-primary btn-parar-pomodoro" id="btn-parar-pomodoro" onclick="pomodoroStop();" style="display: none;"> Parar </button>
             </div>
             </section>
