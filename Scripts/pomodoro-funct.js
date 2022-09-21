@@ -138,16 +138,3 @@ function pomodoroAlert(){
         });
     }
 }
-
-function pomodoroExecute(){
-    pomodoroValues();
-    pomodoroTimer();
-}
-
-// pomodoroValues();
-
-// console.log(change);
-// pomodoroValues();
-
-// console.log(change);
-// pomodoroValues();
