@@ -20,16 +20,17 @@ class UserController extends User{
     {
         include '../Views/User/Index-user.php';
     }
-    public function RedirectLogin()
-    {
-        include '../Views/User/login.php';
-    }
-
-    public function RedirectDelete(){
+    
+    public function VistaDelete(){
         include '../Views/User/deleteUser.html';
     }
 
-    public function RedirectUpdate(){
+    public function VistaLogin()
+    {
+        include '../Views/User/login.php';
+    }
+    
+    public function VistaUpdate(){
         include '../Views/User/updateUser.php';
     }
 
@@ -147,7 +148,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'inicio') {
 # Redireccion a Eliminar Cuenta
 if (isset($_GET['action']) && $_GET['action'] == 'delete') {
     $usercontroler = new UserController();
-    $usercontroler->RedirectDelete();
+    $usercontroler->VistaDelete();
     return;
 }
 
@@ -173,7 +174,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'update') {
     $busquedaObjeto = $usercontroler->TraerNombreUsuario();
     foreach ($busquedaObjeto as $obj) {}
 
-    // $usercontroler->RedirectUpdate();
+    // $usercontroler->VistaUpdate();
     return;
 }
 
@@ -185,7 +186,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
 
     $usercontroler->VistaUsuario();
 
-    // $usercontroler->RedirectUpdate();
+    // $usercontroler->VistaUpdate();
     return;
 }
 
