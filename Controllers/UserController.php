@@ -56,6 +56,7 @@ class UserController extends User{
             session_destroy();
             die("Ya existe una cuenta con este correo");
         }
+        
         if ($cContrasena !== $contrasena) {
             session_destroy();
             die("Las Contraseñas no coinciden");
