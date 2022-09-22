@@ -17,6 +17,9 @@ class User{
         $insert->bindParam(1,$this->nombre_usr);
         $insert->bindParam(2,$this->correo_usr);
         $insert->bindParam(3,$this->contrasena_usr);
+
+        $_SESSION['nombre_usr'] = $this->nombre_usr;
+
         $insert->execute();
         // header("location: UserController.php?action=login");
     }

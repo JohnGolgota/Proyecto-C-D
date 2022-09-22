@@ -5,6 +5,7 @@
 <body>
 <?php
 session_start();
+
 include_once '../Models/User.php';
 class UserController extends User{
     public function VistaIndex()
@@ -98,13 +99,13 @@ class UserController extends User{
             // session_start();
             $_SESSION['nombre_usr'] = $dU->nombre_usr;
             $_SESSION['id_usr'] = $dU->id_usr;
-            var_dump($datosUsuario);
+            // var_dump($datosUsuario);
             return $_SESSION;
         }
 
         # Si no funciona el inicio de sesion pero devuelve un objeto.
         else {
-            var_dump($datosUsuario);
+            // var_dump($datosUsuario);
             die("Fallo al intentar iniciar session");
         }
     }
@@ -129,7 +130,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'session' && !empty($_POST['Usu
     $usercontroler->VerificaInicio($_POST['UsuarioIS'],$_POST['ContrasenaIS']);
     $usercontroler->VistaUsuario();
     $objetoPrueba = $usercontroler->traerNombreUsuario();
-    var_dump($objetoPrueba);
+    // var_dump($objetoPrueba);
     
     return;
 }
@@ -184,7 +185,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
     // session_start();
 
     $usercontroler->updateNombreUsuario($_POST['nombre_usr']);
-
     $usercontroler->VistaUsuario();
 
     // $usercontroler->VistaUpdate();

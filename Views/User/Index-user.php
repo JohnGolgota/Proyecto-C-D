@@ -22,7 +22,7 @@
     // session_start();
     
 ?>
-<title> Carpe Diem | <?php echo $_SESSION['id_usr']; ?> </title>
+<title> Carpe Diem | <?php echo $_SESSION['nombre_usr']; ?> </title>
 <?php include '../Inc/nav.php'; ?>
 
 <!-- Encabezado, botones y tema -->
