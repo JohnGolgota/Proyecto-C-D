@@ -24,25 +24,20 @@
     },
 	"extensions": {
 		"recommendations": [
-            "pranaygp.vscode-css-peek",
-            "donjayamanne.githistory",
-            "codezombiech.gitignore",
-            "ritwickdey.liveserver",
-            // "ms-vsliveshare.vsliveshare",
-            // "hookyqr.minify",
-            // "ms-vscode-remote.remote-containers",
-            // "chakrounanas.turbo-console-log",
-            "dbaeumer.vscode-eslint",
-            "oderwat.indent-rainbow",
-            // "jock.svg",
-            "tabnine.tabnine-vscode",
-            // "ms-python.python",
-            "zobo.php-intellisense",
-            "xdebug.php-debug",
-            // "dzhavat.css-flexbox-cheatsheet",
-            "pkief.material-icon-theme",
-            // "eamodio.gitlens",
-            "bmewburn.vscode-intelephense-client"
+            "pranaygp.vscode-css-peek", //CSS PEEK
+            "donjayamanne.githistory",// GIT HISTORY
+            "codezombiech.gitignore",// GIT IGNORE
+            "ritwickdey.liveserver",//LIVE SERVER
+            "dbaeumer.vscode-eslint",// eslint
+            "oderwat.indent-rainbow",// rainbow indentation
+            "tabnine.tabnine-vscode",// tab nine
+            "zobo.php-intellisense",// intelli sense
+            "xdebug.php-debug",// debug php
+            "pkief.material-icon-theme",// icon theme
+            "bmewburn.vscode-intelephense-client",// intele phense
+            "gruntfuggly.todo-tree",// Arbol
+            "alefragnani.bookmarks",// Markadores
+            "aaron-bond.better-comments"// coments
         ]
 	}
 }
