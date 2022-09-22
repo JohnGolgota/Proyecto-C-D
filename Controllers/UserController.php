@@ -45,25 +45,31 @@ class UserController extends User{
         # Si retorna un elemento en vez de nada, entonces rompe.
         $comprobacion = $this->ComprobarCorreo($email);
         if ($comprobacion != "") {
+            session_destroy();
             die("Ya existe una cuenta con este correo");
         }
         if ($cContrasena !== $contrasena) {
+            session_destroy();
             die("Las Contraseñas no coinciden");
         }
 
         # strlen Idenfifica Cuantos caracteres hay
         if (strlen($_POST['UsuarioRC']) < 4) {
+            session_destroy();
             die('La contraseña debe tener al menos 4 caracteres.');
         }
         if (strlen($_POST['UsuarioRC']) > 10) {
+            session_destroy();
             die('La contraseña no puede tener mas de 10 caracteres.');
         }
 
         # preg_match Exige que la contraseña tenga al menos un caracter del diccionario especificado.
         if (!preg_match('`[a-z]`', $_POST['UsuarioRC'])) {
+            session_destroy();
             die('La contraseña debe tener al menos una letra minuscula.');
         }
         if (!preg_match('`[0-9]`', $_POST['UsuarioRC'])) {
+            session_destroy();
             die('La contraseña debe tener al menos un numero.');
         }
 
@@ -106,6 +112,7 @@ class UserController extends User{
         # Si no funciona el inicio de sesion pero devuelve un objeto.
         else {
             // var_dump($datosUsuario);
+            session_destroy();
             die("Fallo al intentar iniciar session");
         }
     }
