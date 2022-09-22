@@ -36,62 +36,40 @@
     --dkalt: #212121;
 }
 
-
-
-/* ---------------------------- Subcategoria: Nav-bar ---------------------------------- */
-.menu-user {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: block;
-
-    width: 45px;
-
-    border-radius: 0px;
+* {
+    margin: 0;
+    padding: 0;
+    transition: none;
+    translate: none;
+    transform: none;
+    animation: none;
 }
 
-.user-nav {
-    position: relative;
-    margin-right: -30px;
+body {
+    overflow-x: hidden;
+    /* background: linear-gradient(to left, var(--color3), var(--color4));  */
+    /* background: red; */
 }
 
-.icono {
-    position: relative;
-    top: 1.3px;
-    margin-right: 9px;
-}
-.usuario {
-    position: relative;
-    max-width: 250px;
-    margin-left: 25px;
+
+
+.botones {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+    outline: 3px solid black;
 }
 
-.boton-mas {
-    border: none;
-    background: none;
-    color: #fff;  
+/* .cabeza-nav-user button, .contenido-switch, .usuario {
+    outline: 3px solid black;
+} */
+
+.contenido-menu {
+    width: 100%;
 }
 
-.boton-mas:hover {
-    border-bottom: 1px solid #fff;
-}
-
-.nav-item {
-    position: absolute;
-    top: -2px;
-    right: 310px;
-
-    padding: 2px 8px;
-    
-    font-size: 28px;
-}
-
-.contenido-switch {
-    /* outline: 1px solid red; */
-    position: absolute;
-    right: 223px;
-    /* outline: 1px solid red; */
-}
 
 .switch {
     --width-of-switch: 3.5em;

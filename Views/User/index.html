@@ -5,22 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Carpe Diem | Inicio </title>
-
+    
     <!-- Icono página -->
     <link rel="shortcut icon" href="../Public/Img/favicon.png" type="image/x-icon">
-
+    
     <!-- Bootstrap 5 -->
     <link rel="stylesheet" href="../Public/Css/bootstrap.min.css">
-
+    
     <!-- hojas de estilo personalizadas -->
     <link rel="stylesheet" href="../Public/Css/style.css">
-
+    
     <!-- librerias importadas -->
     <!-- ScrollReveal -->
     <script src="../Public/Js/scrollreveal.min.js"></script>
+
+    <title> Carpe Diem | Inicio </title>
 </head>
-<body class="" onload="OnloadFunction();">
+<body class="">
     <!-- Encabezado, botones y modo oscuro -->
     <header class="align-items-center navbar navbar-expand-sm position-relative header-reveal cabeza cabeza-dark" id="cabeza">
         <nav class="container-xxl cabeza-nav">
@@ -234,7 +235,7 @@
                                 <a href="https://github.com/DuvanArwenLazar" target="_blank" class="text-white"><i class="fas fa-user pe-3"></i>Duvan Arwen Lazar </a>
                             </li>
                             <li class="mb-2">
-                                <a href="#!" class="text-white"><i class="fas fa-user pe-3"></i>Ivan</a>
+                                <!-- <a href="#!" class="text-white"><i class="fas fa-user pe-3"></i>Ivan</a> -->
                             </li>
                         </ul>
                     </div>
@@ -290,7 +291,7 @@
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-inicio">
 <!-- Aqui -->
-                    <form action="./bd/conexion-php/iniciosesion.php" class="" method="POST" novalidate>
+                    <form action="UserController.php?action=session" class="" method="POST" novalidate>
                         <input type="text" name="UsuarioIS" id="usuarioIS" placeholder="Nombre De Usuario" class="form-control shadow-none" required>
                         <input type="password" name="ContrasenaIS" id="contrasenaIS" placeholder="Contraseña" class="form-control shadow-none" required>
 
@@ -324,7 +325,8 @@
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-registro">
 <!-- Aqui -->
-                    <form action="./bd/conexion-php/registrousu.php" method="POST" novalidate id="formulario-registro" >
+                    <form action="UserController.php?action=registrar" method="POST" novalidate id="formulario-registro">
+                        <input type="hidden" name="action" value="registrar">
                         <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo" class="form-control shadow-none" required>
                         <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
                         <input onkeypress="ValidarContraseña();" type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
@@ -366,5 +368,4 @@
     <!-- Scripts Temporales:  -->
     <script src="../Public/Js/main.js"></script>
 </body>
-
 </html>

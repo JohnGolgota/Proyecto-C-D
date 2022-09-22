@@ -14,13 +14,22 @@ ScrollReveal().reveal('.item-reveal', { delay: 550 });
 
 
 
-// ------------------------- Acceder al inicio, registro y herramientas ------------------------- //
+// ------------------------- Acceder al inicio, registro, herramientas y configuracion. ------------------------- //
 function menuDesplegable(){
     if(document.getElementById("menuDesplegable").style.display == "none"){
         document.getElementById("menuDesplegable").style.display = "block";
     }
     else {
         document.getElementById("menuDesplegable").style.display = "none";
+    }
+}
+
+function configDesplegable(){
+    if(document.getElementById("configDesplegable").style.display == "none"){
+        document.getElementById("configDesplegable").style.display = "block";
+    }
+    else {
+        document.getElementById("configDesplegable").style.display = "none";
     }
 }
 

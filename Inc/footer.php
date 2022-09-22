@@ -1,47 +1,21 @@
-<script src="../Public/Js/sweetalert.min.js"></script>
-<script>
-    function borrarRegistro(id) {
-        swal({
-                title: "¿Seguro?",
-                text: "El registro sera irecuperable!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    swal("Poof! Se comvirtio en chocapick!", {
-                        icon: "success",
-                    });
-                    location.href = "./eliminar.php?id=" + id;
-                } else {
-                    swal("Salvado!");
-                }
-            });
-    }
-    function borrarCargo(id) {
-        swal({
-                title: "¿Seguro?",
-                text: "El registro sera irecuperable!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    swal("Poof! Se comvirtio en chocapick!", {
-                        icon: "success",
-                    });
-                    location.href = "./eliminarcargo.php?id=" + id;
-                } else {
-                    swal("Salvado!");
-                }
-            });
-    }
-</script>
-<script>
-    $('.ui.dropdown').dropdown();
-</script>
+    <!-- Scripts Inportados: -->
+    <!-- Bootstrap -->
+    <script src="../Public/Js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/8a160a18f4.js" crossorigin="anonymous"></script>
+
+    <!-- Scripts perzonalizados: -->
+    <!-- Animacion de los logos. -->
+    <script src="../Public/Js/sweetalert.min.js"></script>
+    <script>
+        function detallesTC() {
+            swal('No hay.')
+        }
+    </script>
+    <script src="../Public/Js/iconrevel.min.js"></script>
+    <script src="../Public/Js/app.js"></script>
+
+    <!-- Scripts Temporales:  -->
+    <script src="../Public/Js/main.js"></script>
 </body>
 
 </html>
