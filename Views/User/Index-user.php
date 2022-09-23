@@ -17,10 +17,10 @@
 // var_dump($user);
 # nice code.
 ?>
-<?php 
-    include '../Inc/header.php'; 
-    // session_start();
-    
+<?php
+include '../Inc/header.php';
+// session_start();
+
 ?>
 <title> Carpe Diem | <?php echo $_SESSION['nombre_usr']; ?> </title>
 <?php include '../Inc/nav.php'; ?>
@@ -61,9 +61,10 @@
                         <hr class="salto">
                         <li><a href="#HerramientaUno"> Personalizacion </a></li>
                         <hr class="salto">
-                        <li><details>
+                        <li>
+                            <details>
                                 <summary> Actualizar Informacion </summary>
-                                <a href=""  data-bs-toggle="modal" data-bs-target="#exampleModal">Nombre De Usuario </a>
+                                <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Nombre De Usuario </a>
                             </details>
                         </li>
                         <li><a href="../Controllers/UserController.php?action=delete"> Eliminar Cuenta </a></li>
@@ -71,8 +72,8 @@
                     </ul>
                 </section>
 
-            <!-- boton Menu Desplegable. -->
-            <!-- <button class="boton menu-user menu-user-herramientas" onclick="menuDesplegable();"> ... </button>
+                <!-- boton Menu Desplegable. -->
+                <!-- <button class="boton menu-user menu-user-herramientas" onclick="menuDesplegable();"> ... </button>
             <aside id="menuDesplegable" style="display: none;" class="menu-no">
                 <section class="contenido-menu">
                     <ul>
@@ -93,28 +94,28 @@
     </nav>
 </header>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"> Actualiza Nombre De Usuario </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-        <form action="UserController.php" method="POST">
-            <input type="hidden" name="action" value="actualizar">
-            <div class="modal-body">
-                <label for="nombre"> Nombre Actual </label>
-                <input type="text" class="form-control" value="<?php echo $_SESSION['nombre_usr']; ?>" readonly>
-                <hr class="salto">
-                <label for="nombre"> Nuevo Nombre De Usuario </label>
-                <input type="text" placeholder="SpiritDark1164" class="form-control shadow-none" name="nombre_usr">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Actualiza Nombre De Usuario </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-        </form>
+            <form action="UserController.php" method="POST">
+                <input type="hidden" name="action" value="actualizar">
+                <div class="modal-body">
+                    <label for="nombre"> Nombre Actual </label>
+                    <input type="text" class="form-control" value="<?php echo $_SESSION['nombre_usr']; ?>" readonly>
+                    <hr class="salto">
+                    <label for="nombre"> Nuevo Nombre De Usuario </label>
+                    <input type="text" placeholder="SpiritDark1164" class="form-control shadow-none" name="nombre_usr">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
     </div>
-  </div>
 </div>
 <!--  -->
 <main>
