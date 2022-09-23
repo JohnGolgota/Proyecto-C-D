@@ -72,9 +72,8 @@
                 </section>
 
             <!-- boton Menu Desplegable. -->
-            <button class="boton menu-user menu-user-herramientas" onclick="menuDesplegable();"> ... </button>
+            <!-- <button class="boton menu-user menu-user-herramientas" onclick="menuDesplegable();"> ... </button>
             <aside id="menuDesplegable" style="display: none;" class="menu-no">
-                <!--  -->
                 <section class="contenido-menu">
                     <ul>
                         <hr class="salto">
@@ -89,7 +88,7 @@
                         <li><a href="index.html"> Cerrar sesión </a></li>
                     </ul>
                 </section>
-            </aside>
+            </aside> -->
         </section>
     </nav>
 </header>
