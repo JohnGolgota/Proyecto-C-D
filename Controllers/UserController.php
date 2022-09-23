@@ -224,7 +224,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'abort') {
 // Action vista predefinida
 if(isset($_GET) || !isset($_GET)){
     $usercontroler = new UserController();
-    $usercontroler->VistaIndex();
+    $usercontroler->RedirigirNoUsuario();
     return;
 }
 
