@@ -1,23 +1,4 @@
 <?php
-// $id = $_GET['id'];
-
-// include './bd/conexion-php/conexiondb.php';
-// $conexion = new Conexion();
-// $conexion->BdConnect();
-
-// $sql = "SELECT * FROM tbl_usuario WHERE id_usr=$id";
-
-// $buscar = $conexion->stm->prepare($sql);
-// $buscar->execute();
-
-// $rowUser = $buscar->fetchAll(PDO::FETCH_OBJ);
-// foreach ($rowUser as $user) {
-// }
-
-// var_dump($user);
-# nice code.
-?>
-<?php
 include '../Inc/header.php';
 // session_start();
 
