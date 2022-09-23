@@ -88,7 +88,7 @@ function modoOscuroUser(){
     document.querySelectorAll(".herramienta")[0].classList.toggle('herramienta-dark-mode');
     document.querySelectorAll(".herramienta")[1].classList.toggle('herramienta-dark-mode');
     document.querySelectorAll(".herramienta")[2].classList.toggle('herramienta-dark-mode');
-    
+
     document.querySelector(".footer-cd-f").classList.toggle('footer-cd-f-dark-mode');
 }
 
@@ -103,4 +103,49 @@ function ValidarContraseña() {
     if (contrasen == comprobarContrasena) {
         mensajeConfirmacion.textContent = "A"
     }
+}
+
+function alerta(titulo, texto) {
+    var fondo = document.createElement('div');
+    // fondo.style.backgroundImage = "url(img/fondo.gif)";
+    fondo.style.position = "absolute";
+    fondo.style.width = "100%";
+    fondo.style.height = "100%";
+    fondo.style.top = "0px";
+    fondo.style.left = "0px";
+    fondo.style.verticalAlign = "middle";
+    fondo.align = "center";
+
+    var ventana = document.createElement('div');
+    ventana.style.width = "200px";
+    ventana.style.margin = "5px";
+    ventana.style.border = "solid 1px #999999";
+    ventana.style.backgroundColor = "#FFFFFF";
+    
+    var barraTitulo = document.createElement('div');
+        barraTitulo.style.backgroundColor = "#e2e3e5";
+        barraTitulo.innerHTML = titulo;
+    
+    var contenido = document.createElement('div');
+        contenido.style.padding = "5px";
+        contenido.innerHTML = texto;
+    
+    var cerrar = document.createElement('div');
+        cerrar.style.padding = "5px";
+
+    var boton = document.createElement('input');
+    boton.type = "button";
+    boton.value = "Aceptar";
+    boton.onclick = function() {
+        fondo.style.visibility = "hidden";
+    }
+
+    ventana.appendChild (barraTitulo);
+    ventana.appendChild (contenido);
+    ventana.appendChild (cerrar);
+      
+    fondo.appendChild (ventana);
+    document.body.appendChild(fondo);
+
+    return true;
 }

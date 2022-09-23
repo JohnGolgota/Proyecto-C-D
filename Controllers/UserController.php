@@ -89,8 +89,10 @@ class UserController extends User{
         $contrasenaEncript = password_hash($contrasena,PASSWORD_ARGON2ID);
         $this->contrasena_usr = $contrasenaEncript;
 
-        $this->RegistrarUsuario();  
+        $this->RegistrarUsuario(); 
         $this->VistaUsuario();
+
+        echo "<script type='text/javascript'> alert(`gey el que lo lea`); </script>";
 
         
         // $datosUsuario = $this->ConsultarUsuario($nombre);
