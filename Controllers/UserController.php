@@ -91,7 +91,7 @@ class UserController extends User{
 
         $this->RegistrarUsuario(); 
         $this->VistaUsuario();
-        
+
         // $datosUsuario = $this->ConsultarUsuario($nombre);
 
         // session_start();
