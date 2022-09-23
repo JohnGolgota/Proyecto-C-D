@@ -29,23 +29,28 @@
 <header class="align-items-center navbar navbar-expand-sm position-relative cabeza d-flex">
     <nav class="container-xxl cabeza-nav-user">
         <!-- logo -->
-        <section class=""><a href="#"><img src="./Imagenes/favicon-min.png" alt="Logo" width="35px"></a></section>
+        <section class=""><a href="#"><img src="../Public/Img/favicon-min.png" alt="Logo" width="35px"></a></section>
 
         <!-- botones -->
         <section class="d-inline align-items-end text-end position-absolute end-0 botones row">
+            <!-- Boton user -->
+            <section class="mt-2 usuario boton-usr-container">
+                <i onclick="configDesplegable();" class="fa-solid fa-user icono m-2 icono-user"></i><label onclick="configDesplegable();" for="" class="user-nav label-nav nombre-user"> <?php echo $_SESSION['nombre_usr']; ?> </label>
+            </section>
+
             <!-- Boton "+" -->
-            <section class="nav-item">
+            <section class="nav-item boton-mas-container">
                 <button class="boton-mas"> + </button>
             </section>
 
             <!-- switch -->
-            <section class="contenido-switch"><label class="switch align-items-center"><input type="checkbox" class="input-banner"><span class="slider"></span></label></section>
-
-            <!-- Boton user -->
-            <section class="mt-2 usuario">
-                <i class="fa-solid fa-user icono"></i><label onclick="configDesplegable();" for="" class="user-nav label-nav"> <?php echo $_SESSION['nombre_usr']; ?> </label>
+            <section class="contenido-switch contenido-switch-user">
+                <label class="switch align-items-center">
+                    <input type="checkbox" class="input-banner" onclick="modoOscuro();">
+                    <span class="slider"></span>
+                </label>
             </section>
-          
+
             <aside id="configDesplegable" style="display: none;" class="menu-no">
                 <!--  -->
                 <section class="contenido-menu">
@@ -67,7 +72,7 @@
                 </section>
 
             <!-- boton Menu Desplegable. -->
-            <button class="boton menu-user" onclick="menuDesplegable();"> ... </button>
+            <button class="boton menu-user menu-user-herramientas" onclick="menuDesplegable();"> ... </button>
             <aside id="menuDesplegable" style="display: none;" class="menu-no">
                 <!--  -->
                 <section class="contenido-menu">

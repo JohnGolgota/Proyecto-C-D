@@ -22,6 +22,14 @@
 
 
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
 :root {
     --color1: #06283D;
     --color2: #1363DF;
@@ -36,40 +44,38 @@
     --dkalt: #212121;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    transition: none;
-    translate: none;
-    transform: none;
-    animation: none;
+
+
+/* ----------------------------------- BARRA DE NAVEGACION ----------------------------------- */
+.boton-usr-container {
+    position: absolute;
+    bottom: 5px;
+
 }
 
-body {
-    overflow-x: hidden;
-    /* background: linear-gradient(to left, var(--color3), var(--color4));  */
-    /* background: red; */
+.boton-mas-container {
+    position: absolute;
+    right: 175px;
+    bottom: -6px;
 }
 
-
-
-.botones {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-
-    outline: 3px solid black;
+.boton-mas {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 32px;
+    padding-bottom: 2px;
 }
 
-/* .cabeza-nav-user button, .contenido-switch, .usuario {
-    outline: 3px solid black;
-} */
-
-.contenido-menu {
-    width: 100%;
+.boton-mas:hover {
+    border-bottom: 1px solid #ffffff;
 }
 
+.contenido-switch-user {
+    position: absolute;
+    right: 242px;
+    bottom: -1px;
+}
 
 .switch {
     --width-of-switch: 3.5em;
@@ -96,7 +102,7 @@ body {
 
 
 
-/* ---------------------------- Subcategoria: Nav-bar ---------------------------------- */
+/* ---------------------------- Subcategoria: Calendario ---------------------------------- */
 .calendar-box {
     text-align: center;
     position: relative;
@@ -115,10 +121,6 @@ body {
 
 
 /* ---------------------------- Subcategoria: Contenido Responsive ---------------------------------- */
-@media (max-width: 575px){
-    .contenido-switch { right: 223px; }
-}
-
 @media (min-width: 1400px){
     .cabeza-nav-user {
         margin-left: 0;
@@ -126,8 +128,12 @@ body {
 }
 
 @media (max-width: 450px){
-    .label-nav { display: none; }
-    .usuario { right: -40px; top: 2px; }
-    .contenido-switch { right: 90px; }
-    .nav-item { top: -2px; right: 172px; }
+    .nombre-user { display: none; }
+    .icono-user { top: 0px; }
+    .boton-mas-container { right: 45px; }
+    .contenido-switch-user { right: 95px; }
+}
+
+@media(max-width: 275px){
+    .contenido-switch-user { display: none; }
 }
