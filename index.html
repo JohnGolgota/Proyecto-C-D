@@ -290,8 +290,7 @@
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-inicio">
-<!-- Aqui -->
-                    <form action="./Controllers/UserController.php?action=session" class="" method="POST" novalidate>
+                    <form action="./Controllers/UserController.php?action=session" class="" method="POST">
                         <input type="text" name="UsuarioIS" id="usuarioIS" placeholder="Nombre De Usuario" class="form-control shadow-none" required>
                         <input type="password" name="ContrasenaIS" id="contrasenaIS" placeholder="Contraseña" class="form-control shadow-none" required>
 
@@ -324,8 +323,7 @@
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-registro">
-<!-- Aqui -->
-                    <form action="./Controllers/UserController.php?action=registrar" method="POST" novalidate id="formulario-registro">
+                    <form action="./Controllers/UserController.php?action=registrar" method="POST" id="formulario-registro">
                         <input type="hidden" name="action" value="registrar">
                         <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo" class="form-control shadow-none" required>
                         <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
