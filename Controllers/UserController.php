@@ -41,12 +41,17 @@ class UserController extends User{
     public function VistaUpdate(){
         include '../Views/User/updateUser.php';
     }
+    public function RedirigirNoSesion()
+    {
+        header("location: ../");
+    }
 
     # Alistar informacion para registrarse
     function AlistarInformacion($email,$contrasena,$cContrasena)
     {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             # Return + echo = die
+            echo "<script>alert('Email not valid');</script>";
             die("Introduzca una dirección de correo electronico valido");
         }
 
@@ -127,7 +132,7 @@ class UserController extends User{
     }
 }
 // Action Registro
-if(isset($_GET['action']) && $_GET['action'] =='registrar' && !empty($_POST['UsuarioRE'] && $_POST['UsuarioRC'] && $_POST['UsuarioRCC'] && $_POST['terminosycondiciones'])){
+if(isset($_POST['action']) && $_POST['action'] =='registrar' && !empty($_POST['UsuarioRE'] && $_POST['UsuarioRC'] && $_POST['UsuarioRCC'] && $_POST['terminosycondiciones'])){
     $usercontroler = new UserController();
     $usercontroler->AlistarInformacion($_POST['UsuarioRE'],$_POST['UsuarioRC'],$_POST['UsuarioRCC']);
     // Por Probar: consulta e inicia session en el registro
@@ -135,12 +140,14 @@ if(isset($_GET['action']) && $_GET['action'] =='registrar' && !empty($_POST['Usu
 }
 
 // Action registro fallido. Condicion contraria a la de arriba.
-if (isset($_GET['action']) && $_GET['action'] =='registrar' && empty($_POST['UsuarioRE'] || $_POST['UsuarioRC'] || $_POST['UsuarioRCC'])) {
-    die("Por favor rellene todos los campos de registro. ʕっ•ᴥ•ʔっ ♡");
+if (isset($_POST['action']) && $_POST['action'] =='registrar' && empty($_POST['UsuarioRE'] || $_POST['UsuarioRC'] || $_POST['UsuarioRCC'])) {
+    // die("Por favor rellene todos los campos de registro. ʕっ•ᴥ•ʔっ ♡");
+    echo "Por favor rellene todos los campos de registro. ʕっ•ᴥ•ʔっ ♡";
+    die(sleep(5) && header("location ../"));
 }
 
 // inicio de sesion.
-if (isset($_GET['action']) && $_GET['action'] == 'session' && !empty($_POST['UsuarioIS']) && !empty($_POST['ContrasenaIS'])) {
+if (isset($_POST['action']) && $_POST['action'] == 'session' && !empty($_POST['UsuarioIS']) && !empty($_POST['ContrasenaIS'])) {
     // echo "holiwi";
     $usercontroler = new UserController();
     $usercontroler->VerificaInicio($_POST['UsuarioIS'],$_POST['ContrasenaIS']);
@@ -151,7 +158,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'session' && !empty($_POST['Usu
     return;
 }
 //  inicio de session fallido
-if (isset($_GET['action']) && $_GET['action'] =='session' && empty($_POST['UsuarioIS'] || $_POST['ContrasenaIS'])) {
+if (isset($_POST['action']) && $_POST['action'] == 'session' && empty($_POST['UsuarioIS'] || $_POST['ContrasenaIS'])) {
     echo "Campos no validos";
     return;
 }
@@ -219,7 +226,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'abort') {
 // Action vista predefinida
 if(isset($_GET) || !isset($_GET)){
     $usercontroler = new UserController();
-    $usercontroler->VistaIndex();
+    $usercontroler->RedirigirNoSesion();
     return;
 }
 
