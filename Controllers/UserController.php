@@ -42,6 +42,12 @@ class UserController extends User{
         include '../Views/User/updateUser.php';
     }
 
+    public function RedirigirNoUsuario()
+    {
+        // Sale
+        header("location ../");
+    }
+
     # Alistar informacion para registrarse
     function AlistarInformacion($email,$contrasena,$cContrasena)
     {
@@ -127,7 +133,7 @@ class UserController extends User{
     }
 }
 // Action Registro
-if(isset($_GET['action']) && $_GET['action'] =='registrar' && !empty($_POST['UsuarioRE'] && $_POST['UsuarioRC'] && $_POST['UsuarioRCC'] && $_POST['terminosycondiciones'])){
+if(isset($_POST['action']) && $_POST['action'] =='registrar' && !empty($_POST['UsuarioRE'] && $_POST['UsuarioRC'] && $_POST['UsuarioRCC'] && $_POST['terminosycondiciones'])){
     $usercontroler = new UserController();
     $usercontroler->AlistarInformacion($_POST['UsuarioRE'],$_POST['UsuarioRC'],$_POST['UsuarioRCC']);
     // Por Probar: consulta e inicia session en el registro
@@ -135,7 +141,7 @@ if(isset($_GET['action']) && $_GET['action'] =='registrar' && !empty($_POST['Usu
 }
 
 // Action registro fallido. Condicion contraria a la de arriba.
-if (isset($_GET['action']) && $_GET['action'] =='registrar' && empty($_POST['UsuarioRE'] || $_POST['UsuarioRC'] || $_POST['UsuarioRCC'])) {
+if (isset($_POST['action']) && $_POST['action'] =='registrar' && empty($_POST['UsuarioRE'] || $_POST['UsuarioRC'] || $_POST['UsuarioRCC'])) {
     die("Por favor rellene todos los campos de registro. ʕっ•ᴥ•ʔっ ♡");
 }
 
@@ -210,9 +216,8 @@ if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
 # Cerrar Sesion.
 if (isset($_GET['action']) && $_GET['action'] == 'abort') {
     $usercontroler = new UserController();
-    $usercontroler->VistaRegistro();
-
     session_destroy();
+    $usercontroler->RedirigirNoUsuario();
     return;
 }
 
