@@ -91,9 +91,6 @@ class UserController extends User{
 
         $this->RegistrarUsuario(); 
         $this->VistaUsuario();
-
-        echo "<script type='text/javascript'> alert(`gey el que lo lea`); </script>";
-
         
         // $datosUsuario = $this->ConsultarUsuario($nombre);
 
