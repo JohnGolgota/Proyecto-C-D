@@ -59,19 +59,37 @@ function modoOscuro(){
     document.querySelector("body").classList.toggle('dark-mode');
     document.querySelector(".cabeza").classList.toggle('cabeza-dark-mode');
     document.querySelector(".boton").classList.toggle('boton-dark-mode');
+    
     document.querySelector(".wave").classList.toggle('wave-dark-mode');
     document.querySelector(".-three").classList.toggle('-three-dark-mode');
     document.querySelector(".-two").classList.toggle('-two-dark-mode');
     document.querySelector(".-one").classList.toggle('-one-dark-mode');
+    
     document.querySelectorAll(".herramienta")[0].classList.toggle('herramienta-dark-mode');
     document.querySelectorAll(".herramienta")[1].classList.toggle('herramienta-dark-mode');
     document.querySelectorAll(".herramienta")[2].classList.toggle('herramienta-dark-mode');
     document.querySelectorAll(".herramienta")[3].classList.toggle('herramienta-dark-mode');
+    
     document.querySelector(".herramienta-img").classList.toggle('herramienta-img-dark-mode');
     document.querySelector(".footer-cd-f").classList.toggle('footer-cd-f-dark-mode');
     document.querySelectorAll(".modal-content")[0].classList.toggle('modal-content-dark-mode');
     document.querySelectorAll(".modal-content")[1].classList.toggle('modal-content-dark-mode');
     document.querySelector(".boton-modal").classList.toggle('boton-modal-dark-mode');
+}
+
+function modoOscuroUser(){
+    document.querySelector(".icono-user").classList.toggle('icono-user-dark-mode');
+    document.querySelector(".nombre-user").classList.toggle('nombre-user-dark-mode');
+
+    document.querySelector("body").classList.toggle('dark-mode');
+    document.querySelector(".cabeza").classList.toggle('cabeza-dark-mode');
+    document.querySelector(".boton").classList.toggle('boton-dark-mode');
+    
+    document.querySelectorAll(".herramienta")[0].classList.toggle('herramienta-dark-mode');
+    document.querySelectorAll(".herramienta")[1].classList.toggle('herramienta-dark-mode');
+    document.querySelectorAll(".herramienta")[2].classList.toggle('herramienta-dark-mode');
+    
+    document.querySelector(".footer-cd-f").classList.toggle('footer-cd-f-dark-mode');
 }
 
 // ----------------------------------- VALIDACION ----------------------------------- //

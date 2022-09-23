@@ -137,3 +137,10 @@
 @media(max-width: 275px){
     .contenido-switch-user { display: none; }
 }
+
+
+
+/* ---------------------------- Subcategoria: Modo Oscuro ---------------------------------- */
+.icono-user-dark-mode, .nombre-user-dark-mode {
+    color: white;
+}

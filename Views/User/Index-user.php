@@ -46,7 +46,7 @@
             <!-- switch -->
             <section class="contenido-switch contenido-switch-user">
                 <label class="switch align-items-center">
-                    <input type="checkbox" class="input-banner" onclick="modoOscuro();">
+                    <input type="checkbox" class="input-banner" onclick="modoOscuroUser();">
                     <span class="slider"></span>
                 </label>
             </section>
