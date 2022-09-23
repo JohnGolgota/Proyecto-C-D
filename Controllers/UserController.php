@@ -45,7 +45,7 @@ class UserController extends User{
     public function RedirigirNoUsuario()
     {
         // Sale
-        header("location ../");
+        header("location: ../");
     }
 
     # Alistar informacion para registrarse
@@ -146,7 +146,7 @@ if (isset($_POST['action']) && $_POST['action'] =='registrar' && empty($_POST['U
 }
 
 // inicio de sesion.
-if (isset($_GET['action']) && $_GET['action'] == 'session' && !empty($_POST['UsuarioIS']) && !empty($_POST['ContrasenaIS'])) {
+if (isset($_POST['action']) && $_POST['action'] == 'session' && !empty($_POST['UsuarioIS']) && !empty($_POST['ContrasenaIS'])) {
     // echo "holiwi";
     $usercontroler = new UserController();
     $usercontroler->VerificaInicio($_POST['UsuarioIS'],$_POST['ContrasenaIS']);
@@ -157,7 +157,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'session' && !empty($_POST['Usu
     return;
 }
 //  inicio de session fallido
-if (isset($_GET['action']) && $_GET['action'] =='session' && empty($_POST['UsuarioIS'] || $_POST['ContrasenaIS'])) {
+if (isset($_POST['action']) && $_POST['action'] =='session' && empty($_POST['UsuarioIS'] || $_POST['ContrasenaIS'])) {
     echo "Campos no validos";
     return;
 }
@@ -216,8 +216,8 @@ if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
 # Cerrar Sesion.
 if (isset($_GET['action']) && $_GET['action'] == 'abort') {
     $usercontroler = new UserController();
-    session_destroy();
     $usercontroler->RedirigirNoUsuario();
+    session_destroy();
     return;
 }
 
