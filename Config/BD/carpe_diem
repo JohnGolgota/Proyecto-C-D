@@ -1,5 +1,4 @@
 -- VERSION :: JohnGolgota -> Indentation with primary and foreign keys: copiar y pegar en orden
-
 CREATE TABLE tbl_usuario (
     id_usr int(11) NOT NULL,
     nombre_usr varchar(30) NOT NULL,
@@ -7,63 +6,26 @@ CREATE TABLE tbl_usuario (
     contrasena_usr varchar(255) NOT NULL,
     PRIMARY KEY (id_usr)
 );
-
-CREATE TABLE tbl_eventos (
-    id_evn int(11) NOT NULL,
-    fechahora_evn datetime NOT NULL DEFAULT current_timestamp(), 
-    nombre_evn varchar(30) NOT NULL, 
-    descripcion_evn varchar(255),
-    color_evn varchar(8) NOT NULL,
-    notificaciones_evn varchar(2) NOT NULL,
-    Prioridad_evn varchar(12) NOT NULL,
-    id_usr int(11) NOT NULL,
-    PRIMARY KEY (id_evn),
-    FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr)
-);
-
 CREATE TABLE tbl_administrador(
     id_adm int(11) NOT NULL,
     nombre_adm varchar(100) NOT NULL,
     correo_adm varchar(50) NOT NULL,
-    contacto_ext_adm varchar(150) NOT NULL,
-    contrasena_adm varchar(15) NOT NULL,
+    contacto_ext_adm varchar(150),
+    contrasena_adm varchar(255) NOT NULL,
     PRIMARY KEY (id_adm)
 );
-
-CREATE TABLE tbl_comunicado_admin(
-    id_com int(11) NOT NULL,
-    asunto_com varchar(15) NOT NULL,
-    texto_com text NOT NULL,
-    visibilidad_com tinyint(1) NOT NULL,
-    fecha_com date NOT NULL,
-    prioridad_com varchar(15) NOT NULL,
-    id_adm int(11) NOT NULL,
-    PRIMARY KEY (id_com),
-    FOREIGN KEY (id_adm) REFERENCES tbl_administrador(id_adm)
+CREATE TABLE tbl_eventos (
+    id_evn int(11) NOT NULL,
+    fechahora_evn datetime NOT NULL DEFAULT current_timestamp(), 
+    nombre_evn varchar(50) NOT NULL, 
+    descripcion_evn varchar(255),
+    color_evn varchar(8),
+    notificaciones_evn varchar(2) NOT NULL,
+    prioridad_evn varchar(12) NOT NULL,
+    id_usr int(11) NOT NULL,
+    PRIMARY KEY (id_evn),
+    FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr)
 );
-
-CREATE TABLE tbl_desarrolladores(
-    di_des varchar(11) NOT NULL,
-    tipodi_des varchar(30) NOT NULL,
-    nombre_des varchar(100) NOT NULL,
-    apellidos_des varchar(100) NOT NULL,
-    horario_des varchar(15) NOT NULL,
-    sueldo_des float NOT NULL,
-    id_com int(11) NOT NULL,
-    PRIMARY KEY (di_des),
-    FOREIGN KEY (id_com) REFERENCES tbl_comunicado_admin(id_com)
-);
-
-CREATE TABLE tbl_actualizaciones(
-    version_id_act varchar(15) NOT NULL,
-    nombre_act varchar(15) NOT NULL,
-    novedades_act varchar(140) NOT NULL,
-    comentarios_act varchar(140) NOT NULL,
-    di_des varchar(11) NOT NULL,
-    PRIMARY KEY (version_id_act),
-    FOREIGN KEY (di_des) REFERENCES tbl_desarrolladores(di_des)
-);
-
 CREATE TABLE tbl_comunicado_user(
     id_rpu int(11) NOT NULL,
     asunto_rpu varchar(50) NOT NULL,
@@ -72,27 +34,18 @@ CREATE TABLE tbl_comunicado_user(
     estado_rpu varchar(10) NOT NULL,
     respuesta_rpu varchar(100),
     id_adm int(11),
-    id_usr int(11),
+    id_usr int(11) NOT NULL,
     PRIMARY KEY (id_rpu),
     FOREIGN KEY (id_adm) REFERENCES tbl_administrador(id_adm),
     FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr)
 );
-
-CREATE TABLE tbl_e_desarrolladora(
-    id_edes int(11) NOT NULL,
-    nombre_edes varchar(15) NOT NULL,
-    di_des varchar(11) NOT NULL,
-    PRIMARY KEY (id_edes),
-    FOREIGN KEY (di_des) REFERENCES tbl_desarrolladores(di_des)
-);
-
 CREATE TABLE tbl_metodo_pago(
     id_mpg int(11) NOT NULL,
     tipo_mpg varchar(30) NOT NULL,
     numero_mpg varchar(19) NOT NULL,
     fecha_caducidad_mpg date NOT NULL,
     codigo_cvv_mpg varchar(3) NOT NULL,
-    nombres_mpg varchar(50) NOT NULL,
+    nombres_mpg varchar(30) NOT NULL,
     apellidos_mpg varchar(50) NOT NULL,
     pais_mpg varchar(100) NOT NULL,
     codigo_postal_mpg varchar(10) NOT NULL,
@@ -101,7 +54,6 @@ CREATE TABLE tbl_metodo_pago(
     PRIMARY KEY (id_mpg),
     FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr)
 );
-
 CREATE TABLE tbl_pagos(
     id_pg int(11) NOT NULL,
     descripcion_pg varchar(255),
@@ -111,322 +63,22 @@ CREATE TABLE tbl_pagos(
     PRIMARY KEY (id_pg),
     FOREIGN KEY (id_mpg) REFERENCES tbl_metodo_pago(id_mpg)
 );
-
--- VERSION Una linea
-CREATE TABLE tbl_usuario (id_usr int(11) NOT NULL,nombre_usr varchar(30) NOT NULL,correo_usr varchar(50) NOT NULL UNIQUE,contrasena_usr varchar(255) NOT NULL,PRIMARY KEY (id_usr));
-CREATE TABLE tbl_eventos (id_evn int(11) NOT NULL,fechahora_evn datetime NOT NULL DEFAULT current_timestamp(), nombre_evn varchar(30) NOT NULL,descripcion_evn varchar(255),color_evn varchar(8) NOT NULL,notificaciones_evn varchar(2) NOT NULL,Prioridad_evn varchar(12) NOT NULL,id_usr int(11) NOT NULL,PRIMARY KEY (id_evn),FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr));
-CREATE TABLE tbl_administrador(id_adm int(11) NOT NULL,nombre_adm varchar(100) NOT NULL,correo_adm varchar(50) NOT NULL,contacto_ext_adm varchar(150) NOT NULL,contrasena_adm varchar(15) NOT NULL,PRIMARY KEY (id_adm));
-CREATE TABLE tbl_comunicado_admin(id_com int(11) NOT NULL,asunto_com varchar(15) NOT NULL,texto_com text NOT NULL,visibilidad_com tinyint(1) NOT NULL,fecha_com date NOT NULL,prioridad_com varchar(15) NOT NULL,id_adm int(11) NOT NULL,PRIMARY KEY (id_com),FOREIGN KEY (id_adm) REFERENCES tbl_administrador(id_adm));
-CREATE TABLE tbl_desarrolladores(di_des varchar(11) NOT NULL,tipodi_des varchar(30) NOT NULL,nombre_des varchar(100) NOT NULL,apellidos_des varchar(100) NOT NULL,horario_des varchar(15) NOT NULL,sueldo_des float NOT NULL,id_com int(11) NOT NULL,PRIMARY KEY (di_des),FOREIGN KEY (id_com) REFERENCES tbl_comunicado_admin(id_com));
-CREATE TABLE tbl_actualizaciones(version_id_act varchar(15) NOT NULL,nombre_act varchar(15) NOT NULL,novedades_act varchar(140) NOT NULL,comentarios_act varchar(140) NOT NULL,di_des varchar(11) NOT NULL,PRIMARY KEY (version_id_act),FOREIGN KEY (di_des) REFERENCES tbl_desarrolladores(di_des));
-CREATE TABLE tbl_comunicado_user(id_rpu int(11) NOT NULL,asunto_rpu varchar(50) NOT NULL,descripcion_rpu text NOT NULL,fecha_rpu datetime NOT NULL,estado_rpu varchar(10) NOT NULL,respuesta_rpu varchar(100),id_adm int(11),id_usr int(11),PRIMARY KEY (id_rpu),FOREIGN KEY (id_adm) REFERENCES tbl_administrador(id_adm),FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr));
-CREATE TABLE tbl_e_desarrolladora(id_edes int(11) NOT NULL,nombre_edes varchar(15) NOT NULL,di_des varchar(11) NOT NULL,PRIMARY KEY (id_edes),FOREIGN KEY (di_des) REFERENCES tbl_desarrolladores(di_des));
-CREATE TABLE tbl_metodo_pago(id_mpg int(11) NOT NULL,tipo_mpg varchar(30) NOT NULL,numero_mpg varchar(19) NOT NULL,fecha_caducidad_mpg date NOT NULL,codigo_cvv_mpg varchar(3) NOT NULL,nombres_mpg varchar(50) NOT NULL,apellidos_mpg varchar(50) NOT NULL,pais_mpg varchar(100) NOT NULL,codigo_postal_mpg varchar(10) NOT NULL,direccion_mpg varchar(100) NOT NULL,id_usr int(11) NOT NULL,PRIMARY KEY (id_mpg),FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr));
-CREATE TABLE tbl_pagos(id_pg int(11) NOT NULL,descripcion_pg varchar(255),cantidad_pg float NOT NULL,impuestos_pg float NOT NULL,id_mpg int(11) NOT NULL,PRIMARY KEY (id_pg),FOREIGN KEY (id_mpg) REFERENCES tbl_metodo_pago(id_mpg));
-
--- VERSION indentation with alter table:
-
-CREATE TABLE tbl_usuario(
-    id_usr int(11) NOT NULL,
-    nombre_usr varchar(30) NOT NULL,
-    correo_usr varchar(50) NOT NULL,
-    contrasena_usr varchar(255) NOT NULL
-);
-
-CREATE TABLE tbl_eventos(
-    id_evn int(11) NOT NULL,
-    fechahora_evn datetime NOT NULL DEFAULT current_timestamp(), 
-    nombre_evn varchar(30) NOT NULL, 
-    descripcion_evn varchar(255),
-    color_evn varchar(8) NOT NULL,
-    notificaciones_evn varchar(2) NOT NULL,
-    Prioridad_evn varchar(12) NOT NULL,
-    id_usr int(11) NOT NULL
-);
-
-CREATE TABLE tbl_actualizaciones(
-    version_id_act varchar(15) NOT NULL,
-    nombre_act varchar(15) NOT NULL,
-    novedades_act varchar(140) NOT NULL,
-    comentarios_act varchar(140) NOT NULL,
-    di_des varchar(11) NOT NULL
-);
-
-CREATE TABLE tbl_comunicado_admin(
-    id_com int(11) NOT NULL,
-    asunto_com varchar(15) NOT NULL,
-    texto_com text NOT NULL,
-    visibilidad_com tinyint(1) NOT NULL,
-    fecha_com date NOT NULL,
-    prioridad_com varchar(15) NOT NULL,
-    id_adm int(11) NOT NULL
-);
-
-CREATE TABLE tbl_administrador(
-    id_adm int(11) NOT NULL,
-    nombre_adm varchar(100) NOT NULL,
-    correo_adm varchar(50) NOT NULL,
-    contacto_ext_adm varchar(150) NOT NULL,
-    contrasena_adm varchar(15) NOT NULL
-);
-
-CREATE TABLE tbl_comunicado_user(
-    id_rpu int(11) NOT NULL,
-    asunto_rpu varchar(50) NOT NULL,
-    descripcion_rpu text NOT NULL,
-    fecha_rpu datetime NOT NULL,
-    estado_rpu varchar(10) NOT NULL,
-    respuesta_rpu varchar(100),
-    id_adm int(11),
-    id_usr int(11)
-);
-
-CREATE TABLE tbl_desarrolladores(
-    di_des varchar(11) NOT NULL,
-    tipodi_des varchar(30) NOT NULL,
-    nombre_des varchar(100) NOT NULL,
-    apellidos_des varchar(100) NOT NULL,
-    horario_des varchar(15) NOT NULL,
-    sueldo_des float NOT NULL,
-    id_com int(11) NOT NULL
-);
-
-CREATE TABLE tbl_e_desarrolladora(
-    id_edes int(11) NOT NULL,
-    nombre_edes varchar(15) NOT NULL,
-    di_des varchar(11) NOT NULL
-);
-
-CREATE TABLE tbl_metodo_pago(
-    id_mpg int(11) NOT NULL,
-    tipo_mpg varchar(30) NOT NULL,
-    numero_mpg varchar(19) NOT NULL,
-    fecha_caducidad_mpg date NOT NULL,
-    codigo_cvv_mpg varchar(3) NOT NULL,
-    nombres_mpg varchar(50) NOT NULL,
-    apellidos_mpg varchar(50) NOT NULL,
-    pais_mpg varchar(100) NOT NULL,
-    codigo_postal_mpg varchar(10) NOT NULL,
-    direccion_mpg varchar(100) NOT NULL,
-    id_usr int(11) NOT NULL
-);
-
-CREATE TABLE tbl_pagos(
-    id_pg int(11) NOT NULL,
-    descripcion_pg varchar(255),
-    cantidad_pg float NOT NULL,
-    impuestos_pg float NOT NULL,
-    id_mpg int(11) NOT NULL
-);
-
-ALTER TABLE tbl_usuario
-    ADD PRIMARY KEY (id_usr),
-    ADD UNIQUE (correo_usr);
-
-ALTER TABLE tbl_eventos
-    ADD PRIMARY KEY (id_evn),
-    ADD FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr);
-
-ALTER TABLE tbl_administrador
-    ADD PRIMARY KEY (id_adm);
-
-ALTER TABLE tbl_comunicado_admin
-    ADD PRIMARY KEY (id_com),
-    ADD FOREIGN KEY (id_adm) REFERENCES tbl_administrador(id_adm);
-
-ALTER TABLE tbl_desarrolladores
-    ADD PRIMARY KEY (di_des),
-    ADD FOREIGN KEY (id_com) REFERENCES tbl_comunicado_admin(id_com);
-
-ALTER TABLE tbl_actualizaciones
-    ADD PRIMARY KEY (version_id_act),
-    ADD FOREIGN KEY (di_des) REFERENCES tbl_desarrolladores(di_des);
-
-ALTER TABLE tbl_comunicado_user
-    ADD PRIMARY KEY (id_rpu),
-    ADD FOREIGN KEY (id_adm) REFERENCES tbl_administrador(id_adm),
-    ADD FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr);
-
-ALTER TABLE tbl_e_desarrolladora
-    ADD PRIMARY KEY (id_edes),
-    ADD FOREIGN KEY (di_des) REFERENCES tbl_desarrolladores(di_des);
-
-ALTER TABLE tbl_metodo_pago
-    ADD PRIMARY KEY (id_mpg),
-    ADD FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr);
-
-ALTER TABLE tbl_pagos
-    ADD PRIMARY KEY (id_pg),
-    ADD FOREIGN KEY (id_mpg) REFERENCES tbl_metodo_pago(id_mpg);
-
-
--- ORDER 1 ------------------------------------------------------------------------------------------------------------------------------------------------
-ALTER TABLE tbl_usuario
-    ADD PRIMARY KEY (id_usr),
-    ADD UNIQUE (correo_usr);
-
--- 2
-ALTER TABLE tbl_eventos
-    ADD PRIMARY KEY (id_evn),
-    ADD FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr);
-
--- 3
-ALTER TABLE tbl_administrador
-    ADD PRIMARY KEY (id_adm);
-
--- 4
-ALTER TABLE tbl_comunicado_admin
-    ADD PRIMARY KEY (id_com),
-    ADD FOREIGN KEY (id_adm) REFERENCES tbl_administrador(id_adm);
-
--- 5
-ALTER TABLE tbl_desarrolladores
-    ADD PRIMARY KEY (di_des),
-    ADD FOREIGN KEY (id_com) REFERENCES tbl_comunicado_admin(id_com);
-
--- 6
-ALTER TABLE tbl_actualizaciones
-    ADD PRIMARY KEY (version_id_act),
-    ADD FOREIGN KEY (di_des) REFERENCES tbl_desarrolladores(di_des);
-
--- 7
-ALTER TABLE tbl_comunicado_user
-    ADD PRIMARY KEY (id_rpu),
-    ADD FOREIGN KEY (id_adm) REFERENCES tbl_administrador(id_adm),
-    ADD FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr);
-
--- 8
-ALTER TABLE tbl_e_desarrolladora
-    ADD PRIMARY KEY (id_edes),
-    ADD FOREIGN KEY (di_des) REFERENCES tbl_desarrolladores(di_des);
-
--- 9
-ALTER TABLE tbl_metodo_pago
-    ADD PRIMARY KEY (id_mpg),
-    ADD FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr);
-
--- 10
-ALTER TABLE tbl_pagos
-    ADD PRIMARY KEY (id_pg),
-    ADD FOREIGN KEY (id_mpg) REFERENCES tbl_metodo_pago(id_mpg);
-
--- Limpio
-
-
-
--- VERSION :: DuvanArwenLazar ->  ---------------------------------------------------------------------------------------
-CREATE TABLE tbl_usuario (
-    id_usr int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nombre_usr varchar(30) NOT NULL,
-    correo_usr varchar(50) NOT NULL UNIQUE,
-    contrasena_usr varchar(255) NOT NULL
-);
-
-CREATE TABLE tbl_eventos (
-    id_evn int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    fechahora_evn datetime NOT NULL DEFAULT current_timestamp(), 
-    nombre_evn varchar(50) NOT NULL, 
-    descripcion_evn varchar(255),
-    color_evn varchar(8) NOT NULL,
-    notificaciones_evn varchar(2) NOT NULL,
-    Prioridad_evn varchar(12) NOT NULL,
-    id_usr int(11) NOT NULL, 
-    FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr)
-);
-
-CREATE TABLE tbl_administrador(
-    id_adm int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nombre_adm varchar(100) NOT NULL,
-    correo_adm varchar(50) NOT NULL,
-    contacto_ext_adm varchar(150) NOT NULL,
-    contrasena_adm varchar(15) NOT NULL
-);
-
-CREATE TABLE tbl_comunicado_admin(
-    id_com int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    asunto_com varchar(15) NOT NULL,
-    texto_com text NOT NULL,
-    visibilidad_com tinyint(1) NOT NULL,
-    fecha_com date NOT NULL,
-    prioridad_com varchar(15) NOT NULL,
-    id_adm int(11) NOT NULL,
-    di_des int(11) NOT NULL,
-    FOREIGN KEY (id_adm) REFERENCES tbl_administrador(id_adm)
-);
-
-CREATE TABLE tbl_e_desarrolladora(
-    id_edes int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nombre_edes varchar(15) NOT NULL
-);
-
-CREATE TABLE tbl_desarrolladores(
-    di_des varchar(11) NOT NULL PRIMARY KEY,
-    tipodi_des varchar(30) NOT NULL,
-    nombre_des varchar(100) NOT NULL,
-    apellidos_des varchar(100) NOT NULL,
-    horario_des varchar(15) NOT NULL,
-    sueldo_des float NOT NULL,
-    id_edes int(11) NOT NULL,
-    FOREIGN KEY (id_edes) REFERENCES tbl_e_desarrolladora(id_edes)
-);
-
-CREATE TABLE tbl_actualizaciones(
-    version_id_act varchar(15) NOT NULL PRIMARY KEY,
-    nombre_act varchar(15) NOT NULL,
-    novedades_act varchar(140) NOT NULL,
-    comentarios_act varchar(140) NOT NULL,
-    di_des varchar(11) NOT NULL,
-    FOREIGN KEY (di_des) REFERENCES tbl_desarrolladores(di_des)
-);
-
-CREATE TABLE tbl_comunicado_user(
-    id_rpu int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    asunto_rpu varchar(50) NOT NULL,
-    descripcion_rpu text NOT NULL,
-    fecha_rpu datetime NOT NULL,
-    estado_rpu varchar(10) NOT NULL,
-    respuesta_rpu varchar(100),
-    id_adm int(11),
-    id_usr int(11),
-    FOREIGN KEY (id_adm) REFERENCES tbl_administrador(id_adm),
-    FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr)
-);
-
-CREATE TABLE tbl_metodo_pago(
-    id_mpg int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    tipo_mpg varchar(30) NOT NULL,
-    numero_mpg varchar(19) NOT NULL,
-    fecha_caducidad_mpg date NOT NULL,
-    codigo_cvv_mpg varchar(3) NOT NULL,
-    nombres_mpg varchar(50) NOT NULL,
-    apellidos_mpg varchar(50) NOT NULL,
-    pais_mpg varchar(100) NOT NULL,
-    codigo_postal_mpg varchar(10) NOT NULL,
-    direccion_mpg varchar(100) NOT NULL,
-    id_usr int(11) NOT NULL,
-    FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr)
-);
-
-CREATE TABLE tbl_pagos(
-    id_pg int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    descripcion_pg varchar(255),
-    cantidad_pg float NOT NULL,
-    impuestos_pg float NOT NULL,
-    id_mpg int(11) NOT NULL,
-    FOREIGN KEY (id_mpg) REFERENCES tbl_metodo_pago(id_mpg)
-);
-
 CREATE TABLE tbl_pomodoro(
-    id_pmd int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    fechahora_pmd datetime NOT NULL DEFAULT current_timestamp(), 
-    nombre_pmd varchar(50) NOT NULL, 
+    id_pmd int(11) NOT NULL,
+    fecha_hora_pmd datetime,
+    nombre_pmd varchar(30) NOT NULL,
     actividad_pmd varchar(8),
     pausa_corta_pmd varchar(8) NOT NULL,
     pausa_larga_pmd varchar(8) NOT NULL,
-    id_usr int(11) NOT NULL, 
-    FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr)
+    id_usr int(11) NOT NULL,
+    PRIMARY KEY (id_pmd),
+    FOREIGN KEY (id_usr) REFERENCES tbl_usuario (id_usr)
 );
-
--- Atributo añadido (Estaba pendiente de corregir)
-ALTER TABLE tbl_comunicado_admin ADD FOREIGN KEY (di_des) REFERENCES tbl_desarrolladores(di_des);
-                                ADD FOREIGN KEY (id_mpg) REFERENCES tbl_metodo_pago(id_mpg);
+-- En linea
+-- CREATE TABLE tbl_usuario (id_usr int(11) NOT NULL,nombre_usr varchar(30) NOT NULL,correo_usr varchar(50) NOT NULL UNIQUE,contrasena_usr varchar(255) NOT NULL,PRIMARY KEY (id_usr));
+-- CREATE TABLE tbl_administrador(id_adm int(11) NOT NULL,nombre_adm varchar(100) NOT NULL,correo_adm varchar(50) NOT NULL,contacto_ext_adm varchar(150),contrasena_adm varchar(255) NOT NULL,PRIMARY KEY (id_adm));
+-- CREATE TABLE tbl_eventos (id_evn int(11) NOT NULL,fechahora_evn datetime NOT NULL DEFAULT current_timestamp(), nombre_evn varchar(50) NOT NULL, descripcion_evn varchar(255),color_evn varchar(8),notificaciones_evn varchar(2) NOT NULL,prioridad_evn varchar(12) NOT NULL,id_usr int(11) NOT NULL,PRIMARY KEY (id_evn),FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr));
+-- CREATE TABLE tbl_comunicado_user(id_rpu int(11) NOT NULL,asunto_rpu varchar(50) NOT NULL,descripcion_rpu text NOT NULL,fecha_rpu datetime NOT NULL,estado_rpu varchar(10) NOT NULL,respuesta_rpu varchar(100),id_adm int(11),id_usr int(11) NOT NULL,PRIMARY KEY (id_rpu),FOREIGN KEY (id_adm) REFERENCES tbl_administrador(id_adm),FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr));
+-- CREATE TABLE tbl_metodo_pago(id_mpg int(11) NOT NULL,tipo_mpg varchar(30) NOT NULL,numero_mpg varchar(19) NOT NULL,fecha_caducidad_mpg date NOT NULL,codigo_cvv_mpg varchar(3) NOT NULL,nombres_mpg varchar(30) NOT NULL,apellidos_mpg varchar(50) NOT NULL,pais_mpg varchar(100) NOT NULL,codigo_postal_mpg varchar(10) NOT NULL,direccion_mpg varchar(100) NOT NULL,id_usr int(11) NOT NULL,PRIMARY KEY (id_mpg),FOREIGN KEY (id_usr) REFERENCES tbl_usuario(id_usr));
+-- CREATE TABLE tbl_pagos(id_pg int(11) NOT NULL,descripcion_pg varchar(255),cantidad_pg float NOT NULL,impuestos_pg float NOT NULL,id_mpg int(11) NOT NULL,PRIMARY KEY (id_pg),FOREIGN KEY (id_mpg) REFERENCES tbl_metodo_pago(id_mpg));
+-- CREATE TABLE tbl_pomodoro(id_pmd int(11) NOT NULL,fecha_hora_pmd datetime,nombre_pmd varchar(30) NOT NULL,actividad_pmd varchar(8),pausa_corta_pmd varchar(8) NOT NULL,pausa_larga_pmd varchar(8) NOT NULL,id_usr int(11) NOT NULL,PRIMARY KEY (id_pmd),FOREIGN KEY (id_usr) REFERENCES tbl_usuario (id_usr));
