@@ -15,14 +15,15 @@ ScrollReveal().reveal('.item-reveal', { delay: 550 });
 
 
 // ------------------------- Acceder al inicio, registro, herramientas y configuracion. ------------------------- //
-function menuDesplegable(){
+const buttonDropdownMenu = document.getElementById('buttonDropdownMenu');
+buttonDropdownMenu.addEventListener('click', function () {
     if(document.getElementById("menuDesplegable").style.display == "none"){
         document.getElementById("menuDesplegable").style.display = "block";
     }
     else {
         document.getElementById("menuDesplegable").style.display = "none";
     }
-}
+});
 
 function configDesplegable(){
     if(document.getElementById("configDesplegable").style.display == "none"){
@@ -55,7 +56,8 @@ setInterval('aleatorio()', 20000);
 
 
 // ----------------------------------- MODO OSCURO ----------------------------------- //
-function modoOscuro(){
+const buttonDarkMode = document.getElementById('boton-dark-mode');
+buttonDarkMode.addEventListener('click', function() {
     document.querySelector("body").classList.toggle('dark-mode');
     document.querySelector(".cabeza").classList.toggle('cabeza-dark-mode');
     document.querySelector(".boton").classList.toggle('boton-dark-mode');
@@ -75,7 +77,7 @@ function modoOscuro(){
     document.querySelectorAll(".modal-content")[0].classList.toggle('modal-content-dark-mode');
     document.querySelectorAll(".modal-content")[1].classList.toggle('modal-content-dark-mode');
     document.querySelector(".boton-modal").classList.toggle('boton-modal-dark-mode');
-}
+});
 
 function modoOscuroUser(){
     document.querySelector(".icono-user").classList.toggle('icono-user-dark-mode');
