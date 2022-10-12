@@ -58,6 +58,9 @@ setInterval('aleatorio()', 20000);
 // ----------------------------------- MODO OSCURO ----------------------------------- //
 const buttonDarkMode = document.getElementById('boton-dark-mode');
 buttonDarkMode.addEventListener('click', function() {
+
+    document.querySelector(".footer-cd-f").classList.toggle('footer-cd-f-dark-mode');
+    
     document.querySelector("body").classList.toggle('dark-mode');
     document.querySelector(".cabeza").classList.toggle('cabeza-dark-mode');
     document.querySelector(".boton").classList.toggle('boton-dark-mode');
@@ -70,13 +73,12 @@ buttonDarkMode.addEventListener('click', function() {
     document.querySelectorAll(".herramienta")[0].classList.toggle('herramienta-dark-mode');
     document.querySelectorAll(".herramienta")[1].classList.toggle('herramienta-dark-mode');
     document.querySelectorAll(".herramienta")[2].classList.toggle('herramienta-dark-mode');
-    document.querySelectorAll(".herramienta")[3].classList.toggle('herramienta-dark-mode');
     
     document.querySelector(".herramienta-img").classList.toggle('herramienta-img-dark-mode');
-    document.querySelector(".footer-cd-f").classList.toggle('footer-cd-f-dark-mode');
     document.querySelectorAll(".modal-content")[0].classList.toggle('modal-content-dark-mode');
     document.querySelectorAll(".modal-content")[1].classList.toggle('modal-content-dark-mode');
     document.querySelector(".boton-modal").classList.toggle('boton-modal-dark-mode');
+    
 });
 
 function modoOscuroUser(){

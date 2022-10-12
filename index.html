@@ -333,7 +333,7 @@
                         <div class="form-group">
                             <input required type="checkbox" name="terminosycondiciones" id="terminosycondiciones" class="form-check-input" value="aceptarteminos">
                             <label for="terminosycondiciones" id="terminosycondiciones" class="form-check-label">Aceptar los terminos y condiciones</label>
-                            <a href="#" onclick="detallesTC();">Detalles.</a>
+                            <a href="#" id="buttonDetails">Detalles.</a>
                         </div>
                         <input type="submit" value="Registrarse" class="btn btn-primary boton-modal" id="btn-registro">
                     </form>
@@ -357,9 +357,10 @@
     <!-- Animacion de los logos. -->
     <script src="./Public/Js/sweetalert.min.js"></script>
     <script>
-        function detallesTC() {
-            swal('No hay.')
-        }
+        const buttonDetails = document.getElementById("buttonDetails");
+        buttonDetails.addEventListener('click', function(){
+            swal('No hay.');
+        });
     </script>
     <script src="./Public/Js/iconrevel.min.js"></script>
     <script src="./Public/Js/app.js"></script>
