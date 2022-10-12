@@ -19,7 +19,7 @@
 ?>
 <?php 
     include '../Inc/header.php'; 
-    session_start();
+    // session_start();
     
 ?>
 <title> Carpe Diem | <?php echo $_SESSION['nombre_usr']; ?> </title>

@@ -4,7 +4,15 @@
 </head>
 <body>
 <?php
-// session_start();
+session_start();
+
+// ini_set('display_errors', 0);
+// ini_set('display_status_errors', 0);
+// error_reporting(-1);
+
+// if(session_destroy()){
+//     die ("putos");
+// }
 
 include_once '../Models/User.php';
 class UserController extends User{
@@ -17,19 +25,20 @@ class UserController extends User{
         include '../Views/User/index.html';
     }
     public function VistaUsuario()
-    {
+    {   
         include '../Views/User/Index-user.php';
     }
-    public function RedirectLogin()
-    {
-        include '../Views/User/login.php';
-    }
-
-    public function RedirectDelete(){
+    
+    public function VistaDelete(){
         include '../Views/User/deleteUser.html';
     }
 
-    public function RedirectUpdate(){
+    public function VistaLogin()
+    {
+        include '../Views/User/login.php';
+    }
+    
+    public function VistaUpdate(){
         include '../Views/User/updateUser.php';
     }
 
@@ -44,25 +53,32 @@ class UserController extends User{
         # Si retorna un elemento en vez de nada, entonces rompe.
         $comprobacion = $this->ComprobarCorreo($email);
         if ($comprobacion != "") {
+            session_destroy();
             die("Ya existe una cuenta con este correo");
         }
+        
         if ($cContrasena !== $contrasena) {
+            session_destroy();
             die("Las Contraseñas no coinciden");
         }
 
         # strlen Idenfifica Cuantos caracteres hay
         if (strlen($_POST['UsuarioRC']) < 4) {
+            session_destroy();
             die('La contraseña debe tener al menos 4 caracteres.');
         }
         if (strlen($_POST['UsuarioRC']) > 10) {
+            session_destroy();
             die('La contraseña no puede tener mas de 10 caracteres.');
         }
 
         # preg_match Exige que la contraseña tenga al menos un caracter del diccionario especificado.
         if (!preg_match('`[a-z]`', $_POST['UsuarioRC'])) {
+            session_destroy();
             die('La contraseña debe tener al menos una letra minuscula.');
         }
         if (!preg_match('`[0-9]`', $_POST['UsuarioRC'])) {
+            session_destroy();
             die('La contraseña debe tener al menos un numero.');
         }
 
@@ -72,9 +88,11 @@ class UserController extends User{
         $this->nombre_usr = $alias[0];
         $contrasenaEncript = password_hash($contrasena,PASSWORD_ARGON2ID);
         $this->contrasena_usr = $contrasenaEncript;
-        $this->RegistrarUsuario();
+
+        $this->RegistrarUsuario();  
         $this->VistaUsuario();
 
+        
         // $datosUsuario = $this->ConsultarUsuario($nombre);
 
         // session_start();
@@ -93,16 +111,17 @@ class UserController extends User{
         # Recorremos el objeto que obtenemos en el model.
         foreach ($datosUsuario as $dU) {}
         if (password_verify($contrasena,$dU->contrasena_usr)) {
-            session_start();
+            // session_start();
             $_SESSION['nombre_usr'] = $dU->nombre_usr;
             $_SESSION['id_usr'] = $dU->id_usr;
-            var_dump($datosUsuario);
+            // var_dump($datosUsuario);
             return $_SESSION;
         }
 
         # Si no funciona el inicio de sesion pero devuelve un objeto.
         else {
-            var_dump($datosUsuario);
+            // var_dump($datosUsuario);
+            session_destroy();
             die("Fallo al intentar iniciar session");
         }
     }
@@ -122,18 +141,18 @@ if (isset($_GET['action']) && $_GET['action'] =='registrar' && empty($_POST['Usu
 
 // inicio de sesion.
 if (isset($_GET['action']) && $_GET['action'] == 'session' && !empty($_POST['UsuarioIS']) && !empty($_POST['ContrasenaIS'])) {
-    echo "holiwi";
+    // echo "holiwi";
     $usercontroler = new UserController();
     $usercontroler->VerificaInicio($_POST['UsuarioIS'],$_POST['ContrasenaIS']);
     $usercontroler->VistaUsuario();
     $objetoPrueba = $usercontroler->traerNombreUsuario();
-    var_dump($objetoPrueba);
+    // var_dump($objetoPrueba);
     
     return;
 }
 //  inicio de session fallido
 if (isset($_GET['action']) && $_GET['action'] =='session' && empty($_POST['UsuarioIS'] || $_POST['ContrasenaIS'])) {
-    echo "Camopos no validos";
+    echo "Campos no validos";
     return;
 }
 
@@ -147,7 +166,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'inicio') {
 # Redireccion a Eliminar Cuenta
 if (isset($_GET['action']) && $_GET['action'] == 'delete') {
     $usercontroler = new UserController();
-    $usercontroler->RedirectDelete();
+    $usercontroler->VistaDelete();
     return;
 }
 
@@ -155,7 +174,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 if (isset($_GET['action']) && $_GET['action'] == 'confirm_delete') {
     $usercontroler = new UserController();
 
-    session_start();
+    // session_start();
     // $_SESSION['id_usr'];
     
     # Accedemos a la funcion de "Eliminar Usuario".
@@ -168,24 +187,23 @@ if (isset($_GET['action']) && $_GET['action'] == 'confirm_delete') {
 # Redireccion a Actualizar Nombre.
 if (isset($_GET['action']) && $_GET['action'] == 'update') {
     $usercontroler = new UserController();
-    session_start();
+    // session_start();
 
     $busquedaObjeto = $usercontroler->TraerNombreUsuario();
     foreach ($busquedaObjeto as $obj) {}
 
-    // $usercontroler->RedirectUpdate();
+    // $usercontroler->VistaUpdate();
     return;
 }
 
 if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
     $usercontroler = new UserController();
-    session_start();
+    // session_start();
 
     $usercontroler->updateNombreUsuario($_POST['nombre_usr']);
-
     $usercontroler->VistaUsuario();
 
-    // $usercontroler->RedirectUpdate();
+    // $usercontroler->VistaUpdate();
     return;
 }
 
@@ -199,7 +217,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'abort') {
 }
 
 // Action vista predefinida
-if(session_status() == 1){
+if(isset($_GET) || !isset($_GET)){
     $usercontroler = new UserController();
     $usercontroler->VistaIndex();
     return;

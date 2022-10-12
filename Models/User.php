@@ -17,6 +17,9 @@ class User{
         $insert->bindParam(1,$this->nombre_usr);
         $insert->bindParam(2,$this->correo_usr);
         $insert->bindParam(3,$this->contrasena_usr);
+
+        $_SESSION['nombre_usr'] = $this->nombre_usr;
+
         $insert->execute();
         // header("location: UserController.php?action=login");
     }
@@ -81,7 +84,7 @@ class User{
         $sql = "UPDATE tbl_usuario SET nombre_usr = '$nuevo_nombre' WHERE id_usr = '$_SESSION[id_usr]'";
         $insert = $conexion->stm->prepare($sql);
 
-        session_start();
+        // session_start();
         $_SESSION['nombre_usr'] = $nuevo_nombre;
 
         $insert->execute();
