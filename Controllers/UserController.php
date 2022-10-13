@@ -48,14 +48,29 @@ class UserController extends User{
         header("location: ../");
     }
 
-    public function verificarUpdate($nombre, $email){
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            # Return + echo = die
+    public function verificarUpdate($nombre, $email, $contrasena){
+        if(empty($nombre) || empty($email) || empty($contrasena)){
+            die("Los campos NO pueden estar vacios");
+        }
+
+        // COMPROBACION DE CORREO ELECTRONICO
+        $comprobacion = $this->ComprobarCorreo($email);
+        if ($comprobacion != "") {
+            die("Ya existe una cuenta con este correo");
+        }
+
+        $datosUsuario = $this->ConsultarUsuario($_SESSION['nombre_usr']);
+        # Recorremos el objeto que obtenemos en el model.
+        foreach ($datosUsuario as $dU) {}
+        if (!password_verify($contrasena,$dU->contrasena_usr)) {
+            die("Contraseña Incorrecta");
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
             die("Introduzca una dirección de correo electronico valido");
         }
 
         if (strlen($nombre) < 6) {
-            session_destroy();
             die('El nombre de usuario debe tener al menos 6 caracteres.');
         }   
 
@@ -221,7 +236,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'update') {
 if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
     $usercontroler = new UserController();
     // session_start();
-    $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr']);
+    $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
     $usercontroler->updateNombreUsuario($_POST['nombre_usr'], $_POST['correo_usr']);
     $usercontroler->VistaUsuario();
 

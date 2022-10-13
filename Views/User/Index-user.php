@@ -45,7 +45,8 @@ include '../Inc/header.php';
                         <li>
                             <details>
                                 <summary> Actualizar Informacion </summary>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Nombre De Usuario </a>
+                                <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"> Datos Basicos </a><br>
+                                <a href="#"> Contraseña </a>
                             </details>
                         </li>
                         <li><a href="../Controllers/UserController.php?action=delete"> Eliminar Cuenta </a></li>
@@ -79,14 +80,14 @@ include '../Inc/header.php';
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Actualiza Nombre De Usuario </h5>
+                <h5 class="modal-title" id="exampleModalLabel"> Actualizar Informacion </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="UserController.php" method="POST">
                 <input type="hidden" name="action" value="actualizar">
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-6 mb-2">
+                        <div class="col-md-6 mb-3">
                             <label for="nombre"> Nombre Actual </label>
                             <input type="text" class="form-control" value="<?php echo $_SESSION['nombre_usr']; ?>" readonly>
                         </div>
@@ -96,10 +97,10 @@ include '../Inc/header.php';
                         </div>
                     </div>
 
-                    <hr class="salto">
+                    <!-- <hr class="salto"> -->
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-3">
                             <label for="nombre"> Nuevo Nombre </label>
                             <input type="text" placeholder="SpiritDark1164" class="form-control shadow-none" name="nombre_usr" required minlength="6">
                             <!-- <hr class="salto"> -->
@@ -108,6 +109,13 @@ include '../Inc/header.php';
                             <label for="nombre"> Nuevo Correo Electronico </label>
                             <input type="email" placeholder="SpiritDark1164@gmail.com" class="form-control shadow-none" name="correo_usr" required>
                             <!-- <hr class="salto"> -->
+                        </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-12">
+                            <label for="nombre"> Ingrese su contraseña para CONFIRMAR </label>
+                            <input type="password" placeholder="DuvanArwenLazar" class="form-control shadow-none" name="contrasena_usr" required>
+
                         </div>
                     </div>
                 </div>
