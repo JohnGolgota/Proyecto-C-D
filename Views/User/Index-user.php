@@ -124,7 +124,7 @@ include '../Inc/header.php';
         </article>
 
         <!--  -->
-        <article class="row align-items-center herramienta herramienta-tres">
+        <!-- <article class="row align-items-center herramienta herramienta-tres"> -->
 
             <!--  -->
             <!-- <section class="col">
@@ -132,24 +132,24 @@ include '../Inc/header.php';
         </section> -->
 
             <!--  -->
-            <section class="col">
+            <!-- <section class="col">
                 <h3>Lorem ipsum dolor sit amet.</h3>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat inventore sit hic dignissimos magni pariatur!</p>
             </section>
-        </article>
+        </article> -->
 
         <!--  -->
-        <article class="row align-items-center my-2 herramienta herramienta-cuatro">
+        <!-- <article class="row align-items-center my-2 herramienta herramienta-cuatro">
 
-            <!--  -->
+            
             <section class="col">
                 <h3>Lorem ipsum dolor sit amet.</h3>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto necessitatibus officia, odio cum blanditiis facilis.</p>
             </section>
 
-            <!--  -->
+            
             <section class="col"><img src="" alt="Agenda"></section>
-        </article>
+        </article> -->
     </section>
 </main>
 
@@ -199,11 +199,11 @@ include '../Inc/header.php';
                             <a href="#HerramientaDos" class="text-white"><i class="fas fa-clock pe-3"></i> Reloj Pomodoro </a>
                         </li>
                         <li class="mb-2">
-                            <a href="#HerramientaTres" class="text-white"><i class="fas fa-flag pe-3"></i> Ley de Pareto </a>
+                            <a href="#" class="text-white"><i class="fas fa-flag pe-3"></i> Recordatorios </a>
                         </li>
-                        <li class="mb-2">
+                        <!-- <li class="mb-2">
                             <a href="#HerramientaCuatro" class="text-white"><i class="fas fa-seedling pe-3"></i> Hazlo Tu Mismo </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </section>
                 <!--Grid column-->
@@ -260,4 +260,4 @@ include '../Inc/header.php';
 
 </section>
 
-<?php include '../Inc/footer.php'; ?>
+<?php include '../Inc/footer-user.php'; ?>
