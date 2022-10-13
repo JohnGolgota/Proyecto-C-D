@@ -5,7 +5,7 @@ include '../Inc/header.php';
 ?>
 <title> Carpe Diem | <?php echo $_SESSION['nombre_usr']; ?> </title>
 <?php include '../Inc/nav.php'; ?>
-
+<body onload="setTimeout(load, 700);">
 <!-- Encabezado, botones y tema -->
 <header class="align-items-center navbar navbar-expand-sm position-relative cabeza d-flex m-0">
     <nav class="container-xxl cabeza-nav-user">
@@ -103,8 +103,8 @@ include '../Inc/header.php';
 <main>
 
     <!--  -->
-    <section class="superbox bg-secondary calendar-box">
-        <iframe src="https://calendar.google.com/calendar/embed?height=720&wkst=1&bgcolor=%231363df&ctz=America%2FBogota&showTitle=0&showNav=1&src=M2R0dW5pbmdkdXZhbkBnbWFpbC5jb20&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZXMuY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&src=ZW4uY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%2333B679&color=%230B8043&color=%230B8043" width="1280" height="720" frameborder="0" scrolling="no" class="calendar-content"></iframe>
+    <section class="superbox calendar-box">
+        <!-- <iframe src="https://calendar.google.com/calendar/embed?height=720&wkst=1&bgcolor=%231363df&ctz=America%2FBogota&showTitle=0&showNav=1&src=M2R0dW5pbmdkdXZhbkBnbWFpbC5jb20&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZXMuY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&src=ZW4uY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%2333B679&color=%230B8043&color=%230B8043" width="1280" height="720" frameborder="0" scrolling="no" class="calendar-content"></iframe> -->
     </section>
 
     <!--  -->

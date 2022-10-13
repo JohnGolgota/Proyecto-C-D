@@ -15,6 +15,8 @@
     <!-- hojas de estilo personalizadas -->
     <link rel="stylesheet" href="../Public/Css/style.css">
     <link rel="stylesheet" href="../Public/Css/style-user.css">
+
+    <link rel="stylesheet" href="../Public/Css/push-out.css">
     
     <!-- librerias importadas -->
     <!-- ScrollReveal -->
