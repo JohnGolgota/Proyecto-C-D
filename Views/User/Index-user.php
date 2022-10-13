@@ -7,7 +7,7 @@ include '../Inc/header.php';
 <?php include '../Inc/nav.php'; ?>
 
 <!-- Encabezado, botones y tema -->
-<header class="align-items-center navbar navbar-expand-sm position-relative cabeza d-flex">
+<header class="align-items-center navbar navbar-expand-sm position-relative cabeza d-flex m-0">
     <nav class="container-xxl cabeza-nav-user">
         <!-- logo -->
         <section class=""><a href="#"><img src="../Public/Img/favicon-min.png" alt="Logo" width="35px"></a></section>
@@ -34,7 +34,7 @@ include '../Inc/header.php';
 
             <aside id="configDesplegable" style="display: none;" class="menu-no">
                 <!--  -->
-                <section class="contenido-menu">
+                <section class="contenido-menu" style="outline: 1px solid red;">
                     <ul>
                         <hr class="salto">
                         <li><a href="#"></a></li>
@@ -52,6 +52,7 @@ include '../Inc/header.php';
                         <li><a href="./UserController.php?action=abort"> Cerrar sesión </a></li>
                     </ul>
                 </section>
+            </aside>
 
                 <!-- boton Menu Desplegable. -->
                 <!-- <button class="boton menu-user menu-user-herramientas" onclick="menuDesplegable();"> ... </button>

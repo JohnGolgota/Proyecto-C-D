@@ -47,6 +47,12 @@
 
 
 /* ----------------------------------- BARRA DE NAVEGACION ----------------------------------- */
+.botones {
+    width: 375px;
+    height: 80%;
+    margin-right: 10px;
+}
+
 .boton-usr-container {
     position: absolute;
     bottom: 5px;
@@ -98,6 +104,17 @@
     width: 0;
     height: 0;
     opacity: 0;
+}
+
+.menu-no {
+    margin: 0;
+}
+
+.contenido-menu {
+    margin-right: 0;
+    right: 0;
+    position: relative;
+    width: 100%;
 }
 
 
