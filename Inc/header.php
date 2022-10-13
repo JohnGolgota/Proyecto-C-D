@@ -20,3 +20,25 @@
     <!-- ScrollReveal -->
     <script src="../Public/Js/scrollreveal.min.js"></script>
 <head>
+    <!--  -->
+    <div class="container-load" id="container-load">
+        <div class="push-out" id="push-out" style="z-index: 10000;">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!--  -->
+
+    <script>
+        function load(){
+            console.log("puta");
+            let containera = document.getElementById('container-load');
+            console.log(containera);
+            containera.style.opacity = '0';
+            containera.style.display = 'none';
+        }
+    </script>
+
+
+
+    

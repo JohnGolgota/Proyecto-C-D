@@ -19,9 +19,21 @@
     <!-- ScrollReveal -->
     <script src="./Public/Js/scrollreveal.min.js"></script>
 
+    <!-- Pantalla De Carga. -->
+    <link rel="stylesheet" href="./Public/Css/push-out.css">
     <title> Carpe Diem | Inicio </title>
 </head>
-<body class="">
+
+<!--  -->
+<div class="container-load" id="container-load">
+    <div class="push-out" id="push-out" style="z-index: 10000;">
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!--  -->
+
+<body class="" onload="setTimeout(load, 700);">
     <!-- Encabezado, botones y modo oscuro -->
     <header class="align-items-center navbar navbar-expand-sm position-relative header-reveal cabeza cabeza-dark" id="cabeza">
         <nav class="container-xxl cabeza-nav">
@@ -356,12 +368,17 @@
     <!-- Scripts perzonalizados: -->
     <!-- Animacion de los logos. -->
     <script src="./Public/Js/sweetalert.min.js"></script>
+
     <script>
-        const buttonDetails = document.getElementById("buttonDetails");
-        buttonDetails.addEventListener('click', function(){
-            swal('No hay.');
-        });
+        function load(){
+            console.log("puta");
+            let containera = document.getElementById('container-load');
+            console.log(containera);
+            containera.style.opacity = '0';
+            containera.style.display = 'none';
+        }
     </script>
+
     <script src="./Public/Js/iconrevel.min.js"></script>
     <script src="./Public/Js/app.js"></script>
 

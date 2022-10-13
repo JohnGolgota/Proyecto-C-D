@@ -47,7 +47,7 @@ setInterval('aleatorio()', 20000);
 
 
 // ----------------------------------- MODO OSCURO ----------------------------------- //
-const buttonDarkMode = document.getElementById('buttonDarkModeUser');
+const buttonDarkMode = document.getElementById('boton-dark-mode');
 buttonDarkMode.addEventListener('click', function(){
     document.querySelector(".footer-cd-f").classList.toggle('footer-cd-f-dark-mode');
     
@@ -68,7 +68,6 @@ buttonDarkMode.addEventListener('click', function(){
     document.querySelectorAll(".modal-content")[0].classList.toggle('modal-content-dark-mode');
     document.querySelectorAll(".modal-content")[1].classList.toggle('modal-content-dark-mode');
     document.querySelector(".boton-modal").classList.toggle('boton-modal-dark-mode');
-    
 });
 
 
@@ -80,7 +79,7 @@ function ValidarContraseña() {
     let comprobarContrasena = document.getElementById('usuarioRCC').value
     let mensajeConfirmacion = document.getElementById('MensajeConfirmarContrasena')
     
-    if (contrasen == comprobarContrasena) {
+    if (contrasena == comprobarContrasena) {
         mensajeConfirmacion.textContent = "A"
     }
 }
