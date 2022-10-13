@@ -19,6 +19,7 @@ class User{
         $insert->bindParam(3,$this->contrasena_usr);
 
         $_SESSION['nombre_usr'] = $this->nombre_usr;
+        $_SESSION['correo_usr'] = $this->correo_usr;
 
         $insert->execute();
         // header("location: UserController.php?action=login");
@@ -77,15 +78,16 @@ class User{
         return $busquedaObjeto;
     }
 
-    public function updateNombreUsuario($nuevo_nombre){
+    public function updateNombreUsuario($nuevo_nombre, $nuevo_correo){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
-        $sql = "UPDATE tbl_usuario SET nombre_usr = '$nuevo_nombre' WHERE id_usr = '$_SESSION[id_usr]'";
+        $sql = "UPDATE tbl_usuario SET nombre_usr = '$nuevo_nombre', correo_usr = '$nuevo_correo' WHERE id_usr = '$_SESSION[id_usr]'";
         $insert = $conexion->stm->prepare($sql);
 
         // session_start();
         $_SESSION['nombre_usr'] = $nuevo_nombre;
+        $_SESSION['correo_usr'] = $nuevo_correo;
 
         $insert->execute();
     }

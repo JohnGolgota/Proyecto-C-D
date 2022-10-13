@@ -76,7 +76,7 @@ include '../Inc/header.php';
     </nav>
 </header>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"> Actualiza Nombre De Usuario </h5>
@@ -85,15 +85,35 @@ include '../Inc/header.php';
             <form action="UserController.php" method="POST">
                 <input type="hidden" name="action" value="actualizar">
                 <div class="modal-body">
-                    <label for="nombre"> Nombre Actual </label>
-                    <input type="text" class="form-control" value="<?php echo $_SESSION['nombre_usr']; ?>" readonly>
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <label for="nombre"> Nombre Actual </label>
+                            <input type="text" class="form-control" value="<?php echo $_SESSION['nombre_usr']; ?>" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="nombre"> Correo Actual </label>
+                            <input type="text" class="form-control" value="<?php echo $_SESSION['correo_usr']; ?>" readonly>
+                        </div>
+                    </div>
+
                     <hr class="salto">
-                    <label for="nombre"> Nuevo Nombre De Usuario </label>
-                    <input type="text" placeholder="SpiritDark1164" class="form-control shadow-none" name="nombre_usr">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="nombre"> Nuevo Nombre </label>
+                            <input type="text" placeholder="SpiritDark1164" class="form-control shadow-none" name="nombre_usr" required minlength="6">
+                            <!-- <hr class="salto"> -->
+                        </div>
+                        <div class="col-md-6">
+                            <label for="nombre"> Nuevo Correo Electronico </label>
+                            <input type="email" placeholder="SpiritDark1164@gmail.com" class="form-control shadow-none" name="correo_usr" required>
+                            <!-- <hr class="salto"> -->
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
+                    <button type="submit" class="btn btn-primary"> Guardar Cambios </button>
                 </div>
             </form>
         </div>

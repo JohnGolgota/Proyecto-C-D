@@ -48,6 +48,21 @@ class UserController extends User{
         header("location: ../");
     }
 
+    public function verificarUpdate($nombre, $email){
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            # Return + echo = die
+            die("Introduzca una dirección de correo electronico valido");
+        }
+
+        if (strlen($nombre) < 6) {
+            session_destroy();
+            die('El nombre de usuario debe tener al menos 6 caracteres.');
+        }   
+
+        // NO se si va, pero lo pongo.
+        return;
+    }
+
     # Alistar informacion para registrarse
     function AlistarInformacion($email,$contrasena,$cContrasena)
     {
@@ -118,8 +133,10 @@ class UserController extends User{
         foreach ($datosUsuario as $dU) {}
         if (password_verify($contrasena,$dU->contrasena_usr)) {
             // session_start();
-            $_SESSION['nombre_usr'] = $dU->nombre_usr;
             $_SESSION['id_usr'] = $dU->id_usr;
+            $_SESSION['nombre_usr'] = $dU->nombre_usr;
+            $_SESSION['correo_usr'] = $dU->correo_usr;
+
             // var_dump($datosUsuario);
             return $_SESSION;
         }
@@ -162,7 +179,6 @@ if (isset($_POST['action']) && $_POST['action'] =='session' && empty($_POST['Usu
     return;
 }
 
-# Solucionado parcialmente, debido a que deberia iniciar sesion justo cuando se registra y NO enviarlo a otra pagina como hacemos aqui.
 if (isset($_GET['action']) && $_GET['action'] == 'inicio') {
     $usercontroler = new UserController();
     $usercontroler->VistaUsuario();
@@ -205,8 +221,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'update') {
 if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
     $usercontroler = new UserController();
     // session_start();
-
-    $usercontroler->updateNombreUsuario($_POST['nombre_usr']);
+    $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr']);
+    $usercontroler->updateNombreUsuario($_POST['nombre_usr'], $_POST['correo_usr']);
     $usercontroler->VistaUsuario();
 
     // $usercontroler->VistaUpdate();
