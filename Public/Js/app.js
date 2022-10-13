@@ -56,9 +56,8 @@ setInterval('aleatorio()', 20000);
 
 
 // ----------------------------------- MODO OSCURO ----------------------------------- //
-const buttonDarkMode = document.getElementById('boton-dark-mode');
-buttonDarkMode.addEventListener('click', function() {
-
+const buttonDarkMode = document.getElementById('buttonDarkModeUser');
+buttonDarkMode.addEventListener('click', function(){
     document.querySelector(".footer-cd-f").classList.toggle('footer-cd-f-dark-mode');
     
     document.querySelector("body").classList.toggle('dark-mode');
@@ -81,7 +80,8 @@ buttonDarkMode.addEventListener('click', function() {
     
 });
 
-function modoOscuroUser(){
+const buttonDarkModeUser = document.getElementById("buttonDarkModeUser");
+buttonDarkModeUser.addEventListener('click', function(){
     document.querySelector(".icono-user").classList.toggle('icono-user-dark-mode');
     document.querySelector(".nombre-user").classList.toggle('nombre-user-dark-mode');
 
@@ -94,7 +94,11 @@ function modoOscuroUser(){
     document.querySelectorAll(".herramienta")[2].classList.toggle('herramienta-dark-mode');
     
     document.querySelector(".footer-cd-f").classList.toggle('footer-cd-f-dark-mode');
-}
+});
+
+// function modoOscuroUser(){
+    
+// }
 
 // ----------------------------------- VALIDACION ----------------------------------- //
 

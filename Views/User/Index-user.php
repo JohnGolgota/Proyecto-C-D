@@ -27,14 +27,14 @@ include '../Inc/header.php';
             <!-- switch -->
             <section class="contenido-switch contenido-switch-user">
                 <label class="switch align-items-center">
-                    <input type="checkbox" class="input-banner" onclick="modoOscuroUser();">
+                    <input type="checkbox" class="input-banner" id="buttonDarkModeUser">
                     <span class="slider"></span>
                 </label>
             </section>
 
             <aside id="configDesplegable" style="display: none;" class="menu-no">
                 <!--  -->
-                <section class="contenido-menu" style="outline: 1px solid red;">
+                <section class="contenido-menu">
                     <ul>
                         <hr class="salto">
                         <li><a href="#"></a></li>

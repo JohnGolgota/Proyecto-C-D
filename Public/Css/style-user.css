@@ -106,13 +106,7 @@
     opacity: 0;
 }
 
-.menu-no {
-    margin: 0;
-}
-
 .contenido-menu {
-    margin-right: 0;
-    right: 0;
     position: relative;
     width: 100%;
 }
