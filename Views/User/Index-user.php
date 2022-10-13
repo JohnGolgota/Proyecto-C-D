@@ -34,7 +34,7 @@ include '../Inc/header.php';
 
             <aside id="configDesplegable" style="display: none;" class="menu-no">
                 <!--  -->
-                <section class="contenido-menu">
+                <div class="contenido-menu">
                     <ul>
                         <hr class="salto">
                         <li><a href="#"></a></li>
@@ -51,7 +51,7 @@ include '../Inc/header.php';
                         <li><a href="../Controllers/UserController.php?action=delete"> Eliminar Cuenta </a></li>
                         <li><a href="./UserController.php?action=abort"> Cerrar sesión </a></li>
                     </ul>
-                </section>
+                </div>
             </aside>
 
                 <!-- boton Menu Desplegable. -->

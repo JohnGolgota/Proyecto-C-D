@@ -111,10 +111,9 @@
 }
 
 .contenido-menu {
-    position: relative;
+    position: absolute;
     width: 100%;
 }
-
 
 
 /* ---------------------------- Subcategoria: Calendario ---------------------------------- */
