@@ -41,6 +41,10 @@ class UserController extends User{
     public function VistaUpdate(){
         include '../Views/User/updateUser.php';
     }
+    public function RedirigirNoSesion()
+    {
+        header("location: ../");
+    }
 
     public function RedirigirNoUsuario()
     {
@@ -124,6 +128,7 @@ class UserController extends User{
     {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             # Return + echo = die
+            echo "<script>alert('Email not valid');</script>";
             die("Introduzca una dirección de correo electronico valido");
         }
 
@@ -230,7 +235,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'session' && !empty($_POST['U
     return;
 }
 //  inicio de session fallido
-if (isset($_POST['action']) && $_POST['action'] =='session' && empty($_POST['UsuarioIS'] || $_POST['ContrasenaIS'])) {
+if (isset($_POST['action']) && $_POST['action'] == 'session' && empty($_POST['UsuarioIS'] || $_POST['ContrasenaIS'])) {
     echo "Campos no validos";
     return;
 }
