@@ -48,6 +48,33 @@ class UserController extends User{
         header("location: ../");
     }
 
+    public function verificarContrasena($old_password, $new_password, $confirm_password){
+        if(empty($old_password) || empty($new_password) || empty($confirm_password)){
+            die("Los campos NO pueden estar vacios");
+        }
+
+        if($new_password != $confirm_password){
+            die("Las Contraseñas NO Coinciden");
+        }
+
+        # strlen Idenfifica Cuantos caracteres hay
+        if (strlen($new_password) < 4) {
+            die('La contraseña debe tener al menos 4 caracteres.');
+        }
+        if (strlen($new_password) > 10) {
+
+            die('La contraseña no puede tener mas de 10 caracteres.');
+        }
+
+        # preg_match Exige que la contraseña tenga al menos un caracter del diccionario especificado.
+        if (!preg_match('`[a-z]`', $new_password)) {
+            die('La contraseña debe tener al menos una letra minuscula.');
+        }
+        if (!preg_match('`[0-9]`', $new_password)) {
+            die('La contraseña debe tener al menos un numero.');
+        }
+    }
+
     public function verificarUpdate($nombre, $email, $contrasena){
         if(empty($nombre) || empty($email) || empty($contrasena)){
             die("Los campos NO pueden estar vacios");
@@ -238,6 +265,17 @@ if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
     // session_start();
     $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
     $usercontroler->updateNombreUsuario($_POST['nombre_usr'], $_POST['correo_usr']);
+    $usercontroler->VistaUsuario();
+
+    // $usercontroler->VistaUpdate();
+    return;
+}
+
+if (isset($_POST['action']) && $_POST['action'] == 'act_contrasena') {
+    $usercontroler = new UserController();
+    // session_start();
+    $usercontroler->verificarContrasena($_POST['old_password_usr'], $_POST['new_password_usr'], $_POST['confirm_password_usr']);
+    // $usercontroler->updateNombreUsuario($_POST['nombre_usr'], $_POST['correo_usr']);
     $usercontroler->VistaUsuario();
 
     // $usercontroler->VistaUpdate();

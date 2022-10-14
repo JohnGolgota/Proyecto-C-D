@@ -46,7 +46,7 @@ include '../Inc/header.php';
                             <details>
                                 <summary> Actualizar Informacion </summary>
                                 <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"> Datos Basicos </a><br>
-                                <a href="#"> Contraseña </a>
+                                <a href="" data-bs-toggle="modal" data-bs-target="#changepassword"> Contraseña </a>
                             </details>
                         </li>
                         <li><a href="../Controllers/UserController.php?action=delete"> Eliminar Cuenta </a></li>
@@ -116,6 +116,43 @@ include '../Inc/header.php';
                             <label for="nombre"> Ingrese su contraseña para CONFIRMAR </label>
                             <input type="password" placeholder="DuvanArwenLazar" class="form-control shadow-none" name="contrasena_usr" required>
 
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
+                    <button type="submit" class="btn btn-primary"> Guardar Cambios </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="changepassword" tabindex="-1" aria-labelledby="changepassword" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="changepassword"> Actualizar Informacion </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="UserController.php" method="POST">
+                <input type="hidden" name="action" value="act_contrasena">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="nombre"> Contraseña Antigua </label>
+                            <input type="password" placeholder="Duvan Arwen Lazar" class="form-control shadow-none" name="old_password_usr" required minlength="6">
+                            <!-- <hr class="salto"> -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="nombre"> Nueva Contraseña </label>
+                            <input type="password" placeholder="Jiss Golgota" class="form-control shadow-none" name="new_password_usr" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="nombre"> Confirmar Contraseña </label>
+                            <input type="password" placeholder="Jiss Golgota" class="form-control shadow-none" name="confirm_password_usr" required>
                         </div>
                     </div>
                 </div>
