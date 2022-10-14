@@ -15,23 +15,15 @@ ScrollReveal().reveal('.item-reveal', { delay: 550 });
 
 
 // ------------------------- Acceder al inicio, registro, herramientas y configuracion. ------------------------- //
-function menuDesplegable(){
+const buttonDropdownMenu = document.getElementById('buttonDropdownMenu');
+buttonDropdownMenu.addEventListener('click', function () {
     if(document.getElementById("menuDesplegable").style.display == "none"){
         document.getElementById("menuDesplegable").style.display = "block";
     }
     else {
         document.getElementById("menuDesplegable").style.display = "none";
     }
-}
-
-function configDesplegable(){
-    if(document.getElementById("configDesplegable").style.display == "none"){
-        document.getElementById("configDesplegable").style.display = "block";
-    }
-    else {
-        document.getElementById("configDesplegable").style.display = "none";
-    }
-}
+});
 
 
 
@@ -55,34 +47,39 @@ setInterval('aleatorio()', 20000);
 
 
 // ----------------------------------- MODO OSCURO ----------------------------------- //
-function modoOscuro(){
+const buttonDarkMode = document.getElementById('boton-dark-mode');
+buttonDarkMode.addEventListener('click', function(){
+    document.querySelector(".footer-cd-f").classList.toggle('footer-cd-f-dark-mode');
+    
     document.querySelector("body").classList.toggle('dark-mode');
     document.querySelector(".cabeza").classList.toggle('cabeza-dark-mode');
     document.querySelector(".boton").classList.toggle('boton-dark-mode');
+    
     document.querySelector(".wave").classList.toggle('wave-dark-mode');
     document.querySelector(".-three").classList.toggle('-three-dark-mode');
     document.querySelector(".-two").classList.toggle('-two-dark-mode');
     document.querySelector(".-one").classList.toggle('-one-dark-mode');
+    
     document.querySelectorAll(".herramienta")[0].classList.toggle('herramienta-dark-mode');
     document.querySelectorAll(".herramienta")[1].classList.toggle('herramienta-dark-mode');
     document.querySelectorAll(".herramienta")[2].classList.toggle('herramienta-dark-mode');
-    document.querySelectorAll(".herramienta")[3].classList.toggle('herramienta-dark-mode');
+    
     document.querySelector(".herramienta-img").classList.toggle('herramienta-img-dark-mode');
-    document.querySelector(".footer-cd-f").classList.toggle('footer-cd-f-dark-mode');
     document.querySelectorAll(".modal-content")[0].classList.toggle('modal-content-dark-mode');
     document.querySelectorAll(".modal-content")[1].classList.toggle('modal-content-dark-mode');
     document.querySelector(".boton-modal").classList.toggle('boton-modal-dark-mode');
-}
+});
+
+
 
 // ----------------------------------- VALIDACION ----------------------------------- //
-
 // Mas que organiza duvan
 function ValidarContraseña() {
     let contrasena = document.getElementById('usuarioRC').value
     let comprobarContrasena = document.getElementById('usuarioRCC').value
     let mensajeConfirmacion = document.getElementById('MensajeConfirmarContrasena')
     
-    if (contrasen == comprobarContrasena) {
+    if (contrasena == comprobarContrasena) {
         mensajeConfirmacion.textContent = "A"
     }
 }

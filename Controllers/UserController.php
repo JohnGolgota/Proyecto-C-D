@@ -46,6 +46,83 @@ class UserController extends User{
         header("location: ../");
     }
 
+    public function RedirigirNoUsuario()
+    {
+        // Sale
+        header("location: ../");
+    }
+
+    public function verificarContrasena($old_password, $new_password, $confirm_password){
+        if(empty($old_password) || empty($new_password) || empty($confirm_password)){
+            die("Los campos NO pueden estar vacios");
+        }
+
+        if($new_password != $confirm_password){
+            die("Las Contraseñas NO Coinciden");
+        }
+
+        # strlen Idenfifica Cuantos caracteres hay
+        if (strlen($new_password) < 4) {
+            die('La contraseña debe tener al menos 4 caracteres.');
+        }
+        if (strlen($new_password) > 10) {
+
+            die('La contraseña no puede tener mas de 10 caracteres.');
+        }
+
+        # preg_match Exige que la contraseña tenga al menos un caracter del diccionario especificado.
+        if (!preg_match('`[a-z]`', $new_password)) {
+            die('La contraseña debe tener al menos una letra minuscula.');
+        }
+        if (!preg_match('`[0-9]`', $new_password)) {
+            die('La contraseña debe tener al menos un numero.');
+        }
+
+        $datosUsuario = $this->ConsultarUsuario($_SESSION['nombre_usr']);
+
+        # Recorremos el objeto que obtenemos en el model.
+        foreach ($datosUsuario as $dU) {}
+        if (!password_verify($old_password,$dU->contrasena_usr)) {
+            die("CONTRASEÑA INCORRECTA");
+        } 
+
+        $contrasenaEncript = password_hash($new_password,PASSWORD_ARGON2ID);
+        $this->contrasena_usr = $contrasenaEncript;
+
+        // Tampoco se si va, pero bueno. xd
+        return;
+    }
+
+    public function verificarUpdate($nombre, $email, $contrasena){
+        if(empty($nombre) || empty($email) || empty($contrasena)){
+            die("Los campos NO pueden estar vacios");
+        }
+
+        // COMPROBACION DE CORREO ELECTRONICO
+        $comprobacion = $this->ComprobarCorreo($email);
+        if ($comprobacion != "") {
+            die("Ya existe una cuenta con este correo/nombre de usuario.");
+        }
+
+        $datosUsuario = $this->ConsultarUsuario($_SESSION['nombre_usr']);
+        # Recorremos el objeto que obtenemos en el model.
+        foreach ($datosUsuario as $dU) {}
+        if (!password_verify($contrasena,$dU->contrasena_usr)) {
+            die("Contraseña Incorrecta");
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            die("Introduzca una dirección de correo electronico valido");
+        }
+
+        if (strlen($nombre) < 6) {
+            die('El nombre de usuario debe tener al menos 6 caracteres.');
+        }   
+
+        // NO se si va, pero lo pongo.
+        return;
+    }
+
     # Alistar informacion para registrarse
     function AlistarInformacion($email,$contrasena,$cContrasena)
     {
@@ -117,8 +194,10 @@ class UserController extends User{
         foreach ($datosUsuario as $dU) {}
         if (password_verify($contrasena,$dU->contrasena_usr)) {
             // session_start();
-            $_SESSION['nombre_usr'] = $dU->nombre_usr;
             $_SESSION['id_usr'] = $dU->id_usr;
+            $_SESSION['nombre_usr'] = $dU->nombre_usr;
+            $_SESSION['correo_usr'] = $dU->correo_usr;
+
             // var_dump($datosUsuario);
             return $_SESSION;
         }
@@ -141,9 +220,7 @@ if(isset($_POST['action']) && $_POST['action'] =='registrar' && !empty($_POST['U
 
 // Action registro fallido. Condicion contraria a la de arriba.
 if (isset($_POST['action']) && $_POST['action'] =='registrar' && empty($_POST['UsuarioRE'] || $_POST['UsuarioRC'] || $_POST['UsuarioRCC'])) {
-    // die("Por favor rellene todos los campos de registro. ʕっ•ᴥ•ʔっ ♡");
-    echo "Por favor rellene todos los campos de registro. ʕっ•ᴥ•ʔっ ♡";
-    die(sleep(5) && header("location ../"));
+    die("Por favor rellene todos los campos de registro. ʕっ•ᴥ•ʔっ ♡");
 }
 
 // inicio de sesion.
@@ -163,7 +240,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'session' && empty($_POST['Us
     return;
 }
 
-# Solucionado parcialmente, debido a que deberia iniciar sesion justo cuando se registra y NO enviarlo a otra pagina como hacemos aqui.
 if (isset($_GET['action']) && $_GET['action'] == 'inicio') {
     $usercontroler = new UserController();
     $usercontroler->VistaUsuario();
@@ -206,8 +282,19 @@ if (isset($_GET['action']) && $_GET['action'] == 'update') {
 if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
     $usercontroler = new UserController();
     // session_start();
+    $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
+    $usercontroler->updateNombreUsuario($_POST['nombre_usr'], $_POST['correo_usr']);
+    $usercontroler->VistaUsuario();
 
-    $usercontroler->updateNombreUsuario($_POST['nombre_usr']);
+    // $usercontroler->VistaUpdate();
+    return;
+}
+
+if (isset($_POST['action']) && $_POST['action'] == 'act_contrasena') {
+    $usercontroler = new UserController();
+    // session_start();
+    $usercontroler->verificarContrasena($_POST['old_password_usr'], $_POST['new_password_usr'], $_POST['confirm_password_usr']);
+    $usercontroler->updateContrasena();
     $usercontroler->VistaUsuario();
 
     // $usercontroler->VistaUpdate();
@@ -217,8 +304,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
 # Cerrar Sesion.
 if (isset($_GET['action']) && $_GET['action'] == 'abort') {
     $usercontroler = new UserController();
-    $usercontroler->VistaRegistro();
-
+    $usercontroler->RedirigirNoUsuario();
     session_destroy();
     return;
 }
@@ -226,7 +312,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'abort') {
 // Action vista predefinida
 if(isset($_GET) || !isset($_GET)){
     $usercontroler = new UserController();
-    $usercontroler->RedirigirNoSesion();
+    $usercontroler->RedirigirNoUsuario();
     return;
 }
 

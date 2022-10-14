@@ -1,3 +1,3 @@
 </head>
 
-<body class="" onload="OnloadFunction();">
+<body class="">

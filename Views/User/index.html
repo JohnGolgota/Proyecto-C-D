@@ -37,7 +37,7 @@
                 <!-- switch -->
                 <div class="contenido-switch my-auto">
                     <label class="switch align-items-center">
-                        <input type="checkbox" class="input-banner" onclick="modoOscuro();" id="boton-dark-mode">
+                        <input type="checkbox" class="input-banner" id="boton-dark-mode">
                         <span class="slider"></span>
                     </label>
                 </div>
@@ -49,7 +49,7 @@
                 <button type="button" class="boton btn-dos btn-oculto-head" data-bs-toggle="modal" data-bs-target="#registroU" data-bs-whatever="@getbootstrap"> Registrate </button>
 
                 <!-- Oculto -->
-                <button class="oculto boton" onclick="menuDesplegable();">...</button>
+                <button class="oculto boton" id="buttonDropdownMenu">...</button>
 
             </div>
             <!-- Menu Desplegable. -->
@@ -66,8 +66,8 @@
                     <ul>
                         <li><a href="#HerramientaUno"> Agenda </a></li>
                         <li><a href="#HerramientaDos"> Reloj Pomodoro </a></li>
-                        <li><a href="#HerramientaTres"> Ley De Pareto </a></li>
-                        <li><a href="#HerramientaCuatro"> ? </a></li>
+                        <li><a href="#HerramientaTres"> Recordatorios </a></li>
+                        <!-- <li><a href="#HerramientaCuatro"> ? </a></li> -->
                     </ul>
                 </div>
             </aside>
@@ -131,8 +131,8 @@
 
                 <!-- descripcion. HerramientaDos -->
                 <div class="col order-1">
-                    <h3>Pomodoro</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet doloribus architecto quidem impedit odit natus!</p>
+                    <h3>Reloj Pomodoro</h3>
+                    <p>¡Estructura tus actividades de la mejor manera y sé más productivo!</p>
                 </div>
             </article>
 
@@ -146,25 +146,25 @@
 
                 <!-- descripcion. HerramientaTres -->
                 <div class="col">
-                    <h3>Ley de pareto</h3>
-                    <p class="">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut aliquam neque vel, dolorem et placeat.</p>
+                    <h3>Recordatorios</h3>
+                    <p class="">¡Agrega pequeños recordatorios y que no se te olvide nada!</p>
                 </div>
             </article>
 
             <!-- HerramientaCuatro -->
-            <article class="row align-items-center my-2 herramienta herramienta-cuatro" id="HerramientaCuatro">
+            <!-- <article class="row align-items-center my-2 herramienta herramienta-cuatro" id="HerramientaCuatro"> -->
 
                 <!-- imagen. HerramientaCuatro -->
-                <div class="col order-2">
+                <!-- <div class="col order-2">
                     <img class="herramienta-img" src="../Public/Img/herramientas/doyouself-min.png" alt="HerramientaCuatro">
-                </div>
+                </div> -->
 
                 <!-- descripcion. HerramientaCuatro -->
-                <div class="col order-1">
+                <!-- <div class="col order-1">
                     <h3>Do it Yourself</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, quisquam deleniti. Dolore distinctio veritatis quos?</p>
                 </div>
-            </article>
+            </article> -->
         </section>
     </main>
 
@@ -214,11 +214,11 @@
                                 <a href="#HerramientaDos" class="text-white"><i class="fas fa-clock pe-3"></i> Reloj Pomodoro </a>
                             </li>
                             <li class="mb-2">
-                                <a href="#HerramientaTres" class="text-white"><i class="fas fa-flag pe-3"></i> Ley de Pareto </a>
+                                <a href="#HerramientaTres" class="text-white"><i class="fas fa-flag pe-3"></i> Recordatorios </a>
                             </li>
-                            <li class="mb-2">
+                            <!-- <li class="mb-2">
                                 <a href="#HerramientaCuatro" class="text-white"><i class="fas fa-seedling pe-3"></i> Hazlo Tu Mismo </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                     <!--Grid column-->
@@ -290,7 +290,6 @@
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-inicio">
-<!-- Aqui -->
                     <form action="UserController.php" class="" method="POST" novalidate>
                         <input type="hidden" name="action" value="session">
                         <input type="text" name="UsuarioIS" id="usuarioIS" placeholder="Nombre De Usuario" class="form-control shadow-none" required>
@@ -325,7 +324,6 @@
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-registro">
-<!-- Aqui -->
                     <form action="UserController.php" method="POST" novalidate id="formulario-registro">
                         <input type="hidden" name="action" value="registrar">
                         <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo" class="form-control shadow-none" required>
@@ -335,7 +333,7 @@
                         <div class="form-group">
                             <input required type="checkbox" name="terminosycondiciones" id="terminosycondiciones" class="form-check-input" value="aceptarteminos">
                             <label for="terminosycondiciones" id="terminosycondiciones" class="form-check-label">Aceptar los terminos y condiciones</label>
-                            <a href="#" onclick="detallesTC();">Detalles.</a>
+                            <a href="#" id="buttonDetails">Detalles.</a>
                         </div>
                         <input type="submit" value="Registrarse" class="btn btn-primary boton-modal" id="btn-registro">
                     </form>
@@ -359,9 +357,10 @@
     <!-- Animacion de los logos. -->
     <script src="../Public/Js/sweetalert.min.js"></script>
     <script>
-        function detallesTC() {
-            swal('No hay.')
-        }
+        const buttonDetails = document.getElementById("buttonDetails");
+        buttonDetails.addEventListener('click', function(){
+            swal('No hay.');
+        });
     </script>
     <script src="../Public/Js/iconrevel.min.js"></script>
     <script src="../Public/Js/app.js"></script>
