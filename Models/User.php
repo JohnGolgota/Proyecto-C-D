@@ -4,8 +4,8 @@ class User{
     protected $nombre_usr;
     protected $correo_usr;
     protected $contrasena_usr;
-    protected $id_evn;
-    protected $id_mpg;
+    // protected $id_evn;
+    // protected $id_mpg;
 
     public function RegistrarUsuario(){
         include_once '../Config/conexiondb.php';
@@ -90,6 +90,16 @@ class User{
         $_SESSION['correo_usr'] = $nuevo_correo;
 
         $insert->execute();
+    }
+
+    public function updateContrasena(){
+        include_once '../Config/conexiondb.php';
+        $conexion = new Conexion();
+
+        $sql = "UPDATE tbl_usuario SET contrasena_usr = '$this->contrasena_usr' WHERE id_usr = '$_SESSION[id_usr]'";
+        $actualizacion = $conexion->stm->prepare($sql);
+
+        $actualizacion->execute();
     }
 }
 ?>

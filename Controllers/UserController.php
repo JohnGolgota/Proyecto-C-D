@@ -73,6 +73,20 @@ class UserController extends User{
         if (!preg_match('`[0-9]`', $new_password)) {
             die('La contraseña debe tener al menos un numero.');
         }
+
+        $datosUsuario = $this->ConsultarUsuario($_SESSION['nombre_usr']);
+
+        # Recorremos el objeto que obtenemos en el model.
+        foreach ($datosUsuario as $dU) {}
+        if (!password_verify($old_password,$dU->contrasena_usr)) {
+            die("CONTRASEÑA INCORRECTA");
+        } 
+
+        $contrasenaEncript = password_hash($new_password,PASSWORD_ARGON2ID);
+        $this->contrasena_usr = $contrasenaEncript;
+
+        // Tampoco se si va, pero bueno. xd
+        return;
     }
 
     public function verificarUpdate($nombre, $email, $contrasena){
@@ -83,7 +97,7 @@ class UserController extends User{
         // COMPROBACION DE CORREO ELECTRONICO
         $comprobacion = $this->ComprobarCorreo($email);
         if ($comprobacion != "") {
-            die("Ya existe una cuenta con este correo");
+            die("Ya existe una cuenta con este correo/nombre de usuario.");
         }
 
         $datosUsuario = $this->ConsultarUsuario($_SESSION['nombre_usr']);
@@ -275,7 +289,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'act_contrasena') {
     $usercontroler = new UserController();
     // session_start();
     $usercontroler->verificarContrasena($_POST['old_password_usr'], $_POST['new_password_usr'], $_POST['confirm_password_usr']);
-    // $usercontroler->updateNombreUsuario($_POST['nombre_usr'], $_POST['correo_usr']);
+    $usercontroler->updateContrasena();
     $usercontroler->VistaUsuario();
 
     // $usercontroler->VistaUpdate();
