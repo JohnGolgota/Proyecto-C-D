@@ -25,11 +25,11 @@ class User{
         // header("location: UserController.php?action=login");
     }
 // Puto
-    public function ComprobarCorreo($email){
+    public function ComprobarCorreo(){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
-        $sql = "CALL ReadEmail_usr('$email')";
+        $sql = "CALL ReadEmail_usr('$this->correo_usr')";
         $result = $conexion->stm->prepare($sql);
         $result->execute();
         $usuario = $result->fetchAll(PDO::FETCH_OBJ);
@@ -40,11 +40,11 @@ class User{
         return;
     }
 // puto 2
-    public function ConsultarUsuario($nombre_usr){
+    public function ConsultarUsuario(){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
         
-        $sql = "CALL GetDataName_usr('$nombre_usr')";
+        $sql = "CALL GetDataName_usr('$this->nombre_usr')";
         $usuario = $conexion->stm->prepare($sql);
         $usuario->execute();
         $usuarioObjeto = $usuario->fetchAll(PDO::FETCH_OBJ);
@@ -59,17 +59,17 @@ class User{
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
-        $sql = "CALL Delete_usr('$_SESSION[id_usr]')";
+        $sql = "CALL Delete_usr('$this->id_usr')";
         $insert = $conexion->stm->prepare($sql);
 
         $insert->execute();
     }
 
-    public function traerNombreUsuario(){
+    public function GetUserById(){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
-        $sql = "CALL GetDataId_usr('$_SESSION[id_usr]')";
+        $sql = "CALL GetDataId_usr('$this->id_usr')";
         $insert = $conexion->stm->prepare($sql);
 
         $insert->execute();
@@ -78,17 +78,17 @@ class User{
         return $busquedaObjeto;
     }
 
-    public function updateNombreUsuario($nuevo_nombre, $nuevo_correo){
+    public function updateNombreUsuario(){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
-        $sql = "CALL Update_usr('$nuevo_nombre','$nuevo_correo','$_SESSION[id_usr]')";
+        $sql = "CALL Update_usr('$this->nombre_usr','$this->correo_usr','$this->id_usr')";
         $insert = $conexion->stm->prepare($sql);
         // Para hacer las siguientes lineas deberia haber un try catch
         // En todo deberia haber un try catch
         // session_start();
-        $_SESSION['nombre_usr'] = $nuevo_nombre;
-        $_SESSION['correo_usr'] = $nuevo_correo;
+        $_SESSION['nombre_usr'] = $this->nombre_usr;
+        $_SESSION['correo_usr'] = $this->correo_usr;
 
         $insert->execute();
     }
@@ -97,7 +97,7 @@ class User{
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
-        $sql = "CALL UpdatePass_usr('$this->contrasena_usr','$_SESSION[id_usr]')";
+        $sql = "CALL UpdatePass_usr('$this->contrasena_usr','$this->id_usr')";
         $actualizacion = $conexion->stm->prepare($sql);
 
         $actualizacion->execute();

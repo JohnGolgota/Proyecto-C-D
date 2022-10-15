@@ -90,7 +90,7 @@ class UserController extends User{
         $this->contrasena_usr = $contrasenaEncript;
 
         // Tampoco se si va, pero bueno. xd
-        return;
+        // return;
     }
 
     public function verificarUpdate($nombre, $email, $contrasena){
@@ -99,12 +99,14 @@ class UserController extends User{
         }
 
         // COMPROBACION DE CORREO ELECTRONICO
-        $comprobacion = $this->ComprobarCorreo($email);
+        $this->correo_usr = $email;
+        $comprobacion = $this->ComprobarCorreo();
         if ($comprobacion != "") {
             die("Ya existe una cuenta con este correo/nombre de usuario.");
         }
 
-        $datosUsuario = $this->ConsultarUsuario($_SESSION['nombre_usr']);
+        $this->nombre_usr = $_SESSION['nombre_usr'];
+        $datosUsuario = $this->ConsultarUsuario();
         # Recorremos el objeto que obtenemos en el model.
         foreach ($datosUsuario as $dU) {}
         if (!password_verify($contrasena,$dU->contrasena_usr)) {
@@ -209,6 +211,29 @@ class UserController extends User{
             die("Fallo al intentar iniciar session");
         }
     }
+    public function PrepararIdDelete($id_usr)
+    {
+        $this->id_usr = $_SESSION['id_usr'];
+        $this->EliminarUsuario();
+    }
+    public function TraerNombreUsuario()
+    {
+        $this->id_usr = $_SESSION['id_usr'];
+        $objetoPrueba = $this->GetUserById();
+        return $objetoPrueba;
+    }
+    public function PrepareUpdateUserById($nombre_usr,$correo_usr,$id_usr)
+    {
+        $this->nombre_usr = $nombre_usr;
+        $this->correo_usr = $correo_usr;
+        $this->id_usr = $id_usr;
+        $this->updateNombreUsuario();
+    }
+    public function PrepareIdForUpdate()
+    {
+        $this->id_usr = $_SESSION['id_usr'];
+        $this->updateContrasena();
+    }
 }
 // Action Registro
 if(isset($_POST['action']) && $_POST['action'] =='registrar' && !empty($_POST['UsuarioRE'] && $_POST['UsuarioRC'] && $_POST['UsuarioRCC'] && $_POST['terminosycondiciones'])){
@@ -229,7 +254,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'session' && !empty($_POST['U
     $usercontroler = new UserController();
     $usercontroler->VerificaInicio($_POST['UsuarioIS'],$_POST['ContrasenaIS']);
     $usercontroler->VistaUsuario();
-    $objetoPrueba = $usercontroler->traerNombreUsuario();
+    $objetoPrueba = $usercontroler->TraerNombreUsuario();
     // var_dump($objetoPrueba);
     
     return;
@@ -261,7 +286,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'confirm_delete') {
     // $_SESSION['id_usr'];
     
     # Accedemos a la funcion de "Eliminar Usuario".
-    $usercontroler->EliminarUsuario();
+    // $usercontroler->EliminarUsuario();
+    $usercontroler->PrepararIdDelete($_SESSION['id_usr']);
     $usercontroler->VistaIndex();
 
     return;
@@ -283,7 +309,8 @@ if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
     $usercontroler = new UserController();
     // session_start();
     $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
-    $usercontroler->updateNombreUsuario($_POST['nombre_usr'], $_POST['correo_usr']);
+    // $usercontroler->updateNombreUsuario($_POST['nombre_usr'], $_POST['correo_usr']);
+    $usercontroler->PrepareUpdateUserById($_POST['nombre_usr'], $_POST['correo_usr'],$_SESSION['id_usr']);
     $usercontroler->VistaUsuario();
 
     // $usercontroler->VistaUpdate();
@@ -294,7 +321,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'act_contrasena') {
     $usercontroler = new UserController();
     // session_start();
     $usercontroler->verificarContrasena($_POST['old_password_usr'], $_POST['new_password_usr'], $_POST['confirm_password_usr']);
-    $usercontroler->updateContrasena();
+    $usercontroler->PrepareIdForUpdate();
     $usercontroler->VistaUsuario();
 
     // $usercontroler->VistaUpdate();
@@ -304,14 +331,15 @@ if (isset($_POST['action']) && $_POST['action'] == 'act_contrasena') {
 # Cerrar Sesion.
 if (isset($_GET['action']) && $_GET['action'] == 'abort') {
     $usercontroler = new UserController();
-    $usercontroler->RedirigirNoUsuario();
     session_destroy();
+    $usercontroler->RedirigirNoUsuario();
     return;
 }
 
 // Action vista predefinida
 if(isset($_GET) || !isset($_GET)){
     $usercontroler = new UserController();
+    session_destroy();
     $usercontroler->RedirigirNoUsuario();
     return;
 }
