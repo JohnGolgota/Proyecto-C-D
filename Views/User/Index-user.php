@@ -3,6 +3,15 @@ include '../Inc/header.php';
 // session_start();
 
 ?>
+<style>
+    .add-reminder-button {
+        border: none;
+        border-radius: 100%;
+        background-color: #1363DF;
+        padding: 3.5px 11px;
+        color: white;
+    }
+</style>
 <title> Carpe Diem | <?php echo $_SESSION['nombre_usr']; ?> </title>
 <?php include '../Inc/nav.php'; ?>
 <body onload="setTimeout(load, 700);">
@@ -21,7 +30,7 @@ include '../Inc/header.php';
 
             <!-- Boton "+" -->
             <section class="nav-item boton-mas-container">
-                <button class="boton-mas"> + </button>
+                <button class="boton-mas" data-bs-toggle="modal" data-bs-target="#addreminder"> + </button>
             </section>
 
             <!-- switch -->
@@ -164,6 +173,38 @@ include '../Inc/header.php';
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="addreminder" tabindex="1" aria-labelledby="addreminderLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <form action="" class="form-group row">
+            <div class="col-md-1 content-btn content-config align-middle my-auto">
+                <button type="submit" class="add-reminder-button"> + </button>
+            </div>
+            <div class="content-input col-md-4 content-config my-auto">
+                <input type="text" id= nombre_rec name="nombre_rec" placeholder="Voy a..." class="form-control shadow-none col-md-3">
+            </div>
+            <div class="content-not col-md-5 content-config my-auto">
+                <input type="datetime-local" name="notificacion_rec" id="notificacion_rec" class="form-control shadow-none">
+            </div>
+            <div class="content-color content-confg col-md-1 my-auto">
+                <input type="color" name="color_rec" id="color_rec" class="">
+            </div>
+        </form>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <h3> Tus Recordatorios </h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Listo</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!--  -->
 <main>
 

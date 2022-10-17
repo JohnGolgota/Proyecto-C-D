@@ -115,6 +115,14 @@
     width: 100%;
 }
 
+.add-reminder-button {
+    border: none;
+    border-radius: 100%;
+    background-color: #1363DF;
+    padding: 3.5px 11px;
+    color: white;
+}
+
 
 /* ---------------------------- Subcategoria: Calendario ---------------------------------- */
 .calendar-box {
