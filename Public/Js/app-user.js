@@ -27,3 +27,37 @@ function configDesplegable(){
     }
 }
 
+
+
+// ----------------------------------- CONTENIDO AJAX y Jquery. ----------------------------------- //
+function fetchTasks(){
+    // Pedimos informacion para mostrarla en lista. Como no se especifica el momento (como en los de arriba), se ejecuta siempre.
+    $.ajax({
+        url: 'task-list.php',
+        type: 'GET', // GET es para recibir informacion, POST para enviar.
+
+        // Cuando reciba la respuesta se va a ejecutar cierta funcion:
+        success: function(response){
+            let tasks = JSON.parse(response);
+            let template = '';
+            // Recorremos las tareas para mostrarlas.
+            tasks.forEach(task => {
+                // Llenamos la Plantilla.
+                template += 
+                `
+                    <tr taskId="${task.id}">
+                        <td>${task.id}</td>
+                        <td><a href="#" class="task-item">${task.name}</a></td>
+                        <td>${task.description}</td>
+                        <td>
+                            <button class="task-delete btn btn-danger"> Danger </button>
+                        </td>
+                    </tr>
+                `
+            });
+
+            // Pintamos la plantilla en el elemento seleccionado.
+            $('#tasks').html(template);
+        }
+    });
+}

@@ -196,6 +196,14 @@ include '../Inc/header.php';
       </div>
       <div class="modal-body">
             <h3> Tus Recordatorios </h3>
+            <div class="col-md-12">
+                <div class="tasks">
+                    <div class="task my-auto d-flex mb-1">
+                        <h4 class="element-task nombre-task my-auto" id="nombre-task"> Nombre </h4>
+                        <h4 class="element-task notifiacion-task my-auto" id="notificacion-task"> 2022-10-21 15:44:34 </h4>
+                    </div>
+                </div>
+            </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Listo</button>
