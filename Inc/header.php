@@ -33,9 +33,9 @@
 
     <script>
         function load(){
-            console.log("puta");
+            // console.log("puta");
             let containera = document.getElementById('container-load');
-            console.log(containera);
+            // console.log(containera);
             containera.style.opacity = '0';
             containera.style.display = 'none';
         }
