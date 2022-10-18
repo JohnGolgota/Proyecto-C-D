@@ -26,3 +26,4 @@ function configDesplegable(){
         document.getElementById("configDesplegable").style.display = "none";
     }
 }
+

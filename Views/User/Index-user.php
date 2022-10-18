@@ -363,7 +363,7 @@ include '../Inc/header.php';
     </footer>
 
 </section>
-
 </section>
 
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <?php include '../Inc/footer-user.php'; ?>
