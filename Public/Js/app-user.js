@@ -40,29 +40,32 @@ $(document).ready(function() {
             
             // Cuando reciba la respuesta se va a ejecutar cierta funcion:
             success: function(response){
-                // console.log("Hola", response);
+                // console.log("Hola, Estoy En El App-user.js", response);
+
                 let tasks = JSON.parse(response);
+                // console.log("LA CONCHA DE MI HERMANA -> ", tasks);
                 let template = '';
-                // Recorremos las tareas para mostrarlas.
                 tasks.forEach(task => {
+
+                    // console.log("TASK -> ", task.Nombre_rec);
+
                         // Llenamos la Plantilla.
                         template += 
                         `
-                            <tr taskId="${task.id_usr}">
-                                <td>${task.id}</td>
-                                <td><a href="#" class="task-item">${task.name}</a></td>
-                                <td>${task.description}</td>
-                                <td>
-                                    <button class="task-delete btn btn-danger"> Danger </button>
-                                </td>
-                            </tr>
+                            <div class="tasks">
+                                <div class="task my-auto d-flex mb-1" style="background-color:${task.Color_rec};">
+                                    <h4 class="element-task nombre-task my-auto" id="nombre-task">${task.Nombre_rec} | </h4>
+                                    <h4 class="element-task notifiacion-task my-auto" id="notificacion-task">${task.Notificacion_rec}</h4>
+                                </div>
+                            </div>
                         `
                     });
                     
-                    // Pintamos la plantilla en el elemento seleccionado.
+                //     // Pintamos la plantilla en el elemento seleccionado.
                     $('#tasks').html(template);
                 }
             });
         }
-        fetchTasks();
+
+        setInterval(fetchTasks, 250);
 });

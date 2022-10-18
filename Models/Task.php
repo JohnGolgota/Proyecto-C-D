@@ -10,26 +10,31 @@
             include_once '../Config/conexiondb.php';
             $conexion = new Conexion();
 
-            $sql = "SELECT * FROM tbl_Recordatorios WHERE id_usr = '$this->id_rec'";
+            $sql = "SELECT * FROM tbl_Recordatorios WHERE id_usr = 0";
             $result = $conexion->stm->prepare($sql);
             $result->execute();
 
-            // var_dump($result);
+            // echo "Hice una consulta";
+
             // $a = $result->fetchAll(PDO::FETCH_OBJ);
-            foreach ($result as $row) {}
+            $task = $result->fetchAll(PDO::FETCH_OBJ);
+            // var_dump($task);
 
-            $json = array(
-                'id_rec' => $row->id_rec,
-                'nombre_rec' => $row->nombre_rec,
-                'color_rec' => $row->color_rec,
-                'notificacion_rec' => $row->notificacion_rec
-            );
+            // foreach ($task as $row) {}
 
-            echo $row->id_rec;
+            $jsonstring = json_encode($task);
+            // echo "Llegue Al String :D " . $jsonstring;
+
+            // $json[] = array(
+            //     'id_rec' => $row->id_rec,
+            //     'nombre_rec' => $row->nombre_rec,
+            //     'color_rec' => $row->color_rec,
+            //     'notificacion_rec' => $row->notificacion_rec
+            // );
+
+            // echo $row->id_rec;
             
-            $jsonstring = json_encode($json);
             echo $jsonstring;
-            return $jsonstring;
         }
     }
 ?>
