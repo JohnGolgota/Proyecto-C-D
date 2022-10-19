@@ -49,7 +49,9 @@ $(document).ready(function() {
         let url = edit === false ? 'TaskController.php?action=AddTask' : 'task-edit.php';
         // console.log(url);
         // Enviar informacion (Donde queremos enviar el dato, Que datos se envian, que se hace cuando reciba respuesta)
-        $.post(url, postData, function(response){ /* console.log(response); */ })
+        $.post(url, postData, function(response){ 
+            // console.log("RESPUESTA -> ", response); 
+        })
 
         // Reseteamos el formulario.
         $('#task-form').trigger('reset');
@@ -70,10 +72,9 @@ $(document).ready(function() {
             
             // Cuando reciba la respuesta se va a ejecutar cierta funcion:
             success: function(response){
-                // console.log("Hola, Estoy En El App-user.js", response);
+                console.log("ESTA ES LA RESPUESTA -> ", response);
 
                 let tasks = JSON.parse(response);
-                // console.log("LA CONCHA DE MI HERMANA -> ", tasks);
                 let template = '';
                 tasks.forEach(task => {
 
