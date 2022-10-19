@@ -10,7 +10,7 @@
             include_once '../Config/conexiondb.php';
             $conexion = new Conexion();
 
-            $sql = "SELECT * FROM tbl_Recordatorios WHERE id_usr = '$this->id_usr'";
+            $sql = "SELECT * FROM tbl_Recordatorios WHERE id_usr = '$_SESSION[id_usr]'";
             $result = $conexion->stm->prepare($sql);
             $result->execute();
 
