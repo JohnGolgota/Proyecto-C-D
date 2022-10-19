@@ -5,16 +5,8 @@
 <body>
 <?php
 session_start();
-
-// ini_set('display_errors', 0);
-// ini_set('display_status_errors', 0);
-// error_reporting(-1);
-
-// if(session_destroy()){
-//     die ("putos");
-// }
-
 include_once '../Models/User.php';
+
 class UserController extends User{
     public function VistaIndex()
     {

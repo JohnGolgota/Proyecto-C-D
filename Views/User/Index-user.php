@@ -178,18 +178,19 @@ include '../Inc/header.php';
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <form action="" class="form-group row">
+        <form id="task-form" class="form-group row">
+            <input type="hidden" id="taskId">
             <div class="col-md-1 content-btn content-config align-middle my-auto">
                 <button type="submit" class="add-reminder-button"> + </button>
             </div>
             <div class="content-input col-md-4 content-config my-auto">
-                <input type="text" id= nombre_rec name="nombre_rec" placeholder="Voy a..." class="form-control shadow-none col-md-3">
+                <input type="text" id="nombre_rec" placeholder="Voy a..." class="form-control shadow-none col-md-3" required>
             </div>
             <div class="content-not col-md-5 content-config my-auto">
-                <input type="datetime-local" name="notificacion_rec" id="notificacion_rec" class="form-control shadow-none">
+                <input type="datetime-local" id="notificacion_rec" class="form-control shadow-none" required>
             </div>
             <div class="content-color content-confg col-md-1 my-auto">
-                <input type="color" name="color_rec" id="color_rec" class="">
+                <input type="color" id="color_rec" class="" value="#1363DF" required>
             </div>
         </form>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

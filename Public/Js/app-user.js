@@ -31,6 +31,36 @@ function configDesplegable(){
 
 // ----------------------------------- CONTENIDO AJAX y Jquery. ----------------------------------- //
 $(document).ready(function() {
+    let edit = false;
+    // Seleccionamos el formulario. Capturaremos su evento 'submit', que manejaremos con una funcion. 
+    // 'e' es la informacion del evento, que la necesitamos para modificar el comportamiento por defecto del form.
+    $('#task-form').submit(function(e){
+        
+        // Vamos a crear un objeto que se encarge de almacenar los valores de los inputs. Que es lo que enviaremos al servidor.
+        const postData = {
+            nombre_rec: $('#nombre_rec').val(),
+            notificacion_rec: $('#notificacion_rec').val(),
+            color_rec: $('#color_rec').val(),
+            id_rec: $('#taskId').val()
+        }
+
+        // console.log("INFORMACION -> ", postData);
+        // SI se esta editando, Enviar a: 'task-add.php', SINO, enviar a:
+        let url = edit === false ? 'TaskController.php?action=AddTask' : 'task-edit.php';
+        // console.log(url);
+        // Enviar informacion (Donde queremos enviar el dato, Que datos se envian, que se hace cuando reciba respuesta)
+        $.post(url, postData, function(response){ /* console.log(response); */ })
+
+        // Reseteamos el formulario.
+        $('#task-form').trigger('reset');
+        fetchTasks();
+
+        // Cancelamos el comportamiento por defecto del form.
+        e.preventDefault();
+    });
+
+    // ------------------------------------------------------------------------------------------------------------- //
+
     function fetchTasks(){
         // Pedimos informacion para mostrarla en lista. Como no se especifica el momento (como en los de arriba), se ejecuta siempre.
         $.ajax({
