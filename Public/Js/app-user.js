@@ -55,7 +55,7 @@ $(document).ready(function() {
 
         // Reseteamos el formulario.
         $('#task-form').trigger('reset');
-        fetchTasks();
+        // fetchTasks();
 
         // Cancelamos el comportamiento por defecto del form.
         e.preventDefault();

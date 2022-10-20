@@ -5,7 +5,6 @@
 
         public function prepareTask($nombre, $notificacion, $color, $id){
             $this->nombre_rec = $nombre;
-            // echo "AYUDAAAAAAAAAAAAAA -> " . $this->nombre_rec;
             $this->notificacion_rec = $notificacion;
             $this->color_rec = $color;
             $this->id_usr = $id;
@@ -15,7 +14,7 @@
 
         public function prepareGetTasks() {
             $this->id_usr = $_SESSION['id_usr'];
-            $objeto = $this->addTask();
+            $objeto = $this->GetTasksForId();
             echo $objeto;
         }
     }
