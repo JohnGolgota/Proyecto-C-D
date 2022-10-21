@@ -22,6 +22,12 @@
             $this->id_rec = $id;
             $this->DeleteTask();
         }
+
+        public function prepareGetTask($id){
+            $this->id_rec = $id;
+            $objeto = $this->getTask();
+            echo $objeto;
+        }
     }
 
     // --------------------------------------------------------------------------------------------------------------- //
@@ -42,5 +48,8 @@
         $taskcontroller->prepareDeleteTask($_POST['id_rec']);
     }
 
-    
+    if (isset($_GET['action']) && $_GET['action'] == 'GetTask') {
+        $taskcontroller = new TaskController();
+        $taskcontroller->prepareGetTask($_POST['id_rec']);
+    }
 ?>

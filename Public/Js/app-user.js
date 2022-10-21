@@ -25,6 +25,7 @@ function configDesplegable(){
 
 // ----------------------------------- CONTENIDO AJAX y Jquery. ----------------------------------- //
 $(document).ready(function() {
+    let edit = false;
     // Seleccionamos el formulario. Capturaremos su evento 'submit', que manejaremos con una funcion. 
     // 'e' es la informacion del evento, que la necesitamos para modificar el comportamiento por defecto del form.
     $('#task-form').submit(function(e){
@@ -37,8 +38,10 @@ $(document).ready(function() {
             id_rec: $('#taskId').val()
         }
 
+        let url = edit === false ? 'TaskController.php?action=AddTask' : 'TaskController.php?action=UpdateTask';
+
         // Enviar informacion (Donde queremos enviar el dato, Que datos se envian, que se hace cuando reciba respuesta)
-        $.post('TaskController.php?action=AddTask', postData, function(response){ 
+        $.post(url, postData, function(response){ 
             // console.log("RESPUESTA -> ", response); 
         })
 
@@ -84,7 +87,7 @@ $(document).ready(function() {
                         `
                     });
                     
-                //     // Pintamos la plantilla en el elemento seleccionado.
+                    // Pintamos la plantilla en el elemento seleccionado.
                     $('#tasks').html(template);
                 }
             });
@@ -92,7 +95,27 @@ $(document).ready(function() {
 
     // ------------------------------------------------------------------------------------------------------------- //
 
-    $(document).on('dblclick', '#nombre-task', function(e){});
+    $(document).on('click', '#nombre-task', function(e){
+        let element = $(this).next().next();
+        let id_rec = $(element).attr('taskId-del');
+
+        // console.log(element);
+        // console.log(id_rec);
+
+        $.post('TaskController.php?action=GetTask', {id_rec}, function(response){
+            let task = JSON.parse(response);
+            task.forEach(t => {
+                // console.log(t);
+                console.log(nombre_rec);
+
+                $('#nombre_rec').val(t.Nombre_rec);
+                $('#notificacion_rec').val(t.Notificacion_rec);
+                $('#color_rec').val(t.Color_rec);
+                // console.log(response);
+                edit = true;
+            });
+        });
+    });
 
     // ------------------------------------------------------------------------------------------------------------- //
 
@@ -120,13 +143,7 @@ $(document).ready(function() {
         });
     });
 
+    // ------------------------------------------------------------------------------------------------------------- //
+
     setInterval(fetchTasks, 250);
 });
-
-
-
-
-
-
-
-

@@ -42,5 +42,18 @@
             $result = $conexion->stm->prepare($sql);
             $result->execute();
         }
+
+        public function getTask(){
+            include_once '../Config/conexiondb.php';
+            $conexion = new Conexion();
+
+            $sql = "SELECT * FROM tbl_Recordatorios WHERE id_rec = '$this->id_rec'";
+            $result = $conexion->stm->prepare($sql);
+            $result->execute();
+
+            $task = $result->fetchAll(PDO::FETCH_OBJ);
+            $jsonstring = json_encode($task);      
+            return $jsonstring;
+        }
     }
 ?>
