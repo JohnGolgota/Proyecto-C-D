@@ -33,5 +33,14 @@
 
             $result->execute();
         }
+        
+        public function deleteTask(){
+            include_once '../Config/conexiondb.php';
+            $conexion = new Conexion();
+
+            $sql = "DELETE FROM tbl_Recordatorios WHERE id_rec = '$this->id_rec'";
+            $result = $conexion->stm->prepare($sql);
+            $result->execute();
+        }
     }
 ?>

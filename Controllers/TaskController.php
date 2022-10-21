@@ -12,12 +12,19 @@
             $this->addTask();
         }
 
-        public function prepareGetTasks() {
+        public function prepareGetTasks(){
             $this->id_usr = $_SESSION['id_usr'];
             $objeto = $this->GetTasksForId();
             echo $objeto;
         }
+
+        public function prepareDeleteTask($id){
+            $this->id_rec = $id;
+            $this->DeleteTask();
+        }
     }
+
+    // --------------------------------------------------------------------------------------------------------------- //
 
     if (isset($_GET['action']) && $_GET['action'] == 'GetTasks') {
         $taskcontroller = new TaskController();
@@ -28,5 +35,12 @@
     if (isset($_GET['action']) && $_GET['action'] == 'AddTask') {
         $taskcontroller = new TaskController();
         $taskcontroller->prepareTask($_POST['nombre_rec'], $_POST['notificacion_rec'], $_POST['color_rec'], $_SESSION['id_usr']);
-    }    
+    }   
+    
+    if (isset($_GET['action']) && $_GET['action'] == 'DeleteTask') {
+        $taskcontroller = new TaskController();
+        $taskcontroller->prepareDeleteTask($_POST['id_rec']);
+    }
+
+    
 ?>
