@@ -65,6 +65,6 @@
     if (isset($_GET['action']) && $_GET['action'] == 'UpdateTask') {
         $taskcontroller = new TaskController();
         $taskcontroller->prepareUpdateTask($_POST['id_rec'], $_POST['nombre_rec'], $_POST['notificacion_rec'], $_POST['color_rec']);
-        echo $_POST['id_rec'];
+        // echo $_POST['id_rec'];
     }
 ?>

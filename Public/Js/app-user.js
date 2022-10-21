@@ -25,11 +25,10 @@ function configDesplegable(){
 
 // ----------------------------------- CONTENIDO AJAX y Jquery. ----------------------------------- //
 $(document).ready(function() {
-    let edit = false;
+    let edit = false;  
     // Seleccionamos el formulario. Capturaremos su evento 'submit', que manejaremos con una funcion. 
     // 'e' es la informacion del evento, que la necesitamos para modificar el comportamiento por defecto del form.
     $('#task-form').submit(function(e){
-        
         // Vamos a crear un objeto que se encarge de almacenar los valores de los inputs. Que es lo que enviaremos al servidor.
         const postData = {
             nombre_rec: $('#nombre_rec').val(),
@@ -54,6 +53,7 @@ $(document).ready(function() {
 
         // Cancelamos el comportamiento por defecto del form.
         e.preventDefault();
+        edit = false;
     });
 
     // ------------------------------------------------------------------------------------------------------------- //
@@ -80,12 +80,11 @@ $(document).ready(function() {
                         `
                             <div class="tasks">
                                 <div class="task my-auto d-flex mb-1" style="background-color:${task.Color_rec};">
-                                    <h4 class="element-task nombre-task my-auto" id="nombre-task">${task.Nombre_rec} | </h4>
-                                    <h4 class="element-task notifiacion-task my-auto" id="notificacion-task">${task.Notificacion_rec}</h4>
+                                    <h5 class="element-task nombre-task my-auto" id="nombre-task">${task.Nombre_rec} | </h5>
+                                    <h5 class="element-task notifiacion-task my-auto" id="notificacion-task">${task.Notificacion_rec}</h5>
                                     <div class="action-tasks" taskId-del="${task.id_rec}">
                                         <button class="btn btn-danger task-delete"> Eliminar </button>
                                     </div>
-                                    <input type="hidden" name="input-hidden" value="${task.id_rec}" id="taskId"></input>
                                 </div>
                             </div>
                         `
@@ -112,6 +111,7 @@ $(document).ready(function() {
                 // console.log(t);
                 console.log(nombre_rec);
 
+                $('#taskId').val(t.id_rec);
                 $('#nombre_rec').val(t.Nombre_rec);
                 $('#notificacion_rec').val(t.Notificacion_rec);
                 $('#color_rec').val(t.Color_rec);
