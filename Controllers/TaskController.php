@@ -28,6 +28,15 @@
             $objeto = $this->getTask();
             echo $objeto;
         }
+
+        public function prepareUpdateTask($id, $nombre, $color, $notificacion,){
+            $this->id_rec = $id;
+            $this->nombre_rec = $nombre;
+            $this->notificacion_rec = $notificacion;
+            $this->color_rec = $color;
+
+            $this->updateTask();
+        }
     }
 
     // --------------------------------------------------------------------------------------------------------------- //
@@ -51,5 +60,11 @@
     if (isset($_GET['action']) && $_GET['action'] == 'GetTask') {
         $taskcontroller = new TaskController();
         $taskcontroller->prepareGetTask($_POST['id_rec']);
+    }
+
+    if (isset($_GET['action']) && $_GET['action'] == 'UpdateTask') {
+        $taskcontroller = new TaskController();
+        $taskcontroller->prepareUpdateTask($_POST['id_rec'], $_POST['nombre_rec'], $_POST['notificacion_rec'], $_POST['color_rec']);
+        echo $_POST['id_rec'];
     }
 ?>

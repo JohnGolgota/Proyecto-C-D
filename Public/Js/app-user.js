@@ -42,12 +42,15 @@ $(document).ready(function() {
 
         // Enviar informacion (Donde queremos enviar el dato, Que datos se envian, que se hace cuando reciba respuesta)
         $.post(url, postData, function(response){ 
-            // console.log("RESPUESTA -> ", response); 
+            console.log("Donde me envie -> ", url, " Que recibi -> ", e);
+            // console.log("ELEMENT  ->" , element);
+            console.log("NOMBRE ->" , nombre_rec);
+            console.log("RESPUESTA DEL SERVIDOR -> ", response);
         })
 
         // Reseteamos el formulario.
         $('#task-form').trigger('reset');
-        // fetchTasks();
+        fetchTasks();
 
         // Cancelamos el comportamiento por defecto del form.
         e.preventDefault();
@@ -76,12 +79,13 @@ $(document).ready(function() {
                         template += 
                         `
                             <div class="tasks">
-                                    <div class="task my-auto d-flex mb-1" style="background-color:${task.Color_rec};">
+                                <div class="task my-auto d-flex mb-1" style="background-color:${task.Color_rec};">
                                     <h4 class="element-task nombre-task my-auto" id="nombre-task">${task.Nombre_rec} | </h4>
                                     <h4 class="element-task notifiacion-task my-auto" id="notificacion-task">${task.Notificacion_rec}</h4>
                                     <div class="action-tasks" taskId-del="${task.id_rec}">
                                         <button class="btn btn-danger task-delete"> Eliminar </button>
                                     </div>
+                                    <input type="hidden" name="input-hidden" value="${task.id_rec}" id="taskId"></input>
                                 </div>
                             </div>
                         `
@@ -111,7 +115,7 @@ $(document).ready(function() {
                 $('#nombre_rec').val(t.Nombre_rec);
                 $('#notificacion_rec').val(t.Notificacion_rec);
                 $('#color_rec').val(t.Color_rec);
-                // console.log(response);
+                console.log(response);
                 edit = true;
             });
         });
@@ -146,4 +150,5 @@ $(document).ready(function() {
     // ------------------------------------------------------------------------------------------------------------- //
 
     setInterval(fetchTasks, 250);
+    // fetchTasks();
 });
