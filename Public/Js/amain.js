@@ -9,6 +9,7 @@ $(document).ready(function() {
             terminosCU: $('#terminosycondiciones').val()
         }
         console.log(postData)
+        let url = "./"
 
         $('#formulario-registro').trigger('reset');
 
