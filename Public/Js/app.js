@@ -73,13 +73,13 @@ buttonDarkMode.addEventListener('click', function(){
 
 
 // ----------------------------------- VALIDACION ----------------------------------- //
-// Mas que organiza duvan
+// Validacion 1 conicidencia de contraseñas en formulario Registro
 function ValidarContraseña() {
     let contrasena = document.getElementById('usuarioRC').value
     let comprobarContrasena = document.getElementById('usuarioRCC').value
     let mensajeConfirmacion = document.getElementById('MensajeConfirmarContrasena')
     
-    if (contrasena == comprobarContrasena) {
-        mensajeConfirmacion.textContent = "A"
+    if (contrasena != comprobarContrasena) {
+        mensajeConfirmacion.textContent = "La Contraseña no coincide"
     }
 }

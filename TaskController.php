@@ -67,7 +67,7 @@
         $taskcontroller->prepareUpdateTask($_POST['id_rec'], $_POST['nombre_rec'], $_POST['color_rec'], $_POST['notificacion_rec']);
         // echo " ESTA ES LA NOTIFICACION -> ". $_POST['notificacion_rec'];
     }
-    if(isset($_POST['action']) && $_POST['hellomdfk'] == 'si'){
+    if(isset($_POST['action']) && $_POST['action'] == 'hellomdfk'){
         echo "si";
         return;
     }
