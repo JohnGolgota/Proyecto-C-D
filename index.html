@@ -336,15 +336,15 @@
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-registro">
-                    <form action="./Controllers/UserController.php" method="POST" id="formulario-registro">
+                    <form method="POST" id="formulario-registro" novalidate>
                         <input type="hidden" name="action" value="registrar">
                         <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo" class="form-control shadow-none" required>
                         <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
                         <input onkeypress="ValidarContraseña();" type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
-                        <p id="MensajeConfirmarContrasena"></p>
+                        <p id="MensajeConfirmarContrasena">Una p</p>
                         <div class="form-group">
                             <input required type="checkbox" name="terminosycondiciones" id="terminosycondiciones" class="form-check-input" value="aceptarteminos">
-                            <label for="terminosycondiciones" id="terminosycondiciones" class="form-check-label">Aceptar los terminos y condiciones</label>
+                            <label for="terminosycondiciones" class="form-check-label">Aceptar los terminos y condiciones</label>
                             <a href="#" id="buttonDetails">Detalles.</a>
                         </div>
                         <input type="submit" value="Registrarse" class="btn btn-primary boton-modal" id="btn-registro">
@@ -371,7 +371,6 @@
 
     <script>
         function load(){
-            console.log("puta");
             let containera = document.getElementById('container-load');
             console.log(containera);
             containera.style.opacity = '0';

@@ -115,6 +115,14 @@
     width: 100%;
 }
 
+.add-reminder-button {
+    border: none;
+    border-radius: 100%;
+    background-color: #1363DF;
+    padding: 3.5px 11px;
+    color: white;
+}
+
 
 /* ---------------------------- Subcategoria: Calendario ---------------------------------- */
 .calendar-box {
@@ -130,6 +138,25 @@
     height: 100%;
     border: none;
     padding: 7px;
+}
+
+
+
+/* ---------------------------- Subcategoria: Tasks ---------------------------------- */
+.task {
+    background-color: #1363DF;
+    border-radius: 24px;
+    padding: 12px 0 12px 4px;
+    margin: 0 0 4px 0;
+}
+
+h4.element-task {
+    color: #f9f9f9;
+    display: inline-block;
+}
+
+div.action-tasks {
+    margin-left: 30px;
 }
 
 
