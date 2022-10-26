@@ -383,8 +383,38 @@
     <script src="./Public/Js/app.js"></script>
 
     <!-- Scripts Temporales:  -->
-    <script src="./Public/Js/amain.js"></script>
+    <script src="./Public/Js/main.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> -->
 
 </body>
 </html>
+<?php
+
+?>
+<script>
+$(document).ready(function() {
+    let edit = false;
+    $('#formulario-registro').submit(function(e){
+        const postData = {
+            usuarioRE: $('#usuarioRE').val(),
+            usuarioRC: $('#usuarioRC').val(),
+            usuarioRCC: $('#usuarioRCC').val(),
+            terminosycondiciones: $('#terminosycondiciones').val()
+        }
+        console.log(postData)
+        let url = "./Controllers/UserController.php?action=ajaxR"
+
+        $.post(url, postData, function(response){ 
+            console.log("Donde me envie -> ", url, " Que recibi -> ", e);
+            console.log("NOMBRE ->" , usuarioRE);
+            console.log("RESPUESTA DEL SERVIDOR -> ", response);
+        })
+
+        $('#formulario-registro').trigger('reset');
+
+
+        e.preventDefault();
+        edit = false;
+    });
+});
+</script>

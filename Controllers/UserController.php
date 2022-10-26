@@ -1,10 +1,5 @@
-<head>
-    <!-- Un problema a Arreglar -->
-    <link rel="shortcut icon" href="../Public/Img/favicon.png" type="image/x-icon">
-</head>
-<body>
 <?php
-session_start();
+// session_start();
 include_once '../Models/User.php';
 
 class UserController extends User{
@@ -228,8 +223,9 @@ class UserController extends User{
     }
 }
 // Action Registro
-if(isset($_POST['action']) && $_POST['action'] =='registrar' && !empty($_POST['UsuarioRE'] && $_POST['UsuarioRC'] && $_POST['UsuarioRCC'] && $_POST['terminosycondiciones'])){
+if(isset($_GET['action']) && $_GET['action'] =='registrar' && !empty($_POST['UsuarioRE'] && $_POST['UsuarioRC'] && $_POST['UsuarioRCC'] && $_POST['terminosycondiciones'])){
     $usercontroler = new UserController();
+    echo "entre";
     $usercontroler->AlistarInformacion($_POST['UsuarioRE'],$_POST['UsuarioRC'],$_POST['UsuarioRCC']);
     // Por Probar: consulta e inicia session en el registro
     return;
@@ -326,6 +322,22 @@ if (isset($_GET['action']) && $_GET['action'] == 'abort') {
     session_destroy();
     $usercontroler->RedirigirNoUsuario();
     return;
+}
+
+if (isset($_POST['action']) && $_POST['action'] == 'ajaxR') {
+    echo "Hola";
+    return;
+}
+if (isset($_GET['action']) && $_GET['action'] == 'ajaxR' && ) {
+    $usercontroler = new UserController();
+    echo "cosa " . $_POST['usuarioRE'] . " cosa";
+    echo var_dump($_POST);
+
+    $usercontroler->AlistarInformacion($_POST['usuarioRE'],$_POST['usuarioRE'],$_POST['usuarioRCC']);
+    echo "adios";
+    return;
+    die("PERREO");
+    echo "adios";
 }
 
 // Action vista predefinida
