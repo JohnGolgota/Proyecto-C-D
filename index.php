@@ -463,7 +463,7 @@
                         
                         // jQuery.ajax().abort()
                         // Imprimir respuesta del archivo
-                        // window.location.href(response);
+                        // location.href(response);
                         console.log("RESPUESTA -> ", response); 
                     },
                     error: function(error) {
