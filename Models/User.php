@@ -51,7 +51,8 @@ class User{
         if ($usuarioObjeto) {
             return $usuarioObjeto;
         } else {
-            die("No se a encontrado el usuario en la base de datos");
+            die("not found");
+            // die("No se a encontrado el usuario en la base de datos");
         }
     }
 

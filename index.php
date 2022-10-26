@@ -400,20 +400,16 @@
                         contrasenais: $('#contrasenaIS').val()
                     },
                     url: './Controllers/UserController.php?action=ajax-session',
-                    type: 'get',
+                    type: 'post',
                     success: function(response) {
-                        if(response == true){
-                            console.log($('#usuarioIS').val());
-                            // location.href = "./Controllers/UserController.php?action=user-ajax&usuariois="
-                            console.log(response)
-                        }
-                        if (response == false) {
+                        // CAMPOS VACIOS (NOVALIDATE)
+                        if (response == "false") {
                             let timerInterval
                             Swal.fire({
                                 title: 'Los campos NO Pueden estar vacios.',
                                 timer: 2000,
                                 icon: 'error',
-                                timerProgressBar: true,
+                                timerProgressBar: false,
                                 didOpen: () => {
                                     // Swal.showLoading()
                                     const b = Swal.getHtmlContainer().querySelector('b')
@@ -424,20 +420,59 @@
                                 willClose: () => {
                                     clearInterval(timerInterval)
                                 }
-                            })
+                            });
+                        }
+                        
+                        // USUARIO NO EXISTE (NOT FOUND)
+                        if (response == "not found") {
+                            let timerInterval
+                            Swal.fire({
+                                title: 'El usuario NO Existe en la base de datos.',
+                                timer: 2000,
+                                icon: 'error',
+                                timerProgressBar: false,
+                                didOpen: () => {
+                                    const b = Swal.getHtmlContainer().querySelector('b')
+                                    timerInterval = setInterval(() => {
+                                    }, 100)
+                                },
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            });
                         }
 
-                        console.log("RESPUESTA -> ", response); // Imprimir respuesta del archivo
+                        // CONTRASEÑA INCORRECTA (NOT PASS)
+                        if (response == "not pass") {
+                            let timerInterval
+                            Swal.fire({
+                                title: 'Contraseña Incorrecta',
+                                timer: 2000,
+                                icon: 'error',
+                                timerProgressBar: false,
+                                didOpen: () => {
+                                    const b = Swal.getHtmlContainer().querySelector('b')
+                                    timerInterval = setInterval(() => {
+                                    }, 100)
+                                },
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            });
+                        }
+                        
+                        // jQuery.ajax().abort()
+                        // Imprimir respuesta del archivo
+                        // window.location.href(response);
+                        console.log("RESPUESTA -> ", response); 
                     },
                     error: function(error) {
                         console.log("ERROR ->", error); // Imprimir respuesta de error
                     }
                 });
             });
-
         });
     </script>
 
 </body>
-
 </html>

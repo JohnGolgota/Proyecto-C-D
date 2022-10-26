@@ -60,7 +60,7 @@
             include_once '../Config/conexiondb.php';
             $conexion = new Conexion();
 
-            echo "VALORES -> ". $this->nombre_rec . $this->notificacion_rec . $this->color_rec . " ID -> " . $this->id_rec;
+            // echo "VALORES -> ". $this->nombre_rec . $this->notificacion_rec . $this->color_rec . " ID -> " . $this->id_rec;
 
             $sql = "UPDATE tbl_Recordatorios SET Nombre_rec = '$this->nombre_rec', Color_rec = '$this->color_rec', Notificacion_rec = '$this->notificacion_rec' WHERE id_rec = '$this->id_rec'";
             $result = $conexion->stm->prepare($sql);

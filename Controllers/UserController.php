@@ -193,11 +193,10 @@ class UserController extends User{
 
         # Si no funciona el inicio de sesion pero devuelve un objeto.
         else {
-            // var_dump($datosUsuario);
             session_destroy();
-            $response = "password";
-            return $response;
-            // die("Fallo al intentar iniciar session");
+            die("not pass");
+            // var_dump($datosUsuario);
+            // return;
         }
     }
     public function PrepararIdDelete($id_usr)
@@ -255,22 +254,15 @@ if (isset($_POST['action']) && $_POST['action'] == 'session' && empty($_POST['Us
     return;
 }
 
-if(isset($_GET['action']) && $_GET['action'] == 'ajax-session' && !empty($_GET['usuariois']) && !empty($_GET['contrasenais'])){
+if(isset($_GET['action']) && $_GET['action'] == 'ajax-session' && !empty($_POST['usuariois']) && !empty($_POST['contrasenais'])){
     $usercontroler = new UserController();
-    $usercontroler->VerificaInicio($_GET['usuariois'],$_GET['contrasenais']);
-    echo true;
-    // $usercontroler->VistaUsuario();
-    // $objetoPrueba = $usercontroler->TraerNombreUsuario();
-    
-} else {
-    echo false;
-    return;
-}
-
-if(isset($_GET['action']) && $_GET['action'] == 'user-ajax' && !empty($_GET['usuariois'])){
-    echo "HUJIESUPUTAMADRE" . $_GET['usuariois'];
-    $usercontroler = new UserController();
+    $usercontroler->VerificaInicio($_POST['usuariois'],$_POST['contrasenais']);
     $usercontroler->VistaUsuario();
+    return;
+
+} else {
+    echo "false";
+    // return;
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'inicio') {
@@ -347,9 +339,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'abort') {
 // ------------------------------------------
 
 // Action vista predefinida
-// if(isset($_GET) || !isset($_GET)){
-//     $usercontroler = new UserController();
-//     session_destroy();
-//     $usercontroler->RedirigirNoUsuario();
-//     return;
-// }
+if(isset($_GET) || !isset($_GET)){
+    $usercontroler = new UserController();
+    session_destroy();
+    $usercontroler->RedirigirNoUsuario();
+    return;
+}
