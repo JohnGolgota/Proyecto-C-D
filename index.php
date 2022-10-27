@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Esta linea de codigo no es un EasterEgg, para nada. -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Icono página -->
     <link rel="shortcut icon" href="./Public/Img/favicon.png" type="image/x-icon">
-    
+
     <!-- Bootstrap 5 -->
     <link rel="stylesheet" href="./Public/Css/bootstrap.min.css">
-    
+
     <!-- hojas de estilo personalizadas -->
     <link rel="stylesheet" href="./Public/Css/style.css">
-    
+
     <!-- librerias importadas -->
     <!-- ScrollReveal -->
     <script src="./Public/Js/scrollreveal.min.js"></script>
@@ -29,6 +30,15 @@
     <div class="push-out" id="push-out" style="z-index: 1000;">
         <div></div>
         <div></div>
+    </div>
+</div>
+<!--  -->
+<div class="alert alert-danger d-flex align-items-center" id="bootstrap-novalidate" role="alert" style="display:none;">
+    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:">
+        <use xlink:href="#exclamation-triangle-fill" />
+    </svg>
+    <div>
+        An example danger alert with an icon
     </div>
 </div>
 <!--  -->
@@ -166,13 +176,13 @@
             <!-- HerramientaCuatro -->
             <!-- <article class="row align-items-center my-2 herramienta herramienta-cuatro" id="HerramientaCuatro"> -->
 
-                <!-- imagen. HerramientaCuatro -->
-                <!-- <div class="col order-2">
+            <!-- imagen. HerramientaCuatro -->
+            <!-- <div class="col order-2">
                     <img class="herramienta-img" src="./Public/Img/herramientas/doyouself-min.png" alt="HerramientaCuatro">
                 </div> -->
 
-                <!-- descripcion. HerramientaCuatro -->
-                <!-- <div class="col order-1">
+            <!-- descripcion. HerramientaCuatro -->
+            <!-- <div class="col order-1">
                     <h3>Do it Yourself</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, quisquam deleniti. Dolore distinctio veritatis quos?</p>
                 </div> -->
@@ -302,7 +312,7 @@
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-inicio">
-                    <form action="./Controllers/UserController.php" class="" method="POST">
+                    <form action="" class="" id="form-inicio-sesion">
                         <input type="hidden" name="action" value="session">
                         <input type="text" name="UsuarioIS" id="usuarioIS" placeholder="Nombre De Usuario" class="form-control shadow-none" required>
                         <input type="password" name="ContrasenaIS" id="contrasenaIS" placeholder="Contraseña" class="form-control shadow-none" required>
@@ -370,19 +380,79 @@
     <script src="./Public/Js/sweetalert.min.js"></script>
 
     <script>
-        function load(){
+        function load() {
             // console.log("puta");
             let containera = document.getElementById('container-load');
-            console.log(containera);
+            // console.log(containera);
             containera.style.opacity = '0';
             containera.style.display = 'none';
         }
     </script>
 
     <script src="./Public/Js/iconrevel.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="./Public/Js/app.js"></script>
 
     <!-- Scripts Temporales:  -->
     <script src="./Public/Js/main.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Reseteamos el formulario.
+            $('#form-inicio-sesion').trigger('reset');
+            $('#form-inicio-sesion').submit(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    data: {
+                        usuariois: $('#usuarioIS').val(),
+                        contrasenais: $('#contrasenaIS').val()
+                    },
+                    url: './Controllers/UserController.php?action=ajax-session',
+                    type: 'get',
+                    success: function(response) {
+                        if (response == false) {
+                            let timerInterval
+                            Swal.fire({
+                                title: 'Los campos NO Pueden estar vacios.',
+                                timer: 2000,
+                                icon: 'error',
+                                timerProgressBar: true,
+                                didOpen: () => {
+                                    // Swal.showLoading()
+                                    const b = Swal.getHtmlContainer().querySelector('b')
+                                    timerInterval = setInterval(() => {
+                                        b.textContent = Swal.getTimerLeft()
+                                    }, 100)
+                                },
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            })
+                        }
+                        console.log("RESPUESTA -> ", response); // Imprimir respuesta del archivo
+                    },
+                    error: function(error) {
+                        console.log("ERROR ->", error); // Imprimir respuesta de error
+                    }
+                });
+
+                // const postData = {
+                //     usuariois: $('#usuarioIS').val(),
+                //     contrasenais: $('#contrasenaIS').val(),
+                //     action: "ajax-session"
+                // }
+
+                // $.post("./Controllers/UserController.php", postData, function(response){ 
+                //     console.log("NOMBRE ->" , $('#contrasenaIS').val());
+                //     console.log("RESPUESTA DEL SERVIDOR -> ", response);
+                // }) 
+            });
+
+        });
+    </script>
+
 </body>
+
 </html>

@@ -1,8 +1,3 @@
-<head>
-    <!-- Un problema a Arreglar -->
-    <link rel="shortcut icon" href="../Public/Img/favicon.png" type="image/x-icon">
-</head>
-<body>
 <?php
 session_start();
 include_once '../Models/User.php';
@@ -252,9 +247,18 @@ if (isset($_POST['action']) && $_POST['action'] == 'session' && !empty($_POST['U
     return;
 }
 //  inicio de session fallido
-if (isset($_POST['action']) && $_POST['action'] == 'session' && empty($_POST['UsuarioIS'] || $_POST['ContrasenaIS'])) {
+if (isset($_POST['action']) && $_POST['action'] == 'session' && empty($_POST['UsuarioIS'] || $_POST['ContraseaIS'])) {
     echo "Campos no validos";
     return;
+}
+
+if(isset($_GET['action']) && $_GET['action'] == 'ajax-session' && !empty($_GET['usuariois']) && !empty($_GET['contrasenais'])){
+    echo "MALPARIDO HIJUEPUTA AJAX DE MIERDA HIJUEPUTA TRIPLE HIJUEPUTA MALPARIDO UN GOOGLEPLEX HIJUEPUTA";
+    return true;
+
+} else {
+    return false;
+
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'inicio') {
@@ -328,13 +332,12 @@ if (isset($_GET['action']) && $_GET['action'] == 'abort') {
     return;
 }
 
-// Action vista predefinida
-if(isset($_GET) || !isset($_GET)){
-    $usercontroler = new UserController();
-    session_destroy();
-    $usercontroler->RedirigirNoUsuario();
-    return;
-}
+// ------------------------------------------
 
-?>
-</body>
+// Action vista predefinida
+// if(isset($_GET) || !isset($_GET)){
+//     $usercontroler = new UserController();
+//     session_destroy();
+//     $usercontroler->RedirigirNoUsuario();
+//     return;
+// }
