@@ -188,7 +188,9 @@ class UserController extends User{
             $_SESSION['correo_usr'] = $dU->correo_usr;
 
             // var_dump($datosUsuario);
-            return $_SESSION;
+            // return $_SESSION;
+            // $this->VistaUsuario();
+            return;
         }
 
         # Si no funciona el inicio de sesion pero devuelve un objeto.
@@ -254,21 +256,27 @@ if (isset($_POST['action']) && $_POST['action'] == 'session' && empty($_POST['Us
     return;
 }
 
+
+// Ajax verificacion [true]
 if(isset($_GET['action']) && $_GET['action'] == 'ajax-session' && !empty($_POST['usuariois']) && !empty($_POST['contrasenais'])){
     $usercontroler = new UserController();
     $usercontroler->VerificaInicio($_POST['usuariois'],$_POST['contrasenais']);
-    $usercontroler->VistaUsuario();
+    echo "success";
+    // $usercontroler->VistaUsuario(); // esta es la redireccion.
     return;
+} 
 
-} else {
-    echo "false";
-    // return;
-}
-
+// Ajax verificacion [success]
 if (isset($_GET['action']) && $_GET['action'] == 'inicio') {
     $usercontroler = new UserController();
     $usercontroler->VistaUsuario();
     return;
+}
+
+// Ajax verificacion [NOVALIDATE].
+if(isset($_GET['action']) && $_GET['action'] == 'ajax-session' && empty($_POST['usuariois']) || empty($_POST['contrasenais'])){
+    echo "false";
+    // return;
 }
 
 # Redireccion a Eliminar Cuenta
@@ -339,9 +347,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'abort') {
 // ------------------------------------------
 
 // Action vista predefinida
-if(isset($_GET) || !isset($_GET)){
-    $usercontroler = new UserController();
-    session_destroy();
-    $usercontroler->RedirigirNoUsuario();
-    return;
-}
+// if(isset($_GET) || !isset($_GET)){
+//     $usercontroler = new UserController();
+//     session_destroy();
+//     $usercontroler->RedirigirNoUsuario();
+//     return;
+// }

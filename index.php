@@ -460,10 +460,15 @@
                                 }
                             });
                         }
+
+                        if(response == "success"){
+                            window.location.assign('./Controllers/UserController.php?action=inicio');
+                        }
                         
                         // jQuery.ajax().abort()
                         // Imprimir respuesta del archivo
                         // location.href(response);
+                        
                         console.log("RESPUESTA -> ", response); 
                     },
                     error: function(error) {
