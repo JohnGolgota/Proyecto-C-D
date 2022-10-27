@@ -33,16 +33,6 @@
     </div>
 </div>
 <!--  -->
-<div class="alert alert-danger d-flex align-items-center" id="bootstrap-novalidate" role="alert" style="display:none;">
-    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:">
-        <use xlink:href="#exclamation-triangle-fill" />
-    </svg>
-    <div>
-        An example danger alert with an icon
-    </div>
-</div>
-<!--  -->
-
 <body class="" onload="setTimeout(load, 700);">
     <!-- Encabezado, botones y modo oscuro -->
     <header class="align-items-center navbar navbar-expand-sm position-relative header-reveal cabeza cabeza-dark" id="cabeza">
@@ -412,6 +402,11 @@
                     url: './Controllers/UserController.php?action=ajax-session',
                     type: 'get',
                     success: function(response) {
+                        if(response == true){
+                            console.log($('#usuarioIS').val());
+                            // location.href = "./Controllers/UserController.php?action=user-ajax&usuariois="
+                            console.log(response)
+                        }
                         if (response == false) {
                             let timerInterval
                             Swal.fire({
@@ -423,7 +418,7 @@
                                     // Swal.showLoading()
                                     const b = Swal.getHtmlContainer().querySelector('b')
                                     timerInterval = setInterval(() => {
-                                        b.textContent = Swal.getTimerLeft()
+                                        // b.textContent = Swal.getTimerLeft()
                                     }, 100)
                                 },
                                 willClose: () => {
@@ -431,23 +426,13 @@
                                 }
                             })
                         }
+
                         console.log("RESPUESTA -> ", response); // Imprimir respuesta del archivo
                     },
                     error: function(error) {
                         console.log("ERROR ->", error); // Imprimir respuesta de error
                     }
                 });
-
-                // const postData = {
-                //     usuariois: $('#usuarioIS').val(),
-                //     contrasenais: $('#contrasenaIS').val(),
-                //     action: "ajax-session"
-                // }
-
-                // $.post("./Controllers/UserController.php", postData, function(response){ 
-                //     console.log("NOMBRE ->" , $('#contrasenaIS').val());
-                //     console.log("RESPUESTA DEL SERVIDOR -> ", response);
-                // }) 
             });
 
         });

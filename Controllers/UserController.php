@@ -195,7 +195,9 @@ class UserController extends User{
         else {
             // var_dump($datosUsuario);
             session_destroy();
-            die("Fallo al intentar iniciar session");
+            $response = "password";
+            return $response;
+            // die("Fallo al intentar iniciar session");
         }
     }
     public function PrepararIdDelete($id_usr)
@@ -246,6 +248,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'session' && !empty($_POST['U
     
     return;
 }
+
 //  inicio de session fallido
 if (isset($_POST['action']) && $_POST['action'] == 'session' && empty($_POST['UsuarioIS'] || $_POST['ContraseaIS'])) {
     echo "Campos no validos";
@@ -253,12 +256,21 @@ if (isset($_POST['action']) && $_POST['action'] == 'session' && empty($_POST['Us
 }
 
 if(isset($_GET['action']) && $_GET['action'] == 'ajax-session' && !empty($_GET['usuariois']) && !empty($_GET['contrasenais'])){
-    echo "MALPARIDO HIJUEPUTA AJAX DE MIERDA HIJUEPUTA TRIPLE HIJUEPUTA MALPARIDO UN GOOGLEPLEX HIJUEPUTA";
-    return true;
-
+    $usercontroler = new UserController();
+    $usercontroler->VerificaInicio($_GET['usuariois'],$_GET['contrasenais']);
+    echo true;
+    // $usercontroler->VistaUsuario();
+    // $objetoPrueba = $usercontroler->TraerNombreUsuario();
+    
 } else {
-    return false;
+    echo false;
+    return;
+}
 
+if(isset($_GET['action']) && $_GET['action'] == 'user-ajax' && !empty($_GET['usuariois'])){
+    echo "HUJIESUPUTAMADRE" . $_GET['usuariois'];
+    $usercontroler = new UserController();
+    $usercontroler->VistaUsuario();
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'inicio') {
