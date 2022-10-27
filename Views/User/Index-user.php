@@ -199,17 +199,13 @@ include '../Inc/header.php';
 
 <!--  -->
 <main>
-
     <!--  -->
-    <section class="superbox calendar-box">
-        <div id="calendar">
-            
-        </div>
-        <!-- <iframe src="https://calendar.google.com/calendar/embed?height=720&wkst=1&bgcolor=%231363df&ctz=America%2FBogota&showTitle=0&showNav=1&src=M2R0dW5pbmdkdXZhbkBnbWFpbC5jb20&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZXMuY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&src=ZW4uY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%2333B679&color=%230B8043&color=%230B8043" width="1280" height="720" frameborder="0" scrolling="no" class="calendar-content"></iframe> -->
+    <section class="container mt-3 mb-5">
+        <div id="calendar" class=""></div>
     </section>
-
+    
     <!--  -->
-    <section class="text-center my-2 herramientas">
+    <section class="text-center my-2 herramientas mt-5">
 
         <!--  -->
         <article class="row align-items-center my-2 herramienta herramienta-dos">
@@ -219,38 +215,7 @@ include '../Inc/header.php';
                 <h3></h3>
                 <p></p>
             </section>
-
-            <!--  -->
-            <!-- <section class="col"><img src="" alt="Agenda"></section> -->
         </article>
-
-        <!--  -->
-        <!-- <article class="row align-items-center herramienta herramienta-tres"> -->
-
-            <!--  -->
-            <!-- <section class="col">
-        <img src="" alt="Agenda">
-        </section> -->
-
-            <!--  -->
-            <!-- <section class="col">
-                <h3>Lorem ipsum dolor sit amet.</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat inventore sit hic dignissimos magni pariatur!</p>
-            </section>
-        </article> -->
-
-        <!--  -->
-        <!-- <article class="row align-items-center my-2 herramienta herramienta-cuatro">
-
-            
-            <section class="col">
-                <h3>Lorem ipsum dolor sit amet.</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto necessitatibus officia, odio cum blanditiis facilis.</p>
-            </section>
-
-            
-            <section class="col"><img src="" alt="Agenda"></section>
-        </article> -->
     </section>
 </main>
 
@@ -356,7 +321,30 @@ include '../Inc/header.php';
         </section>
         <!-- Copyright -->
     </footer>
-
+    <div class="modal fade" id="modal-c" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                <h5 class="modal-title" id="titulo"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div>
+                <form id="form-c">
+                    <div class="form-floating modal-body">
+                        <div class="mb-3">
+                            <input type="date" class="form-control" id="start">
+                            <label for="start" class="form-label"> Fecha </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </section>
 </section>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="crossorigin="anonymous"></script>

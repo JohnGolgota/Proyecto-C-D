@@ -156,10 +156,24 @@ $(document).ready(function() {
 
 
 // ----------------------------------- FULL CALENDAR ----------------------------------- //
+var myModal = new bootstrap.Modal(document.getElementById('modal-c'))
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("Socio");
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth'
+        initialView: 'dayGridMonth',
+        locale: 'es', // Definimos el idioma.
+        headerToolbar : { 
+            left: 'prev, next, today', // Organizacion de los elementos (Lado Izquierdo).
+            center: 'title',
+            right: 'dayGridMonth, timeGridWeek, listWeek'
+        },
+        dateClick: function(info){
+            console.log(info);
+            document.getElementById('start').value = info.dateStr;
+            document.getElementById('titulo').textContent = "Agregar Evento";
+            myModal.show();
+        }
     });
     calendar.render();
 });
