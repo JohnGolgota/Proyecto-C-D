@@ -2,7 +2,8 @@
 // session_start();
 include_once '../Models/User.php';
 
-class UserController extends User{
+class UserController extends User
+{
     public function VistaIndex()
     {
         include '../Views/User/index.html';
@@ -12,11 +13,12 @@ class UserController extends User{
         include '../Views/User/index.html';
     }
     public function VistaUsuario()
-    {   
+    {
         include '../Views/User/Index-user.php';
     }
-    
-    public function VistaDelete(){
+
+    public function VistaDelete()
+    {
         include '../Views/User/deleteUser.html';
     }
 
@@ -24,8 +26,9 @@ class UserController extends User{
     {
         include '../Views/User/login.php';
     }
-    
-    public function VistaUpdate(){
+
+    public function VistaUpdate()
+    {
         include '../Views/User/updateUser.php';
     }
     public function RedirigirNoSesion()
@@ -39,12 +42,13 @@ class UserController extends User{
         header("location: ../");
     }
 
-    public function verificarContrasena($old_password, $new_password, $confirm_password){
-        if(empty($old_password) || empty($new_password) || empty($confirm_password)){
+    public function verificarContrasena($old_password, $new_password, $confirm_password)
+    {
+        if (empty($old_password) || empty($new_password) || empty($confirm_password)) {
             die("Los campos NO pueden estar vacios");
         }
 
-        if($new_password != $confirm_password){
+        if ($new_password != $confirm_password) {
             die("Las Contraseñas NO Coinciden");
         }
 
@@ -68,20 +72,22 @@ class UserController extends User{
         $datosUsuario = $this->ConsultarUsuario($_SESSION['nombre_usr']);
 
         # Recorremos el objeto que obtenemos en el model.
-        foreach ($datosUsuario as $dU) {}
-        if (!password_verify($old_password,$dU->contrasena_usr)) {
+        foreach ($datosUsuario as $dU) {
+        }
+        if (!password_verify($old_password, $dU->contrasena_usr)) {
             die("CONTRASEÑA INCORRECTA");
-        } 
+        }
 
-        $contrasenaEncript = password_hash($new_password,PASSWORD_ARGON2ID);
+        $contrasenaEncript = password_hash($new_password, PASSWORD_ARGON2ID);
         $this->contrasena_usr = $contrasenaEncript;
 
         // Tampoco se si va, pero bueno. xd
         // return;
     }
 
-    public function verificarUpdate($nombre, $email, $contrasena){
-        if(empty($nombre) || empty($email) || empty($contrasena)){
+    public function verificarUpdate($nombre, $email, $contrasena)
+    {
+        if (empty($nombre) || empty($email) || empty($contrasena)) {
             die("Los campos NO pueden estar vacios");
         }
 
@@ -95,75 +101,91 @@ class UserController extends User{
         $this->nombre_usr = $_SESSION['nombre_usr'];
         $datosUsuario = $this->ConsultarUsuario();
         # Recorremos el objeto que obtenemos en el model.
-        foreach ($datosUsuario as $dU) {}
-        if (!password_verify($contrasena,$dU->contrasena_usr)) {
+        foreach ($datosUsuario as $dU) {
+        }
+        if (!password_verify($contrasena, $dU->contrasena_usr)) {
             die("Contraseña Incorrecta");
         }
 
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             die("Introduzca una dirección de correo electronico valido");
         }
 
         if (strlen($nombre) < 6) {
             die('El nombre de usuario debe tener al menos 6 caracteres.');
-        }   
+        }
 
         // NO se si va, pero lo pongo.
         return;
     }
 
     # Alistar informacion para registrarse
-    function AlistarInformacion($email,$contrasena,$cContrasena)
+    function AlistarInformacion($email, $contrasena, $cContrasena)
     {
+        echo "filtro uno email\n";
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            session_destroy();
             # Return + echo = die
-            echo "<script>alert('Email not valid');</script>";
+            echo "Email not valid<br>";
             die("Introduzca una dirección de correo electronico valido");
         }
-
-        # Si retorna un elemento en vez de nada, entonces rompe.
-        $comprobacion = $this->ComprobarCorreo($email);
-        if ($comprobacion != "") {
-            session_destroy();
-            die("Ya existe una cuenta con este correo");
+        echo "filtro uno email cerrado\n";
+        echo "filtro dos.1 correo\n";
+        $this->correo_usr = $email;
+        $comprobacion = $this->ComprobarCorreo();
+        if ($comprobacion != 1) {
+            echo "\nfiltro dos.2 medio";
+            echo "\nFalso no hay suicidio\n";
+            die("correo en uso");
         }
-        
+        echo "\nfiltro dos.3 Cierre";
+
         if ($cContrasena !== $contrasena) {
             session_destroy();
+            echo "\n";
             die("Las Contraseñas no coinciden");
+            echo "\n";
         }
 
         # strlen Idenfifica Cuantos caracteres hay
-        if (strlen($_POST['UsuarioRC']) < 4) {
+        if (strlen($contrasena) < 4) {
             session_destroy();
+            echo "\n";
             die('La contraseña debe tener al menos 4 caracteres.');
+            echo "\n";
         }
-        if (strlen($_POST['UsuarioRC']) > 10) {
+        if (strlen($contrasena) > 10) {
             session_destroy();
+            echo "\n";
             die('La contraseña no puede tener mas de 10 caracteres.');
+            echo "\n";
         }
 
         # preg_match Exige que la contraseña tenga al menos un caracter del diccionario especificado.
-        if (!preg_match('`[a-z]`', $_POST['UsuarioRC'])) {
+        if (!preg_match('`[a-z]`', $contrasena)) {
             session_destroy();
+            echo "\n";
             die('La contraseña debe tener al menos una letra minuscula.');
+            echo "\n";
         }
-        if (!preg_match('`[0-9]`', $_POST['UsuarioRC'])) {
+        if (!preg_match('`[0-9]`', $contrasena)) {
             session_destroy();
+            echo "\n";
             die('La contraseña debe tener al menos un numero.');
+            echo "\n";
         }
 
         # Si todo es correcto, hacer:
         $this->correo_usr = $email;
-        $alias = explode("@",$email);
+        $alias = explode("@", $email);
         $this->nombre_usr = $alias[0];
-        $contrasenaEncript = password_hash($contrasena,PASSWORD_ARGON2ID);
+        $contrasenaEncript = password_hash($contrasena, PASSWORD_ARGON2ID);
         $this->contrasena_usr = $contrasenaEncript;
 
-        $this->RegistrarUsuario();  
+        $this->RegistrarUsuario();
         $this->VistaUsuario();
 
-        
+
         // $datosUsuario = $this->ConsultarUsuario($nombre);
 
         // session_start();
@@ -173,15 +195,16 @@ class UserController extends User{
     }
 
     # Verificamos la informacion de inicio de sesion.
-    public function VerificaInicio($nombre,$contrasena)
+    public function VerificaInicio($nombre, $contrasena)
     {
         $this->nombre_usr = $nombre;
         $this->contrasena_usr = $contrasena;
         $datosUsuario = $this->ConsultarUsuario($nombre);
 
         # Recorremos el objeto que obtenemos en el model.
-        foreach ($datosUsuario as $dU) {}
-        if (password_verify($contrasena,$dU->contrasena_usr)) {
+        foreach ($datosUsuario as $dU) {
+        }
+        if (password_verify($contrasena, $dU->contrasena_usr)) {
             // session_start();
             $_SESSION['id_usr'] = $dU->id_usr;
             $_SESSION['nombre_usr'] = $dU->nombre_usr;
@@ -209,7 +232,7 @@ class UserController extends User{
         $objetoPrueba = $this->GetUserById();
         return $objetoPrueba;
     }
-    public function PrepareUpdateUserById($nombre_usr,$correo_usr,$id_usr)
+    public function PrepareUpdateUserById($nombre_usr, $correo_usr, $id_usr)
     {
         $this->nombre_usr = $nombre_usr;
         $this->correo_usr = $correo_usr;
@@ -223,16 +246,16 @@ class UserController extends User{
     }
 }
 // Action Registro
-if(isset($_GET['action']) && $_GET['action'] =='registrar' && !empty($_POST['UsuarioRE'] && $_POST['UsuarioRC'] && $_POST['UsuarioRCC'] && $_POST['terminosycondiciones'])){
+if (isset($_GET['action']) && $_GET['action'] == 'registrar' && !empty($_POST['UsuarioRE'] && $_POST['UsuarioRC'] && $_POST['UsuarioRCC'] && $_POST['terminosycondiciones'])) {
     $usercontroler = new UserController();
     echo "entre";
-    $usercontroler->AlistarInformacion($_POST['UsuarioRE'],$_POST['UsuarioRC'],$_POST['UsuarioRCC']);
+    $usercontroler->AlistarInformacion($_POST['UsuarioRE'], $_POST['UsuarioRC'], $_POST['UsuarioRCC']);
     // Por Probar: consulta e inicia session en el registro
     return;
 }
 
 // Action registro fallido. Condicion contraria a la de arriba.
-if (isset($_POST['action']) && $_POST['action'] =='registrar' && empty($_POST['UsuarioRE'] || $_POST['UsuarioRC'] || $_POST['UsuarioRCC'])) {
+if (isset($_POST['action']) && $_POST['action'] == 'registrar' && empty($_POST['UsuarioRE'] || $_POST['UsuarioRC'] || $_POST['UsuarioRCC'])) {
     die("Por favor rellene todos los campos de registro. ʕっ•ᴥ•ʔっ ♡");
 }
 
@@ -240,11 +263,11 @@ if (isset($_POST['action']) && $_POST['action'] =='registrar' && empty($_POST['U
 if (isset($_POST['action']) && $_POST['action'] == 'session' && !empty($_POST['UsuarioIS']) && !empty($_POST['ContrasenaIS'])) {
     // echo "holiwi";
     $usercontroler = new UserController();
-    $usercontroler->VerificaInicio($_POST['UsuarioIS'],$_POST['ContrasenaIS']);
+    $usercontroler->VerificaInicio($_POST['UsuarioIS'], $_POST['ContrasenaIS']);
     $usercontroler->VistaUsuario();
     $objetoPrueba = $usercontroler->TraerNombreUsuario();
     // var_dump($objetoPrueba);
-    
+
     return;
 }
 //  inicio de session fallido
@@ -272,7 +295,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'confirm_delete') {
 
     // session_start();
     // $_SESSION['id_usr'];
-    
+
     # Accedemos a la funcion de "Eliminar Usuario".
     // $usercontroler->EliminarUsuario();
     $usercontroler->PrepararIdDelete($_SESSION['id_usr']);
@@ -287,7 +310,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'update') {
     // session_start();
 
     $busquedaObjeto = $usercontroler->TraerNombreUsuario();
-    foreach ($busquedaObjeto as $obj) {}
+    foreach ($busquedaObjeto as $obj) {
+    }
 
     // $usercontroler->VistaUpdate();
     return;
@@ -298,7 +322,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
     // session_start();
     $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
     // $usercontroler->updateNombreUsuario($_POST['nombre_usr'], $_POST['correo_usr']);
-    $usercontroler->PrepareUpdateUserById($_POST['nombre_usr'], $_POST['correo_usr'],$_SESSION['id_usr']);
+    $usercontroler->PrepareUpdateUserById($_POST['nombre_usr'], $_POST['correo_usr'], $_SESSION['id_usr']);
     $usercontroler->VistaUsuario();
 
     // $usercontroler->VistaUpdate();
@@ -328,20 +352,20 @@ if (isset($_POST['action']) && $_POST['action'] == 'ajaxR') {
     echo "Hola";
     return;
 }
-if (isset($_GET['action']) && $_GET['action'] == 'ajaxR' && ) {
+if (isset($_GET['action']) && $_GET['action'] == 'ajaxR') {
+    session_start();
     $usercontroler = new UserController();
-    echo "cosa " . $_POST['usuarioRE'] . " cosa";
+    echo "cosa " . $_POST['usuarioRE'] . "\n cosa \n";
+    $usercontroler->AlistarInformacion($_POST['usuarioRE'], $_POST['usuarioRC'], $_POST['usuarioRCC']);
     echo var_dump($_POST);
-
-    $usercontroler->AlistarInformacion($_POST['usuarioRE'],$_POST['usuarioRE'],$_POST['usuarioRCC']);
-    echo "adios";
+    echo "adios\n";
+    die("PERREO\n");
+    echo "adios\n";
     return;
-    die("PERREO");
-    echo "adios";
 }
 
 // Action vista predefinida
-if(isset($_GET) || !isset($_GET)){
+if (isset($_GET) || !isset($_GET)) {
     $usercontroler = new UserController();
     session_destroy();
     $usercontroler->RedirigirNoUsuario();

@@ -1,5 +1,6 @@
-<?php 
-class User{
+<?php
+class User
+{
     protected $id_usr;
     protected $nombre_usr;
     protected $correo_usr;
@@ -7,16 +8,17 @@ class User{
     // protected $id_evn;
     // protected $id_mpg;
 
-    public function RegistrarUsuario(){
+    public function RegistrarUsuario()
+    {
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
         $sql = "CALL SetUser_usr(?,?,?)";
         $insert = $conexion->stm->prepare($sql);
 
         # Enviar la informacion de manera anonima.
-        $insert->bindParam(1,$this->nombre_usr);
-        $insert->bindParam(2,$this->correo_usr);
-        $insert->bindParam(3,$this->contrasena_usr);
+        $insert->bindParam(1, $this->nombre_usr);
+        $insert->bindParam(2, $this->correo_usr);
+        $insert->bindParam(3, $this->contrasena_usr);
 
         $_SESSION['nombre_usr'] = $this->nombre_usr;
         $_SESSION['correo_usr'] = $this->correo_usr;
@@ -24,8 +26,9 @@ class User{
         $insert->execute();
         // header("location: UserController.php?action=login");
     }
-// Puto
-    public function ComprobarCorreo(){
+    // Puto
+    public function ComprobarCorreo()
+    {
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
@@ -34,16 +37,19 @@ class User{
         $result->execute();
         $usuario = $result->fetchAll(PDO::FETCH_OBJ);
         if ($usuario) {
-            foreach($usuario as $prueba){}
-            return $prueba->correo_usr;
+            echo "\nsi\n";
+            return 0;
+        } else {
+            echo "\nno\n";
+            return 1;
         }
-        return;
     }
-// puto 2
-    public function ConsultarUsuario(){
+    // puto 2
+    public function ConsultarUsuario()
+    {
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
-        
+
         $sql = "CALL GetDataName_usr('$this->nombre_usr')";
         $usuario = $conexion->stm->prepare($sql);
         $usuario->execute();
@@ -55,7 +61,8 @@ class User{
         }
     }
 
-    public function EliminarUsuario(){
+    public function EliminarUsuario()
+    {
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
@@ -65,7 +72,8 @@ class User{
         $insert->execute();
     }
 
-    public function GetUserById(){
+    public function GetUserById()
+    {
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
@@ -78,7 +86,8 @@ class User{
         return $busquedaObjeto;
     }
 
-    public function updateNombreUsuario(){
+    public function updateNombreUsuario()
+    {
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
@@ -93,7 +102,8 @@ class User{
         $insert->execute();
     }
 
-    public function updateContrasena(){
+    public function updateContrasena()
+    {
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
@@ -103,4 +113,3 @@ class User{
         $actualizacion->execute();
     }
 }
-?>

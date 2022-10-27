@@ -149,6 +149,6 @@ $(document).ready(function() {
 
     // ------------------------------------------------------------------------------------------------------------- //
 
-    setInterval(fetchTasks, 250);
+    // setInterval(fetchTasks, 250);
     // fetchTasks();
 });

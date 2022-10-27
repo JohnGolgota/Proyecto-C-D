@@ -302,7 +302,7 @@
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-inicio">
-                    <form class="" novalidate>
+                    <form action="./Controllers/UserController.php" method="POST" class="" novalidate>
                         <input type="hidden" name="action" value="session">
                         <input type="text" name="UsuarioIS" id="usuarioIS" placeholder="Nombre De Usuario" class="form-control shadow-none" required>
                         <input type="password" name="ContrasenaIS" id="contrasenaIS" placeholder="Contraseña" class="form-control shadow-none" required>
