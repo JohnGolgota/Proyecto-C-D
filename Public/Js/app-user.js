@@ -152,3 +152,14 @@ $(document).ready(function() {
     setInterval(fetchTasks, 250);
     // fetchTasks();
 });
+
+
+
+// ----------------------------------- FULL CALENDAR ----------------------------------- //
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth'
+    });
+    calendar.render();
+});

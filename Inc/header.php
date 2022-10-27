@@ -11,6 +11,9 @@
     
     <!-- Bootstrap 5 -->
     <link rel="stylesheet" href="../Public/Css/bootstrap.min.css">
+
+    <!-- Full Calendar -->
+    <link rel="stylesheet" href="../Public/Css/main.min.css">
     
     <!-- hojas de estilo personalizadas -->
     <link rel="stylesheet" href="../Public/Css/style.css">
@@ -33,9 +36,7 @@
 
     <script>
         function load(){
-            // console.log("puta");
             let containera = document.getElementById('container-load');
-            // console.log(containera);
             containera.style.opacity = '0';
             containera.style.display = 'none';
         }

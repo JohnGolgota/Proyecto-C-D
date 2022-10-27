@@ -3,6 +3,7 @@ include '../Inc/header.php';
 // session_start();
 
 ?>
+
 <style>
     .add-reminder-button {
         border: none;
@@ -12,6 +13,7 @@ include '../Inc/header.php';
         color: white;
     }
 </style>
+
 <title> Carpe Diem | <?php echo $_SESSION['nombre_usr']; ?> </title>
 <?php include '../Inc/nav.php'; ?>
 <body onload="setTimeout(load, 700);">
@@ -63,25 +65,6 @@ include '../Inc/header.php';
                     </ul>
                 </div>
             </aside>
-
-                <!-- boton Menu Desplegable. -->
-                <!-- <button class="boton menu-user menu-user-herramientas" onclick="menuDesplegable();"> ... </button>
-            <aside id="menuDesplegable" style="display: none;" class="menu-no">
-                <section class="contenido-menu">
-                    <ul>
-                        <hr class="salto">
-                        <li><a href="#"></a></li>
-                        <li><a href="">Cuenta</a></li>
-                        <hr class="salto">
-                        <li><a href="#HerramientaUno"> Agenda </a></li>
-                        <li><a href="#HerramientaDos"> Reloj Pomodoro </a></li>
-                        <hr class="salto">
-                        <li><a href="#HerramientaCuatro"> ? </a></li>
-                        <hr class="salto">
-                        <li><a href="index.html"> Cerrar sesión </a></li>
-                    </ul>
-                </section>
-            </aside> -->
         </section>
     </nav>
 </header>
@@ -219,6 +202,9 @@ include '../Inc/header.php';
 
     <!--  -->
     <section class="superbox calendar-box">
+        <div id="calendar">
+            
+        </div>
         <!-- <iframe src="https://calendar.google.com/calendar/embed?height=720&wkst=1&bgcolor=%231363df&ctz=America%2FBogota&showTitle=0&showNav=1&src=M2R0dW5pbmdkdXZhbkBnbWFpbC5jb20&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZXMuY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&src=ZW4uY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%2333B679&color=%230B8043&color=%230B8043" width="1280" height="720" frameborder="0" scrolling="no" class="calendar-content"></iframe> -->
     </section>
 
