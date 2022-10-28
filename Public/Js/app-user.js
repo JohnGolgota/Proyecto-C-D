@@ -160,7 +160,7 @@ var myModal = new bootstrap.Modal(document.getElementById('modal-c'))
 var form_insertar = document.getElementById('form-c');
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("Socio");
+    // console.log("Socio");
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
@@ -182,11 +182,11 @@ document.addEventListener('DOMContentLoaded', function() {
     form_insertar.addEventListener('submit', function(e){
         e.preventDefault();
 
-        const title = document.getElementById('title').value;
-        const color = document.getElementById('color').value;
-        const fecha = document.getElementById('start').value;
+        const nombre_evn = document.getElementById('nombre_evn').value;
+        const color_evn = document.getElementById('color_evn').value;
+        const fecha_evn = document.getElementById('start').value;
 
-        if(title == '' || color == '' || fecha == ''){
+        if(nombre_evn == '' || color_evn == '' || fecha_evn == ''){
             let timerInterval
             Swal.fire({
                 title: 'Los campos NO Pueden estar vacios.',
@@ -205,5 +205,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         }
+
+        $(document).ready(function() {
+            $('#form-c').submit(function(er){
+                const postData = {
+                    nombre_evn: $('#nombre_evn').val(),
+                    descripcion_evn: $('#descripcion_evn').val(),
+                    color_evn: $('#color_evn').val(),
+
+                    desde_evn: $('#start').val(),
+                    hasta_evn: $('#end').val(),
+
+                    hora_inicio_evn: $('#time').val(),
+                    hora_final_evn: $('#timeend').val(),
+                }
+        
+                let url ='CalendarController.php?action=AddEvent';
+        
+                $.post(url, postData, function(response){ 
+                    // console.log("Donde me envie -> ", url, " Que recibi -> ", e);
+                    console.log("INFORMACION ->" , postData);
+                    console.log("RESPUESTA DEL SERVIDOR -> ", response);
+                })
+        
+                $('#task-form').trigger('reset');
+                er.preventDefault();
+            });
+        });
     });
 });

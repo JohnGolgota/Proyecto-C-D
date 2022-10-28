@@ -333,17 +333,38 @@ include '../Inc/header.php';
                 <form id="form-c" class="form-group">
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="title" class="form-label"> Evento </label>
-                            <input type="text" class="form-control shadow-none" id="title">
+                            <label for="nombre_evn" class="form-label"> Evento * </label>
+                            <input type="text" class="form-control shadow-none" id="nombre_evn" required>
                         </div>
                         <div class="mb-3">
-                            <label for="start" class="form-label"> Fecha </label>
-                            <input type="date" class="form-control shadow-none" id="start">
+                            <label for="descripcion_evn" class="form-label"> Descripcion </label>
+                            <input type="text" class="form-control shadow-none" id="descripcion_evn">
                         </div>
                         <div class="mb-3">
-                            <label for="color" class="form-label"> Color </label>
-                            <input type="color" class="form-control shadow-none" id="color">
+                            <label for="color_evn" class="form-label"> Color * </label>
+                            <input type="color" class="form-control shadow-none" id="color_evn" required>
                         </div>
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <label for="start" class="form-label"> Desde (Año, Mes, Dia) * </label>
+                                <input type="text" class="form-control shadow-none" id="start" required minlength="10" maxlength="10">
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="time" class="form-label"> Hora Inicio * </label>
+                                <input type="time" class="form-control shadow-none" id="time" value="12:00" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <label for="end" class="form-label"> Hasta (Año, Mes, Dia) * </label>
+                                <input type="text" class="form-control shadow-none" id="end" value="<?php echo date("o-m-d"); ?>" required minlength="10" maxlength="10">
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="timeend" class="form-label"> Hora Final * </label>
+                                <input type="time" class="form-control shadow-none" id="timeend" value="02:00" required>
+                            </div>
+                        </div>
+                        
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" id="btnAccion"> Registrar </button>
