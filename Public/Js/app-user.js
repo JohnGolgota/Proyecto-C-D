@@ -207,6 +207,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
     
                     myModal.show();
+
+                    // Actualizar Calendar.
+                    
+
+
                 }
             });
 
