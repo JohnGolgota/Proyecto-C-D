@@ -384,7 +384,7 @@
 
     <!-- Scripts Temporales:  -->
     <script src="./Public/Js/main.js"></script>
-    <script src="./Public/Js/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> -->
 
@@ -395,168 +395,169 @@
 
 ?>
 <script>
-    const usuarioem = document.getElementById("usuarioRE").value
-    console.log(usuarioem)
+    const useremail = $('#usuarioRE').val()
+    const emailuser = document.getElementById('usuarioRE').value
     $(document).ready(function() {
-        let edit = false;
+        $('#formulario-registro').trigger('reset')
         $('#formulario-registro').submit(function(e) {
-            const postData = {
-                usuarioRE: $('#usuarioRE').val(),
-                usuarioRC: $('#usuarioRC').val(),
-                usuarioRCC: $('#usuarioRCC').val(),
-                terminosycondiciones: $('#terminosycondiciones').val()
-            }
-            console.log(postData)
-            let url = "./Controllers/UserController.php?action=ajax-registro"
 
-            $.post(url, postData, function(response) {
-                console.log("Donde me envie -> ", url, " Que recibi -> ", e);
-                console.log("NOMBRE ->", usuarioRE);
-                console.log("RESPUESTA DEL SERVIDOR -> ", response);
+            e.preventDefault()
 
-                if (response == "Correo no valido.") {
-                    let timerInterval
-                    Swal.fire({
-                        title: 'Por favor introduzca un correo electronico valido.',
-                        timer: 2000,
-                        icon: 'error',
-                        timerProgressBar: false,
-                        didOpen: () => {
-                            // Swal.showLoading()
-                            const b = Swal.getHtmlContainer().querySelector('b')
-                            timerInterval = setInterval(() => {
-                                // b.textContent = Swal.getTimerLeft()
-                            }, 100)
-                        },
-                        willClose: () => {
-                            clearInterval(timerInterval)
-                        }
-                    });
-                }
-                if (response == "Correo en uso.") {
-                    let timerInterval
-                    Swal.fire({
-                        title: 'El correo ya ha sido registrado.',
-                        timer: 2000,
-                        icon: 'error',
-                        timerProgressBar: false,
-                        didOpen: () => {
-                            // Swal.showLoading()
-                            const b = Swal.getHtmlContainer().querySelector('b')
-                            timerInterval = setInterval(() => {
-                                // b.textContent = Swal.getTimerLeft()
-                            }, 100)
-                        },
-                        willClose: () => {
-                            clearInterval(timerInterval)
-                        }
-                    })
-                }
-                if (response == "Las contrasenas no coinciden.") {
-                    let timerInterval
-                    Swal.fire({
-                        title: 'Las contraseñas no coinciden.',
-                        timer: 2000,
-                        icon: 'error',
-                        timerProgressBar: false,
-                        didOpen: () => {
-                            // Swal.showLoading()
-                            const b = Swal.getHtmlContainer().querySelector('b')
-                            timerInterval = setInterval(() => {
-                                // b.textContent = Swal.getTimerLeft()
-                            }, 100)
-                        },
-                        willClose: () => {
-                            clearInterval(timerInterval)
-                        }
-                    })
-                }
-                if (response == "minimo 4 caracteres.") {
-                    let timerInterval
-                    Swal.fire({
-                        title: 'La contraseña debe tener al menos 4 caracteres.',
-                        timer: 2500,
-                        icon: 'error',
-                        timerProgressBar: false,
-                        didOpen: () => {
-                            // Swal.showLoading()
-                            const b = Swal.getHtmlContainer().querySelector('b')
-                            timerInterval = setInterval(() => {
-                                // b.textContent = Swal.getTimerLeft()
-                            }, 100)
-                        },
-                        willClose: () => {
-                            clearInterval(timerInterval)
-                        }
-                    })
-                }
-                if (response == "maximo 10 caracteres.") {
-                    let timerInterval
-                    Swal.fire({
-                        title: 'La contraseña no debe tener mas de 10 caracteres.',
-                        timer: 2500,
-                        icon: 'error',
-                        timerProgressBar: false,
-                        didOpen: () => {
-                            // Swal.showLoading()
-                            const b = Swal.getHtmlContainer().querySelector('b')
-                            timerInterval = setInterval(() => {
-                                // b.textContent = Swal.getTimerLeft()
-                            }, 100)
-                        },
-                        willClose: () => {
-                            clearInterval(timerInterval)
-                        }
-                    })
-                }
-                if (response == "una letra minuscula.") {
-                    let timerInterval
-                    Swal.fire({
-                        title: 'La contraseña debe tener almenos una letra minuscula.',
-                        timer: 2500,
-                        icon: 'error',
-                        timerProgressBar: false,
-                        didOpen: () => {
-                            // Swal.showLoading()
-                            const b = Swal.getHtmlContainer().querySelector('b')
-                            timerInterval = setInterval(() => {
-                                // b.textContent = Swal.getTimerLeft()
-                            }, 100)
-                        },
-                        willClose: () => {
-                            clearInterval(timerInterval)
-                        }
-                    })
-                }
-                if (response == "un numero.") {
-                    let timerInterval
-                    Swal.fire({
-                        title: 'La contraseña debe tener almenos un numero.',
-                        timer: 2500,
-                        icon: 'error',
-                        timerProgressBar: false,
-                        didOpen: () => {
-                            // Swal.showLoading()
-                            const b = Swal.getHtmlContainer().querySelector('b')
-                            timerInterval = setInterval(() => {
-                                // b.textContent = Swal.getTimerLeft()
-                            }, 100)
-                        },
-                        willClose: () => {
-                            clearInterval(timerInterval)
-                        }
-                    })
-                }
-                if (response == "success") {
-                    window.location.assign('./Controllers/UserController.php?action=inicio&user='+$('#usuarioRE').val());
+            $.ajax({
+                data: {
+                    usuarioRE: $('#usuarioRE').val(),
+                    usuarioRC: $('#usuarioRC').val(),
+                    usuarioRCC: $('#usuarioRCC').val(),
+                    terminosycondiciones: $('#terminosycondiciones').val()
+                },
+                url: './Controllers/UserController.php?action=ajax-registro',
+                type: 'post',
+                success: function(response) {
+                    console.log("RESPUESTA DEL SERVIDOR -> ", response);
+                    // Campos vacios JS
+                    if ($('#usuarioRE').val() == "" || $('#usuarioRC').val() == "" || $('#usuarioRCC').val() == "" || $('#terminosycondiciones').val() == "") {
+                        let timerInterval
+                        Swal.fire({
+                            title: 'Por favor introduzca un correo electronico valido.',
+                            timer: 2000,
+                            icon: 'error',
+                            timerProgressBar: false,
+                            didOpen: () => {
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {}, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        });
+                    }
+                    // Campos vacios 2 Electric boogalo
+                    if (response == "Correo no valido.") {
+                        let timerInterval
+                        Swal.fire({
+                            title: 'Por favor introduzca un correo electronico valido.',
+                            timer: 2000,
+                            icon: 'error',
+                            timerProgressBar: false,
+                            didOpen: () => {
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {}, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        });
+                    }
+                    // Correo en uso
+                    if (response == "Correo en uso.") {
+                        let timerInterval
+                        Swal.fire({
+                            title: 'El correo ya ha sido registrado.',
+                            timer: 2000,
+                            icon: 'error',
+                            timerProgressBar: false,
+                            didOpen: () => {
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {}, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
+                    }
+                    // error contraseña 1
+                    if (response == "Las contrasenas no coinciden.") {
+                        let timerInterval
+                        Swal.fire({
+                            title: 'Las contraseñas no coinciden.',
+                            timer: 2000,
+                            icon: 'error',
+                            timerProgressBar: false,
+                            didOpen: () => {
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {}, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
+                    }
+                    // error contraseña 2
+                    if (response == "minimo 4 caracteres.") {
+                        let timerInterval
+                        Swal.fire({
+                            title: 'La contraseña debe tener al menos 4 caracteres.',
+                            timer: 2500,
+                            icon: 'error',
+                            timerProgressBar: false,
+                            didOpen: () => {
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {}, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
+                    }
+                    // Error contraseña 3
+                    if (response == "maximo 10 caracteres.") {
+                        let timerInterval
+                        Swal.fire({
+                            title: 'La contraseña no debe tener mas de 10 caracteres.',
+                            timer: 2500,
+                            icon: 'error',
+                            timerProgressBar: false,
+                            didOpen: () => {
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {}, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
+                    }
+                    // Error contraseña 4
+                    if (response == "una letra minuscula.") {
+                        let timerInterval
+                        Swal.fire({
+                            title: 'La contraseña debe tener almenos una letra minuscula.',
+                            timer: 2500,
+                            icon: 'error',
+                            timerProgressBar: false,
+                            didOpen: () => {
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {}, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
+                    }
+                    // Error contraseña 5
+                    if (response == "un numero.") {
+                        let timerInterval
+                        Swal.fire({
+                            title: 'La contraseña debe tener almenos un numero.',
+                            timer: 2500,
+                            icon: 'error',
+                            timerProgressBar: false,
+                            didOpen: () => {
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {}, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
+                    }
+                    // Redi
+                    if (response == "success") {
+                        // window.location.assign('./Controllers/UserController.php?action=inicio&session=');
+                        console.log(useremail, emailuser)
+                        console.log(response)
+                    }
                 }
             })
-
-            $('#formulario-registro').trigger('reset');
-
-
-            e.preventDefault();
-            edit = false;
-        });
-    });
+        })
+    })
 </script>

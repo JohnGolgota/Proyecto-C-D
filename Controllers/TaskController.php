@@ -29,7 +29,7 @@
             echo $objeto;
         }
 
-        public function prepareUpdateTask($id, $nombre, $color, $notificacion,){
+        public function prepareUpdateTask($id, $nombre, $color, $notificacion){
             $this->id_rec = $id;
             $this->nombre_rec = $nombre;
             $this->notificacion_rec = $notificacion;

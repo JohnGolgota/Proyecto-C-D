@@ -165,7 +165,21 @@ class UserController extends User
         $this->contrasena_usr = $contrasenaEncript;
 
         $this->RegistrarUsuario();
-        $this->IniciarSession();
+
+        $datosUsuario = $this->ConsultarUsuario();
+        // echo var_dump($datosUsuario);
+        foreach ($datosUsuario as $dU) {}
+
+
+        $_SESSION['id_usr'] = $dU->id_usr;
+        $_SESSION['nombre_usr'] = $dU->nombre_usr;
+        $_SESSION['correo_usr'] = $dU->correo_usr;
+        echo "{hola:'carrera',succes:'succes'}";
+        // echo var_dump($_SESSION);
+        // $this->VerificaInicio($this->nombre_usr, $contrasena);
+
+
+        // $this->IniciarSession();
         // $this->VistaUsuario();
 
 
@@ -181,13 +195,14 @@ class UserController extends User
     public function IniciarSession()
     {
         $datosUsuario = $this->ConsultarUsuario();
+        // echo var_dump($datosUsuario);
         foreach ($datosUsuario as $dU) {}
 
         // session_start();
         $_SESSION['id_usr'] = $dU->id_usr;
         $_SESSION['nombre_usr'] = $dU->nombre_usr;
         $_SESSION['correo_usr'] = $dU->correo_usr;
-
+        // echo var_dump($_SESSION);
         // var_dump($datosUsuario);
         // var_dump($_SESSION);
         // return $_SESSION;
@@ -362,7 +377,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'ajax-registro') {
     $usercontroler = new UserController();
     $usercontroler->AlistarInformacion($_POST['usuarioRE'], $_POST['usuarioRC'], $_POST['usuarioRCC']);
     
-    echo "success";
+    // echo "success";
     return;
 }
 
