@@ -125,19 +125,12 @@
 
 
 /* ---------------------------- Subcategoria: Calendario ---------------------------------- */
-.calendar-box {
-    text-align: center;
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    /* background-color: var(--color2); */
-}
-
-.calendar-content {
-    width: 100%;
-    height: 100%;
-    border: none;
-    padding: 7px;
+.calendar-box-user {
+    background-color: #f9f9f9;
+    padding: 12px;
+    margin-bottom: 0;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 
@@ -150,9 +143,13 @@
     margin: 0 0 4px 0;
 }
 
-h4.element-task {
+h5.element-task {
     color: #f9f9f9;
     display: inline-block;
+}
+
+h5.notifiacion-task {
+    padding-left: 5px;
 }
 
 div.action-tasks {

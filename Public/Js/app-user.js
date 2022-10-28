@@ -81,7 +81,7 @@ $(document).ready(function() {
                             <div class="tasks">
                                 <div class="task my-auto d-flex mb-1" style="background-color:${task.Color_rec};">
                                     <h5 class="element-task nombre-task my-auto" id="nombre-task">${task.Nombre_rec} | </h5>
-                                    <h5 class="element-task notifiacion-task my-auto" id="notificacion-task">${task.Notificacion_rec}</h5>
+                                    <h5 class="element-task notifiacion-task my-auto" id="notificacion-task"> ${task.Notificacion_rec} </h5>
                                     <div class="action-tasks" taskId-del="${task.id_rec}">
                                         <button class="btn btn-danger task-delete-user"> Eliminar </button>
                                     </div>
@@ -222,9 +222,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
         
                 let url ='CalendarController.php?action=AddEvent';
-        
+
+                let random = Math.random() * 100;
+                let random_r = Math.round(random);
+                console.log(random_r);
+
                 $.post(url, postData, function(response){
-                    if(response == 'event success'){
+
+                    if(response == 'event success' && random_r >  4){
                         let timerInterval
                         Swal.fire({
                             title: 'Evento Agregado Correctamente',
@@ -243,9 +248,25 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                         });
 
-                        myModal.hide();
+                        
                     }
-                    
+
+                    if(response == 'event success' && random_r <= 4){
+                        Swal.fire({
+                            title: 'Evento Agregado Correctamente',
+                            width: 600,
+                            padding: '3em',
+                            color: '#716add',
+                            backdrop: `
+                              rgba(0,0,123,0.4)
+                              url("../Public/Img/User/neon-cat-rainbow.gif")
+                              center top
+                              no-repeat
+                            `
+                        })
+                    }
+
+                    myModal.hide();
                     calendar.refetchEvents();
 
                     // console.log("VALOR DEL START ->", $('#start').val()) 
@@ -255,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
                 
 
-                $('#task-form').trigger('reset');
+                $('#form-c').trigger('reset');
                 er.preventDefault();
             });
         });

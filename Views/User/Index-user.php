@@ -200,7 +200,7 @@ include '../Inc/header.php';
 <!--  -->
 <main>
     <!--  -->
-    <section class="container mt-3 mb-5">
+    <section class="container mt-3 mb-5 calendar-box-user">
         <div id="calendar" class=""></div>
     </section>
     
