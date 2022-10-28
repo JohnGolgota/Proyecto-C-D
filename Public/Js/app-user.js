@@ -222,7 +222,28 @@ document.addEventListener('DOMContentLoaded', function() {
         
                 let url ='CalendarController.php?action=AddEvent';
         
-                $.post(url, postData, function(response){ 
+                $.post(url, postData, function(response){
+                    if(response == 'event success'){
+                        let timerInterval
+                        Swal.fire({
+                            title: 'Evento Agregado Correctamente',
+                            timer: 2000,
+                            icon: 'success',
+                            timerProgressBar: false,
+                            didOpen: () => {
+                                // Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    // b.textContent = Swal.getTimerLeft()
+                                }, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        });
+                    }
+                    
+                    console.log("VALOR DEL START ->", $('#start').val()) 
                     // console.log("Donde me envie -> ", url, " Que recibi -> ", e);
                     console.log("INFORMACION ->" , postData);
                     console.log("RESPUESTA DEL SERVIDOR -> ", response);

@@ -13,19 +13,23 @@
 		protected $fecha_evn;
 		protected $id_usr;
 
-		// public function addEvent(){
-		// include_once '../Config/conexiondb.php';
-		// $conexion = new Conexion();
-		
-		// $sql = "INSERT INTO tbl_Recordatorios(Nombre_rec, Color_rec, Notificacion_rec, id_usr) VALUES(?, ?, ?, ?)";
-		// $result = $conexion->stm->prepare($sql);
+		public function addEvent(){
+			include_once '../Config/conexiondb.php';
+			$conexion = new Conexion();
+			
+			$sql = "INSERT INTO tbl_eventos(Nombre_evn, Descripcion_evn, Color_evn, Desde_evn, Hasta_evn, Hora_Inicio_evn, Hora_Final_evn, id_usr) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+			$result = $conexion->stm->prepare($sql);
 
-		// $result->bindParam(1,$this->nombre_rec);
-		// $result->bindParam(2,$this->color_rec);
-		// $result->bindParam(3,$this->notificacion_rec);
-		// $result->bindParam(4,$this->id_usr);
+			$result->bindParam(1,$this->nombre_evn);
+			$result->bindParam(2,$this->descripcion_evn);
+			$result->bindParam(3,$this->color_evn);
+			$result->bindParam(4,$this->desde_evn);
+			$result->bindParam(5,$this->hasta_evn);
+			$result->bindParam(6,$this->hora_inicio_evn);
+			$result->bindParam(7,$this->hora_final_evn);
+			$result->bindParam(8,$this->id_usr);
 
-		// $result->execute();
-		// }
+			$result->execute();
+		}
 	}
 ?>
