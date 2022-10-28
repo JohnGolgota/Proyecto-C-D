@@ -326,20 +326,29 @@ include '../Inc/header.php';
             <div class="modal-content">
                 <div class="modal-header bg-primary">
                 <h5 class="modal-title" id="titulo"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
             <div>
-                <form id="form-c">
-                    <div class="form-floating modal-body">
+                <form id="form-c" class="form-group">
+                    <div class="modal-body">
                         <div class="mb-3">
-                            <input type="date" class="form-control" id="start">
+                            <label for="title" class="form-label"> Evento </label>
+                            <input type="text" class="form-control shadow-none" id="title">
+                        </div>
+                        <div class="mb-3">
                             <label for="start" class="form-label"> Fecha </label>
+                            <input type="date" class="form-control shadow-none" id="start">
+                        </div>
+                        <div class="mb-3">
+                            <label for="color" class="form-label"> Color </label>
+                            <input type="color" class="form-control shadow-none" id="color">
                         </div>
                     </div>
                     <div class="modal-footer">
-                
+                        <button type="submit" class="btn btn-primary" id="btnAccion"> Registrar </button>
+                        <button class="btn btn-danger"> Eliminar </button>
+                        <button class="btn btn-warning"> Cancelar </button>
                     </div>
                 </form>
             </div>

@@ -19,7 +19,8 @@
 
 
 /* --------------------------------------------- Fuentes. --------------------------------------------- */
-@font-face {font-family: "Montserrat Medium";src: url(./Font/MontserratAlternates-Medium.ttf);}
+/* @font-face {font-family: "Montserrat Medium";src: url(./Font/MontserratAlternates-Medium.ttf);} */
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap'); 
 
 /* ----------------------------------------- Paleta De Colores ----------------------------------------- */
 :root {
@@ -46,7 +47,7 @@
     padding: 0;
     margin: 0;
 
-    font-family: 'Montserrat Medium', cursive;
+    font-family: 'Lato', sans-serif;
 }
 
 body {

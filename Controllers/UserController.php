@@ -274,10 +274,10 @@ if (isset($_GET['action']) && $_GET['action'] == 'inicio') {
 }
 
 // Ajax verificacion [NOVALIDATE].
-if(isset($_GET['action']) && $_GET['action'] == 'ajax-session' && empty($_POST['usuariois']) || empty($_POST['contrasenais'])){
-    echo "false";
+// if(isset($_GET['action']) && $_GET['action'] == 'ajax-session' && empty($_POST['usuariois']) || empty($_POST['contrasenais'])){
+    // echo "false";
     // return;
-}
+// }
 
 # Redireccion a Eliminar Cuenta
 if (isset($_GET['action']) && $_GET['action'] == 'delete') {
@@ -347,9 +347,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'abort') {
 // ------------------------------------------
 
 // Action vista predefinida
-// if(isset($_GET) || !isset($_GET)){
-//     $usercontroler = new UserController();
-//     session_destroy();
-//     $usercontroler->RedirigirNoUsuario();
-//     return;
-// }
+if(isset($_GET) || !isset($_GET)){
+    $usercontroler = new UserController();
+    session_destroy();
+    $usercontroler->RedirigirNoUsuario();
+    return;
+}

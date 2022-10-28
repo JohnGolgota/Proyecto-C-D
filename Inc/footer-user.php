@@ -14,7 +14,7 @@
     <script src="../Public/Js/es.js"></script>
 
     <!-- Moment.js -->
-    <script src="../Public/Js/moment.js"></script>
+    <script src="../Public/Js/moment.min.js"></script>
 
     <!-- Script -->
     <script src="../Public/Js/app-user.js"></script>

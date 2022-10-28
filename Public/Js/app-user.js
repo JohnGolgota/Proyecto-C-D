@@ -157,6 +157,8 @@ $(document).ready(function() {
 
 // ----------------------------------- FULL CALENDAR ----------------------------------- //
 var myModal = new bootstrap.Modal(document.getElementById('modal-c'))
+var form_insertar = document.getElementById('form-c');
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log("Socio");
     var calendarEl = document.getElementById('calendar');
@@ -176,4 +178,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     calendar.render();
+
+    form_insertar.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        const title = document.getElementById('title').value;
+        const color = document.getElementById('color').value;
+        const fecha = document.getElementById('start').value;
+
+        if(title == '' || color == '' || fecha == ''){
+            let timerInterval
+            Swal.fire({
+                title: 'Los campos NO Pueden estar vacios.',
+                timer: 2000,
+                icon: 'error',
+                timerProgressBar: false,
+                didOpen: () => {
+                    // Swal.showLoading()
+                    const b = Swal.getHtmlContainer().querySelector('b')
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            });
+        }
+    });
 });

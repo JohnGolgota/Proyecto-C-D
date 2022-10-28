@@ -403,7 +403,7 @@
                     type: 'post',
                     success: function(response) {
                         // CAMPOS VACIOS (NOVALIDATE)
-                        if (response == "false") {
+                        if ($('#usuarioIS').val() == '' || $('#contrasenaIS').val() == '') {
                             let timerInterval
                             Swal.fire({
                                 title: 'Los campos NO Pueden estar vacios.',
@@ -469,7 +469,7 @@
                         // Imprimir respuesta del archivo
                         // location.href(response);
                         
-                        console.log("RESPUESTA -> ", response); 
+                        // console.log("RESPUESTA -> ", response); 
                     },
                     error: function(error) {
                         console.log("ERROR ->", error); // Imprimir respuesta de error
