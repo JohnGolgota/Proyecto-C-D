@@ -31,5 +31,18 @@
 
 			$result->execute();
 		}
+
+		public function GetEventsForId(){
+            include_once '../Config/conexiondb.php';
+            $conexion = new Conexion();
+
+            $sql = "SELECT id_evn AS id, nombre_evn AS title, desde_evn AS start, color_evn AS color FROM tbl_eventos WHERE id_usr = '$this->id_usr'";
+            $result = $conexion->stm->prepare($sql);
+            $result->execute();
+
+            $event = $result->fetchAll(PDO::FETCH_OBJ);
+            $jsonstring = json_encode($event, JSON_UNESCAPED_UNICODE);      
+            return $jsonstring;
+        }
 	}
 ?>

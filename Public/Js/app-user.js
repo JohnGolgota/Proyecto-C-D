@@ -83,7 +83,7 @@ $(document).ready(function() {
                                     <h5 class="element-task nombre-task my-auto" id="nombre-task">${task.Nombre_rec} | </h5>
                                     <h5 class="element-task notifiacion-task my-auto" id="notificacion-task">${task.Notificacion_rec}</h5>
                                     <div class="action-tasks" taskId-del="${task.id_rec}">
-                                        <button class="btn btn-danger task-delete"> Eliminar </button>
+                                        <button class="btn btn-danger task-delete-user"> Eliminar </button>
                                     </div>
                                 </div>
                             </div>
@@ -123,28 +123,28 @@ $(document).ready(function() {
 
     // ------------------------------------------------------------------------------------------------------------- //
 
-    $(document).on('click', '.task-delete', function (){
-        swal({
-            title: "¿Estas Seguro?",
-            text: "Se borrara tu recordatorio, ¡no podras recuperarlo!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                let element = $(this)[0].parentElement;
-                let id_rec = $(element).attr('taskId-del');
-                $.post('TaskController.php?action=DeleteTask', {id_rec}, function(response){ /* console.log(response); */ });
-    
-                swal('¡Poof! Tu recordatorio ha sido eliminado', {
-                    icon: "success",
-                });
-    
-            } else {
-                swal("¡Vale!");
-            }
-        });
+    $(document).on('click', '.task-delete-user', function (){
+        Swal.fire({
+            title: '¿Estas Seguro?',
+            text: "Se borrara tu recordatorio ¡Y no podras recuperarlo! D:",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#1363DF',
+            cancelButtonColor: '#47B5FF',
+            confirmButtonText: '¡Sé lo que hago!',
+          }).then((result) => {
+                if (result.isConfirmed) {
+                    let element = $(this)[0].parentElement;
+                    let id_rec = $(element).attr('taskId-del');
+                    $.post('TaskController.php?action=DeleteTask', {id_rec}, function(response){ /* console.log(response); */ });
+                    
+                    Swal.fire(
+                        '¡Poof!',
+                        'Tu recordatorio Ha Sido Eliminado',
+                        'success'
+                    )
+                }
+          })
     });
 
     // ------------------------------------------------------------------------------------------------------------- //
@@ -170,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
             center: 'title',
             right: 'dayGridMonth, timeGridWeek, listWeek'
         },
+        events: 'CalendarController.php?action=GetEvents',
         dateClick: function(info){
             console.log(info);
             document.getElementById('start').value = info.dateStr;
@@ -241,14 +242,19 @@ document.addEventListener('DOMContentLoaded', function() {
                                 clearInterval(timerInterval)
                             }
                         });
+
+                        myModal.hide();
                     }
                     
-                    console.log("VALOR DEL START ->", $('#start').val()) 
+                    calendar.refetchEvents();
+
+                    // console.log("VALOR DEL START ->", $('#start').val()) 
                     // console.log("Donde me envie -> ", url, " Que recibi -> ", e);
-                    console.log("INFORMACION ->" , postData);
-                    console.log("RESPUESTA DEL SERVIDOR -> ", response);
+                    // console.log("INFORMACION ->" , postData);
+                    // console.log("RESPUESTA DEL SERVIDOR -> ", response);
                 })
-        
+                
+
                 $('#task-form').trigger('reset');
                 er.preventDefault();
             });
