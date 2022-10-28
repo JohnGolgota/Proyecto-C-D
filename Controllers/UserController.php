@@ -122,57 +122,39 @@ class UserController extends User
     # Alistar informacion para registrarse
     function AlistarInformacion($email, $contrasena, $cContrasena)
     {
-        echo "filtro uno email\n";
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             session_destroy();
-            # Return + echo = die
-            echo "Email not valid<br>";
-            die("Introduzca una dirección de correo electronico valido");
+            die("Correo no valido.");
         }
-        echo "filtro uno email cerrado\n";
-        echo "filtro dos.1 correo\n";
         $this->correo_usr = $email;
         $comprobacion = $this->ComprobarCorreo();
         if ($comprobacion != 1) {
-            echo "\nfiltro dos.2 medio";
-            echo "\nFalso no hay suicidio\n";
-            die("correo en uso");
+            die("Correo en uso.");
         }
-        echo "\nfiltro dos.3 Cierre";
 
         if ($cContrasena !== $contrasena) {
             session_destroy();
-            echo "\n";
-            die("Las Contraseñas no coinciden");
-            echo "\n";
+            die("Las contrasenas no coinciden.");
         }
 
         # strlen Idenfifica Cuantos caracteres hay
         if (strlen($contrasena) < 4) {
             session_destroy();
-            echo "\n";
-            die('La contraseña debe tener al menos 4 caracteres.');
-            echo "\n";
+            die('minimo 4 caracteres.');
         }
         if (strlen($contrasena) > 10) {
             session_destroy();
-            echo "\n";
-            die('La contraseña no puede tener mas de 10 caracteres.');
-            echo "\n";
+            die('maximo 10 caracteres.');
         }
 
         # preg_match Exige que la contraseña tenga al menos un caracter del diccionario especificado.
         if (!preg_match('`[a-z]`', $contrasena)) {
             session_destroy();
-            echo "\n";
-            die('La contraseña debe tener al menos una letra minuscula.');
-            echo "\n";
+            die('una letra minuscula.');
         }
         if (!preg_match('`[0-9]`', $contrasena)) {
             session_destroy();
-            echo "\n";
-            die('La contraseña debe tener al menos un numero.');
-            echo "\n";
+            die('un numero.');
         }
 
         # Si todo es correcto, hacer:
@@ -183,7 +165,8 @@ class UserController extends User
         $this->contrasena_usr = $contrasenaEncript;
 
         $this->RegistrarUsuario();
-        $this->VistaUsuario();
+        $this->IniciarSession();
+        // $this->VistaUsuario();
 
 
         // $datosUsuario = $this->ConsultarUsuario($nombre);
@@ -194,12 +177,33 @@ class UserController extends User
         return;
     }
 
+    // Necesito actualizar el session... rezons
+    public function IniciarSession()
+    {
+        $datosUsuario = $this->ConsultarUsuario();
+        foreach ($datosUsuario as $dU) {}
+
+        // session_start();
+        $_SESSION['id_usr'] = $dU->id_usr;
+        $_SESSION['nombre_usr'] = $dU->nombre_usr;
+        $_SESSION['correo_usr'] = $dU->correo_usr;
+
+        // var_dump($datosUsuario);
+        // var_dump($_SESSION);
+        // return $_SESSION;
+        return;
+
+
+        # Si no funciona el inicio de sesion pero devuelve un objeto.
+
+    }
+
     # Verificamos la informacion de inicio de sesion.
     public function VerificaInicio($nombre, $contrasena)
     {
         $this->nombre_usr = $nombre;
         $this->contrasena_usr = $contrasena;
-        $datosUsuario = $this->ConsultarUsuario($nombre);
+        $datosUsuario = $this->ConsultarUsuario();
 
         # Recorremos el objeto que obtenemos en el model.
         foreach ($datosUsuario as $dU) {
@@ -275,8 +279,13 @@ if (isset($_POST['action']) && $_POST['action'] == 'session' && empty($_POST['Us
     echo "Campos no validos";
     return;
 }
-
+# Ajax Succes
 if (isset($_GET['action']) && $_GET['action'] == 'inicio') {
+    $usercontroler = new UserController();
+    $usercontroler->VistaUsuario();
+    return;
+}
+if (isset($_GET['action']) && $_GET['action'] == 'inicio' && !empty($_GET['user'])) {
     $usercontroler = new UserController();
     $usercontroler->VistaUsuario();
     return;
@@ -348,19 +357,12 @@ if (isset($_GET['action']) && $_GET['action'] == 'abort') {
     return;
 }
 
-if (isset($_POST['action']) && $_POST['action'] == 'ajaxR') {
-    echo "Hola";
-    return;
-}
-if (isset($_GET['action']) && $_GET['action'] == 'ajaxR') {
+if (isset($_GET['action']) && $_GET['action'] == 'ajax-registro') {
     session_start();
     $usercontroler = new UserController();
-    echo "cosa " . $_POST['usuarioRE'] . "\n cosa \n";
     $usercontroler->AlistarInformacion($_POST['usuarioRE'], $_POST['usuarioRC'], $_POST['usuarioRCC']);
-    echo var_dump($_POST);
-    echo "adios\n";
-    die("PERREO\n");
-    echo "adios\n";
+    
+    echo "success";
     return;
 }
 

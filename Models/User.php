@@ -37,10 +37,8 @@ class User
         $result->execute();
         $usuario = $result->fetchAll(PDO::FETCH_OBJ);
         if ($usuario) {
-            echo "\nsi\n";
             return 0;
         } else {
-            echo "\nno\n";
             return 1;
         }
     }
