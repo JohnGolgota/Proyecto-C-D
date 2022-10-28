@@ -333,6 +333,7 @@ include '../Inc/header.php';
                 <form id="form-c" class="form-group">
                     <div class="modal-body">
                         <div class="mb-3">
+                            <input type="hidden" id="id_evn" name="id_evn">
                             <label for="nombre_evn" class="form-label"> Evento * </label>
                             <input type="text" class="form-control shadow-none" id="nombre_evn" required>
                         </div>
@@ -368,7 +369,7 @@ include '../Inc/header.php';
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" id="btnAccion"> Registrar </button>
-                        <button class="btn btn-danger"> Eliminar </button>
+                        <button class="btn btn-danger" id="btnEliminar"> Eliminar </button>
                         <button class="btn btn-warning"> Cancelar </button>
                     </div>
                 </form>

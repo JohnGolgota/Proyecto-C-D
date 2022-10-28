@@ -41,10 +41,10 @@ $(document).ready(function() {
 
         // Enviar informacion (Donde queremos enviar el dato, Que datos se envian, que se hace cuando reciba respuesta)
         $.post(url, postData, function(response){ 
-            console.log("Donde me envie -> ", url, " Que recibi -> ", e);
+            // console.log("Donde me envie -> ", url, " Que recibi -> ", e);
             // console.log("ELEMENT  ->" , element);
-            console.log("NOMBRE ->" , nombre_rec);
-            console.log("RESPUESTA DEL SERVIDOR -> ", response);
+            // console.log("NOMBRE ->" , nombre_rec);
+            // console.log("RESPUESTA DEL SERVIDOR -> ", response);
         })
 
         // Reseteamos el formulario.
@@ -109,13 +109,13 @@ $(document).ready(function() {
             let task = JSON.parse(response);
             task.forEach(t => {
                 // console.log(t);
-                console.log(nombre_rec);
+                // console.log(nombre_rec);
 
                 $('#taskId').val(t.id_rec);
                 $('#nombre_rec').val(t.Nombre_rec);
                 $('#notificacion_rec').val(t.Notificacion_rec);
                 $('#color_rec').val(t.Color_rec);
-                console.log(response);
+                // console.log(response);
                 edit = true;
             });
         });
@@ -160,7 +160,6 @@ var myModal = new bootstrap.Modal(document.getElementById('modal-c'))
 var form_insertar = document.getElementById('form-c');
 
 document.addEventListener('DOMContentLoaded', function() {
-    // console.log("Socio");
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
@@ -173,11 +172,48 @@ document.addEventListener('DOMContentLoaded', function() {
         events: 'CalendarController.php?action=GetEvents',
         dateClick: function(info){
             console.log(info);
+            
             document.getElementById('start').value = info.dateStr;
+            document.getElementById('btnEliminar').classList.add('d-none');
+            document.getElementById('btnAccion').textContent = "Guardar";
             document.getElementById('titulo').textContent = "Agregar Evento";
+
+            myModal.show();
+        },
+        eventClick : function(i){
+            console.log("Informacion -> ", i);
+            document.getElementById('id_evn').value = i.event.id;
+            const id_evn = document.getElementById('id_evn').value;
+
+            document.getElementById('btnEliminar').classList.remove('d-none');
+            document.getElementById('btnAccion').textContent = "Actualizar";
+            document.getElementById('titulo').textContent = "Actualizar Evento";
+
+            $.ajax({
+                url: 'CalendarController.php?action=GetAllEvents&id_evn=' + id_evn,
+                type: 'GET',
+                success: function(response){
+                    console.log(response);
+                    let event = JSON.parse(response);
+
+                    event.forEach(e => {
+                        document.getElementById("nombre_evn").value = e.nombre_evn;
+                        document.getElementById("descripcion_evn").value = e.descripcion_evn;
+                        document.getElementById("color_evn").value = e.color_evn;
+                        document.getElementById("start").value = e.desde_evn;
+                        document.getElementById("time").value = e.hora_inicio_evn;
+                        document.getElementById("end").value = e.hasta_evn;
+                        document.getElementById("timeend").value = e.hora_final_evn;
+                    });
+    
+                    myModal.show();
+                }
+            });
+
             myModal.show();
         }
-    });
+    })
+
     calendar.render();
 
     form_insertar.addEventListener('submit', function(e){
@@ -225,7 +261,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 let random = Math.random() * 100;
                 let random_r = Math.round(random);
-                console.log(random_r);
+                // let random_r = 4;
 
                 $.post(url, postData, function(response){
 
@@ -269,10 +305,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     myModal.hide();
                     calendar.refetchEvents();
 
-                    // console.log("VALOR DEL START ->", $('#start').val()) 
-                    // console.log("Donde me envie -> ", url, " Que recibi -> ", e);
                     // console.log("INFORMACION ->" , postData);
-                    // console.log("RESPUESTA DEL SERVIDOR -> ", response);
+                    console.log("RESPUESTA -> ", response);
                 })
                 
 

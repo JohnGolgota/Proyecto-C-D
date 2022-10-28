@@ -44,5 +44,18 @@
             $jsonstring = json_encode($event, JSON_UNESCAPED_UNICODE);      
             return $jsonstring;
         }
+
+		public function GetAllEvents(){
+			include_once '../Config/conexiondb.php';
+            $conexion = new Conexion();
+
+            $sql = "SELECT * FROM tbl_eventos WHERE id_evn = '$this->id_evn'";
+            $result = $conexion->stm->prepare($sql);
+            $result->execute();
+
+            $event = $result->fetchAll(PDO::FETCH_OBJ);
+            $jsonstring = json_encode($event);      
+            return $jsonstring;
+        }
 	}
 ?>

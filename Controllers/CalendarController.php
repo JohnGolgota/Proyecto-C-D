@@ -20,18 +20,29 @@
             $objeto = $this->GetEventsForId();
             echo $objeto;
         }
+
+        public function prepareGetAllEvents($id){
+            $this->id_evn = $id;
+            $objeto = $this->GetAllEvents();
+            echo $objeto;
+        }
     }
 
-    // CONDICIONES
+    // ---------------------------------------------------------------------------------------------------------------
+
     if (isset($_GET['action']) && $_GET['action'] == 'AddEvent') {
         $calendarcontroller = new CalendarController();
         $calendarcontroller->prepareEvent($_POST['nombre_evn'], $_POST['descripcion_evn'], $_POST['color_evn'], $_POST['desde_evn'], $_POST['hasta_evn'], $_POST['hora_inicio_evn'], $_POST['hora_final_evn'], $_SESSION['id_usr']);
         echo "event success";
-    }  
+    }
     
     if (isset($_GET['action']) && $_GET['action'] == 'GetEvents') {
         $calendarcontroller = new CalendarController();
         $calendarcontroller->prepareGetEvents();
     }
 
+    if(isset($_GET['action']) && $_GET['action'] == 'GetAllEvents'){
+        $calendarcontroller = new CalendarController();
+        $calendarcontroller->prepareGetAllEvents($_GET['id_evn']);
+    }
 ?>
