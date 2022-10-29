@@ -21,10 +21,23 @@
             echo $objeto;
         }
 
-        public function prepareGetAllEvents($id){
+        public function prepareGetAllInfoEvent($id){
             $this->id_evn = $id;
-            $objeto = $this->GetAllEvents();
+            $objeto = $this->GetAllInfoEvents();
             echo $objeto;
+        }
+
+        public function prepareUpdate($id, $nombre, $des, $color, $desde, $hasta, $hinicio, $hfinal){
+            $this->id_evn = $id;
+            $this->nombre_evn = $nombre;
+            $this->descripcion_evn = $des;
+            $this->color_evn = $color;
+            $this->desde_evn = $desde;
+            $this->hasta_evn = $hasta;
+            $this->hora_inicio_evn = $hinicio;
+            $this->hora_final_evn = $hfinal;
+
+            $this->UpdateEvent();
         }
     }
 
@@ -43,6 +56,12 @@
 
     if(isset($_GET['action']) && $_GET['action'] == 'GetAllEvents'){
         $calendarcontroller = new CalendarController();
-        $calendarcontroller->prepareGetAllEvents($_GET['id_evn']);
+        $calendarcontroller->prepareGetAllInfoEvent($_GET['id_evn']);
+    }
+
+    if(isset($_GET['action']) && $_GET['action'] == 'UpdateEvent'){
+        $calendarcontroller = new CalendarController();
+        $calendarcontroller->prepareUpdate($_POST['id_evn'], $_POST['nombre_evn'], $_POST['descripcion_evn'], $_POST['color_evn'], $_POST['desde_evn'], $_POST['hasta_evn'], $_POST['hora_inicio_evn'], $_POST['hora_final_evn']);
+        echo "update success";
     }
 ?>

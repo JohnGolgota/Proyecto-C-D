@@ -45,7 +45,7 @@
             return $jsonstring;
         }
 
-		public function GetAllEvents(){
+		public function GetAllInfoEvents(){
 			include_once '../Config/conexiondb.php';
             $conexion = new Conexion();
 
@@ -57,5 +57,24 @@
             $jsonstring = json_encode($event);      
             return $jsonstring;
         }
+
+		public function UpdateEvent(){
+			include_once '../Config/conexiondb.php';
+			$conexion = new Conexion();
+			
+			$sql = "UPDATE tbl_eventos SET nombre_evn = ?, descripcion_evn = ?, color_evn = ?, desde_evn = ?, hasta_evn = ?, hora_inicio_evn = ?, hora_final_evn = ? WHERE id_evn = ?";
+			$result = $conexion->stm->prepare($sql);
+
+			$result->bindParam(1,$this->nombre_evn);
+			$result->bindParam(2,$this->descripcion_evn);
+			$result->bindParam(3,$this->color_evn);
+			$result->bindParam(4,$this->desde_evn);
+			$result->bindParam(5,$this->hasta_evn);
+			$result->bindParam(6,$this->hora_inicio_evn);
+			$result->bindParam(7,$this->hora_final_evn);
+			$result->bindParam(8,$this->id_evn);
+
+			$result->execute();
+		}
 	}
 ?>
