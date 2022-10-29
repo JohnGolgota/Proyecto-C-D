@@ -163,21 +163,18 @@ class UserController extends User
         $this->nombre_usr = $alias[0];
         $contrasenaEncript = password_hash($contrasena, PASSWORD_ARGON2ID);
         $this->contrasena_usr = $contrasenaEncript;
-
+        // $_SESSION['id_usr'] = $this->id_usr;
         $this->RegistrarUsuario();
-
+        
         $datosUsuario = $this->ConsultarUsuario();
-        // echo var_dump($datosUsuario);
         foreach ($datosUsuario as $dU) {}
-
-
+        $_SESSION['nombre_usr'] = $this->nombre_usr;
+        $_SESSION['correo_usr'] = $this->correo_usr;
         $_SESSION['id_usr'] = $dU->id_usr;
-        $_SESSION['nombre_usr'] = $dU->nombre_usr;
-        $_SESSION['correo_usr'] = $dU->correo_usr;
-        echo "{hola:'carrera',succes:'succes'}";
-        // echo var_dump($_SESSION);
-        // $this->VerificaInicio($this->nombre_usr, $contrasena);
 
+
+        // $_SESSION['nombre_usr'] = $dU->nombre_usr;
+        // $_SESSION['correo_usr'] = $dU->correo_usr;
 
         // $this->IniciarSession();
         // $this->VistaUsuario();
@@ -187,14 +184,14 @@ class UserController extends User
 
         // session_start();
         // $_SESSION['nombre_usr'] = $dU->nombre_usr;
-
         return;
     }
 
     // Necesito actualizar el session... rezons
-    public function IniciarSession()
+    public function IniciarSession($correo)
     {
-        $datosUsuario = $this->ConsultarUsuario();
+        $this->correo_usr = $correo;
+        $datosUsuario = $this->ConsultarUsuarioByEmail();
         // echo var_dump($datosUsuario);
         foreach ($datosUsuario as $dU) {}
 
@@ -230,14 +227,17 @@ class UserController extends User
             $_SESSION['correo_usr'] = $dU->correo_usr;
 
             // var_dump($datosUsuario);
-            return $_SESSION;
+            // return $_SESSION;
+            // $this->VistaUsuario();
+            return;
         }
 
         # Si no funciona el inicio de sesion pero devuelve un objeto.
         else {
-            // var_dump($datosUsuario);
             session_destroy();
-            die("Fallo al intentar iniciar session");
+            die("not pass");
+            // var_dump($datosUsuario);
+            // return;
         }
     }
     public function PrepararIdDelete($id_usr)
@@ -295,14 +295,14 @@ if (isset($_POST['action']) && $_POST['action'] == 'session' && empty($_POST['Us
     return;
 }
 # Ajax Succes
-if (isset($_GET['action']) && $_GET['action'] == 'inicio') {
-    $usercontroler = new UserController();
-    $usercontroler->VistaUsuario();
-    return;
-}
-if (isset($_GET['action']) && $_GET['action'] == 'inicio' && !empty($_GET['user'])) {
-    $usercontroler = new UserController();
-    $usercontroler->VistaUsuario();
+// if (isset($_GET['action']) && $_GET['action'] == 'inicio') {
+//     $usercontroler = new UserController();
+//     $usercontroler->VistaUsuario();
+//     return;
+// }
+if (isset($_GET['action']) && $_GET['action'] == 'inicio-prueba') {
+
+    echo "hello madafaka $_POST[usuarioRE]";
     return;
 }
 
@@ -371,13 +371,36 @@ if (isset($_GET['action']) && $_GET['action'] == 'abort') {
     $usercontroler->RedirigirNoUsuario();
     return;
 }
-
+if (isset($_GET['action']) && $_GET['action'] == 'ajax-registro' && empty($_POST['usuarioRE'] || $_POST['usuarioRC'] || $_POST['usuarioRCC'])) {
+    session_start();
+    $usercontroler = new UserController();
+    die("empty inputs");
+    return;
+}
 if (isset($_GET['action']) && $_GET['action'] == 'ajax-registro') {
     session_start();
     $usercontroler = new UserController();
     $usercontroler->AlistarInformacion($_POST['usuarioRE'], $_POST['usuarioRC'], $_POST['usuarioRCC']);
-    
+    echo "./Controllers/UserController.php?action=inicio&user=$_POST[usuarioRE]";
+
+
     // echo "success";
+    return;
+}
+if (isset($_GET['action']) && $_GET['action'] == 'inicio' && isset($_GET['user'])) {
+    session_start();
+    $usercontroler = new UserController();
+    $usercontroler->IniciarSession($_GET['user']);
+    $usercontroler->VistaUsuario();
+    return;
+}
+// Ajax verificacion [true]
+if (isset($_GET['action']) && $_GET['action'] == 'ajax-session' && !empty($_POST['usuarioRE']) && !empty($_POST['usuarioRC'])) {
+    $usercontroler = new UserController();
+    // $usercontroler->VerificaInicioByEmail($_POST['usuarioRE'], $_POST['usuarioRC']);
+
+    // echo "success";
+    // $usercontroler->VistaUsuario(); // esta es la redireccion.
     return;
 }
 

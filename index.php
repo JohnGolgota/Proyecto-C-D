@@ -341,8 +341,9 @@
                         <!-- <input type="hidden" name="action" value="registrar"> -->
                         <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo" class="form-control shadow-none" required>
                         <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
-                        <input onkeypress="ValidarContraseña();" type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
-                        <span id="MensajeConfirmarContrasena">:</span>
+                        <!-- ValidarContraseña()-->
+                        <input onkeypress="" type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
+                        <span id="MensajeConfirmarContrasena"></span>
                         <div class="form-group">
                             <input required type="checkbox" name="terminosycondiciones" id="terminosycondiciones" class="form-check-input" value="aceptarteminos">
                             <label for="terminosycondiciones" class="form-check-label">Aceptar los terminos y condiciones</label>
@@ -395,8 +396,25 @@
 
 ?>
 <script>
-    const useremail = $('#usuarioRE').val()
-    const emailuser = document.getElementById('usuarioRE').value
+
+    const puta = $('#usuarioRCC').first().keyup(function(){
+
+        MensajeConfirmarContrasena
+
+        let pass = $('#usuarioRC').val()
+        let passcc = $('#usuarioRCC').val()
+
+        if (pass != passcc) {
+            MensajeConfirmarContrasena.style.color = "red"
+            MensajeConfirmarContrasena.textContent = "MAL"
+        }
+        if (pass == passcc) {
+            MensajeConfirmarContrasena.style.color = "green"
+            MensajeConfirmarContrasena.textContent = "BIEN"
+        }
+    })
+
+    
     $(document).ready(function() {
         $('#formulario-registro').trigger('reset')
         $('#formulario-registro').submit(function(e) {
@@ -415,147 +433,151 @@
                 success: function(response) {
                     console.log("RESPUESTA DEL SERVIDOR -> ", response);
                     // Campos vacios JS
-                    if ($('#usuarioRE').val() == "" || $('#usuarioRC').val() == "" || $('#usuarioRCC').val() == "" || $('#terminosycondiciones').val() == "") {
-                        let timerInterval
-                        Swal.fire({
-                            title: 'Por favor introduzca un correo electronico valido.',
-                            timer: 2000,
-                            icon: 'error',
-                            timerProgressBar: false,
-                            didOpen: () => {
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {}, 100)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            }
-                        });
+                    let timerInterval
+                    switch (response) {
+                        // Inputs vacios
+                        case "empty inputs":
+                            Swal.fire({
+                                title: 'Por favor introduzca un correo electronico valido.',
+                                timer: 2000,
+                                icon: 'error',
+                                timerProgressBar: false,
+                                didOpen: () => {
+                                    const b = Swal.getHtmlContainer().querySelector('b')
+                                    timerInterval = setInterval(() => {}, 100)
+                                },
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            })
+                            break;
+                            // Correo
+                        case "Correo no valido.":
+                            Swal.fire({
+                                title: 'Por favor introduzca un correo electronico valido.',
+                                timer: 2000,
+                                icon: 'error',
+                                timerProgressBar: false,
+                                didOpen: () => {
+                                    const b = Swal.getHtmlContainer().querySelector('b')
+                                    timerInterval = setInterval(() => {}, 100)
+                                },
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            })
+                            break;
+                            // Correo en uso
+                        case "Correo en uso.":
+                            Swal.fire({
+                                title: 'El correo ya ha sido registrado.',
+                                timer: 2000,
+                                icon: 'error',
+                                timerProgressBar: false,
+                                didOpen: () => {
+                                    const b = Swal.getHtmlContainer().querySelector('b')
+                                    timerInterval = setInterval(() => {}, 100)
+                                },
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            })
+                            break;
+                            // error contraseña 1
+                        case "Las contrasenas no coinciden.":
+                            Swal.fire({
+                                title: 'Las contraseñas no coinciden.',
+                                timer: 2000,
+                                icon: 'error',
+                                timerProgressBar: false,
+                                didOpen: () => {
+                                    const b = Swal.getHtmlContainer().querySelector('b')
+                                    timerInterval = setInterval(() => {}, 100)
+                                },
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            })
+                            break;
+                            // error contraseña 2
+                        case "minimo 4 caracteres.":
+                            Swal.fire({
+                                title: 'La contraseña debe tener al menos 4 caracteres.',
+                                timer: 2000,
+                                icon: 'error',
+                                timerProgressBar: false,
+                                didOpen: () => {
+                                    const b = Swal.getHtmlContainer().querySelector('b')
+                                    timerInterval = setInterval(() => {}, 100)
+                                },
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            })
+                            break;
+                            // Error contraseña 3
+                        case "maximo 10 caracteres.":
+                            Swal.fire({
+                                title: 'La contraseña no debe tener mas de 10 caracteres.',
+                                timer: 2000,
+                                icon: 'error',
+                                timerProgressBar: false,
+                                didOpen: () => {
+                                    const b = Swal.getHtmlContainer().querySelector('b')
+                                    timerInterval = setInterval(() => {}, 100)
+                                },
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            })
+                            break;
+                            // Error contraseña 4
+                        case "una letra minuscula.":
+                            Swal.fire({
+                                title: 'La contraseña debe tener almenos una letra minuscula.',
+                                timer: 2000,
+                                icon: 'error',
+                                timerProgressBar: false,
+                                didOpen: () => {
+                                    const b = Swal.getHtmlContainer().querySelector('b')
+                                    timerInterval = setInterval(() => {}, 100)
+                                },
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            })
+                            break;
+                            // Error contraseña 5
+                        case "un numero.":
+                            Swal.fire({
+                                title: 'La contraseña debe tener almenos un numero.',
+                                timer: 2000,
+                                icon: 'error',
+                                timerProgressBar: false,
+                                didOpen: () => {
+                                    const b = Swal.getHtmlContainer().querySelector('b')
+                                    timerInterval = setInterval(() => {}, 100)
+                                },
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            })
+                            break;
+
+                        case "success":
+                            break;
+
+
+                        default:
+                            window.location.assign(response)
+                            // console.log('No deberias estar aquí\n', response)
+                            break;
                     }
-                    // Campos vacios 2 Electric boogalo
-                    if (response == "Correo no valido.") {
-                        let timerInterval
-                        Swal.fire({
-                            title: 'Por favor introduzca un correo electronico valido.',
-                            timer: 2000,
-                            icon: 'error',
-                            timerProgressBar: false,
-                            didOpen: () => {
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {}, 100)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            }
-                        });
-                    }
-                    // Correo en uso
-                    if (response == "Correo en uso.") {
-                        let timerInterval
-                        Swal.fire({
-                            title: 'El correo ya ha sido registrado.',
-                            timer: 2000,
-                            icon: 'error',
-                            timerProgressBar: false,
-                            didOpen: () => {
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {}, 100)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            }
-                        })
-                    }
-                    // error contraseña 1
-                    if (response == "Las contrasenas no coinciden.") {
-                        let timerInterval
-                        Swal.fire({
-                            title: 'Las contraseñas no coinciden.',
-                            timer: 2000,
-                            icon: 'error',
-                            timerProgressBar: false,
-                            didOpen: () => {
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {}, 100)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            }
-                        })
-                    }
-                    // error contraseña 2
-                    if (response == "minimo 4 caracteres.") {
-                        let timerInterval
-                        Swal.fire({
-                            title: 'La contraseña debe tener al menos 4 caracteres.',
-                            timer: 2500,
-                            icon: 'error',
-                            timerProgressBar: false,
-                            didOpen: () => {
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {}, 100)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            }
-                        })
-                    }
-                    // Error contraseña 3
-                    if (response == "maximo 10 caracteres.") {
-                        let timerInterval
-                        Swal.fire({
-                            title: 'La contraseña no debe tener mas de 10 caracteres.',
-                            timer: 2500,
-                            icon: 'error',
-                            timerProgressBar: false,
-                            didOpen: () => {
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {}, 100)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            }
-                        })
-                    }
-                    // Error contraseña 4
-                    if (response == "una letra minuscula.") {
-                        let timerInterval
-                        Swal.fire({
-                            title: 'La contraseña debe tener almenos una letra minuscula.',
-                            timer: 2500,
-                            icon: 'error',
-                            timerProgressBar: false,
-                            didOpen: () => {
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {}, 100)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            }
-                        })
-                    }
-                    // Error contraseña 5
-                    if (response == "un numero.") {
-                        let timerInterval
-                        Swal.fire({
-                            title: 'La contraseña debe tener almenos un numero.',
-                            timer: 2500,
-                            icon: 'error',
-                            timerProgressBar: false,
-                            didOpen: () => {
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {}, 100)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            }
-                        })
-                    }
-                    // Redi
-                    if (response == "success") {
-                        // window.location.assign('./Controllers/UserController.php?action=inicio&session=');
-                        console.log(useremail, emailuser)
-                        console.log(response)
-                    }
+
+                },
+                error: function(error) {
+                    console.log("Error ", error)
+                    console.error("Help");
                 }
             })
         })

@@ -59,6 +59,22 @@ class User
         }
     }
 
+    public function ConsultarUsuarioByEmail()
+    {
+        include_once '../Config/conexiondb.php';
+        $conexion = new Conexion();
+
+        $sql = "SELECT * FROM tbl_usuario WHERE correo_usr = '$this->correo_usr'";
+        $usuario = $conexion->stm->prepare($sql);
+        $usuario->execute();
+        $usuarioObjeto = $usuario->fetchAll(PDO::FETCH_OBJ);
+        if ($usuarioObjeto) {
+            return $usuarioObjeto;
+        } else {
+            die("No se a encontrado el usuario en la base de datos");
+        }
+    }
+
     public function EliminarUsuario()
     {
         include_once '../Config/conexiondb.php';
