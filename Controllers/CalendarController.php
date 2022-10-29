@@ -43,10 +43,16 @@
 
     // ---------------------------------------------------------------------------------------------------------------
 
-    if (isset($_GET['action']) && $_GET['action'] == 'AddEvent') {
+    if (isset($_GET['action']) && $_GET['action'] == 'Event') {
         $calendarcontroller = new CalendarController();
-        $calendarcontroller->prepareEvent($_POST['nombre_evn'], $_POST['descripcion_evn'], $_POST['color_evn'], $_POST['desde_evn'], $_POST['hasta_evn'], $_POST['hora_inicio_evn'], $_POST['hora_final_evn'], $_SESSION['id_usr']);
-        echo "event success";
+        if($_POST['id_evn'] == '' || $_POST['id_evn'] == NULL){
+            $calendarcontroller->prepareEvent($_POST['nombre_evn'], $_POST['descripcion_evn'], $_POST['color_evn'], $_POST['desde_evn'], $_POST['hasta_evn'], $_POST['hora_inicio_evn'], $_POST['hora_final_evn'], $_SESSION['id_usr']);
+            echo "event success";
+        } else {
+            $calendarcontroller->prepareUpdate($_POST['id_evn'], $_POST['nombre_evn'], $_POST['descripcion_evn'], $_POST['color_evn'], $_POST['desde_evn'], $_POST['hasta_evn'], $_POST['hora_inicio_evn'], $_POST['hora_final_evn']);
+            echo "update success";
+        }
+
     }
     
     if (isset($_GET['action']) && $_GET['action'] == 'GetEvents') {
@@ -57,11 +63,5 @@
     if(isset($_GET['action']) && $_GET['action'] == 'GetAllEvents'){
         $calendarcontroller = new CalendarController();
         $calendarcontroller->prepareGetAllInfoEvent($_GET['id_evn']);
-    }
-
-    if(isset($_GET['action']) && $_GET['action'] == 'UpdateEvent'){
-        $calendarcontroller = new CalendarController();
-        $calendarcontroller->prepareUpdate($_POST['id_evn'], $_POST['nombre_evn'], $_POST['descripcion_evn'], $_POST['color_evn'], $_POST['desde_evn'], $_POST['hasta_evn'], $_POST['hora_inicio_evn'], $_POST['hora_final_evn']);
-        echo "update success";
     }
 ?>
