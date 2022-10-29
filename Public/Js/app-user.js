@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         events: 'CalendarController.php?action=GetEvents',
         dateClick: function(info){
-            console.log(info);
+            console.log("Date Click");
             
             document.getElementById('start').value = info.dateStr;
             document.getElementById('btnEliminar').classList.add('d-none');
@@ -179,39 +179,10 @@ document.addEventListener('DOMContentLoaded', function() {
             
             document.getElementById('titulo').textContent = "Agregar Evento";
             myModal.show();
-
-            form_insertar.addEventListener('submit', function(e){
-                e.preventDefault();
-        
-                const nombre_evn = document.getElementById('nombre_evn').value;
-                const color_evn = document.getElementById('color_evn').value;
-                const fecha_evn = document.getElementById('start').value;
-        
-                if(nombre_evn == '' || color_evn == '' || fecha_evn == ''){
-                    let timerInterval
-                    Swal.fire({
-                        title: 'Los campos NO Pueden estar vacios.',
-                        timer: 2000,
-                        icon: 'error',
-                        timerProgressBar: false,
-                        didOpen: () => {
-                            // Swal.showLoading()
-                            const b = Swal.getHtmlContainer().querySelector('b')
-                            timerInterval = setInterval(() => {
-                                // b.textContent = Swal.getTimerLeft()
-                            }, 100)
-                        },
-                        willClose: () => {
-                            clearInterval(timerInterval)
-                        }
-                    });
-                }
-            })
-        
+            
             $(document).ready(function() {
-                console.log("Entre A -> Crear Evento");
-                // console.log("ID -> ", $('#id_evn').val())
                 $('#form-c').submit(function(er){
+                    console.log("Cree Evento");
                     const postData = {
                         id_evn: $('#id_evn').val(),
                         nombre_evn: $('#nombre_evn').val(),
@@ -229,57 +200,62 @@ document.addEventListener('DOMContentLoaded', function() {
     
                     let random = Math.random() * 100;
                     let random_r = Math.round(random);
-                    // let random_r = 4;
-    
-                    $.post(url, postData, function(response){
-                        if(response == 'event success' && random_r >  4){
-                            let timerInterval
-                            Swal.fire({
-                                title: 'Evento Agregado Correctamente',
-                                timer: 2000,
-                                icon: 'success',
-                                timerProgressBar: false,
-                                didOpen: () => {
-                                    // Swal.showLoading()
-                                    const b = Swal.getHtmlContainer().querySelector('b')
-                                    timerInterval = setInterval(() => {
-                                        // b.textContent = Swal.getTimerLeft()
-                                    }, 100)
-                                },
-                                willClose: () => {
-                                    clearInterval(timerInterval)
-                                }
-                            });
-    
-                            
-                        }
-    
-                        if(response == 'event success' && random_r <= 4){
-                            Swal.fire({
-                                title: 'Evento Agregado Correctamente',
-                                width: 600,
-                                padding: '3em',
-                                color: '#716add',
-                                backdrop: `
-                                    rgba(0,0,123,0.4)
-                                    url("../Public/Img/User/neon-cat-rainbow.gif")
-                                    center top
-                                    no-repeat
-                                `
-                            })
-                        }
-    
-                        myModal.hide();
-                        calendar.refetchEvents();
-    
-                        console.log("RESPUESTA -> ", response);
-                    })
+
+                    let nombre_evn = document.getElementById('nombre_evn').value;
+                    // console.log("ANTES DE ENTRAR AL CONDICIONAL -> ", nombre_evn);
+
+                    if(nombre_evn.length > 0){
+                        console.log("Agregare Un Evento");
+                        $.post(url, postData, function(response){
+                            if(response == 'event success' && random_r >  4){
+                                let timerInterval
+                                Swal.fire({
+                                    title: 'Evento Agregado Correctamente',
+                                    timer: 2000,
+                                    icon: 'success',
+                                    timerProgressBar: false,
+                                    didOpen: () => {
+                                        // Swal.showLoading()
+                                        const b = Swal.getHtmlContainer().querySelector('b')
+                                        timerInterval = setInterval(() => {
+                                            // b.textContent = Swal.getTimerLeft()
+                                        }, 100)
+                                    },
+                                    willClose: () => {
+                                        clearInterval(timerInterval)
+                                    }
+                                });
+                            }
+        
+                            if(response == 'event success' && random_r <= 4){
+                                Swal.fire({
+                                    title: 'Evento Agregado Correctamente',
+                                    width: 600,
+                                    padding: '3em',
+                                    color: '#716add',
+                                    backdrop: `
+                                        rgba(0,0,123,0.4)
+                                        url("../Public/Img/User/neon-cat-rainbow.gif")
+                                        center top
+                                        no-repeat
+                                    `
+                                })
+                            }
+
+                            console.log("RESPUESTA -> ", response);
+                            $('#form-c').trigger('reset');
+
+                            calendar.refetchEvents();
+                            myModal.hide();
+                        })
+                    } else {
+                        console.log("NO VOY A AGREGAR NADA -> ", nombre_evn);
+                    }
                     
-    
-                    $('#form-c').trigger('reset');
                     er.preventDefault();
                 });
-            });  
+            });
+            
         },
 
         eventClick : function(i){
@@ -313,11 +289,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     myModal.show();
                 }
             });
-                
-            calendar.refetchEvents();
-            myModal.show();
-        }
-    })
 
+            calendar.refetchEvents();
+            // myModal.show();               
+        }  
+    })
     calendar.render();
 });
