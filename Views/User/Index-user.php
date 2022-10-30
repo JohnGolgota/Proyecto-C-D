@@ -378,7 +378,7 @@ include '../Inc/header.php';
     </div>
 </section>
 </section>
-<audio id="audio_alert" src="../Public/Snd/not.mp3" preload="auto"></audio>
+<audio id="audio_alert" src="../Public/Snd/not.mp3" preload="auto" muted="muted"></audio>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="crossorigin="anonymous"></script>
 <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="crossorigin="anonymous"></script> -->
 <?php include '../Inc/footer-user.php'; ?>

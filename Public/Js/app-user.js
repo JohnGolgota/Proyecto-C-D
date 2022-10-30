@@ -41,12 +41,45 @@ $(document).ready(function() {
         let url = edit === false ? 'TaskController.php?action=AddTask' : 'TaskController.php?action=UpdateTask';
 
         // Enviar informacion (Donde queremos enviar el dato, Que datos se envian, que se hace cuando reciba respuesta)
-        $.post(url, postData, function(response){ 
-            // console.log("Donde me envie -> ", url, " Que recibi -> ", e);
-            // console.log("ELEMENT  ->" , element);
-            // console.log("NOMBRE ->" , nombre_rec);
-            // console.log("RESPUESTA DEL SERVIDOR -> ", response);
-        })
+        $.post(url, postData, function(response){})
+
+        if(edit == true){
+            let timerInterval
+            Swal.fire({
+                title: 'Recordatorio Actualizado Correctamente',
+                timer: 2000,
+                icon: 'success',
+                timerProgressBar: false,
+                didOpen: () => {
+                    // Swal.showLoading()
+                    const b = Swal.getHtmlContainer().querySelector('b')
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            });
+        } else {
+            let timerInterval
+            Swal.fire({
+                title: 'Recordatorio Agregado Correctamente',
+                timer: 2000,
+                icon: 'success',
+                timerProgressBar: false,
+                didOpen: () => {
+                    // Swal.showLoading()
+                    const b = Swal.getHtmlContainer().querySelector('b')
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            });
+        }
 
         // Reseteamos el formulario.
         $('#task-form').trigger('reset');
@@ -163,7 +196,7 @@ $(document).ready(function() {
                                                     // NOTIFICACIONES // 
     // ------------------------------------------------------------------------------------------------------------- //
     function notTasks(){
-        console.log("Me he ejecutaado");
+        // console.log("Me he ejecutaado");
         $.ajax({
             url: 'TaskController.php?action=GetTasks',
             type: 'GET',
@@ -178,18 +211,28 @@ $(document).ready(function() {
                     not_unix = not.getTime(); // 1667149980000
 
                     if(now_unix >= not_unix){
-                        // const audio_alert = document.getElementById('audio_alert');
-                        // audio_alert.play();
-                    } 
+                        const not_mp3 = new Audio('../Public/Snd/not.mp3');
+                        not_mp3.play();
+                        
+                        Swal.fire({
+                            icon: 'info',
+                            width: 700,
+                            title: '¡Es hora de <p class="texto-recordatorio" style="color:'+task.Color_rec+';">' + task.Nombre_rec + '</p>!',
+                            text: 'El recordatorio ha sido archivado ¡Puedes ver todos los recordatorios archivados desde el menu principal!',
+                            confirmButtonText: '¡Vale!'
+                        })
 
-                    // console.log("FECHA ACTUAL -> ", now_unix);
-                    // console.log("RECORDATORIO -> ", not_unix);
+                        let id_rec = task.id_rec;
+                        $.post('TaskController.php?action=DeleteTask', {id_rec}, function(response){});
+
+                        fetchTasks();
+                    }
                 }
             )}
         });    
     }
 
-    setInterval(notTasks, 100);
+    setInterval(notTasks, 1000);
 });
 
 

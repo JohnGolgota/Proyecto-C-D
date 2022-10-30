@@ -156,6 +156,11 @@ div.action-tasks {
     margin-left: 30px;
 }
 
+.texto-recordatorio {
+    display: inline-block;
+    /* color: var(--color2); */
+}
+
 
 
 /* ---------------------------- Subcategoria: Contenido Responsive ---------------------------------- */
