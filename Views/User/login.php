@@ -1,6 +1,6 @@
 <?php include '../Inc/header.php'; ?>
 
-<title>Bienvenido</title>
+<title>Carpe Diem | Bienvenido</title>
 
 <?php include '../Inc/nav.php'; ?>
 
