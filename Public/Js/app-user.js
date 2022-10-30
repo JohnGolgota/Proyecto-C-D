@@ -25,6 +25,7 @@ function configDesplegable(){
 
 // ----------------------------------- CONTENIDO AJAX y Jquery. ----------------------------------- //
 $(document).ready(function() {
+    fetchTasks();
     let edit = false;  
     // Seleccionamos el formulario. Capturaremos su evento 'submit', que manejaremos con una funcion. 
     // 'e' es la informacion del evento, que la necesitamos para modificar el comportamiento por defecto del form.
@@ -93,8 +94,8 @@ $(document).ready(function() {
                     // Pintamos la plantilla en el elemento seleccionado.
                     $('#tasks').html(template);
                 }
-            });
-        }
+        });
+    }
 
     // ------------------------------------------------------------------------------------------------------------- //
 
@@ -119,6 +120,8 @@ $(document).ready(function() {
                 edit = true;
             });
         });
+
+        fetchTasks();
     });
 
     // ------------------------------------------------------------------------------------------------------------- //
@@ -145,13 +148,15 @@ $(document).ready(function() {
                         'success'
                     )
                 }
+
+                fetchTasks();
           })
     });
 
     // ------------------------------------------------------------------------------------------------------------- //
 
-    setInterval(fetchTasks, 250);
-    // fetchTasks();
+    // setInterval(fetchTasks, 250);
+    fetchTasks();
 });
 
 
@@ -167,11 +172,12 @@ document.addEventListener('DOMContentLoaded', function() {
         initialView: 'dayGridMonth',
         locale: 'es', // Definimos el idioma.
         headerToolbar : { 
-            left: 'prev, next, today', // Organizacion de los elementos (Lado Izquierdo).
+            left: 'prev next today', // Organizacion de los elementos (Lado Izquierdo).
             center: 'title',
-            right: 'dayGridMonth, timeGridWeek, listWeek'
+            right: 'dayGridMonth timeGridWeek listWeek'
         },
         events: 'CalendarController.php?action=GetEvents',
+        editable: true,
         dateClick: function(info){
             console.log("Date Click");
             
@@ -306,8 +312,11 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('titulo').textContent = "Actualizar Evento";
 
             $.ajax({
-                url: 'CalendarController.php?action=GetAllEvents&id_evn=' + id_evn,
+                url: 'CalendarController.php?action=GetAllEvents',
                 type: 'GET',
+                data: {
+                    'id_evn': id_evn
+                },
                 success: function(response){
                     console.log(response);
                     let event = JSON.parse(response);
@@ -330,7 +339,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
             
             // myModal.show();               
-        }  
+        },
+
+        eventDrop: function(info){
+            const id_evn = info.event.id;
+            const start_evn = info.event.startStr;
+
+            console.log(id_evn, start);
+
+            $.ajax({
+                url: 'CalendarController.php?action=DropEvent',
+                type: 'GET',
+                data: {
+                    'id_evn': id_evn,
+                    'start_evn': start_evn
+                },
+                
+                // Cuando reciba la respuesta se va a ejecutar cierta funcion:
+                success: function(response){
+                    console.log("RESPUESTA -> ", response);
+                }
+
+            });
+            
+        }
+
     })
     calendar.render();
 

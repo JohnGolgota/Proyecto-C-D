@@ -85,5 +85,18 @@
             $result = $conexion->stm->prepare($sql);
             $result->execute();
         }
+
+		public function DropEvent(){
+			include_once '../Config/conexiondb.php';
+            $conexion = new Conexion();
+
+            $sql = "UPDATE tbl_eventos SET desde_evn = ? WHERE id_evn = ?";
+            $result = $conexion->stm->prepare($sql);
+
+			$result->bindParam(1,$this->desde_evn);
+			$result->bindParam(2,$this->id_evn);
+			
+            $result->execute();
+		}
 	}
 ?>
