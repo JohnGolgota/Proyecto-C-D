@@ -157,6 +157,39 @@ $(document).ready(function() {
 
     // setInterval(fetchTasks, 250);
     fetchTasks();
+
+
+    // ------------------------------------------------------------------------------------------------------------- //
+                                                    // NOTIFICACIONES // 
+    // ------------------------------------------------------------------------------------------------------------- //
+    function notTasks(){
+        console.log("Me he ejecutaado");
+        $.ajax({
+            url: 'TaskController.php?action=GetTasks',
+            type: 'GET',
+            success: function(response){
+                let tasks = JSON.parse(response);
+                
+                tasks.forEach(task => {
+                    let not = new Date(task.Notificacion_rec); 
+                    let now = new Date();
+
+                    now_unix = now.getTime(); // 1667149980000
+                    not_unix = not.getTime(); // 1667149980000
+
+                    if(now_unix >= not_unix){
+                        // const audio_alert = document.getElementById('audio_alert');
+                        // audio_alert.play();
+                    } 
+
+                    // console.log("FECHA ACTUAL -> ", now_unix);
+                    // console.log("RECORDATORIO -> ", not_unix);
+                }
+            )}
+        });    
+    }
+
+    setInterval(notTasks, 100);
 });
 
 
