@@ -72,7 +72,7 @@ buttonDarkMode.addEventListener('click', function () {
 
 
 
-// ----------------------------------- VALIDACION ----------------------------------- //
+// ----------------------------------- VALIDACION FRONT y Ajax----------------------------------- //
 // Validacion front 1 conicidencia de contraseñas en formulario Registro D
 // function ValidarContraseña() {
 //     let contrasena = document.getElementById('usuarioRC').value
@@ -100,4 +100,173 @@ const puta = $('#usuarioRCC').first().keyup(function () {
         MensajeConfirmarContrasena.style.color = "green"
         MensajeConfirmarContrasena.textContent = "BIEN"
     }
+})
+
+// 
+$(document).ready(function () {
+    $('#formulario-registro').trigger('reset')
+    $('#formulario-registro').submit(function (e) {
+
+        e.preventDefault()
+
+        $.ajax({
+            data: {
+                usuarioRE: $('#usuarioRE').val(),
+                usuarioRC: $('#usuarioRC').val(),
+                usuarioRCC: $('#usuarioRCC').val(),
+                terminosycondiciones: $('#terminosycondiciones').val()
+            },
+            url: './Controllers/UserController.php?action=ajax-registro',
+            type: 'post',
+            success: function (response) {
+                console.log("RESPUESTA DEL SERVIDOR -> ", response);
+                // Campos vacios JS
+                let timerInterval
+                switch (response) {
+                    // Inputs vacios
+                    case "empty inputs":
+                        Swal.fire({
+                            title: 'Por favor introduzca un correo electronico valido.',
+                            timer: 2000,
+                            icon: 'error',
+                            timerProgressBar: false,
+                            didOpen: () => {
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => { }, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
+                        break;
+                    // Correo
+                    case "Correo no valido.":
+                        Swal.fire({
+                            title: 'Por favor introduzca un correo electronico valido.',
+                            timer: 2000,
+                            icon: 'error',
+                            timerProgressBar: false,
+                            didOpen: () => {
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => { }, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
+                        break;
+                    // Correo en uso
+                    case "Correo en uso.":
+                        Swal.fire({
+                            title: 'El correo ya ha sido registrado.',
+                            timer: 2000,
+                            icon: 'error',
+                            timerProgressBar: false,
+                            didOpen: () => {
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => { }, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
+                        break;
+                    // error contraseña 1
+                    case "Las contrasenas no coinciden.":
+                        Swal.fire({
+                            title: 'Las contraseñas no coinciden.',
+                            timer: 2000,
+                            icon: 'error',
+                            timerProgressBar: false,
+                            didOpen: () => {
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => { }, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
+                        break;
+                    // error contraseña 2
+                    case "minimo 4 caracteres.":
+                        Swal.fire({
+                            title: 'La contraseña debe tener al menos 4 caracteres.',
+                            timer: 2000,
+                            icon: 'error',
+                            timerProgressBar: false,
+                            didOpen: () => {
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => { }, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
+                        break;
+                    // Error contraseña 3
+                    case "maximo 10 caracteres.":
+                        Swal.fire({
+                            title: 'La contraseña no debe tener mas de 10 caracteres.',
+                            timer: 2000,
+                            icon: 'error',
+                            timerProgressBar: false,
+                            didOpen: () => {
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => { }, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
+                        break;
+                    // Error contraseña 4
+                    case "una letra minuscula.":
+                        Swal.fire({
+                            title: 'La contraseña debe tener almenos una letra minuscula.',
+                            timer: 2000,
+                            icon: 'error',
+                            timerProgressBar: false,
+                            didOpen: () => {
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => { }, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
+                        break;
+                    // Error contraseña 5
+                    case "un numero.":
+                        Swal.fire({
+                            title: 'La contraseña debe tener almenos un numero.',
+                            timer: 2000,
+                            icon: 'error',
+                            timerProgressBar: false,
+                            didOpen: () => {
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => { }, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
+                        break;
+
+                    case "success":
+                        break;
+
+
+                    default:
+                        window.location.assign(response)
+                        // console.log('No deberias estar aquí\n', response)
+                        break;
+                }
+
+            },
+            error: function (error) {
+                console.log("Error ", error)
+                console.error("Help");
+            }
+        })
+    })
 })
