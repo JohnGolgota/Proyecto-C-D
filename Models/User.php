@@ -64,7 +64,7 @@ class User
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
-        $sql = "SELECT * FROM tbl_usuario WHERE correo_usr = '$this->correo_usr'";
+        $sql = "CALL GetDataCorreo_usr('$this->correo_usr')";
         $usuario = $conexion->stm->prepare($sql);
         $usuario->execute();
         $usuarioObjeto = $usuario->fetchAll(PDO::FETCH_OBJ);
