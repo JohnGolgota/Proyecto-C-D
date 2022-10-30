@@ -113,7 +113,7 @@ class UserController extends User{
     }
 
     # Alistar informacion para registrarse
-    function AlistarInformacion($email,$contrasena,$cContrasena)
+    public function AlistarInformacion($email,$contrasena,$cContrasena)
     {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             # Return + echo = die
