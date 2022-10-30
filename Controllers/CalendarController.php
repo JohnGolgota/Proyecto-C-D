@@ -13,6 +13,7 @@
             $this->id_usr = $id;
 
             $this->addEvent();
+            die();
         }
 
         public function prepareGetEvents(){
@@ -38,19 +39,22 @@
             $this->hora_final_evn = $hfinal;
 
             $this->UpdateEvent();
+            die();
         }
 
         public function prepareDeleteEvent($id){
             $this->id_evn = $id;
             $this->deleteEvent();
             echo "Event Deleted";
+            die();
         }
 
         public function prepareDropEvent($id, $start){
             $this->id_evn = $id;
             $this->desde_evn = $start;
             $this->DropEvent();
-            echo "a";
+            echo "event drop";
+            die();
         }
     }
 
