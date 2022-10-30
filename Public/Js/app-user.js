@@ -40,45 +40,62 @@ $(document).ready(function() {
 
         let url = edit === false ? 'TaskController.php?action=AddTask' : 'TaskController.php?action=UpdateTask';
 
-        // Enviar informacion (Donde queremos enviar el dato, Que datos se envian, que se hace cuando reciba respuesta)
-        $.post(url, postData, function(response){})
+        let nott = new Date($('#notificacion_rec').val()); 
+        let noww = new Date();
 
-        if(edit == true){
-            let timerInterval
+        noww_unix = noww.getTime();
+        nott_unix = nott.getTime();
+        
+        if(nott_unix < noww_unix){
             Swal.fire({
-                title: 'Recordatorio Actualizado Correctamente',
-                timer: 2000,
-                icon: 'success',
-                timerProgressBar: false,
-                didOpen: () => {
-                    // Swal.showLoading()
-                    const b = Swal.getHtmlContainer().querySelector('b')
-                    timerInterval = setInterval(() => {
-                        // b.textContent = Swal.getTimerLeft()
-                    }, 100)
-                },
-                willClose: () => {
-                    clearInterval(timerInterval)
-                }
-            });
+                icon: 'error',
+                title: '¡Nao Nao!',
+                text: 'Esa fecha ya paso ¡No puedes agregar un recordatorio allí!',
+                confirmButtonText: '¡Vale!'
+            })
         } else {
-            let timerInterval
-            Swal.fire({
-                title: 'Recordatorio Agregado Correctamente',
-                timer: 2000,
-                icon: 'success',
-                timerProgressBar: false,
-                didOpen: () => {
-                    // Swal.showLoading()
-                    const b = Swal.getHtmlContainer().querySelector('b')
-                    timerInterval = setInterval(() => {
-                        // b.textContent = Swal.getTimerLeft()
-                    }, 100)
-                },
-                willClose: () => {
-                    clearInterval(timerInterval)
-                }
-            });
+            // Enviar informacion (Donde queremos enviar el dato, Que datos se envian, que se hace cuando reciba respuesta)
+            $.post(url, postData, function(response){
+                console.log(response);
+            })
+
+            if(edit == true){
+                let timerInterval
+                Swal.fire({
+                    title: 'Recordatorio Actualizado Correctamente',
+                    timer: 2000,
+                    icon: 'success',
+                    timerProgressBar: false,
+                    didOpen: () => {
+                        // Swal.showLoading()
+                        const b = Swal.getHtmlContainer().querySelector('b')
+                        timerInterval = setInterval(() => {
+                            // b.textContent = Swal.getTimerLeft()
+                        }, 100)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                });
+            } else {
+                let timerInterval
+                Swal.fire({
+                    title: 'Recordatorio Agregado Correctamente',
+                    timer: 2000,
+                    icon: 'success',
+                    timerProgressBar: false,
+                    didOpen: () => {
+                        // Swal.showLoading()
+                        const b = Swal.getHtmlContainer().querySelector('b')
+                        timerInterval = setInterval(() => {
+                            // b.textContent = Swal.getTimerLeft()
+                        }, 100)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                });
+            }
         }
 
         // Reseteamos el formulario.
@@ -130,7 +147,7 @@ $(document).ready(function() {
         });
     }
 
-    // ------------------------------------------------------------------------------------------------------------- //
+    // ----------------------------------------------- PREPARAR EL ACTUALIZAR ------------------------------------------------------- //
 
     $(document).on('click', '#nombre-task', function(e){
         let element = $(this).next().next();
@@ -140,6 +157,7 @@ $(document).ready(function() {
         // console.log(id_rec);
 
         $.post('TaskController.php?action=GetTask', {id_rec}, function(response){
+            console.log(response);
             let task = JSON.parse(response);
             task.forEach(t => {
                 // console.log(t);
@@ -213,7 +231,7 @@ $(document).ready(function() {
                     if(now_unix >= not_unix){
                         const not_mp3 = new Audio('../Public/Snd/not.mp3');
                         not_mp3.play();
-                        
+
                         Swal.fire({
                             icon: 'info',
                             width: 700,

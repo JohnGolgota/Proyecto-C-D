@@ -1,0 +1,46 @@
+-- PROCEDURES: USUARIO
+DELIMITER $$
+CREATE PROCEDURE `SetUser_usr` (IN `pnombre_usr` VARCHAR(30), `pcorreo_usr` VARCHAR(50), `pcontrasena_usr` VARCHAR(255))   BEGIN
+    INSERT INTO tbl_usuario (nombre_usr,correo_usr,contrasena_usr) VALUES (pnombre_usr,pcorreo_usr,pcontrasena_usr);
+END$$
+CREATE PROCEDURE `ReadEmail_usr` (IN `pcorreo_usr` VARCHAR(50))   BEGIN
+    SELECT correo_usr FROM tbl_usuario WHERE correo_usr = pcorreo_usr;
+END$$
+CREATE PROCEDURE `GetDataName_usr` (IN `pnombre_usr` VARCHAR(30))   BEGIN
+    SELECT * FROM tbl_usuario WHERE nombre_usr = pnombre_usr;
+END$$
+CREATE PROCEDURE `Delete_usr` (IN `pid_usr` INT(11))   BEGIN
+    DELETE FROM tbl_usuario WHERE id_usr = pid_usr;
+END$$
+CREATE PROCEDURE `GetDataId_usr` (IN `pid_usr` INT(11))   BEGIN
+    SELECT * FROM tbl_usuario WHERE id_usr = pid_usr;
+END$$
+CREATE PROCEDURE `Update_usr` (IN `pnombre_usr` VARCHAR(30),`pcorreo_usr` VARCHAR(50),`pid_usr` INT(11))   BEGIN
+    UPDATE tbl_usuario SET nombre_usr = pnombre_usr, correo_usr = pcorreo_usr WHERE id_usr = pid_usr;
+END$$
+CREATE PROCEDURE `UpdatePass_usr` (IN `pcontrasena_usr` VARCHAR(255),`pid_usr` INT(11))   BEGIN
+    UPDATE tbl_usuario SET contrasena_usr = pcontrasena_usr WHERE id_usr = pid_usr;
+END$$
+
+-- PROCEDURES: RECORDATORIOS
+CREATE PROCEDURE `GetTasksForId` (IN `pid_usr` INT(11)) 
+BEGIN
+    SELECT * FROM tbl_Recordatorios WHERE id_usr = pid_usr ORDER BY id_rec DESC;
+END$$
+CREATE PROCEDURE `AddTask` (IN `pnombre_rec` VARCHAR(75), `pcolor_rec` VARCHAR(8), `pnotificacion_rec` DATETIME, `pid_usr` INT(11))
+BEGIN
+    INSERT INTO tbl_Recordatorios (Nombre_rec, Color_rec, Notificacion_rec, id_usr) VALUES(pnombre_rec, pcolor_rec, pnotificacion_rec, pid_usr);
+END$$
+CREATE PROCEDURE `DeleteTask` (IN `pid_rec` INT(11))
+BEGIN
+    DELETE FROM tbl_Recordatorios WHERE id_rec = pid_rec;
+END $$
+CREATE PROCEDURE `GetTask` (IN `pid_rec` INT(11))
+BEGIN
+    SELECT * FROM tbl_Recordatorios WHERE id_rec = pid_rec;
+END $$
+CREATE PROCEDURE `UpdateTask` (IN `pnombre_rec` VARCHAR(75), `pcolor_rec` VARCHAR(8), `pnotificacion_rec` DATETIME, `pid_rec` INT(11))
+BEGIN
+    UPDATE tbl_Recordatorios SET Nombre_rec = pnombre_rec, Color_rec = pcolor_rec, Notificacion_rec = pnotificacion_rec WHERE id_rec = pid_rec;
+END $$
+DELIMITER ;

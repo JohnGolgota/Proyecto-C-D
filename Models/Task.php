@@ -10,7 +10,7 @@
             include_once '../Config/conexiondb.php';
             $conexion = new Conexion();
 
-            $sql = "SELECT * FROM tbl_Recordatorios WHERE id_usr = '$this->id_usr' ORDER BY id_rec DESC";
+            $sql = "CALL GetTasksForId('$this->id_usr')";
             $result = $conexion->stm->prepare($sql);
             $result->execute();
 
@@ -23,7 +23,7 @@
             include_once '../Config/conexiondb.php';
             $conexion = new Conexion();
 
-            $sql = "INSERT INTO tbl_Recordatorios(Nombre_rec, Color_rec, Notificacion_rec, id_usr) VALUES(?, ?, ?, ?)";
+            $sql = "CALL AddTask(?, ?, ?, ?)";
             $result = $conexion->stm->prepare($sql);
 
             $result->bindParam(1,$this->nombre_rec);
@@ -38,7 +38,7 @@
             include_once '../Config/conexiondb.php';
             $conexion = new Conexion();
 
-            $sql = "DELETE FROM tbl_Recordatorios WHERE id_rec = '$this->id_rec'";
+            $sql = "CALL DeleteTask('$this->id_rec')";
             $result = $conexion->stm->prepare($sql);
             $result->execute();
         }
@@ -47,7 +47,7 @@
             include_once '../Config/conexiondb.php';
             $conexion = new Conexion();
 
-            $sql = "SELECT * FROM tbl_Recordatorios WHERE id_rec = '$this->id_rec'";
+            $sql = "CALL GetTask('$this->id_rec')";
             $result = $conexion->stm->prepare($sql);
             $result->execute();
 
@@ -60,9 +60,7 @@
             include_once '../Config/conexiondb.php';
             $conexion = new Conexion();
 
-            // echo "VALORES -> ". $this->nombre_rec . $this->notificacion_rec . $this->color_rec . " ID -> " . $this->id_rec;
-
-            $sql = "UPDATE tbl_Recordatorios SET Nombre_rec = '$this->nombre_rec', Color_rec = '$this->color_rec', Notificacion_rec = '$this->notificacion_rec' WHERE id_rec = '$this->id_rec'";
+            $sql = "CALL UpdateTask('$this->nombre_rec', '$this->color_rec', '$this->notificacion_rec', '$this->id_rec')";
             $result = $conexion->stm->prepare($sql);
             $result->execute();
         }
