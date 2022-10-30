@@ -163,21 +163,6 @@
                     <p class="">¡Agrega pequeños recordatorios y que no se te olvide nada!</p>
                 </div>
             </article>
-
-            <!-- HerramientaCuatro -->
-            <!-- <article class="row align-items-center my-2 herramienta herramienta-cuatro" id="HerramientaCuatro"> -->
-
-            <!-- imagen. HerramientaCuatro -->
-            <!-- <div class="col order-2">
-                    <img class="herramienta-img" src="./Public/Img/herramientas/doyouself-min.png" alt="HerramientaCuatro">
-                </div> -->
-
-            <!-- descripcion. HerramientaCuatro -->
-            <!-- <div class="col order-1">
-                    <h3>Do it Yourself</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, quisquam deleniti. Dolore distinctio veritatis quos?</p>
-                </div> -->
-            </article>
         </section>
     </main>
 
@@ -341,8 +326,7 @@
                         <!-- <input type="hidden" name="action" value="registrar"> -->
                         <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo" class="form-control shadow-none" required>
                         <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
-                        <!-- ValidarContraseña()-->
-                        <input onkeypress="" type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
+                        <input name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
                         <span id="MensajeConfirmarContrasena"></span>
                         <div class="form-group">
                             <input required type="checkbox" name="terminosycondiciones" id="terminosycondiciones" class="form-check-input" value="aceptarteminos">
@@ -379,30 +363,31 @@
             containera.style.display = 'none';
         }
     </script>
-    <script src="./Public/Js/iconrevel.min.js"></script>
 
-    
+    <script src="./Public/Js/iconrevel.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> -->
+
+    <!-- Tampoco se -->
+    <script src="./Public/Js/app.js"></script>
+
     <!-- Sabra dios -->
     <script src="./Public/Js/main.js"></script>
 
     <!-- Jquery & Ajax -->
     <script src="./Public/Js/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> -->
-    
+
     <!-- Sweet -->
     <script src="./Public/Js/sweetalert2@11.js"></script>
     <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
-    
-    <!--  -->
-    <script src="./Public/Js/app.js"></script>
+
     <!-- Scripts Temporales:  -->
 
 </body>
 
 </html>
-<!-- Escript para porque los .js no se actualizan -->
+<!-- Script para porque los .js no se actualizan -->
 <script>
-
     // const puta = $('#usuarioRCC').first().keyup(function(){
 
     //     MensajeConfirmarContrasena
@@ -420,7 +405,7 @@
     //     }
     // })
 
-    
+
     // $(document).ready(function() {
     //     $('#formulario-registro').trigger('reset')
     //     $('#formulario-registro').submit(function(e) {

@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Esta linea de codigo no es un EasterEgg, para nada. -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Icono página -->
     <link rel="shortcut icon" href="../Public/Img/favicon.png" type="image/x-icon">
-    
+
     <!-- Bootstrap 5 -->
     <link rel="stylesheet" href="../Public/Css/bootstrap.min.css">
-    
+
     <!-- hojas de estilo personalizadas -->
     <link rel="stylesheet" href="../Public/Css/style.css">
-    
+
     <!-- librerias importadas -->
     <!-- ScrollReveal -->
     <script src="../Public/Js/scrollreveal.min.js"></script>
 
+    <!-- Pantalla De Carga. -->
+    <link rel="stylesheet" href="../Public/Css/push-out.css">
     <title> Carpe Diem | Inicio </title>
 </head>
-<body class="">
+
+<!--  -->
+<div class="container-load" id="container-load">
+    <div class="push-out" id="push-out" style="z-index: 1000;">
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!--  -->
+
+<body class="" onload="setTimeout(load, 700);">
     <!-- Encabezado, botones y modo oscuro -->
     <header class="align-items-center navbar navbar-expand-sm position-relative header-reveal cabeza cabeza-dark" id="cabeza">
         <nav class="container-xxl cabeza-nav">
 
             <!-- logo -->
             <div class="elemento-icon-cabeza">
-                <a href="UserController.php" target=""><img src="../Public/Img/favicon-min.png" alt="Logo" width="35px" class="nav-brand"></a>
+                <a href="../" target=""><img src="../Public/Img/favicon-min.png" alt="Logo" width="35px" class="nav-brand"></a>
             </div>
 
             <!-- botones -->
@@ -150,21 +163,6 @@
                     <p class="">¡Agrega pequeños recordatorios y que no se te olvide nada!</p>
                 </div>
             </article>
-
-            <!-- HerramientaCuatro -->
-            <!-- <article class="row align-items-center my-2 herramienta herramienta-cuatro" id="HerramientaCuatro"> -->
-
-                <!-- imagen. HerramientaCuatro -->
-                <!-- <div class="col order-2">
-                    <img class="herramienta-img" src="../Public/Img/herramientas/doyouself-min.png" alt="HerramientaCuatro">
-                </div> -->
-
-                <!-- descripcion. HerramientaCuatro -->
-                <!-- <div class="col order-1">
-                    <h3>Do it Yourself</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, quisquam deleniti. Dolore distinctio veritatis quos?</p>
-                </div>
-            </article> -->
         </section>
     </main>
 
@@ -324,12 +322,12 @@
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-registro">
-                    <form action="UserController.php" method="POST" novalidate id="formulario-registro">
-                        <input type="hidden" name="action" value="registrar">
+                    <form novalidate id="formulario-registro">
+                        <!-- <input type="hidden" name="action" value="registrar"> -->
                         <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo" class="form-control shadow-none" required>
                         <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
-                        <input onkeypress="ValidarContraseña();" type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
-                        <p id="MensajeConfirmarContrasena"></p>
+                        <input type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
+                        <span id="MensajeConfirmarContrasena"></span>
                         <div class="form-group">
                             <input required type="checkbox" name="terminosycondiciones" id="terminosycondiciones" class="form-check-input" value="aceptarteminos">
                             <label for="terminosycondiciones" id="terminosycondiciones" class="form-check-label">Aceptar los terminos y condiciones</label>
@@ -356,19 +354,35 @@
     <!-- Scripts perzonalizados: -->
     <!-- Animacion de los logos. -->
     <script src="../Public/Js/sweetalert.min.js"></script>
+
     <script>
-        const buttonDetails = document.getElementById("buttonDetails");
-        buttonDetails.addEventListener('click', function(){
-            swal('No hay.');
-        });
+        function load() {
+            let containera = document.getElementById('container-load');
+            console.log(containera);
+            containera.style.opacity = '0';
+            containera.style.display = 'none';
+        }
     </script>
+
     <script src="../Public/Js/iconrevel.min.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> -->
+
+    <!-- Tampoco se -->
     <script src="../Public/Js/app.js"></script>
 
-    <!-- Scripts Temporales:  -->
+    <!-- Sabra dios -->
     <script src="../Public/Js/main.js"></script>
+
+    <!-- Jquery & Ajax -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> -->
+
+    <!-- Sweet -->
+    <script src="./Public/Js/sweetalert2@11.js"></script>
+    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+
+    <!-- Scripts Temporales:  -->
 
 </body>
+
 </html>

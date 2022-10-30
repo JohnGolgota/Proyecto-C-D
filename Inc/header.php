@@ -40,7 +40,3 @@
             containera.style.display = 'none';
         }
     </script>
-
-
-
-    
