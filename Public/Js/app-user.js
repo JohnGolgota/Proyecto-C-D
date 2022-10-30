@@ -132,6 +132,7 @@ $(document).ready(function() {
             confirmButtonColor: '#1363DF',
             cancelButtonColor: '#47B5FF',
             confirmButtonText: '¡Sé lo que hago!',
+            cancelButtonText: 'Cancelar',
           }).then((result) => {
                 if (result.isConfirmed) {
                     let element = $(this)[0].parentElement;
@@ -158,6 +159,7 @@ $(document).ready(function() {
 // ----------------------------------- FULL CALENDAR ----------------------------------- //
 var myModal = new bootstrap.Modal(document.getElementById('modal-c'))
 var form_insertar = document.getElementById('form-c');
+let eliminar = document.getElementById("btnEliminar");
 
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
@@ -174,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("Date Click");
             
             document.getElementById('start').value = info.dateStr;
-            document.getElementById('btnEliminar').classList.add('d-none');
+            eliminar.classList.add('d-none');
             document.getElementById('btnAccion').textContent = "Guardar";
             
             document.getElementById('titulo').textContent = "Agregar Evento";
@@ -226,10 +228,45 @@ document.addEventListener('DOMContentLoaded', function() {
                                     }
                                 });
                             }
+
+                            if(response == 'update success' && random_r >  4){
+                                let timerInterval
+                                Swal.fire({
+                                    title: 'Evento Actualizado Correctamente',
+                                    timer: 2000,
+                                    icon: 'success',
+                                    timerProgressBar: false,
+                                    didOpen: () => {
+                                        // Swal.showLoading()
+                                        const b = Swal.getHtmlContainer().querySelector('b')
+                                        timerInterval = setInterval(() => {
+                                            // b.textContent = Swal.getTimerLeft()
+                                        }, 100)
+                                    },
+                                    willClose: () => {
+                                        clearInterval(timerInterval)
+                                    }
+                                });
+                            }
         
                             if(response == 'event success' && random_r <= 4){
                                 Swal.fire({
                                     title: 'Evento Agregado Correctamente',
+                                    width: 600,
+                                    padding: '3em',
+                                    color: '#716add',
+                                    backdrop: `
+                                        rgba(0,0,123,0.4)
+                                        url("../Public/Img/User/neon-cat-rainbow.gif")
+                                        center top
+                                        no-repeat
+                                    `
+                                })
+                            }
+
+                            if(response == 'update success' && random_r <= 4){
+                                Swal.fire({
+                                    title: 'Evento Actualizado Correctamente',
                                     width: 600,
                                     padding: '3em',
                                     color: '#716add',
@@ -253,6 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                     
                     er.preventDefault();
+                    calendar.refetchEvents();
                 });
             });
             
@@ -263,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('id_evn').value = i.event.id;
             const id_evn = document.getElementById('id_evn').value;
 
-            document.getElementById('btnEliminar').classList.remove('d-none');
+            eliminar.classList.remove('d-none');
             document.getElementById('btnAccion').textContent = "Actualizar";
             document.getElementById('titulo').textContent = "Actualizar Evento";
 
@@ -290,9 +328,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
 
-            calendar.refetchEvents();
+            
             // myModal.show();               
         }  
     })
     calendar.render();
+
+    eliminar.addEventListener('click', function(){
+        Swal.fire({
+            title: '¿Estas Seguro?',
+            text: "Se borrara el evento ¡Y no podras recuperarlo! D:",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#1363DF',
+            cancelButtonColor: '#47B5FF',
+            confirmButtonText: '¡Sé lo que hago!',
+            cancelButtonText: 'Cancelar',
+          }).then((result) => {
+                if (result.isConfirmed) {
+                    const id_evn = document.getElementById("id_evn").value;
+                    $.post('CalendarController.php?action=DeleteEvent', {id_evn}, function(response){ 
+                        console.log(response); 
+                    });
+                    
+                    Swal.fire(
+                        '¡Poof!',
+                        'Tu recordatorio Ha Sido Eliminado',
+                        'success'
+
+                    )
+                    
+                    calendar.refetchEvents();
+                    myModal.hide();
+                }
+          })
+    });
 });

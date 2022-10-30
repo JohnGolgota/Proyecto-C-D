@@ -369,8 +369,8 @@ include '../Inc/header.php';
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" id="btnAccion"></button>
-                        <button class="btn btn-danger" id="btnEliminar"> Eliminar </button>
-                        <button class="btn btn-warning"> Cancelar </button>
+                        <button type="button" class="btn btn-danger" id="btnEliminar"> Eliminar </button>
+                        <button type="button" class="btn btn-warning"> Cancelar </button>
                     </div>
                 </form>
             </div>

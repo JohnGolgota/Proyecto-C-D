@@ -39,6 +39,12 @@
 
             $this->UpdateEvent();
         }
+
+        public function prepareDeleteEvent($id){
+            $this->id_evn = $id;
+            $this->deleteEvent();
+            echo "Event Deleted";
+        }
     }
 
     // ---------------------------------------------------------------------------------------------------------------
@@ -65,5 +71,10 @@
     if(isset($_GET['action']) && $_GET['action'] == 'GetAllEvents'){
         $calendarcontroller = new CalendarController();
         $calendarcontroller->prepareGetAllInfoEvent($_GET['id_evn']);
+    }
+
+    if (isset($_GET['action']) && $_GET['action'] == 'DeleteEvent') {
+        $calendarcontroller = new CalendarController();
+        $calendarcontroller->prepareDeleteEvent($_POST['id_evn']);
     }
 ?>

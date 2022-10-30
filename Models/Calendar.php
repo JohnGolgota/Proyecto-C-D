@@ -76,5 +76,14 @@
 
 			$result->execute();
 		}
+
+		public function deleteEvent(){
+            include_once '../Config/conexiondb.php';
+            $conexion = new Conexion();
+
+            $sql = "DELETE FROM tbl_eventos WHERE id_evn = '$this->id_evn'";
+            $result = $conexion->stm->prepare($sql);
+            $result->execute();
+        }
 	}
 ?>
