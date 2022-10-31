@@ -491,3 +491,35 @@ document.addEventListener('DOMContentLoaded', function() {
           })
     });
 });
+
+// ------------------------------------------------------------------------------------------------------------- //
+                                                    // ATAJOS DE TECLADO // 
+// ------------------------------------------------------------------------------------------------------------- //
+const modaltask = new bootstrap.Modal(document.getElementById('addreminder'));
+const menu = document.getElementById('configDesplegable');
+
+document.addEventListener('keydown', (event) => {
+    if (event.shiftKey) {
+       if (event.keyCode == 84) {
+           if(modaltask.show()){
+                modaltask.hide();
+           } 
+           if(modaltask.hide()) {
+                modaltask.show();
+           }
+       }
+
+       if(event.keyCode == 77){
+            if(menu.style.display == "block"){
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }  
+        }
+    }
+}, false);
+
+
+
+
+
