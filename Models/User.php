@@ -82,18 +82,19 @@ class User{
     public function updateNombreUsuario(){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
-
+        
         $sql = "CALL Update_usr('$this->nombre_usr','$this->correo_usr','$this->id_usr')";
         $insert = $conexion->stm->prepare($sql);
-        // Para hacer las siguientes lineas deberia haber un try catch
-        // En todo deberia haber un try catch
-        // session_start();
         $_SESSION['nombre_usr'] = $this->nombre_usr;
         $_SESSION['correo_usr'] = $this->correo_usr;
-
+        
         $insert->execute();
     }
-
+    
+    // Para hacer las siguientes lineas deberia haber un try catch
+    // En todo deberia haber un try catch
+    // session_start();
+    
     public function updateContrasena(){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();

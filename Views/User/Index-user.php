@@ -94,21 +94,20 @@ include '../Inc/header.php';
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="nombre"> Nuevo Nombre </label>
-                            <input type="text" placeholder="SpiritDark1164" class="form-control shadow-none" name="nombre_usr" required minlength="6">
+                            <input type="text" placeholder="SpiritDark1164" class="form-control shadow-none" name="nombre_usr" minlength="4">
                             <!-- <hr class="salto"> -->
                         </div>
                         <div class="col-md-6">
                             <label for="nombre"> Nuevo Correo Electronico </label>
-                            <input type="email" placeholder="SpiritDark1164@gmail.com" class="form-control shadow-none" name="correo_usr" required>
+                            <input type="email" placeholder="SpiritDark1164@gmail.com" class="form-control shadow-none" name="correo_usr">
                             <!-- <hr class="salto"> -->
                         </div>
                     </div>
                     <div class="row">
                     <div class="col-md-12">
-                            <label for="nombre"> Ingrese su contraseña para CONFIRMAR </label>
-                            <input type="password" placeholder="DuvanArwenLazar" class="form-control shadow-none" name="contrasena_usr" required>
-
-                        </div>
+                        <label for="nombre"> Ingrese su contraseña para CONFIRMAR </label>
+                        <input type="password" placeholder="DuvanArwenLazar" class="form-control shadow-none" name="contrasena_usr" required>
+                    </div>
                     </div>
                 </div>
                 <div class="modal-footer">

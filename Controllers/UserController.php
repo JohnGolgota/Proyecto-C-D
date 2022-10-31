@@ -81,34 +81,39 @@ class UserController extends User{
     }
 
     public function verificarUpdate($nombre, $email, $contrasena){
-        if(empty($nombre) || empty($email) || empty($contrasena)){
-            die("Los campos NO pueden estar vacios");
-        }
-
-        // COMPROBACION DE CORREO ELECTRONICO
-        $this->correo_usr = $email;
-        $comprobacion = $this->ComprobarCorreo();
-        if ($comprobacion != "") {
-            die("Ya existe una cuenta con este correo/nombre de usuario.");
-        }
-
-        $this->nombre_usr = $_SESSION['nombre_usr'];
-        $datosUsuario = $this->ConsultarUsuario();
-        # Recorremos el objeto que obtenemos en el model.
-        foreach ($datosUsuario as $dU) {}
-        if (!password_verify($contrasena,$dU->contrasena_usr)) {
+        if(empty($contrasena)){
             die("Contraseña Incorrecta");
         }
 
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            die("Introduzca una dirección de correo electronico valido");
+        if(empty($email)){
+            $email = $_SESSION['correo_usr'];
         }
 
-        if (strlen($nombre) < 6) {
-            die('El nombre de usuario debe tener al menos 6 caracteres.');
-        }   
+        if(empty($nombre)){
+            $nombre = $_SESSION['nombre_usr'];
+        }
 
-        // NO se si va, pero lo pongo.
+        $this->correo_usr = $email;
+        $comprobacion = $this->ComprobarCorreo();
+        if ($comprobacion == "" || $comprobacion == $this->correo_usr) {
+            $this->nombre_usr = $_SESSION['nombre_usr'];
+            $datosUsuario = $this->ConsultarUsuario();
+
+            # Recorremos el objeto que obtenemos en el model.
+            foreach ($datosUsuario as $dU) {}
+            if (!password_verify($contrasena,$dU->contrasena_usr)) {
+                die("Contraseña Incorrecta");
+            }
+    
+            if (strlen($nombre) < 4) {
+                die('El nombre de usuario debe tener al menos 6 caracteres.');
+            }   
+
+            
+        } else {
+            die("Ya existe una cuenta con ese correo D:");
+        }
+        
         return;
     }
 
@@ -273,12 +278,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'inicio') {
     return;
 }
 
-// Ajax verificacion [NOVALIDATE].
-// if(isset($_GET['action']) && $_GET['action'] == 'ajax-session' && empty($_POST['usuariois']) || empty($_POST['contrasenais'])){
-    // echo "false";
-    // return;
-// }
-
 # Redireccion a Eliminar Cuenta
 if (isset($_GET['action']) && $_GET['action'] == 'delete') {
     $usercontroler = new UserController();
@@ -317,7 +316,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
     $usercontroler = new UserController();
     // session_start();
     $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
-    // $usercontroler->updateNombreUsuario($_POST['nombre_usr'], $_POST['correo_usr']);
     $usercontroler->PrepareUpdateUserById($_POST['nombre_usr'], $_POST['correo_usr'],$_SESSION['id_usr']);
     $usercontroler->VistaUsuario();
 
