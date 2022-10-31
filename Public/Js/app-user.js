@@ -539,6 +539,35 @@ $(document).ready(function () {
         $.post(url, postData, function (response) {
             console.log("RESPUESTA -> ", response);
             console.log("Formularios de M*r",$('#nombre_usr').val(), $('#correo_usr').val(), $('#contrasena_usr').val())
+            switch (response) {
+                case "pass empty":
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Nao Nao!',
+                        text: '¡La contraseña NO puede estar vacia!',
+                        confirmButtonText: '¡Vale!'
+                    })
+                    break;
+                case "exist":
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Nao Nao!',
+                        text: 'Ese correo electronico ya existe',
+                        confirmButtonText: '¡Vale!'
+                    })
+                    break;
+                case "exist":
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Nao Nao!',
+                        text: 'Ese correo electronico ya existe',
+                        confirmButtonText: '¡Vale!'
+                    })
+                    break;
+            
+                default:
+                    break;
+            }
         });
 
         er.preventDefault();

@@ -82,7 +82,8 @@ class UserController extends User{
 
     public function verificarUpdate($nombre, $email, $contrasena){
         if(empty($contrasena)){
-            die("La contraseña NO puede estar vacia");
+            echo "pass empty";
+            die();
         }
 
         if(empty($email)){
@@ -104,7 +105,7 @@ class UserController extends User{
             if (!password_verify($contrasena,$dU->contrasena_usr)) {
                 die("Contraseña Incorrecta");
             }
-    
+            |
             if (strlen($nombre) < 4) {
                 die('El nombre de usuario debe tener al menos 6 caracteres.');
             }   
@@ -113,7 +114,8 @@ class UserController extends User{
 
             
         } else {
-            die("Ya existe una cuenta con ese correo D:");
+            echo "exist";
+            die();
         }
 
         
@@ -329,9 +331,9 @@ if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
 if (isset($_GET['action']) && $_GET['action'] == 'actualizar') {
     // $usercontroler = new UserController();
     // session_start();
-    echo "Actualizar";
-    die(var_dump($_POST));
-    // $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
+    // echo "Actualizar";
+    // die(var_dump($_POST));
+    $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
     // $usercontroler->VistaUsuario();
 
     // $usercontroler->VistaUpdate();
