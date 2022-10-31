@@ -82,7 +82,7 @@ class UserController extends User{
 
     public function verificarUpdate($nombre, $email, $contrasena){
         if(empty($contrasena)){
-            die("Contraseña Incorrecta");
+            die("La contraseña NO puede estar vacia");
         }
 
         if(empty($email)){
@@ -92,8 +92,8 @@ class UserController extends User{
         if(empty($nombre)){
             $nombre = $_SESSION['nombre_usr'];
         }
-
         $this->correo_usr = $email;
+        // die($this->correo_usr);
         $comprobacion = $this->ComprobarCorreo();
         if ($comprobacion == "" || $comprobacion == $this->correo_usr) {
             $this->nombre_usr = $_SESSION['nombre_usr'];
@@ -109,10 +109,13 @@ class UserController extends User{
                 die('El nombre de usuario debe tener al menos 6 caracteres.');
             }   
 
+            $this->PrepareUpdateUserById($nombre, $this->correo_usr, $_SESSION['id_usr']);
+
             
         } else {
             die("Ya existe una cuenta con ese correo D:");
         }
+
         
         return;
     }
@@ -316,7 +319,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
     $usercontroler = new UserController();
     // session_start();
     $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
-    $usercontroler->PrepareUpdateUserById($_POST['nombre_usr'], $_POST['correo_usr'],$_SESSION['id_usr']);
     $usercontroler->VistaUsuario();
 
     // $usercontroler->VistaUpdate();
