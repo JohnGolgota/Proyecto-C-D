@@ -16,6 +16,7 @@
             $this->id_usr = $_SESSION['id_usr'];
             $objeto = $this->GetTasksForId();
             echo $objeto;
+            die();
         }
 
         public function prepareDeleteTask($id){

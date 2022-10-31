@@ -4,8 +4,6 @@ class User{
     protected $nombre_usr;
     protected $correo_usr;
     protected $contrasena_usr;
-    // protected $id_evn;
-    // protected $id_mpg;
 
     public function RegistrarUsuario(){
         include_once '../Config/conexiondb.php';
@@ -22,9 +20,8 @@ class User{
         $_SESSION['correo_usr'] = $this->correo_usr;
 
         $insert->execute();
-        // header("location: UserController.php?action=login");
     }
-// Puto
+
     public function ComprobarCorreo(){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
@@ -39,7 +36,7 @@ class User{
         }
         return;
     }
-// puto 2
+
     public function ConsultarUsuario(){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
@@ -90,10 +87,6 @@ class User{
         
         $insert->execute();
     }
-    
-    // Para hacer las siguientes lineas deberia haber un try catch
-    // En todo deberia haber un try catch
-    // session_start();
     
     public function updateContrasena(){
         include_once '../Config/conexiondb.php';

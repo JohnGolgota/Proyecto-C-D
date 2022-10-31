@@ -17,6 +17,7 @@
             $task = $result->fetchAll(PDO::FETCH_OBJ);
             $jsonstring = json_encode($task);      
             return $jsonstring;
+            die();
         }
 
         public function addTask(){

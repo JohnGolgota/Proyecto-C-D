@@ -314,12 +314,25 @@ if (isset($_GET['action']) && $_GET['action'] == 'update') {
     // $usercontroler->VistaUpdate();
     return;
 }
-
+// Actualiza esta
 if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
-    $usercontroler = new UserController();
+    // $usercontroler = new UserController();
     // session_start();
-    $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
-    $usercontroler->VistaUsuario();
+    echo "Actualizar";
+    die(var_dump($_POST));
+    // $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
+    // $usercontroler->VistaUsuario();
+
+    // $usercontroler->VistaUpdate();
+    return;
+}
+if (isset($_GET['action']) && $_GET['action'] == 'actualizar') {
+    // $usercontroler = new UserController();
+    // session_start();
+    echo "Actualizar";
+    die(var_dump($_POST));
+    // $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
+    // $usercontroler->VistaUsuario();
 
     // $usercontroler->VistaUpdate();
     return;
@@ -347,7 +360,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'abort') {
 // ------------------------------------------
 
 // Action vista predefinida
-if(isset($_GET) || !isset($_GET)){
+if(isset($_GET) || !isset($_GET) && $_GET['action'] != "actualizar"){
     $usercontroler = new UserController();
     session_destroy();
     $usercontroler->RedirigirNoUsuario();

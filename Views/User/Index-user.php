@@ -75,7 +75,7 @@ include '../Inc/header.php';
                 <h5 class="modal-title" id="exampleModalLabel"> Actualizar Informacion </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="UserController.php" method="POST">
+            <form method="" id="form-actualizar">
                 <input type="hidden" name="action" value="actualizar">
                 <div class="modal-body">
                     <div class="row">
@@ -94,19 +94,19 @@ include '../Inc/header.php';
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="nombre"> Nuevo Nombre </label>
-                            <input type="text" placeholder="SpiritDark1164" class="form-control shadow-none" name="nombre_usr" minlength="4">
+                            <input type="text" placeholder="SpiritDark1164" class="form-control shadow-none" name="nombre_usr" minlength="4" id="nombre_usr">
                             <!-- <hr class="salto"> -->
                         </div>
                         <div class="col-md-6">
                             <label for="nombre"> Nuevo Correo Electronico </label>
-                            <input type="email" placeholder="SpiritDark1164@gmail.com" class="form-control shadow-none" name="correo_usr">
+                            <input type="email" placeholder="SpiritDark1164@gmail.com" class="form-control shadow-none" name="correo_usr" id="correo_usr">
                             <!-- <hr class="salto"> -->
                         </div>
                     </div>
                     <div class="row">
                     <div class="col-md-12">
                         <label for="nombre"> Ingrese su contraseña para CONFIRMAR </label>
-                        <input type="password" placeholder="DuvanArwenLazar" class="form-control shadow-none" name="contrasena_usr" required>
+                        <input type="password" placeholder="DuvanArwenLazar" class="form-control shadow-none" name="contrasena_usr" id="contrasena_usr" required>
                     </div>
                     </div>
                 </div>
@@ -381,3 +381,6 @@ include '../Inc/header.php';
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="crossorigin="anonymous"></script>
 <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="crossorigin="anonymous"></script> -->
 <?php include '../Inc/footer-user.php'; ?>
+<script>
+
+</script>
