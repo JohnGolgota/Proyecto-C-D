@@ -85,9 +85,9 @@ buttonDarkMode.addEventListener('click', function () {
 // }
 // Validacion front 1.21 conicidencia de contraseñas en formulario Registro J
 
-const puta = $('#usuarioRCC').first().keyup(function () {
+const hellno = $('#usuarioRCC').first().keyup(function () {
 
-    MensajeConfirmarContrasena
+    let MensajeConfirmarContrasena
 
     let pass = $('#usuarioRC').val()
     let passcc = $('#usuarioRCC').val()
@@ -102,7 +102,23 @@ const puta = $('#usuarioRCC').first().keyup(function () {
     }
 })
 
-// 
+const hellno = $('#usuarioRCC').first().keyup(function () {
+
+    let mensaje = $('#MensajeConfirmarContrasena').val()
+
+    let pass = $('#usuarioRC').val()
+    let passcc = $('#usuarioRCC').val()
+
+    if (pass != passcc) {
+        mensaje.style.color = "red"
+        mensaje.textContent = "MAL"
+    }
+    if (pass == passcc) {
+        mensaje.style.color = "green"
+        mensaje.textContent = "BIEN"
+    }
+})
+//
 $(document).ready(function () {
     $('#formulario-registro').trigger('reset')
     $('#formulario-registro').submit(function (e) {

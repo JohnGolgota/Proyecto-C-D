@@ -93,7 +93,7 @@ include '../Inc/header.php';
                     <h5 class="modal-title" id="exampleModalLabel"> Actualizar Informacion </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="UserController.php" method="POST">
+                <form id="factualizardata" method="POST">
                     <input type="hidden" name="action" value="actualizar">
                     <div class="modal-body">
                         <div class="row">
@@ -112,20 +112,19 @@ include '../Inc/header.php';
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="nombre"> Nuevo Nombre </label>
-                                <input type="text" placeholder="SpiritDark1164" class="form-control shadow-none" name="nombre_usr" required minlength="6">
+                                <input id="nombre_usr" type="text" placeholder="SpiritDark1164" class="form-control shadow-none" name="nombre_usr" required minlength="6">
                                 <!-- <hr class="salto"> -->
                             </div>
                             <div class="col-md-6">
                                 <label for="nombre"> Nuevo Correo Electronico </label>
-                                <input type="email" placeholder="SpiritDark1164@gmail.com" class="form-control shadow-none" name="correo_usr" required>
+                                <input id="correo_usr" type="email" placeholder="SpiritDark1164@gmail.com" class="form-control shadow-none" name="correo_usr" required>
                                 <!-- <hr class="salto"> -->
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="nombre"> Ingrese su contraseña para CONFIRMAR </label>
-                                <input type="password" placeholder="DuvanArwenLazar" class="form-control shadow-none" name="contrasena_usr" required>
-
+                                <input id="contrasena_usr" type="password" placeholder="DuvanArwenLazar" class="form-control shadow-none" name="contrasena_usr" required>
                             </div>
                         </div>
                     </div>
@@ -257,13 +256,13 @@ include '../Inc/header.php';
             <!--  -->
             <!-- <article class="row align-items-center my-2 herramienta herramienta-cuatro">
 
-            
+
             <section class="col">
                 <h3>Lorem ipsum dolor sit amet.</h3>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto necessitatibus officia, odio cum blanditiis facilis.</p>
             </section>
 
-            
+
             <section class="col"><img src="" alt="Agenda"></section>
         </article> -->
         </section>
@@ -377,3 +376,43 @@ include '../Inc/header.php';
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <?php include '../Inc/footer-user.php'; ?>
+<script type="text/javascript">
+  factualizardata
+  $(document).ready(function () {
+    $('#factualizardata').submit(function (er) {
+
+        console.log("que")
+        const postData = {
+            nombre_usr: $('#nombre_usr').val(),
+            correo_usr: $('#correo_usr').val(),
+            contrasena: $('#contrasena_usr').val(),
+        }
+
+        let url = 'UserController.php?action=actualizar';
+
+        $.post(url, postData, function (response) {
+            console.log("RESPUESTA -> ", response);
+            console.log($('#nombre_usr').val(), $('#correo_usr').val(), $('#contrasena_usr').val())
+        });
+
+        er.preventDefault();
+        $('#form-actualizar').trigger('reset');
+    });
+
+    // $.ajax({
+    //     url: 'UserController.php?action=actualizar',
+    //     type: 'GET', // GET es para recibir informacion, POST para enviar.
+    //     data: {
+    //         nombre_usr: $('#nombre_usr').val(),
+    //         correo_usr: $('#correo_usr').val(),
+    //         contrasena: $('#contrasena_usr').val(),
+    //     },
+
+    //     // Cuando reciba la respuesta se va a ejecutar cierta funcion:
+    //     success: function(response){
+    //         console.log("xd");
+    //         console.log(response);
+    //     }
+    // });
+});
+</script>

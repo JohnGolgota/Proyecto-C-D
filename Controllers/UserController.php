@@ -165,7 +165,7 @@ class UserController extends User
         $this->contrasena_usr = $contrasenaEncript;
         // $_SESSION['id_usr'] = $this->id_usr;
         $this->RegistrarUsuario();
-        
+
         $datosUsuario = $this->ConsultarUsuario();
         foreach ($datosUsuario as $dU) {}
         $_SESSION['nombre_usr'] = $this->nombre_usr;
@@ -342,14 +342,15 @@ if (isset($_GET['action']) && $_GET['action'] == 'update') {
 }
 
 if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
-    $usercontroler = new UserController();
-    // session_start();
-    $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
-    // $usercontroler->updateNombreUsuario($_POST['nombre_usr'], $_POST['correo_usr']);
-    $usercontroler->PrepareUpdateUserById($_POST['nombre_usr'], $_POST['correo_usr'], $_SESSION['id_usr']);
-    $usercontroler->VistaUsuario();
+    // $usercontroler = new UserController();
+    // // session_start();
+    // $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
+    // // $usercontroler->updateNombreUsuario($_POST['nombre_usr'], $_POST['correo_usr']);
+    // $usercontroler->PrepareUpdateUserById($_POST['nombre_usr'], $_POST['correo_usr'], $_SESSION['id_usr']);
+    // $usercontroler->VistaUsuario();
 
     // $usercontroler->VistaUpdate();
+    die('Helo');
     return;
 }
 
@@ -405,12 +406,12 @@ if (isset($_GET['action']) && $_GET['action'] == 'ajax-session' && !empty($_POST
 }
 
 // Action vista predefinida
-if (isset($_GET) || !isset($_GET)) {
-    $usercontroler = new UserController();
-    session_destroy();
-    $usercontroler->RedirigirNoUsuario();
-    return;
-}
+// if (isset($_GET) || !isset($_GET)) {
+//     $usercontroler = new UserController();
+//     session_destroy();
+//     $usercontroler->RedirigirNoUsuario();
+//     return;
+// }
 
 ?>
 </body>
