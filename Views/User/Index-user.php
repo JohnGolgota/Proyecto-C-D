@@ -160,7 +160,7 @@ include '../Inc/header.php';
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <form id="task-form" class="form-group row" novalidate>
+        <form id="task-form" class="form-group row">
             <input type="hidden" id="taskId">
             <div class="col-md-1 content-btn content-config align-middle my-auto">
                 <button type="submit" class="add-reminder-button"> + </button>
