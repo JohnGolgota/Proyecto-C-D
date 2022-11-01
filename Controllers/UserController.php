@@ -103,16 +103,17 @@ class UserController extends User{
             # Recorremos el objeto que obtenemos en el model.
             foreach ($datosUsuario as $dU) {}
             if (!password_verify($contrasena,$dU->contrasena_usr)) {
-                die("Contraseña Incorrecta");
+                echo "pass error";
+                die();
+    
             }
-            |
+            
             if (strlen($nombre) < 4) {
-                die('El nombre de usuario debe tener al menos 6 caracteres.');
+                echo "length";
+                die();
             }   
 
             $this->PrepareUpdateUserById($nombre, $this->correo_usr, $_SESSION['id_usr']);
-
-            
         } else {
             echo "exist";
             die();
@@ -293,14 +294,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 # Confirmar Eliminar Cuenta
 if (isset($_GET['action']) && $_GET['action'] == 'confirm_delete') {
     $usercontroler = new UserController();
-
-    // session_start();
-    // $_SESSION['id_usr'];
-    
-    # Accedemos a la funcion de "Eliminar Usuario".
-    // $usercontroler->EliminarUsuario();
     $usercontroler->PrepararIdDelete($_SESSION['id_usr']);
-    $usercontroler->VistaIndex();
+    $usercontroler->RedirigirNoUsuario();
 
     return;
 }
@@ -316,27 +311,11 @@ if (isset($_GET['action']) && $_GET['action'] == 'update') {
     // $usercontroler->VistaUpdate();
     return;
 }
-// Actualiza esta
-if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
-    // $usercontroler = new UserController();
-    // session_start();
-    echo "Actualizar";
-    die(var_dump($_POST));
-    // $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
-    // $usercontroler->VistaUsuario();
 
-    // $usercontroler->VistaUpdate();
-    return;
-}
 if (isset($_GET['action']) && $_GET['action'] == 'actualizar') {
-    // $usercontroler = new UserController();
-    // session_start();
-    // echo "Actualizar";
-    // die(var_dump($_POST));
+    $usercontroler = new UserController();
     $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
-    // $usercontroler->VistaUsuario();
-
-    // $usercontroler->VistaUpdate();
+    echo "true";
     return;
 }
 

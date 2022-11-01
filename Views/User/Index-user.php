@@ -81,11 +81,11 @@ include '../Inc/header.php';
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="nombre"> Nombre Actual </label>
-                            <input type="text" class="form-control" value="<?php echo $_SESSION['nombre_usr']; ?>" readonly>
+                            <input type="text" class="form-control" value="<?php echo $_SESSION['nombre_usr']; ?>" readonly id="nombre_readonly">
                         </div>
                         <div class="col-md-6">
                             <label for="nombre"> Correo Actual </label>
-                            <input type="text" class="form-control" value="<?php echo $_SESSION['correo_usr']; ?>" readonly>
+                            <input type="text" class="form-control" value="<?php echo $_SESSION['correo_usr']; ?>" readonly id="correo_readonly">
                         </div>
                     </div>
 

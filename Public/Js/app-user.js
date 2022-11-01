@@ -531,7 +531,7 @@ $(document).ready(function () {
         const postData = {
             nombre_usr: $('#nombre_usr').val(),
             correo_usr: $('#correo_usr').val(),
-            contrasena: $('#contrasena_usr').val(),
+            contrasena_usr: $('#contrasena_usr').val(),
         }
 
         let url = 'UserController.php?action=actualizar';
@@ -564,7 +564,48 @@ $(document).ready(function () {
                         confirmButtonText: '¡Vale!'
                     })
                     break;
-            
+
+                case "pass error":
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Nao Nao!',
+                        text: '¡Contraseña Incorrecta!',
+                        confirmButtonText: '¡Vale!'
+                    })
+                    break;
+
+                case "length":
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Nao Nao!',
+                        text: '¡El nombre de usuario debe tener al menos 4 caracteres y maximo 10!',
+                        confirmButtonText: '¡Vale!'
+                    })
+                    break;
+                    
+                case "true":
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Genial!',
+                        text: '¡Los datos han sido actualizados correctamente!',
+                        confirmButtonText: '¡Vale!'
+                    })
+
+                    if(!$('#nombre_usr').val() == ""){
+                        $('#nombre_readonly').val($('#nombre_usr').val());
+                    }
+
+                    if(!$('#correo_usr').val() == ""){
+                        // break;
+                        $('#correo_readonly').val($('#correo_usr').val());
+                    }
+
+                    setTimeout(function(){
+                        window.location.reload();
+                    }, 1000);
+                   
+                    break;
+
                 default:
                     break;
             }
