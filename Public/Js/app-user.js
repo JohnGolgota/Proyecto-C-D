@@ -46,56 +46,77 @@ $('#task-form').submit(function (e) {
     noww_unix = noww.getTime();
     nott_unix = nott.getTime();
 
-    if (nott_unix < noww_unix) {
+    if($('#nombre_rec').val() == "" || $('#notificacion_rec').val() == "" ||  $('#color_rec').val() == ""){
         Swal.fire({
+            title: '¡Los campos no pueden estar vacios!',
+            timer: 2000,
             icon: 'error',
-            title: '¡Nao Nao!',
-            text: 'Esa fecha ya paso ¡No puedes agregar un recordatorio allí!',
-            confirmButtonText: '¡Vale!'
-        })
+            timerProgressBar: false,
+            didOpen: () => {
+                // Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                    // b.textContent = Swal.getTimerLeft()
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        });
     } else {
-        // Enviar informacion (Donde queremos enviar el dato, Que datos se envian, que se hace cuando reciba respuesta)
-        $.post(url, postData, function (response) {
-            console.log(response);
-        })
-
-        if (edit == true) {
-            let timerInterval
+        if (nott_unix < noww_unix) {
             Swal.fire({
-                title: 'Recordatorio Actualizado Correctamente',
-                timer: 2000,
-                icon: 'success',
-                timerProgressBar: false,
-                didOpen: () => {
-                    // Swal.showLoading()
-                    const b = Swal.getHtmlContainer().querySelector('b')
-                    timerInterval = setInterval(() => {
-                        // b.textContent = Swal.getTimerLeft()
-                    }, 100)
-                },
-                willClose: () => {
-                    clearInterval(timerInterval)
-                }
-            });
+                icon: 'error',
+                title: '¡Nao Nao!',
+                text: 'Esa fecha ya paso ¡No puedes agregar un recordatorio allí!',
+                confirmButtonText: '¡Vale!'
+            })
         } else {
-            let timerInterval
-            Swal.fire({
-                title: 'Recordatorio Agregado Correctamente',
-                timer: 2000,
-                icon: 'success',
-                timerProgressBar: false,
-                didOpen: () => {
-                    // Swal.showLoading()
-                    const b = Swal.getHtmlContainer().querySelector('b')
-                    timerInterval = setInterval(() => {
-                        // b.textContent = Swal.getTimerLeft()
-                    }, 100)
-                },
-                willClose: () => {
-                    clearInterval(timerInterval)
-                }
-            });
-        }
+            // Enviar informacion (Donde queremos enviar el dato, Que datos se envian, que se hace cuando reciba respuesta)
+            $.post(url, postData, function (response) {
+                console.log(response);
+            })
+    
+            if (edit == true) {
+                let timerInterval
+                Swal.fire({
+                    title: 'Recordatorio Actualizado Correctamente',
+                    timer: 2000,
+                    icon: 'success',
+                    timerProgressBar: false,
+                    didOpen: () => {
+                        // Swal.showLoading()
+                        const b = Swal.getHtmlContainer().querySelector('b')
+                        timerInterval = setInterval(() => {
+                            // b.textContent = Swal.getTimerLeft()
+                        }, 100)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                });
+            } else {
+                let timerInterval
+                Swal.fire({
+                    title: 'Recordatorio Agregado Correctamente',
+                    timer: 2000,
+                    icon: 'success',
+                    timerProgressBar: false,
+                    didOpen: () => {
+                        // Swal.showLoading()
+                        const b = Swal.getHtmlContainer().querySelector('b')
+                        timerInterval = setInterval(() => {
+                            // b.textContent = Swal.getTimerLeft()
+                        }, 100)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                });
+            }
+    }
+
+    
     }
 
     // Reseteamos el formulario.
