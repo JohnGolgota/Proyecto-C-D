@@ -1,4 +1,0 @@
-1 - el css esta roto
-2 - No inicia session al momento de registrarse
-3 - mantener session activa
-4 - 

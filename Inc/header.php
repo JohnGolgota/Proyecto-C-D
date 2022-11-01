@@ -11,12 +11,34 @@
     
     <!-- Bootstrap 5 -->
     <link rel="stylesheet" href="../Public/Css/bootstrap.min.css">
-    
+
     <!-- hojas de estilo personalizadas -->
     <link rel="stylesheet" href="../Public/Css/style.css">
     <link rel="stylesheet" href="../Public/Css/style-user.css">
+    
+    <link rel="stylesheet" href="../Public/Css/push-out.css">
+    
+    <!-- Full Calendar -->
+    <link rel="stylesheet" href="../Public/Css/main.min.css">
     
     <!-- librerias importadas -->
     <!-- ScrollReveal -->
     <script src="../Public/Js/scrollreveal.min.js"></script>
 <head>
+    <!--  -->
+    <div class="container-load" id="container-load">
+        <div class="push-out" id="push-out" style="z-index: 10000;">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!--  -->
+
+    <script>
+        function load(){
+            let containera = document.getElementById('container-load');
+            // console.log(containera);
+            containera.style.opacity = '0';
+            containera.style.display = 'none';
+        }
+    </script>

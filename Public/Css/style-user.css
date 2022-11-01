@@ -22,6 +22,14 @@
 
 
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
 :root {
     --color1: #06283D;
     --color2: #1363DF;
@@ -36,40 +44,48 @@
     --dkalt: #212121;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    transition: none;
-    translate: none;
-    transform: none;
-    animation: none;
-}
-
-body {
-    overflow-x: hidden;
-    /* background: linear-gradient(to left, var(--color3), var(--color4));  */
-    /* background: red; */
-}
 
 
-
+/* ----------------------------------- BARRA DE NAVEGACION ----------------------------------- */
 .botones {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-
-    outline: 3px solid black;
+    width: 375px;
+    height: 80%;
+    margin-right: 10px;
 }
 
-/* .cabeza-nav-user button, .contenido-switch, .usuario {
-    outline: 3px solid black;
-} */
+.boton-usr-container {
+    position: absolute;
+    bottom: 5px;
 
-.contenido-menu {
-    width: 100%;
 }
 
+.boton-mas-container {
+    position: absolute;
+    right: 175px;
+    bottom: -6px;
+}
+
+.boton-mas {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 32px;
+    padding-bottom: 2px;
+}
+
+.boton-mas:hover {
+    border-bottom: 1px solid #ffffff;
+}
+
+.contenido-switch-user {
+    position: absolute;
+    right: 242px;
+    bottom: -1px;
+}
+
+.box {
+    background-color: none;
+}
 
 .switch {
     --width-of-switch: 3.5em;
@@ -94,31 +110,79 @@ body {
     opacity: 0;
 }
 
-
-
-/* ---------------------------- Subcategoria: Nav-bar ---------------------------------- */
-.calendar-box {
-    text-align: center;
-    position: relative;
+.contenido-menu {
+    position: absolute;
     width: 100%;
-    height: 100vh;
-    background-color: var(--color2);
 }
 
-.calendar-content {
-    width: 100%;
-    height: 100%;
+.add-reminder-button {
     border: none;
-    padding: 7px;
+    border-radius: 100%;
+    background-color: #1363DF;
+    padding: 3.5px 11px;
+    color: white;
+}
+
+
+/* ---------------------------- Subcategoria: Calendario ---------------------------------- */
+.calendar-box-user {
+    background-color: #f9f9f9;
+    padding: 12px;
+    margin-bottom: 0;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+
+
+/* ---------------------------- Subcategoria: Tasks ---------------------------------- */
+.task {
+    background-color: #1363DF;
+    /* border-radius: 24px; */
+    padding: 12px 0 12px 10px;
+    margin: 0 0 4px 0;
+}
+
+h5.element-task {
+    color: #f9f9f9;
+    display: inline-block;
+}
+
+h5.notifiacion-task {
+    padding-left: 5px;
+}
+
+div.action-tasks {
+    margin-left: 30px;
+}
+
+.texto-recordatorio {
+    display: inline-block;
+    /* color: var(--color2); */
+}
+
+
+
+/* ---------------------------- Subcategoria: Tasks ---------------------------------- */
+.task {
+    background-color: #1363DF;
+    border-radius: 24px;
+    padding: 12px 0 12px 4px;
+    margin: 0 0 4px 0;
+}
+
+h4.element-task {
+    color: #f9f9f9;
+    display: inline-block;
+}
+
+div.action-tasks {
+    margin-left: 30px;
 }
 
 
 
 /* ---------------------------- Subcategoria: Contenido Responsive ---------------------------------- */
-@media (max-width: 575px){
-    .contenido-switch { right: 223px; }
-}
-
 @media (min-width: 1400px){
     .cabeza-nav-user {
         margin-left: 0;
@@ -126,8 +190,19 @@ body {
 }
 
 @media (max-width: 450px){
-    .label-nav { display: none; }
-    .usuario { right: -40px; top: 2px; }
-    .contenido-switch { right: 90px; }
-    .nav-item { top: -2px; right: 172px; }
+    .nombre-user { display: none; }
+    .icono-user { top: 0px; }
+    .boton-mas-container { right: 45px; }
+    .contenido-switch-user { right: 95px; }
+}
+
+@media(max-width: 275px){
+    .contenido-switch-user { display: none; }
+}
+
+
+
+/* ---------------------------- Subcategoria: Modo Oscuro ---------------------------------- */
+.icono-user-dark-mode, .nombre-user-dark-mode {
+    color: white;
 }

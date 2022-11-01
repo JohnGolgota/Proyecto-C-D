@@ -1,49 +1,50 @@
-<?php 
-class User{
+<?php
+class User
+{
     protected $id_usr;
     protected $nombre_usr;
     protected $correo_usr;
     protected $contrasena_usr;
-    protected $id_evn;
-    protected $id_mpg;
 
-    public function RegistrarUsuario(){
+    public function RegistrarUsuario()
+    {
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
-        $sql = "INSERT INTO tbl_usuario (nombre_usr,correo_usr,contrasena_usr) VALUES (?,?,?)";
+        $sql = "CALL SetUser_usr(?,?,?)";
         $insert = $conexion->stm->prepare($sql);
 
         # Enviar la informacion de manera anonima.
-        $insert->bindParam(1,$this->nombre_usr);
-        $insert->bindParam(2,$this->correo_usr);
-        $insert->bindParam(3,$this->contrasena_usr);
+        $insert->bindParam(1, $this->nombre_usr);
+        $insert->bindParam(2, $this->correo_usr);
+        $insert->bindParam(3, $this->contrasena_usr);
 
         $_SESSION['nombre_usr'] = $this->nombre_usr;
+        $_SESSION['correo_usr'] = $this->correo_usr;
 
         $insert->execute();
-        // header("location: UserController.php?action=login");
     }
 
-    public function ComprobarCorreo($email){
+    public function ComprobarCorreo(){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
-        $sql = "SELECT correo_usr FROM tbl_usuario WHERE correo_usr = '$email'";
+        $sql = "CALL ReadEmail_usr('$this->correo_usr')";
         $result = $conexion->stm->prepare($sql);
         $result->execute();
         $usuario = $result->fetchAll(PDO::FETCH_OBJ);
         if ($usuario) {
-            foreach($usuario as $prueba){}
-            return $prueba->correo_usr;
+            return 0;
+        } else {
+            return 1;
         }
-        return;
     }
-
-    public function ConsultarUsuario($nombre_usr){
+    // puto 2
+    public function ConsultarUsuario()
+    {
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
-        
-        $sql = "SELECT * FROM tbl_usuario WHERE nombre_usr='$nombre_usr'";
+
+        $sql = "CALL GetDataName_usr('$this->nombre_usr')";
         $usuario = $conexion->stm->prepare($sql);
         $usuario->execute();
         $usuarioObjeto = $usuario->fetchAll(PDO::FETCH_OBJ);
@@ -54,21 +55,56 @@ class User{
         }
     }
 
-    public function EliminarUsuario(){
+    public function ConsultarUsuario(){
+        include_once '../Config/conexiondb.php';
+        $conexion = new Conexion();
+        
+        $sql = "CALL GetDataName_usr('$this->nombre_usr')";
+        $usuario = $conexion->stm->prepare($sql);
+        $usuario->execute();
+        $usuarioObjeto = $usuario->fetchAll(PDO::FETCH_OBJ);
+        if ($usuarioObjeto) {
+            return $usuarioObjeto;
+        } else {
+            die("not found");
+            // die("No se a encontrado el usuario en la base de datos");
+        }
+    }
+
+    public function ConsultarUsuarioByEmail()
+    {
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
-        $sql = "DELETE FROM tbl_usuario WHERE id_usr = '$_SESSION[id_usr]'";
+        $sql = "CALL GetDataCorreo_usr('$this->correo_usr')";
+
+        $usuario = $conexion->stm->prepare($sql);
+        $usuario->execute();
+        $usuarioObjeto = $usuario->fetchAll(PDO::FETCH_OBJ);
+        if ($usuarioObjeto) {
+            return $usuarioObjeto;
+        } else {
+            die("not found");
+            // die("No se a encontrado el usuario en la base de datos");
+        }
+    }
+
+    public function EliminarUsuario()
+    {
+        include_once '../Config/conexiondb.php';
+        $conexion = new Conexion();
+
+        $sql = "CALL Delete_usr('$this->id_usr')";
         $insert = $conexion->stm->prepare($sql);
 
         $insert->execute();
     }
 
-    public function traerNombreUsuario(){
+    public function GetUserById(){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
-        $sql = "SELECT * FROM tbl_usuario WHERE id_usr = '$_SESSION[id_usr]'";
+        $sql = "CALL GetDataId_usr('$this->id_usr')";
         $insert = $conexion->stm->prepare($sql);
 
         $insert->execute();
@@ -77,17 +113,25 @@ class User{
         return $busquedaObjeto;
     }
 
-    public function updateNombreUsuario($nuevo_nombre){
+    public function updateNombreUsuario(){
+        include_once '../Config/conexiondb.php';
+        $conexion = new Conexion();
+        
+        $sql = "CALL Update_usr('$this->nombre_usr','$this->correo_usr','$this->id_usr')";
+        $insert = $conexion->stm->prepare($sql);
+        $_SESSION['nombre_usr'] = $this->nombre_usr;
+        $_SESSION['correo_usr'] = $this->correo_usr;
+        
+        $insert->execute();
+    }
+    
+    public function updateContrasena(){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
-        $sql = "UPDATE tbl_usuario SET nombre_usr = '$nuevo_nombre' WHERE id_usr = '$_SESSION[id_usr]'";
-        $insert = $conexion->stm->prepare($sql);
+        $sql = "CALL UpdatePass_usr('$this->contrasena_usr','$this->id_usr')";
+        $actualizacion = $conexion->stm->prepare($sql);
 
-        // session_start();
-        $_SESSION['nombre_usr'] = $nuevo_nombre;
-
-        $insert->execute();
+        $actualizacion->execute();
     }
 }
-?>
