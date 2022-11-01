@@ -400,11 +400,11 @@
 
         if (pass != passcc) {
             mensaje.style.color = "red"
-            mensaje.textContent = "MAL"
+            mensaje.textContent = "¡Las contraseñas no coinciden!"
         }
         if (pass == passcc) {
             mensaje.style.color = "green"
-            mensaje.textContent = "BIEN"
+            mensaje.textContent = "¡Nitido!"
         }
     })
 
