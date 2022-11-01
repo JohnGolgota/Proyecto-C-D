@@ -16,32 +16,34 @@ include '../Inc/header.php';
 
 <title> Carpe Diem | <?php echo $_SESSION['nombre_usr']; ?> </title>
 <?php include '../Inc/nav.php'; ?>
-<body onload="setTimeout(load, 700);">
-<!-- Encabezado, botones y tema -->
-<header class="align-items-center navbar navbar-expand-sm position-relative cabeza d-flex m-0">
-    <nav class="container-xxl cabeza-nav-user">
-        <!-- logo -->
-        <section class=""><a href="#"><img src="../Public/Img/favicon-min.png" alt="Logo" width="35px"></a></section>
 
-        <!-- botones -->
-        <section class="d-inline align-items-end text-end position-absolute end-0 botones row">
-            <!-- Boton user -->
-            <section class="mt-2 usuario boton-usr-container">
-                <i onclick="configDesplegable();" class="fa-solid fa-user icono m-2 icono-user"></i><label onclick="configDesplegable();" for="" class="user-nav label-nav nombre-user"> <?php echo $_SESSION['nombre_usr']; ?> </label>
-            </section>
+<body onload="setTimeout(load, 700);">
+    <!-- Encabezado, botones y tema -->
+    <header class="align-items-center navbar navbar-expand-sm position-relative cabeza d-flex m-0">
+        <nav class="container-xxl cabeza-nav-user">
+            <!-- logo -->
+            <section class=""><a href="#"><img src="../Public/Img/favicon-min.png" alt="Logo" width="35px"></a></section>
+
+            <!-- botones -->
+            <section class="d-inline align-items-end text-end position-absolute end-0 botones row">
+                <!-- Boton user -->
+                <section class="mt-2 usuario boton-usr-container">
+                    <i onclick="configDesplegable();" class="fa-solid fa-user icono m-2 icono-user"></i><label onclick="configDesplegable();" for="" class="user-nav label-nav nombre-user"> <?php echo $_SESSION['nombre_usr']; ?> </label>
+                </section>
 
             <!-- Boton "+" -->
             <section class="nav-item boton-mas-container">
                 <button class="boton-mas" data-bs-toggle="modal" data-bs-target="#addreminder"> + </button>
             </section>
 
-            <!-- switch -->
-            <section class="contenido-switch contenido-switch-user">
-                <label class="switch align-items-center">
-                    <input type="checkbox" class="input-banner" id="buttonDarkModeUser">
-                    <span class="slider"></span>
-                </label>
-            </section>
+                <!-- switch -->
+                <section class="contenido-switch contenido-switch-user">
+                    <label class="switch align-items-center">
+                        <input type="checkbox" class="input-banner" id="buttonDarkModeUser">
+                        <span class="slider"></span>
+                    </label>
+                </section>
+
 
             <aside id="configDesplegable" style="display: none;" class="menu-no">
                 <!--  -->
@@ -87,10 +89,6 @@ include '../Inc/header.php';
                             <label for="nombre"> Correo Actual </label>
                             <input type="text" class="form-control" value="<?php echo $_SESSION['correo_usr']; ?>" readonly id="correo_readonly">
                         </div>
-                    </div>
-
-                    <!-- <hr class="salto"> -->
-
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="nombre"> Nuevo Nombre </label>
@@ -109,49 +107,51 @@ include '../Inc/header.php';
                         <input type="password" placeholder="DuvanArwenLazar" class="form-control shadow-none" name="contrasena_usr" id="contrasena_usr" required>
                     </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
-                    <button type="submit" class="btn btn-primary"> Guardar Cambios </button>
-                </div>
-            </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
+                        <button type="submit" class="btn btn-primary"> Guardar Cambios </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="modal fade" id="changepassword" tabindex="-1" aria-labelledby="changepassword" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="changepassword"> Actualizar Informacion </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="UserController.php" method="POST">
-                <input type="hidden" name="action" value="act_contrasena">
+    <div class="modal fade" id="addreminder" tabindex="1" aria-labelledby="addreminderLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <form id="task-form" class="form-group row">
+                        <input type="hidden" id="taskId">
+                        <div class="col-md-1 content-btn content-config align-middle my-auto">
+                            <button type="submit" class="add-reminder-button"> + </button>
+                        </div>
+                        <div class="content-input col-md-4 content-config my-auto">
+                            <input type="text" id="nombre_rec" placeholder="Voy a..." class="form-control shadow-none col-md-3" required>
+                        </div>
+                        <div class="content-not col-md-5 content-config my-auto">
+                            <input type="datetime-local" id="notificacion_rec" class="form-control shadow-none" required>
+                        </div>
+                        <div class="content-color content-confg col-md-1 my-auto">
+                            <input type="color" id="color_rec" class="" value="#1363DF" required>
+                        </div>
+                    </form>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12 mb-3">
-                            <label for="nombre"> Contraseña Antigua </label>
-                            <input type="password" placeholder="Duvan Arwen Lazar" class="form-control shadow-none" name="old_password_usr" required minlength="6">
-                            <!-- <hr class="salto"> -->
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="nombre"> Nueva Contraseña </label>
-                            <input type="password" placeholder="Jiss Golgota" class="form-control shadow-none" name="new_password_usr" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="nombre"> Confirmar Contraseña </label>
-                            <input type="password" placeholder="Jiss Golgota" class="form-control shadow-none" name="confirm_password_usr" required>
+                    <h3> Tus Recordatorios </h3>
+                    <div class="col-md-12">
+                        <div class="tasks" id="tasks">
+                            <!-- <div class="task my-auto d-flex mb-1">
+                        <h4 class="element-task nombre-task my-auto" id="nombre-task"> Nombre </h4>
+                        <h4 class="element-task notifiacion-task my-auto" id="notificacion-task"> 2022-10-21 15:44:34 </h4>
+                    </div> -->
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
-                    <button type="submit" class="btn btn-primary"> Guardar Cambios </button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Listo</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
@@ -207,7 +207,9 @@ include '../Inc/header.php';
     <section class="text-center my-2 herramientas mt-5">
 
         <!--  -->
-        <article class="row align-items-center my-2 herramienta herramienta-dos">
+        <section class="superbox calendar-box">
+            <!-- <iframe src="https://calendar.google.com/calendar/embed?height=720&wkst=1&bgcolor=%231363df&ctz=America%2FBogota&showTitle=0&showNav=1&src=M2R0dW5pbmdkdXZhbkBnbWFpbC5jb20&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZXMuY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&src=ZW4uY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%2333B679&color=%230B8043&color=%230B8043" width="1280" height="720" frameborder="0" scrolling="no" class="calendar-content"></iframe> -->
+        </section>
 
             <!--  -->
             <section class="col">
@@ -249,70 +251,69 @@ include '../Inc/header.php';
                         </li>
                     </ul>
 
-                </section>
-                <!--Grid column-->
+                    </section>
+                    <!--Grid column-->
 
-                <!--Grid column-->
-                <section class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase mb-4"> Herramientas </h5>
+                    <!--Grid column-->
+                    <section class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase mb-4"> Herramientas </h5>
 
-                    <ul class="list-unstyled">
-                        <li class="mb-2">
-                            <a href="#HerramientaUno" class="text-white"><i class="fas fa-duotone fa-calendar pe-3"></i> Agenda </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#HerramientaDos" class="text-white"><i class="fas fa-clock pe-3"></i> Reloj Pomodoro </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="text-white"><i class="fas fa-flag pe-3"></i> Recordatorios </a>
-                        </li>
-                        <!-- <li class="mb-2">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <a href="#HerramientaUno" class="text-white"><i class="fas fa-duotone fa-calendar pe-3"></i> Agenda </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#HerramientaDos" class="text-white"><i class="fas fa-clock pe-3"></i> Reloj Pomodoro </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="text-white"><i class="fas fa-flag pe-3"></i> Recordatorios </a>
+                            </li>
+                            <!-- <li class="mb-2">
                             <a href="#HerramientaCuatro" class="text-white"><i class="fas fa-seedling pe-3"></i> Hazlo Tu Mismo </a>
                         </li> -->
-                    </ul>
+                        </ul>
+                    </section>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <section class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase mb-4"> Desarroladores </h5>
+
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <a href="https://github.com/JohnGolgota" target="_blank" class="text-white"><i class="fas fa-user pe-3"></i>John Steban</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="https://github.com/DuvanArwenLazar" target="_blank" class="text-white"><i class="fas fa-user pe-3"></i>Duvan Arwen Lazar </a>
+                            </li>
+                            <li class="mb-2">
+                                <!-- <a href="#!" class="text-white"><i class="fas fa-user pe-3"></i>Ivan</a> -->
+                            </li>
+                        </ul>
+                    </section>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <section class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase mb-4"> Contacto </h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                <p><i class="fas fa-envelope pe-2"></i>Correo@misena.edu.co</p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-map-marker-alt pe-2"></i> Complejo Norte - C.T.G.I </p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-phone pe-2 mb-0"></i> GitHub -> Proyecto-C-D </p>
+                            </li>
+                        </ul>
+                    </section>
+                    <!--Grid column-->
                 </section>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <section class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase mb-4"> Desarroladores </h5>
-
-                    <ul class="list-unstyled">
-                        <li class="mb-2">
-                            <a href="https://github.com/JohnGolgota" target="_blank" class="text-white"><i class="fas fa-user pe-3"></i>John Steban</a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="https://github.com/DuvanArwenLazar" target="_blank" class="text-white"><i class="fas fa-user pe-3"></i>Duvan Arwen Lazar </a>
-                        </li>
-                        <li class="mb-2">
-                            <!-- <a href="#!" class="text-white"><i class="fas fa-user pe-3"></i>Ivan</a> -->
-                        </li>
-                    </ul>
-                </section>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <section class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase mb-4"> Contacto </h5>
-
-                    <ul class="list-unstyled">
-                        <li>
-                            <p><i class="fas fa-envelope pe-2"></i>Correo@misena.edu.co</p>
-                        </li>
-                        <li>
-                            <p><i class="fas fa-map-marker-alt pe-2"></i> Complejo Norte - C.T.G.I </p>
-                        </li>
-                        <li>
-                            <p><i class="fas fa-phone pe-2 mb-0"></i> GitHub -> Proyecto-C-D </p>
-                        </li>
-                    </ul>
-                </section>
-                <!--Grid column-->
+                <!--Grid row-->
             </section>
-            <!--Grid row-->
-        </section>
-        <!-- Grid container -->
-
+            <!-- Grid container -->
         <!-- Copyright -->
         <section class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
             <a class="text-white" href="#"> Carpe Diem </a>
@@ -381,6 +382,44 @@ include '../Inc/header.php';
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="crossorigin="anonymous"></script>
 <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="crossorigin="anonymous"></script> -->
 <?php include '../Inc/footer-user.php'; ?>
-<script>
 
+<script type="text/javascript">
+  factualizardata
+  $(document).ready(function () {
+    $('#factualizardata').submit(function (er) {
+
+        console.log("que")
+        const postData = {
+            nombre_usr: $('#nombre_usr').val(),
+            correo_usr: $('#correo_usr').val(),
+            contrasena: $('#contrasena_usr').val(),
+        }
+
+        let url = 'UserController.php?action=actualizar';
+
+        $.post(url, postData, function (response) {
+            console.log("RESPUESTA -> ", response);
+            console.log($('#nombre_usr').val(), $('#correo_usr').val(), $('#contrasena_usr').val())
+        });
+
+        er.preventDefault();
+        $('#form-actualizar').trigger('reset');
+    });
+
+    // $.ajax({
+    //     url: 'UserController.php?action=actualizar',
+    //     type: 'GET', // GET es para recibir informacion, POST para enviar.
+    //     data: {
+    //         nombre_usr: $('#nombre_usr').val(),
+    //         correo_usr: $('#correo_usr').val(),
+    //         contrasena: $('#contrasena_usr').val(),
+    //     },
+
+    //     // Cuando reciba la respuesta se va a ejecutar cierta funcion:
+    //     success: function(response){
+    //         console.log("xd");
+    //         console.log(response);
+    //     }
+    // });
+});
 </script>

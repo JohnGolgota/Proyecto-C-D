@@ -1,20 +1,22 @@
-<?php 
-class User{
+<?php
+class User
+{
     protected $id_usr;
     protected $nombre_usr;
     protected $correo_usr;
     protected $contrasena_usr;
 
-    public function RegistrarUsuario(){
+    public function RegistrarUsuario()
+    {
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
         $sql = "CALL SetUser_usr(?,?,?)";
         $insert = $conexion->stm->prepare($sql);
 
         # Enviar la informacion de manera anonima.
-        $insert->bindParam(1,$this->nombre_usr);
-        $insert->bindParam(2,$this->correo_usr);
-        $insert->bindParam(3,$this->contrasena_usr);
+        $insert->bindParam(1, $this->nombre_usr);
+        $insert->bindParam(2, $this->correo_usr);
+        $insert->bindParam(3, $this->contrasena_usr);
 
         $_SESSION['nombre_usr'] = $this->nombre_usr;
         $_SESSION['correo_usr'] = $this->correo_usr;
@@ -31,10 +33,26 @@ class User{
         $result->execute();
         $usuario = $result->fetchAll(PDO::FETCH_OBJ);
         if ($usuario) {
-            foreach($usuario as $prueba){}
-            return $prueba->correo_usr;
+            return 0;
+        } else {
+            return 1;
         }
-        return;
+    }
+    // puto 2
+    public function ConsultarUsuario()
+    {
+        include_once '../Config/conexiondb.php';
+        $conexion = new Conexion();
+
+        $sql = "CALL GetDataName_usr('$this->nombre_usr')";
+        $usuario = $conexion->stm->prepare($sql);
+        $usuario->execute();
+        $usuarioObjeto = $usuario->fetchAll(PDO::FETCH_OBJ);
+        if ($usuarioObjeto) {
+            return $usuarioObjeto;
+        } else {
+            die("No se a encontrado el usuario en la base de datos");
+        }
     }
 
     public function ConsultarUsuario(){
@@ -53,7 +71,26 @@ class User{
         }
     }
 
-    public function EliminarUsuario(){
+    public function ConsultarUsuarioByEmail()
+    {
+        include_once '../Config/conexiondb.php';
+        $conexion = new Conexion();
+
+        $sql = "CALL GetDataCorreo_usr('$this->correo_usr')";
+
+        $usuario = $conexion->stm->prepare($sql);
+        $usuario->execute();
+        $usuarioObjeto = $usuario->fetchAll(PDO::FETCH_OBJ);
+        if ($usuarioObjeto) {
+            return $usuarioObjeto;
+        } else {
+            die("not found");
+            // die("No se a encontrado el usuario en la base de datos");
+        }
+    }
+
+    public function EliminarUsuario()
+    {
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
@@ -98,4 +135,3 @@ class User{
         $actualizacion->execute();
     }
 }
-?>

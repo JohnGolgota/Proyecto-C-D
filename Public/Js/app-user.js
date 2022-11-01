@@ -654,7 +654,59 @@ $(document).ready(function () {
 });
 
 
+    // ------------------------------------------------------------------------------------------------------------- //
 
+    $(document).on('click', '#nombre-task', function(e){
+        let element = $(this).next().next();
+        let id_rec = $(element).attr('taskId-del');
 
+        // console.log(element);
+        // console.log(id_rec);
 
+        $.post('TaskController.php?action=GetTask', {id_rec}, function(response){
+            let task = JSON.parse(response);
+            task.forEach(t => {
+                // console.log(t);
+                console.log(nombre_rec);
 
+                $('#taskId').val(t.id_rec);
+                $('#nombre_rec').val(t.Nombre_rec);
+                $('#notificacion_rec').val(t.Notificacion_rec);
+                $('#color_rec').val(t.Color_rec);
+                console.log(response);
+                edit = true;
+            });
+        });
+    });
+
+    // ------------------------------------------------------------------------------------------------------------- //
+
+    $(document).on('click', '.task-delete', function (){
+        swal({
+            title: "¿Estas Seguro?",
+            text: "Se borrara tu recordatorio, ¡no podras recuperarlo!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                let element = $(this)[0].parentElement;
+                let id_rec = $(element).attr('taskId-del');
+                $.post('TaskController.php?action=DeleteTask', {id_rec}, function(response){ /* console.log(response); */ });
+    
+                swal('¡Poof! Tu recordatorio ha sido eliminado', {
+                    icon: "success",
+                });
+    
+            } else {
+                swal("¡Vale!");
+            }
+        });
+    });
+
+    // ------------------------------------------------------------------------------------------------------------- //
+
+    // setInterval(fetchTasks, 250);
+    // fetchTasks();
+});
