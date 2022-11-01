@@ -5,8 +5,6 @@ class User
     protected $nombre_usr;
     protected $correo_usr;
     protected $contrasena_usr;
-    // protected $id_evn;
-    // protected $id_mpg;
 
     public function RegistrarUsuario()
     {
@@ -24,11 +22,9 @@ class User
         $_SESSION['correo_usr'] = $this->correo_usr;
 
         $insert->execute();
-        // header("location: UserController.php?action=login");
     }
-    // Puto
-    public function ComprobarCorreo()
-    {
+
+    public function ComprobarCorreo(){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
@@ -59,19 +55,37 @@ class User
         }
     }
 
-    public function ConsultarUsuarioByEmail()
-    {
+    public function ConsultarUsuario(){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
-
-        $sql = "CALL GetDataCorreo_usr('$this->correo_usr')";
+        
+        $sql = "CALL GetDataName_usr('$this->nombre_usr')";
         $usuario = $conexion->stm->prepare($sql);
         $usuario->execute();
         $usuarioObjeto = $usuario->fetchAll(PDO::FETCH_OBJ);
         if ($usuarioObjeto) {
             return $usuarioObjeto;
         } else {
-            die("No se a encontrado el usuario en la base de datos");
+            die("not found");
+            // die("No se a encontrado el usuario en la base de datos");
+        }
+    }
+
+    public function ConsultarUsuarioByEmail()
+    {
+        include_once '../Config/conexiondb.php';
+        $conexion = new Conexion();
+
+        $sql = "CALL GetDataCorreo_usr('$this->correo_usr')";
+
+        $usuario = $conexion->stm->prepare($sql);
+        $usuario->execute();
+        $usuarioObjeto = $usuario->fetchAll(PDO::FETCH_OBJ);
+        if ($usuarioObjeto) {
+            return $usuarioObjeto;
+        } else {
+            die("not found");
+            // die("No se a encontrado el usuario en la base de datos");
         }
     }
 
@@ -86,8 +100,7 @@ class User
         $insert->execute();
     }
 
-    public function GetUserById()
-    {
+    public function GetUserById(){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 
@@ -100,24 +113,19 @@ class User
         return $busquedaObjeto;
     }
 
-    public function updateNombreUsuario()
-    {
+    public function updateNombreUsuario(){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
-
+        
         $sql = "CALL Update_usr('$this->nombre_usr','$this->correo_usr','$this->id_usr')";
         $insert = $conexion->stm->prepare($sql);
-        // Para hacer las siguientes lineas deberia haber un try catch
-        // En todo deberia haber un try catch
-        // session_start();
         $_SESSION['nombre_usr'] = $this->nombre_usr;
         $_SESSION['correo_usr'] = $this->correo_usr;
-
+        
         $insert->execute();
     }
-
-    public function updateContrasena()
-    {
+    
+    public function updateContrasena(){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
 

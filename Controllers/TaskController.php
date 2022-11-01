@@ -16,6 +16,7 @@
             $this->id_usr = $_SESSION['id_usr'];
             $objeto = $this->GetTasksForId();
             echo $objeto;
+            die();
         }
 
         public function prepareDeleteTask($id){
@@ -29,7 +30,7 @@
             echo $objeto;
         }
 
-        public function prepareUpdateTask($id, $nombre, $color, $notificacion){
+        public function prepareUpdateTask($id, $nombre, $color, $notificacion,){
             $this->id_rec = $id;
             $this->nombre_rec = $nombre;
             $this->notificacion_rec = $notificacion;
@@ -64,7 +65,6 @@
 
     if (isset($_GET['action']) && $_GET['action'] == 'UpdateTask') {
         $taskcontroller = new TaskController();
-    
         $taskcontroller->prepareUpdateTask($_POST['id_rec'], $_POST['nombre_rec'], $_POST['color_rec'], $_POST['notificacion_rec']);
         // echo " ESTA ES LA NOTIFICACION -> ". $_POST['notificacion_rec'];
     }

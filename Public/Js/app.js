@@ -87,23 +87,6 @@ buttonDarkMode.addEventListener('click', function () {
 
 const hellno = $('#usuarioRCC').first().keyup(function () {
 
-    let MensajeConfirmarContrasena
-
-    let pass = $('#usuarioRC').val()
-    let passcc = $('#usuarioRCC').val()
-
-    if (pass != passcc) {
-        MensajeConfirmarContrasena.style.color = "red"
-        MensajeConfirmarContrasena.textContent = "MAL"
-    }
-    if (pass == passcc) {
-        MensajeConfirmarContrasena.style.color = "green"
-        MensajeConfirmarContrasena.textContent = "BIEN"
-    }
-})
-
-const hellno = $('#usuarioRCC').first().keyup(function () {
-
     let mensaje = $('#MensajeConfirmarContrasena').val()
 
     let pass = $('#usuarioRC').val()

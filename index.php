@@ -163,6 +163,21 @@
                     <p class="">¡Agrega pequeños recordatorios y que no se te olvide nada!</p>
                 </div>
             </article>
+
+            <!-- HerramientaCuatro -->
+            <!-- <article class="row align-items-center my-2 herramienta herramienta-cuatro" id="HerramientaCuatro"> -->
+
+            <!-- imagen. HerramientaCuatro -->
+            <!-- <div class="col order-2">
+                    <img class="herramienta-img" src="./Public/Img/herramientas/doyouself-min.png" alt="HerramientaCuatro">
+                </div> -->
+
+            <!-- descripcion. HerramientaCuatro -->
+            <!-- <div class="col order-1">
+                    <h3>Do it Yourself</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, quisquam deleniti. Dolore distinctio veritatis quos?</p>
+                </div> -->
+            </article>
         </section>
     </main>
 
@@ -288,7 +303,7 @@
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-inicio">
-                    <form action="./Controllers/UserController.php" method="POST" class="" novalidate>
+                    <form action="" class="" id="form-inicio-sesion">
                         <input type="hidden" name="action" value="session">
                         <input type="text" name="UsuarioIS" id="usuarioIS" placeholder="Nombre De Usuario" class="form-control shadow-none" required>
                         <input type="password" name="ContrasenaIS" id="contrasenaIS" placeholder="Contraseña" class="form-control shadow-none" required>
@@ -358,37 +373,30 @@
     <script>
         function load() {
             let containera = document.getElementById('container-load');
-            console.log(containera);
+            // console.log(containera);
             containera.style.opacity = '0';
             containera.style.display = 'none';
         }
     </script>
 
-    <script src="./Public/Js/iconrevel.min.js"></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> -->
-
-    <!-- Tampoco se -->
-    <!-- <script src="./Public/Js/app.js"></script> -->
-
-    <!-- Sabra dios -->
-    <script src="./Public/Js/main.js"></script>
-
+    <script src="./Public/Js/iconrevel.min.js"></script>    
+    
     <!-- Jquery & Ajax -->
     <!-- <script src="./Public/Js/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
-    <!-- Sweet -->
-    <script src="./Public/Js/sweetalert2@11.js"></script>
-    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
-
-    <!-- Scripts Temporales:  -->
     <!-- Tampoco se -->
     <script src="./Public/Js/app.js"></script>
 
-</body>
-
-</html>
-<!-- Script para porque los .js no se actualizan -->
+     <!-- Sweet -->
+    <!-- <script src="./Public/Js/sweetalert2@11.js"></script> -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- Scripts Temporales:  -->
+    <!-- <script src="./Public/Js/main.js"></script> -->
+    <!-- Scripts Temporales:  -->
+    
+    <!-- Script para porque los .js no se actualizan -->
 <script>
     const hell = $('#usuarioRCC').first().keyup(function(){
         // MensajeConfirmarContrasena
@@ -407,7 +415,101 @@
             mensaje.textContent = "¡Nitido!"
         }
     })
+</script>
 
+</body>
+
+</html>
+
+    <script>
+        $(document).ready(function() {
+            // Reseteamos el formulario.
+            $('#form-inicio-sesion').trigger('reset');
+            $('#form-inicio-sesion').submit(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    data: {
+                        usuariois: $('#usuarioIS').val(),
+                        contrasenais: $('#contrasenaIS').val()
+                    },
+                    url: './Controllers/UserController.php?action=ajax-session',
+                    type: 'post',
+                    success: function(response) {
+                        // CAMPOS VACIOS (NOVALIDATE)
+                        if ($('#usuarioIS').val() == '' || $('#contrasenaIS').val() == '') {
+                            let timerInterval
+                            Swal.fire({
+                                title: 'Los campos NO Pueden estar vacios.',
+                                timer: 2000,
+                                icon: 'error',
+                                timerProgressBar: false,
+                                didOpen: () => {
+                                // Swal.showLoading()
+                                    const b = Swal.getHtmlContainer().querySelector('b')
+                                    timerInterval = setInterval(() => {
+                                        // b.textContent = Swal.getTimerLeft()
+                                    }, 100)                                
+                                    },
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                                });
+                        }
+                        
+                        // USUARIO NO EXISTE (NOT FOUND)
+                        if (response == "not found") {
+                            let timerInterval
+                            Swal.fire({
+                                title: 'El usuario NO Existe en la base de datos.',                                
+                                timer: 2000,
+                                icon: 'error',
+                                timerProgressBar: false,
+                                didOpen: () => {
+                                    const b = Swal.getHtmlContainer().querySelector('b')
+                                                                        timerInterval = setInterval(() => {
+                                    }, 100)
+                                },
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                                                            });
+                        }
+
+                        // CONTRASEÑA INCORRECTA (NOT PASS)
+                        if (response == "not pass") {
+                            let timerInterval
+                            Swal.fire({
+                                title: 'Contraseña Incorrecta',
+                                timer: 2000,
+                                icon: 'error',
+                                timerProgressBar: false,
+                                didOpen: () => {
+                                    const b = Swal.getHtmlContainer().querySelector('b')
+                                                                        timerInterval = setInterval(() => {
+                                    }, 100)
+                                                                    willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                                                            });
+                        }
+
+                        if(response == "success"){
+                            window.location.assign('./Controllers/UserController.php?action=inicio');
+                        }
+                        
+                        // jQuery.ajax().abort()
+                        // Imprimir respuesta del archivo
+                        // location.href(response);
+                        
+                        // console.log("RESPUESTA -> ", response); 
+                    },
+                    error: function(error) {
+                        console.log("ERROR ->", error); // Imprimir respuesta de error
+                    }
+                });
+            });
+        });
+    </script>
 
     $(document).ready(function() {
         $('#formulario-registro').trigger('reset')
@@ -436,14 +538,14 @@
                                 timer: 2000,
                                 icon: 'error',
                                 timerProgressBar: false,
-                                didOpen: () => {
-                                    const b = Swal.getHtmlContainer().querySelector('b')
+                                didOpen: () => {                                    
+                                const b = Swal.getHtmlContainer().querySelector('b')
                                     timerInterval = setInterval(() => {}, 100)
-                                },
+                                    },
                                 willClose: () => {
                                     clearInterval(timerInterval)
                                 }
-                            })
+                                })
                             break;
                             // Correo
                         case "Correo no valido.":
@@ -459,7 +561,7 @@
                                 willClose: () => {
                                     clearInterval(timerInterval)
                                 }
-                            })
+                                                            })
                             break;
                             // Correo en uso
                         case "Correo en uso.":
@@ -470,12 +572,12 @@
                                 timerProgressBar: false,
                                 didOpen: () => {
                                     const b = Swal.getHtmlContainer().querySelector('b')
-                                    timerInterval = setInterval(() => {}, 100)
+                                                                        timerInterval = setInterval(() => {}, 100)
                                 },
                                 willClose: () => {
                                     clearInterval(timerInterval)
                                 }
-                            })
+                                                            })
                             break;
                             // error contraseña 1
                         case "Las contrasenas no coinciden.":

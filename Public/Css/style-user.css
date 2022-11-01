@@ -125,19 +125,40 @@
 
 
 /* ---------------------------- Subcategoria: Calendario ---------------------------------- */
-.calendar-box {
-    text-align: center;
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    /* background-color: var(--color2); */
+.calendar-box-user {
+    background-color: #f9f9f9;
+    padding: 12px;
+    margin-bottom: 0;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-.calendar-content {
-    width: 100%;
-    height: 100%;
-    border: none;
-    padding: 7px;
+
+
+/* ---------------------------- Subcategoria: Tasks ---------------------------------- */
+.task {
+    background-color: #1363DF;
+    /* border-radius: 24px; */
+    padding: 12px 0 12px 10px;
+    margin: 0 0 4px 0;
+}
+
+h5.element-task {
+    color: #f9f9f9;
+    display: inline-block;
+}
+
+h5.notifiacion-task {
+    padding-left: 5px;
+}
+
+div.action-tasks {
+    margin-left: 30px;
+}
+
+.texto-recordatorio {
+    display: inline-block;
+    /* color: var(--color2); */
 }
 
 

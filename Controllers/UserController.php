@@ -1,9 +1,8 @@
 <?php
-// session_start();
+session_start();
 include_once '../Models/User.php';
 
-class UserController extends User
-{
+class UserController extends User{
     public function VistaIndex()
     {
         include '../Views/User/index.html';
@@ -85,42 +84,50 @@ class UserController extends User
         // return;
     }
 
-    public function verificarUpdate($nombre, $email, $contrasena)
-    {
-        if (empty($nombre) || empty($email) || empty($contrasena)) {
-            die("Los campos NO pueden estar vacios");
+    public function verificarUpdate($nombre, $email, $contrasena){
+        if(empty($contrasena)){
+            echo "pass empty";
+            die();
         }
 
-        // COMPROBACION DE CORREO ELECTRONICO
+        if(empty($email)){
+            $email = $_SESSION['correo_usr'];
+        }
+
+        if(empty($nombre)){
+            $nombre = $_SESSION['nombre_usr'];
+        }
         $this->correo_usr = $email;
+        // die($this->correo_usr);
         $comprobacion = $this->ComprobarCorreo();
-        if ($comprobacion != "") {
-            die("Ya existe una cuenta con este correo/nombre de usuario.");
+        if ($comprobacion == "" || $comprobacion == $this->correo_usr) {
+            $this->nombre_usr = $_SESSION['nombre_usr'];
+            $datosUsuario = $this->ConsultarUsuario();
+
+            # Recorremos el objeto que obtenemos en el model.
+            foreach ($datosUsuario as $dU) {}
+            if (!password_verify($contrasena,$dU->contrasena_usr)) {
+                echo "pass error";
+                die();
+    
+            }
+            
+            if (strlen($nombre) < 4) {
+                echo "length";
+                die();
+            }   
+
+            $this->PrepareUpdateUserById($nombre, $this->correo_usr, $_SESSION['id_usr']);
+        } else {
+            echo "exist";
+            die();
         }
 
-        $this->nombre_usr = $_SESSION['nombre_usr'];
-        $datosUsuario = $this->ConsultarUsuario();
-        # Recorremos el objeto que obtenemos en el model.
-        foreach ($datosUsuario as $dU) {
-        }
-        if (!password_verify($contrasena, $dU->contrasena_usr)) {
-            die("Contraseña Incorrecta");
-        }
-
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            die("Introduzca una dirección de correo electronico valido");
-        }
-
-        if (strlen($nombre) < 6) {
-            die('El nombre de usuario debe tener al menos 6 caracteres.');
-        }
-
-        // NO se si va, pero lo pongo.
         return;
     }
 
     # Alistar informacion para registrarse
-    function AlistarInformacion($email, $contrasena, $cContrasena)
+    public function AlistarInformacion($email,$contrasena,$cContrasena)
     {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             session_destroy();
@@ -251,7 +258,7 @@ class UserController extends User
         $objetoPrueba = $this->GetUserById();
         return $objetoPrueba;
     }
-    public function PrepareUpdateUserById($nombre_usr, $correo_usr, $id_usr)
+    public function PrepareUpdateUserById($nombre_usr,$correo_usr,$id_usr)
     {
         $this->nombre_usr = $nombre_usr;
         $this->correo_usr = $correo_usr;
@@ -289,8 +296,9 @@ if (isset($_POST['action']) && $_POST['action'] == 'session' && !empty($_POST['U
 
     return;
 }
+
 //  inicio de session fallido
-if (isset($_POST['action']) && $_POST['action'] == 'session' && empty($_POST['UsuarioIS'] || $_POST['ContrasenaIS'])) {
+if (isset($_POST['action']) && $_POST['action'] == 'session' && empty($_POST['UsuarioIS'] || $_POST['ContraseaIS'])) {
     echo "Campos no validos";
     return;
 }
@@ -302,7 +310,20 @@ if (isset($_POST['action']) && $_POST['action'] == 'session' && empty($_POST['Us
 // }
 if (isset($_GET['action']) && $_GET['action'] == 'inicio-prueba') {
 
-    echo "hello madafaka $_POST[usuarioRE]";
+
+// Ajax verificacion [true]
+if(isset($_GET['action']) && $_GET['action'] == 'ajax-session' && !empty($_POST['usuariois']) && !empty($_POST['contrasenais'])){
+    $usercontroler = new UserController();
+    $usercontroler->VerificaInicio($_POST['usuariois'],$_POST['contrasenais']);
+    echo "success";
+    // $usercontroler->VistaUsuario(); // esta es la redireccion.
+    return;
+} 
+
+// Ajax verificacion [success]
+if (isset($_GET['action']) && $_GET['action'] == 'inicio') {
+    $usercontroler = new UserController();
+    $usercontroler->VistaUsuario();
     return;
 }
 
@@ -316,14 +337,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 # Confirmar Eliminar Cuenta
 if (isset($_GET['action']) && $_GET['action'] == 'confirm_delete') {
     $usercontroler = new UserController();
-
-    // session_start();
-    // $_SESSION['id_usr'];
-
-    # Accedemos a la funcion de "Eliminar Usuario".
-    // $usercontroler->EliminarUsuario();
     $usercontroler->PrepararIdDelete($_SESSION['id_usr']);
-    $usercontroler->VistaIndex();
+    $usercontroler->RedirigirNoUsuario();
 
     return;
 }
@@ -341,16 +356,10 @@ if (isset($_GET['action']) && $_GET['action'] == 'update') {
     return;
 }
 
-if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
-    // $usercontroler = new UserController();
-    // // session_start();
-    // $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
-    // // $usercontroler->updateNombreUsuario($_POST['nombre_usr'], $_POST['correo_usr']);
-    // $usercontroler->PrepareUpdateUserById($_POST['nombre_usr'], $_POST['correo_usr'], $_SESSION['id_usr']);
-    // $usercontroler->VistaUsuario();
-
-    // $usercontroler->VistaUpdate();
-    die('Helo');
+if (isset($_GET['action']) && $_GET['action'] == 'actualizar') {
+    $usercontroler = new UserController();
+    $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
+    echo "true";
     return;
 }
 
@@ -383,8 +392,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'ajax-registro') {
     $usercontroler = new UserController();
     $usercontroler->AlistarInformacion($_POST['usuarioRE'], $_POST['usuarioRC'], $_POST['usuarioRCC']);
     echo "./Controllers/UserController.php?action=inicio&user=$_POST[usuarioRE]";
-
-
     // echo "success";
     return;
 }
@@ -404,14 +411,12 @@ if (isset($_GET['action']) && $_GET['action'] == 'ajax-session' && !empty($_POST
     // $usercontroler->VistaUsuario(); // esta es la redireccion.
     return;
 }
-
 // Action vista predefinida
-// if (isset($_GET) || !isset($_GET)) {
-//     $usercontroler = new UserController();
-//     session_destroy();
-//     $usercontroler->RedirigirNoUsuario();
-//     return;
-// }
-
+if(isset($_GET) || !isset($_GET) && $_GET['action'] != "actualizar"){
+    $usercontroler = new UserController();
+    session_destroy();
+    $usercontroler->RedirigirNoUsuario();
+    return;
+}
 ?>
 </body>

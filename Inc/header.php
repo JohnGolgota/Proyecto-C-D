@@ -11,12 +11,15 @@
     
     <!-- Bootstrap 5 -->
     <link rel="stylesheet" href="../Public/Css/bootstrap.min.css">
-    
+
     <!-- hojas de estilo personalizadas -->
     <link rel="stylesheet" href="../Public/Css/style.css">
     <link rel="stylesheet" href="../Public/Css/style-user.css">
-
+    
     <link rel="stylesheet" href="../Public/Css/push-out.css">
+    
+    <!-- Full Calendar -->
+    <link rel="stylesheet" href="../Public/Css/main.min.css">
     
     <!-- librerias importadas -->
     <!-- ScrollReveal -->
@@ -33,7 +36,6 @@
 
     <script>
         function load(){
-            // console.log("puta");
             let containera = document.getElementById('container-load');
             // console.log(containera);
             containera.style.opacity = '0';
