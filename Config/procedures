@@ -10,8 +10,6 @@ CREATE PROCEDURE `GetDataName_usr` (IN `pnombre_usr` VARCHAR(30))   BEGIN
     SELECT * FROM tbl_usuario WHERE nombre_usr = pnombre_usr;
 END$$
 CREATE PROCEDURE `Delete_usr` (IN `pid_usr` INT(11))   BEGIN
-    DELETE FROM tbl_eventos WHERE id_usr = pid_usr;
-    DELETE FROM tbl_Recordatorios WHERE id_usr = pid_usr;
     DELETE FROM tbl_usuario WHERE id_usr = pid_usr;
 END$$
 CREATE PROCEDURE `GetDataId_usr` (IN `pid_usr` INT(11))   BEGIN

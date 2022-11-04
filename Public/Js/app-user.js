@@ -1,13 +1,4 @@
 // ----------------------------------- MODO OSCURO ----------------------------------- //
-const buttonDarkModeUser = document.getElementById("buttonDarkModeUser");
-buttonDarkModeUser.addEventListener('click', function () {
-    document.querySelector(".icono-user").classList.toggle('icono-user-dark-mode');
-    document.querySelector(".nombre-user").classList.toggle('nombre-user-dark-mode');
-    document.querySelector("body").classList.toggle('dark-mode');
-    document.querySelector(".cabeza").classList.toggle('cabeza-dark-mode');
-    document.querySelectorAll(".herramienta")[0].classList.toggle('herramienta-dark-mode');
-    document.querySelector(".footer-cd-f").classList.toggle('footer-cd-f-dark-mode');
-});
 
 
 
@@ -24,46 +15,28 @@ function configDesplegable() {
 
 
 // ----------------------------------- CONTENIDO AJAX y Jquery. ----------------------------------- //
-$(document).ready(function() {
-let edit = false;
-// Seleccionamos el formulario. Capturaremos su evento 'submit', que manejaremos con una funcion. 
-// 'e' es la informacion del evento, que la necesitamos para modificar el comportamiento por defecto del form.
-fetchTasks();
-$('#task-form').submit(function (e) {
-    // Vamos a crear un objeto que se encarge de almacenar los valores de los inputs. Que es lo que enviaremos al servidor.
-    const postData = {
-        nombre_rec: $('#nombre_rec').val(),
-        notificacion_rec: $('#notificacion_rec').val(),
-        color_rec: $('#color_rec').val(),
-        id_rec: $('#taskId').val()
-    }
+$(document).ready(function () {
+    fetchTasks();
+    let edit = false;
+    // Seleccionamos el formulario. Capturaremos su evento 'submit', que manejaremos con una funcion. 
+    // 'e' es la informacion del evento, que la necesitamos para modificar el comportamiento por defecto del form.
+    $('#task-form').submit(function (e) {
+        // Vamos a crear un objeto que se encarge de almacenar los valores de los inputs. Que es lo que enviaremos al servidor.
+        const postData = {
+            nombre_rec: $('#nombre_rec').val(),
+            notificacion_rec: $('#notificacion_rec').val(),
+            color_rec: $('#color_rec').val(),
+            id_rec: $('#taskId').val()
+        }
 
-    let url = edit === false ? 'TaskController.php?action=AddTask' : 'TaskController.php?action=UpdateTask';
+        let url = edit === false ? 'TaskController.php?action=AddTask' : 'TaskController.php?action=UpdateTask';
 
-    let nott = new Date($('#notificacion_rec').val());
-    let noww = new Date();
+        let nott = new Date($('#notificacion_rec').val());
+        let noww = new Date();
 
-    noww_unix = noww.getTime();
-    nott_unix = nott.getTime();
+        noww_unix = noww.getTime();
+        nott_unix = nott.getTime();
 
-    if($('#nombre_rec').val() == "" || $('#notificacion_rec').val() == "" ||  $('#color_rec').val() == ""){
-        Swal.fire({
-            title: '¡Los campos no pueden estar vacios!',
-            timer: 2000,
-            icon: 'error',
-            timerProgressBar: false,
-            didOpen: () => {
-                // Swal.showLoading()
-                const b = Swal.getHtmlContainer().querySelector('b')
-                timerInterval = setInterval(() => {
-                    // b.textContent = Swal.getTimerLeft()
-                }, 100)
-            },
-            willClose: () => {
-                clearInterval(timerInterval)
-            }
-        });
-    } else {
         if (nott_unix < noww_unix) {
             Swal.fire({
                 icon: 'error',
@@ -76,7 +49,7 @@ $('#task-form').submit(function (e) {
             $.post(url, postData, function (response) {
                 console.log(response);
             })
-    
+
             if (edit == true) {
                 let timerInterval
                 Swal.fire({
@@ -114,42 +87,39 @@ $('#task-form').submit(function (e) {
                     }
                 });
             }
-    }
+        }
 
-    
-    }
+        // Reseteamos el formulario.
+        $('#task-form').trigger('reset');
+        fetchTasks();
 
-    // Reseteamos el formulario.
-    $('#task-form').trigger('reset');
-    fetchTasks();
+        // Cancelamos el comportamiento por defecto del form.
+        e.preventDefault();
+        edit = false;
+    });
 
-    // Cancelamos el comportamiento por defecto del form.
-    e.preventDefault();
-    edit = false;
-});
+    // ------------------------------------------------------------------------------------------------------------- //
 
-// ------------------------------------------------------------------------------------------------------------- //
+    function fetchTasks() {
+        // Pedimos informacion para mostrarla en lista. Como no se especifica el momento (como en los de arriba), se ejecuta siempre.
+        $.ajax({
+            url: 'TaskController.php?action=GetTasks',
+            type: 'GET', // GET es para recibir informacion, POST para enviar.
+            data: { 'hola': 'hola' },
 
-function fetchTasks() {
-    // Pedimos informacion para mostrarla en lista. Como no se especifica el momento (como en los de arriba), se ejecuta siempre.
-    $.ajax({
-        url: 'TaskController.php?action=GetTasks',
-        type: 'GET', // GET es para recibir informacion, POST para enviar.
-        data: { 'hola': 'hola' },
+            // Cuando reciba la respuesta se va a ejecutar cierta funcion:
+            success: function (response) {
+                // console.log("ESTA ES LA RESPUESTA -> ", response);
 
-        // Cuando reciba la respuesta se va a ejecutar cierta funcion:
-        success: function (response) {
-            // console.log("ESTA ES LA RESPUESTA -> ", response);
+                let tasks = JSON.parse(response);
+                let template = '';
+                tasks.forEach(task => {
 
-            let tasks = JSON.parse(response);
-            let template = '';
-            tasks.forEach(task => {
+                    // console.log("TASK -> ", task.Nombre_rec);
 
-                // console.log("TASK -> ", task.Nombre_rec);
-
-                // Llenamos la Plantilla.
-                template +=
-                    `
+                    // Llenamos la Plantilla.
+                    template +=
+                        `
                             <div class="tasks">
                                 <div class="task my-auto d-flex mb-1" style="background-color:${task.Color_rec};">
                                     <h5 class="element-task nombre-task my-auto" id="nombre-task">${task.Nombre_rec} | </h5>
@@ -160,120 +130,119 @@ function fetchTasks() {
                                 </div>
                             </div>
                         `
-            });
+                });
 
-            // Pintamos la plantilla en el elemento seleccionado.
-            $('#tasks').html(template);
-        }
-    });
-}
-
-// ----------------------------------------------- PREPARAR EL ACTUALIZAR ------------------------------------------------------- //
-
-$(document).on('click', '#nombre-task', function (e) {
-    let element = $(this).next().next();
-    let id_rec = $(element).attr('taskId-del');
-
-    // console.log(element);
-    // console.log(id_rec);
-
-    $.post('TaskController.php?action=GetTask', { id_rec }, function (response) {
-        console.log(response);
-        let task = JSON.parse(response);
-        task.forEach(t => {
-            // console.log(t);
-            // console.log(nombre_rec);
-
-            $('#taskId').val(t.id_rec);
-            $('#nombre_rec').val(t.Nombre_rec);
-            $('#notificacion_rec').val(t.Notificacion_rec);
-            $('#color_rec').val(t.Color_rec);
-            // console.log(response);
-            edit = true;
+                // Pintamos la plantilla en el elemento seleccionado.
+                $('#tasks').html(template);
+            }
         });
-    });
+    }
 
-    fetchTasks();
-});
+    // ----------------------------------------------- PREPARAR EL ACTUALIZAR ------------------------------------------------------- //
 
-// ------------------------------------------------------------------------------------------------------------- //
+    $(document).on('click', '#nombre-task', function (e) {
+        let element = $(this).next().next();
+        let id_rec = $(element).attr('taskId-del');
 
-$(document).on('click', '.task-delete-user', function () {
-    Swal.fire({
-        title: '¿Estas Seguro?',
-        text: "Se borrara tu recordatorio ¡Y no podras recuperarlo! D:",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#1363DF',
-        cancelButtonColor: '#47B5FF',
-        confirmButtonText: '¡Sé lo que hago!',
-        cancelButtonText: 'Cancelar',
-    }).then((result) => {
-        if (result.isConfirmed) {
-            let element = $(this)[0].parentElement;
-            let id_rec = $(element).attr('taskId-del');
-            $.post('TaskController.php?action=DeleteTask', { id_rec }, function (response) { /* console.log(response); */ });
+        // console.log(element);
+        // console.log(id_rec);
 
-            Swal.fire(
-                '¡Poof!',
-                'Tu recordatorio Ha Sido Eliminado',
-                'success'
-            )
-        }
+        $.post('TaskController.php?action=GetTask', { id_rec }, function (response) {
+            console.log(response);
+            let task = JSON.parse(response);
+            task.forEach(t => {
+                // console.log(t);
+                // console.log(nombre_rec);
+
+                $('#taskId').val(t.id_rec);
+                $('#nombre_rec').val(t.Nombre_rec);
+                $('#notificacion_rec').val(t.Notificacion_rec);
+                $('#color_rec').val(t.Color_rec);
+                // console.log(response);
+                edit = true;
+            });
+        });
 
         fetchTasks();
-    })
-});
-
-// ------------------------------------------------------------------------------------------------------------- //
-
-// setInterval(fetchTasks, 250);
-fetchTasks();
-
-
-// ------------------------------------------------------------------------------------------------------------- //
-// NOTIFICACIONES // 
-// ------------------------------------------------------------------------------------------------------------- //
-function notTasks() {
-    // console.log("Me he ejecutaado");
-    $.ajax({
-        url: 'TaskController.php?action=GetTasks',
-        type: 'GET',
-        success: function (response) {
-            console.log("RESPUESTA HIJUEPUTA ", response);
-            let tasks = JSON.parse(response);
-
-            tasks.forEach(task => {
-                let not = new Date(task.Notificacion_rec);
-                let now = new Date();
-
-                now_unix = now.getTime(); // 1667149980000
-                not_unix = not.getTime(); // 1667149980000
-
-                if (now_unix >= not_unix) {
-                    const not_mp3 = new Audio('../Public/Snd/not.mp3');
-                    not_mp3.play();
-
-                    Swal.fire({
-                        icon: 'info',
-                        width: 700,
-                        title: '¡Es hora de <p class="texto-recordatorio" style="color:' + task.Color_rec + ';">' + task.Nombre_rec + '</p>!',
-                        text: 'El recordatorio ha sido archivado ¡Puedes ver todos los recordatorios archivados desde el menu principal!',
-                        confirmButtonText: '¡Vale!'
-                    })
-
-                    let id_rec = task.id_rec;
-                    $.post('TaskController.php?action=DeleteTask', { id_rec }, function (response) { });
-
-                    fetchTasks();
-                }
-            }
-            )
-        }
     });
-}
 
-setInterval(notTasks, 1000);
+    // ------------------------------------------------------------------------------------------------------------- //
+
+    $(document).on('click', '.task-delete-user', function () {
+        Swal.fire({
+            title: '¿Estas Seguro?',
+            text: "Se borrara tu recordatorio ¡Y no podras recuperarlo! D:",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#1363DF',
+            cancelButtonColor: '#47B5FF',
+            confirmButtonText: '¡Sé lo que hago!',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let element = $(this)[0].parentElement;
+                let id_rec = $(element).attr('taskId-del');
+                $.post('TaskController.php?action=DeleteTask', { id_rec }, function (response) { /* console.log(response); */ });
+
+                Swal.fire(
+                    '¡Poof!',
+                    'Tu recordatorio Ha Sido Eliminado',
+                    'success'
+                )
+            }
+
+            fetchTasks();
+        })
+    });
+
+    // ------------------------------------------------------------------------------------------------------------- //
+
+    // setInterval(fetchTasks, 250);
+    fetchTasks();
+
+
+    // ------------------------------------------------------------------------------------------------------------- //
+    // NOTIFICACIONES // 
+    // ------------------------------------------------------------------------------------------------------------- //
+    function notTasks() {
+        // console.log("Me he ejecutaado");
+        $.ajax({
+            url: 'TaskController.php?action=GetTasks',
+            type: 'GET',
+            success: function (response) {
+                let tasks = JSON.parse(response);
+
+                tasks.forEach(task => {
+                    let not = new Date(task.Notificacion_rec);
+                    let now = new Date();
+
+                    now_unix = now.getTime(); // 1667149980000
+                    not_unix = not.getTime(); // 1667149980000
+
+                    if (now_unix >= not_unix) {
+                        const not_mp3 = new Audio('../Public/Snd/not.mp3');
+                        not_mp3.play();
+
+                        Swal.fire({
+                            icon: 'info',
+                            width: 700,
+                            title: '¡Es hora de <p class="texto-recordatorio" style="color:' + task.Color_rec + ';">' + task.Nombre_rec + '</p>!',
+                            text: 'El recordatorio ha sido archivado ¡Puedes ver todos los recordatorios archivados desde el menu principal!',
+                            confirmButtonText: '¡Vale!'
+                        })
+
+                        let id_rec = task.id_rec;
+                        $.post('TaskController.php?action=DeleteTask', { id_rec }, function (response) { });
+
+                        fetchTasks();
+                    }
+                }
+                )
+            }
+        });
+    }
+
+    setInterval(notTasks, 1000);
 });
 
 
@@ -542,171 +511,7 @@ document.addEventListener('keydown', (event) => {
     }
 }, false);
 
-// ------------------------------------------------------------------------------------------------------------- //
-// ACTUALIZAR USUARIO // 
-// ------------------------------------------------------------------------------------------------------------- //
-$(document).ready(function () {
-    $('#form-actualizar').submit(function (er) {
-
-        console.log("que")
-        const postData = {
-            nombre_usr: $('#nombre_usr').val(),
-            correo_usr: $('#correo_usr').val(),
-            contrasena_usr: $('#contrasena_usr').val(),
-        }
-
-        let url = 'UserController.php?action=actualizar';
-
-        $.post(url, postData, function (response) {
-            console.log("RESPUESTA -> ", response);
-            console.log("Formularios de M*r",$('#nombre_usr').val(), $('#correo_usr').val(), $('#contrasena_usr').val())
-            switch (response) {
-                case "pass empty":
-                    Swal.fire({
-                        icon: 'error',
-                        title: '¡Nao Nao!',
-                        text: '¡La contraseña NO puede estar vacia!',
-                        confirmButtonText: '¡Vale!'
-                    })
-                    break;
-                case "exist":
-                    Swal.fire({
-                        icon: 'error',
-                        title: '¡Nao Nao!',
-                        text: 'Ese correo electronico ya existe',
-                        confirmButtonText: '¡Vale!'
-                    })
-                    break;
-                case "exist":
-                    Swal.fire({
-                        icon: 'error',
-                        title: '¡Nao Nao!',
-                        text: 'Ese correo electronico ya existe',
-                        confirmButtonText: '¡Vale!'
-                    })
-                    break;
-
-                case "pass error":
-                    Swal.fire({
-                        icon: 'error',
-                        title: '¡Nao Nao!',
-                        text: '¡Contraseña Incorrecta!',
-                        confirmButtonText: '¡Vale!'
-                    })
-                    break;
-
-                case "length":
-                    Swal.fire({
-                        icon: 'error',
-                        title: '¡Nao Nao!',
-                        text: '¡El nombre de usuario debe tener al menos 4 caracteres y maximo 10!',
-                        confirmButtonText: '¡Vale!'
-                    })
-                    break;
-                    
-                case "true":
-                    Swal.fire({
-                        icon: 'success',
-                        title: '¡Genial!',
-                        text: '¡Los datos han sido actualizados correctamente!',
-                        confirmButtonText: '¡Vale!'
-                    })
-
-                    if(!$('#nombre_usr').val() == ""){
-                        $('#nombre_readonly').val($('#nombre_usr').val());
-                    }
-
-                    if(!$('#correo_usr').val() == ""){
-                        // break;
-                        $('#correo_readonly').val($('#correo_usr').val());
-                    }
-
-                    setTimeout(function(){
-                        window.location.reload();
-                    }, 1000);
-                   
-                    break;
-
-                default:
-                    break;
-            }
-        });
-
-        er.preventDefault();
-        // $('#form-actualizar').trigger('reset');
-    });
-
-    // $.ajax({
-    //     url: 'UserController.php?action=actualizar',
-    //     type: 'GET', // GET es para recibir informacion, POST para enviar.
-    //     data: {
-    //         nombre_usr: $('#nombre_usr').val(),
-    //         correo_usr: $('#correo_usr').val(),
-    //         contrasena: $('#contrasena_usr').val(),
-    //     },
-
-    //     // Cuando reciba la respuesta se va a ejecutar cierta funcion:
-    //     success: function(response){
-    //         console.log("xd");
-    //         console.log(response);
-    //     }
-    // });
-});
 
 
-    // ------------------------------------------------------------------------------------------------------------- //
 
-    $(document).on('click', '#nombre-task', function(e){
-        let element = $(this).next().next();
-        let id_rec = $(element).attr('taskId-del');
 
-        // console.log(element);
-        // console.log(id_rec);
-
-        $.post('TaskController.php?action=GetTask', {id_rec}, function(response){
-            let task = JSON.parse(response);
-            task.forEach(t => {
-                // console.log(t);
-                console.log(nombre_rec);
-
-                $('#taskId').val(t.id_rec);
-                $('#nombre_rec').val(t.Nombre_rec);
-                $('#notificacion_rec').val(t.Notificacion_rec);
-                $('#color_rec').val(t.Color_rec);
-                console.log(response);
-                edit = true;
-            });
-        });
-    });
-
-    // ------------------------------------------------------------------------------------------------------------- //
-
-    $(document).on('click', '.task-delete', function (){
-        swal({
-            title: "¿Estas Seguro?",
-            text: "Se borrara tu recordatorio, ¡no podras recuperarlo!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                let element = $(this)[0].parentElement;
-                let id_rec = $(element).attr('taskId-del');
-                $.post('TaskController.php?action=DeleteTask', {id_rec}, function(response){ /* console.log(response); */ });
-    
-                swal('¡Poof! Tu recordatorio ha sido eliminado', {
-                    icon: "success",
-                });
-    
-            } else {
-                swal("¡Vale!");
-            }
-        });
-    });
-
-    // ------------------------------------------------------------------------------------------------------------- //
-
-    // setInterval(fetchTasks, 250);
-    // fetchTasks();
-});

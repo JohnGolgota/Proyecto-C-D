@@ -19,8 +19,8 @@ CREATE TABLE tbl_eventos (
     nombre_evn varchar(50) NOT NULL, 
     descripcion_evn varchar(255),
     color_evn varchar(8),
-    desde_evn date NOT NULL, 
-    hasta_evn date NOT NULL,
+    desde_evn datetime NOT NULL, 
+    hasta_evn datetime NOT NULL,
 
     hora_inicio_evn varchar(10) NOT NULL,
     hora_final_evn varchar(10) NOT NULL,
