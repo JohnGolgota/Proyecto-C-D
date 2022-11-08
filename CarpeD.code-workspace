@@ -5,7 +5,7 @@
 		}
 	],
     "settings": {
-        "workbench.colorTheme": "Ayu Dark",
+        "workbench.colorTheme": "GitHub Dark",
         "files.autoSave": "off",
         "editor.tabSize": 4,
         "editor.cursorStyle": "line",
@@ -20,17 +20,24 @@
         "editor.minimap.autohide": true,
         "files.encoding": "utf8",
         "terminal.explorerKind": "integrated",
-        "workbench.iconTheme": "ayu"
+        "workbench.iconTheme": "material-icon-theme"
     },
 	"extensions": {
 		"recommendations": [
-            "pranaygp.vscode-css-peek",
-            "donjayamanne.githistory",
-            "oderwat.indent-rainbow",
-            "zobo.php-intellisense",
-            "xdebug.php-debug",
-            "bmewburn.vscode-intelephense-client",
-            "teabyii.ayu"
+            // "pranaygp.vscode-css-peek", //CSS PEEK
+            // "donjayamanne.githistory",// GIT HISTORY
+            // "codezombiech.gitignore",// GIT IGNORE
+            // "ritwickdey.liveserver",//LIVE SERVER
+            // "dbaeumer.vscode-eslint",// eslint
+            // "oderwat.indent-rainbow",// rainbow indentation
+            // "tabnine.tabnine-vscode",// tab nine
+            // "zobo.php-intellisense",// intelli sense
+            // "xdebug.php-debug",// debug php
+            // "pkief.material-icon-theme",// icon theme
+            // "bmewburn.vscode-intelephense-client",// intele phense
+            // "gruntfuggly.todo-tree",// Arbol
+            // "alefragnani.bookmarks",// Markadores
+            // "aaron-bond.better-comments"// coments
         ]
 	}
 }

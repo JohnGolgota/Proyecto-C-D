@@ -33,7 +33,6 @@
     </div>
 </div>
 <!--  -->
-
 <body class="" onload="setTimeout(load, 700);">
     <!-- Encabezado, botones y modo oscuro -->
     <header class="align-items-center navbar navbar-expand-sm position-relative header-reveal cabeza cabeza-dark" id="cabeza">
@@ -337,15 +336,15 @@
 
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-registro">
-                    <form id="formulario-registro" novalidate>
-                        <!-- <input type="hidden" name="action" value="registrar"> -->
+                    <form action="./Controllers/UserController.php" method="POST" id="formulario-registro">
+                        <input type="hidden" name="action" value="registrar">
                         <input type="email" name="UsuarioRE" id="usuarioRE" placeholder="Correo" class="form-control shadow-none" required>
                         <input type="password" name="UsuarioRC" id="usuarioRC" placeholder="Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
-                        <input type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
-                        <span id="MensajeConfirmarContrasena"></span>
+                        <input onkeypress="ValidarContraseña();" type="password" name="UsuarioRCC" id="usuarioRCC" placeholder="Confirmar Contraseña" class="form-control shadow-none" required maxlength="10" minlength="4">
+                        <p id="MensajeConfirmarContrasena"></p>
                         <div class="form-group">
                             <input required type="checkbox" name="terminosycondiciones" id="terminosycondiciones" class="form-check-input" value="aceptarteminos">
-                            <label for="terminosycondiciones" class="form-check-label">Aceptar los terminos y condiciones</label>
+                            <label for="terminosycondiciones" id="terminosycondiciones" class="form-check-label">Aceptar los terminos y condiciones</label>
                             <a href="#" id="buttonDetails">Detalles.</a>
                         </div>
                         <input type="submit" value="Registrarse" class="btn btn-primary boton-modal" id="btn-registro">
@@ -372,6 +371,7 @@
 
     <script>
         function load() {
+            // console.log("puta");
             let containera = document.getElementById('container-load');
             // console.log(containera);
             containera.style.opacity = '0';
@@ -379,47 +379,13 @@
         }
     </script>
 
-    <script src="./Public/Js/iconrevel.min.js"></script>    
-    
-    <!-- Jquery & Ajax -->
-    <!-- <script src="./Public/Js/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> -->
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-
-    <!-- Tampoco se -->
+    <script src="./Public/Js/iconrevel.min.js"></script>
+    <script src="./Public/Js/jquery-3.6.1.min.js"></script>
     <script src="./Public/Js/app.js"></script>
-
-     <!-- Sweet -->
-    <!-- <script src="./Public/Js/sweetalert2@11.js"></script> -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
     <!-- Scripts Temporales:  -->
     <!-- <script src="./Public/Js/main.js"></script> -->
-    <!-- Scripts Temporales:  -->
-    
-    <!-- Script para porque los .js no se actualizan -->
-<script>
-    const hell = $('#usuarioRCC').first().keyup(function(){
-        // MensajeConfirmarContrasena
-        // let mensaje = $('#MensajeConfirmarContrasena').val()
-        let mensaje = document.getElementById('MensajeConfirmarContrasena')
-
-        let pass = $('#usuarioRC').val()
-        let passcc = $('#usuarioRCC').val()
-
-        if (pass != passcc) {
-            mensaje.style.color = "red"
-            mensaje.textContent = "¡Las contraseñas no coinciden!"
-        }
-        if (pass == passcc) {
-            mensaje.style.color = "green"
-            mensaje.textContent = "¡Nitido!"
-        }
-    })
-</script>
-
-</body>
-
-</html>
 
     <script>
         $(document).ready(function() {
@@ -427,6 +393,7 @@
             $('#form-inicio-sesion').trigger('reset');
             $('#form-inicio-sesion').submit(function(e) {
                 e.preventDefault();
+
                 $.ajax({
                     data: {
                         usuariois: $('#usuarioIS').val(),
@@ -444,35 +411,35 @@
                                 icon: 'error',
                                 timerProgressBar: false,
                                 didOpen: () => {
-                                // Swal.showLoading()
+                                    // Swal.showLoading()
                                     const b = Swal.getHtmlContainer().querySelector('b')
                                     timerInterval = setInterval(() => {
                                         // b.textContent = Swal.getTimerLeft()
-                                    }, 100)                                
-                                    },
+                                    }, 100)
+                                },
                                 willClose: () => {
                                     clearInterval(timerInterval)
                                 }
-                                });
+                            });
                         }
                         
                         // USUARIO NO EXISTE (NOT FOUND)
                         if (response == "not found") {
                             let timerInterval
                             Swal.fire({
-                                title: 'El usuario NO Existe en la base de datos.',                                
+                                title: 'El usuario NO Existe en la base de datos.',
                                 timer: 2000,
                                 icon: 'error',
                                 timerProgressBar: false,
                                 didOpen: () => {
                                     const b = Swal.getHtmlContainer().querySelector('b')
-                                                                        timerInterval = setInterval(() => {
+                                    timerInterval = setInterval(() => {
                                     }, 100)
                                 },
                                 willClose: () => {
                                     clearInterval(timerInterval)
                                 }
-                                                            });
+                            });
                         }
 
                         // CONTRASEÑA INCORRECTA (NOT PASS)
@@ -485,12 +452,13 @@
                                 timerProgressBar: false,
                                 didOpen: () => {
                                     const b = Swal.getHtmlContainer().querySelector('b')
-                                                                        timerInterval = setInterval(() => {
+                                    timerInterval = setInterval(() => {
                                     }, 100)
-                                                                    willClose: () => {
+                                },
+                                willClose: () => {
                                     clearInterval(timerInterval)
                                 }
-                                                            });
+                            });
                         }
 
                         if(response == "success"){
@@ -511,169 +479,5 @@
         });
     </script>
 
-    $(document).ready(function() {
-        $('#formulario-registro').trigger('reset')
-        $('#formulario-registro').submit(function(e) {
-
-            e.preventDefault()
-
-            $.ajax({
-                data: {
-                    usuarioRE: $('#usuarioRE').val(),
-                    usuarioRC: $('#usuarioRC').val(),
-                    usuarioRCC: $('#usuarioRCC').val(),
-                    terminosycondiciones: $('#terminosycondiciones').val()
-                },
-                url: './Controllers/UserController.php?action=ajax-registro',
-                type: 'post',
-                success: function(response) {
-                    console.log("RESPUESTA DEL SERVIDOR -> ", response);
-                    // Campos vacios JS
-                    let timerInterval
-                    switch (response) {
-                        // Inputs vacios
-                        case "empty inputs":
-                            Swal.fire({
-                                title: 'Por favor introduzca un correo electronico valido.',
-                                timer: 2000,
-                                icon: 'error',
-                                timerProgressBar: false,
-                                didOpen: () => {                                    
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                    timerInterval = setInterval(() => {}, 100)
-                                    },
-                                willClose: () => {
-                                    clearInterval(timerInterval)
-                                }
-                                })
-                            break;
-                            // Correo
-                        case "Correo no valido.":
-                            Swal.fire({
-                                title: 'Por favor introduzca un correo electronico valido.',
-                                timer: 2000,
-                                icon: 'error',
-                                timerProgressBar: false,
-                                didOpen: () => {
-                                    const b = Swal.getHtmlContainer().querySelector('b')
-                                    timerInterval = setInterval(() => {}, 100)
-                                },
-                                willClose: () => {
-                                    clearInterval(timerInterval)
-                                }
-                                                            })
-                            break;
-                            // Correo en uso
-                        case "Correo en uso.":
-                            Swal.fire({
-                                title: 'El correo ya ha sido registrado.',
-                                timer: 2000,
-                                icon: 'error',
-                                timerProgressBar: false,
-                                didOpen: () => {
-                                    const b = Swal.getHtmlContainer().querySelector('b')
-                                                                        timerInterval = setInterval(() => {}, 100)
-                                },
-                                willClose: () => {
-                                    clearInterval(timerInterval)
-                                }
-                                                            })
-                            break;
-                            // error contraseña 1
-                        case "Las contrasenas no coinciden.":
-                            Swal.fire({
-                                title: 'Las contraseñas no coinciden.',
-                                timer: 2000,
-                                icon: 'error',
-                                timerProgressBar: false,
-                                didOpen: () => {
-                                    const b = Swal.getHtmlContainer().querySelector('b')
-                                    timerInterval = setInterval(() => {}, 100)
-                                },
-                                willClose: () => {
-                                    clearInterval(timerInterval)
-                                }
-                            })
-                            break;
-                            // error contraseña 2
-                        case "minimo 4 caracteres.":
-                            Swal.fire({
-                                title: 'La contraseña debe tener al menos 4 caracteres.',
-                                timer: 2000,
-                                icon: 'error',
-                                timerProgressBar: false,
-                                didOpen: () => {
-                                    const b = Swal.getHtmlContainer().querySelector('b')
-                                    timerInterval = setInterval(() => {}, 100)
-                                },
-                                willClose: () => {
-                                    clearInterval(timerInterval)
-                                }
-                            })
-                            break;
-                            // Error contraseña 3
-                        case "maximo 10 caracteres.":
-                            Swal.fire({
-                                title: 'La contraseña no debe tener mas de 10 caracteres.',
-                                timer: 2000,
-                                icon: 'error',
-                                timerProgressBar: false,
-                                didOpen: () => {
-                                    const b = Swal.getHtmlContainer().querySelector('b')
-                                    timerInterval = setInterval(() => {}, 100)
-                                },
-                                willClose: () => {
-                                    clearInterval(timerInterval)
-                                }
-                            })
-                            break;
-                            // Error contraseña 4
-                        case "una letra minuscula.":
-                            Swal.fire({
-                                title: 'La contraseña debe tener almenos una letra minuscula.',
-                                timer: 2000,
-                                icon: 'error',
-                                timerProgressBar: false,
-                                didOpen: () => {
-                                    const b = Swal.getHtmlContainer().querySelector('b')
-                                    timerInterval = setInterval(() => {}, 100)
-                                },
-                                willClose: () => {
-                                    clearInterval(timerInterval)
-                                }
-                            })
-                            break;
-                            // Error contraseña 5
-                        case "un numero.":
-                            Swal.fire({
-                                title: 'La contraseña debe tener almenos un numero.',
-                                timer: 2000,
-                                icon: 'error',
-                                timerProgressBar: false,
-                                didOpen: () => {
-                                    const b = Swal.getHtmlContainer().querySelector('b')
-                                    timerInterval = setInterval(() => {}, 100)
-                                },
-                                willClose: () => {
-                                    clearInterval(timerInterval)
-                                }
-                            })
-                            break;
-
-                        case "success":
-                            break;
-
-                        default:
-                            window.location.assign(response)
-                            // console.log('No deberias estar aquí\n', response)
-                            break;
-                    }
-                },
-                error: function(error) {
-                    console.log("Error ", error)
-                    console.error("Help");
-                }
-            })
-        })
-    })
-</script>
+</body>
+</html>

@@ -19,8 +19,8 @@ CREATE TABLE tbl_eventos (
     nombre_evn varchar(50) NOT NULL, 
     descripcion_evn varchar(255),
     color_evn varchar(8),
-    desde_evn date NOT NULL, 
-    hasta_evn date NOT NULL,
+    desde_evn datetime NOT NULL, 
+    hasta_evn datetime NOT NULL,
 
     hora_inicio_evn varchar(10) NOT NULL,
     hora_final_evn varchar(10) NOT NULL,
@@ -70,8 +70,8 @@ CREATE TABLE tbl_pagos(
 );
 CREATE TABLE tbl_pomodoro(
     id_pmd int(11) NOT NULL AUTO_INCREMENT,
-    fecha_hora_pmd datetime,
-    nombre_pmd varchar(30) NOT NULL,
+    fecha_hora_pmd TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    evento_pmd varchar(50),
     actividad_pmd varchar(8),
     pausa_corta_pmd varchar(8) NOT NULL,
     pausa_larga_pmd varchar(8) NOT NULL,

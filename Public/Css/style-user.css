@@ -163,21 +163,68 @@ div.action-tasks {
 
 
 
-/* ---------------------------- Subcategoria: Tasks ---------------------------------- */
-.task {
-    background-color: #1363DF;
-    border-radius: 24px;
-    padding: 12px 0 12px 4px;
-    margin: 0 0 4px 0;
+/* ---------------------------- Subcategoria: Pomodoro ---------------------------------- */
+.circulo-reloj {
+    width: 330px;
+    height: 330px;
+    border: 3px solid var(--color2);
+    border-radius: 50%;
+    margin: auto;
+
+    display: flex;
+   
 }
 
-h4.element-task {
-    color: #f9f9f9;
-    display: inline-block;
+.counter {
+    margin-left:auto;
+    margin-right:auto;
+    overflow: hidden;
 }
 
-div.action-tasks {
-    margin-left: 30px;
+.herramienta-dos {
+    padding-top: 35px;
+    overflow: hidden;
+}
+
+.input-left {
+    margin-bottom: 8px;
+}
+
+.first-label, .second-label, .third-label {
+    position: relative;
+    /* left: -60px; */
+}
+
+#first-label, #second-label, #third-label {
+    position: relative;
+    left: 77px;
+}
+
+#first-label {
+    top: -185px;
+}
+
+#second-label {
+    top: -165px;
+}
+
+#third-label {
+    top: -140px;
+}
+
+.first-label {
+    left: -55px;
+}
+
+.second-label, .third-label {
+    left: -75px;
+}
+
+.left-inputs {
+    position: relative;
+    top: -320px;
+    width: 20%;
+    margin-left: 15px;
 }
 
 

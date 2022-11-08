@@ -37,8 +37,11 @@
     <script>
         function load(){
             let containera = document.getElementById('container-load');
-            // console.log(containera);
             containera.style.opacity = '0';
             containera.style.display = 'none';
         }
     </script>
+
+
+
+    
