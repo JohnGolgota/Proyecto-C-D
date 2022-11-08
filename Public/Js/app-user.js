@@ -555,6 +555,11 @@ action_three.addEventListener('click', function(){
     }, 100)  
 })
 
+let actividad_string;
+let array_actividad;
+let seconds;
+let actividad;
+
 // FUNCION POMODORO (JODIO EL ASUNTO)
 const pomodoro_start = document.getElementById("btnPomodoro");
 pomodoro_start.addEventListener('click', function(){
@@ -574,7 +579,7 @@ pomodoro_start.addEventListener('click', function(){
     console.log(short_end);
 
     let result = short_end - short_time;
-    let actividad = (((result * 77) / 100) / 4) * 60;
+    actividad = (((result * 77) / 100) / 4) * 60;
     let pausa_corta = (((result * 11.5) / 100) / 3) * 60;
     let pausa_larga = ((result * 11.5) / 100) * 60;
     
@@ -590,16 +595,16 @@ pomodoro_start.addEventListener('click', function(){
     document.getElementById("customRange3").value = pausa_larga;
     document.getElementById("third-label").innerText = pausa_larga.toFixed(0) + " Minutos";
     
-    let actividad_string = actividad.toString();
-    let array_actividad = actividad_string.split(".");
+    actividad_string = actividad.toString();
+    array_actividad = actividad_string.split(".");
     console.log("ARRAY DE ACTIVIDAD ", array_actividad);
     console.log(array_actividad[0]);
     if(array_actividad[1] > 5){
-        var seconds = 59;
+        seconds = 59;
     } else {
-        var seconds = 00;
+        seconds = 00;
     }
-    document.getElementById('counter').innerText = array_actividad[0] + ":" + seconds;
+    // document.getElementById('counter').innerText = array_actividad[0] + ":" + seconds;
 })
 
 $(document).ready(function() {
@@ -615,5 +620,42 @@ $(document).ready(function() {
         $.post('PomodoroController.php?action=AddPomodoro', postData, function(response){
             console.log(response);
         })
+        let actividad_timing = parseInt(actividad);
+        console.log(actividad_timing, ":", seconds);
+
+        var cicle = 0;
+        while(cicle <= 8){
+            if(cicle == 0 || cicle == 2 || cicle == 4 || cicle == 6){
+                var counterpomodoro = setInterval(() => {
+                    if(actividad_timing == 0 && seconds == 0){
+                        console.log("jaja acabe el primer ciclo");
+                        clearInterval(counterpomodoro);
+                        cicle++;
+                    }
+                    
+                    if(seconds == 0){
+                        seconds = 60;
+                        actividad_timing =  actividad_timing - 1;
+                    }
+
+                    seconds = seconds - 1;
+        
+                    if(seconds < 10){
+                        console.log(actividad_timing, ": 0", seconds);
+                    } else {
+                        console.log(actividad_timing, ":", seconds);
+                    }
+        
+                }, 50);
+            }
+
+            if(cicle == 1 || cicle == 3 || cicle == 5){
+                console.log("ciclo 2");
+                cicle++;
+            }
+
+            console.log("Estoy fuera del bucle -> ", cicle);
+            // cicle++;
+        }
     })
 });
