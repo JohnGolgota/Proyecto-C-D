@@ -560,6 +560,22 @@ let array_actividad;
 let seconds;
 let actividad;
 
+// function demo() {
+//     console.log('Taking a break...');
+//     sleep(2000);
+//     console.log('Two second later');
+// }
+
+function wait(espera_segundos) {
+    espera = espera_segundos * 1000;
+    const tiempo_inicio = Date.now();
+    let tiempo_actual = null;
+    do {
+        tiempo_actual = Date.now();
+    } while (tiempo_actual - tiempo_inicio < espera);
+}
+  
+
 // FUNCION POMODORO (JODIO EL ASUNTO)
 const pomodoro_start = document.getElementById("btnPomodoro");
 pomodoro_start.addEventListener('click', function(){
@@ -629,23 +645,29 @@ $(document).ready(function() {
                 actividad_timing = document.getElementById("customRange1").value;
                 let index = 0;
                 while(index <= actividad_timing){
-                    if(actividad_timing == 0 && seconds == 0){
-                        index++;
-                        break;
-                    }
-                            
-                    if(seconds == 0){
-                        seconds = 60;
-                        actividad_timing =  actividad_timing - 1;
-                    }
-        
-                    seconds = seconds - 1;
-                    
-                    if(seconds < 10){
-                        console.log(actividad_timing, ": 0", seconds);
-                    } else {
-                        console.log(actividad_timing, ":", seconds);
-                    }
+                    // wait(1);
+                    // demo();
+                    a = setTimeout(() => {
+                        if(actividad_timing == 0 && seconds == 0){
+                            // break;
+                            clearTimeout(a);
+                        }
+                                
+                        if(seconds == 0){
+                            seconds = 60;
+                            actividad_timing =  actividad_timing - 1;
+                        }
+            
+                        seconds = seconds - 1;
+                        
+                        if(seconds < 10){
+                            document.getElementById("counter").innerText = actividad_timing + ": 0" + seconds;
+                            console.log(actividad_timing, ": 0", seconds);
+                        } else {
+                            document.getElementById("counter").innerText = actividad_timing + ":" + seconds;
+                            console.log(actividad_timing, ":", seconds);
+                        }
+                    }, 1000);
                 }
             }
 
