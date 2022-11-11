@@ -623,39 +623,81 @@ $(document).ready(function() {
         let actividad_timing = parseInt(actividad);
         console.log(actividad_timing, ":", seconds);
 
-        var cicle = 0;
-        while(cicle <= 8){
-            if(cicle == 0 || cicle == 2 || cicle == 4 || cicle == 6){
-                var counterpomodoro = setInterval(() => {
+        for (let cicle = 2; cicle <= 8; cicle++) {
+            if(cicle %2 == 0){
+                console.log("[ACTIVIDAD] ----> " + cicle);
+                actividad_timing = document.getElementById("customRange1").value;
+                let index = 0;
+                while(index <= actividad_timing){
                     if(actividad_timing == 0 && seconds == 0){
-                        console.log("jaja acabe el primer ciclo");
-                        clearInterval(counterpomodoro);
-                        cicle++;
+                        index++;
+                        break;
                     }
-                    
+                            
                     if(seconds == 0){
                         seconds = 60;
                         actividad_timing =  actividad_timing - 1;
                     }
-
-                    seconds = seconds - 1;
         
+                    seconds = seconds - 1;
+                    
                     if(seconds < 10){
                         console.log(actividad_timing, ": 0", seconds);
                     } else {
                         console.log(actividad_timing, ":", seconds);
                     }
+                }
+            }
+
+            if(cicle %2 != 0 && cicle != 8){
+                console.log("[PAUSA] ----> " + cicle);
+                pausa_timing = document.getElementById("customRange2").value;
+                let index = 0;
+                while(index <= pausa_timing){
+                    if(actividad_timing == 0 && seconds == 0){
+                        index++;
+                        break;
+                    }
+                            
+                    if(seconds == 0){
+                        seconds = 60;
+                        pausa_timing =  pausa_timing - 1;
+                    }
         
-                }, 50);
+                    seconds = seconds - 1;
+                    
+                    if(seconds < 10){
+                        console.log(pausa_timing, ": 0", seconds);
+                    } else {
+                        console.log(pausa_timing, ":", seconds);
+                    }
+                }
             }
 
-            if(cicle == 1 || cicle == 3 || cicle == 5){
-                console.log("ciclo 2");
-                cicle++;
+            if(cicle == 8){
+                console.log("[PAUSA LARGA] ----> " + cicle);
+                larga_timing = document.getElementById("customRange3").value;
+                let index = 0;
+                while(index <= larga_timing){
+                    if(actividad_timing == 0 && seconds == 0){
+                        index++;
+                        break;
+                    }
+                            
+                    if(seconds == 0){
+                        seconds = 60;
+                        larga_timing =  larga_timing - 1;
+                    }
+        
+                    seconds = seconds - 1;
+                    
+                    if(seconds < 10){
+                        console.log(larga_timing, ": 0", seconds);
+                    } else {
+                        console.log(larga_timing, ":", seconds);
+                    }
+                }
             }
-
-            console.log("Estoy fuera del bucle -> ", cicle);
-            // cicle++;
         }
     })
 });
