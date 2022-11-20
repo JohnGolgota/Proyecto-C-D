@@ -43,4 +43,10 @@ CREATE PROCEDURE `UpdateTask` (IN `pnombre_rec` VARCHAR(75), `pcolor_rec` VARCHA
 BEGIN
     UPDATE tbl_Recordatorios SET Nombre_rec = pnombre_rec, Color_rec = pcolor_rec, Notificacion_rec = pnotificacion_rec WHERE id_rec = pid_rec;
 END $$
+
+-- PROCEDURES: ARCHIVO
+CREATE PROCEDURE `GetArchivesForId` (IN `pid_usr` INT(11)) 
+BEGIN
+    SELECT * FROM tbl_archivo WHERE id_usr = pid_usr ORDER BY id_arc DESC;
+END$$
 DELIMITER ;

@@ -21,10 +21,26 @@ function configDesplegable(){
     }
 }
 
+let rec = document.getElementById("rec-desplegable");
+rec.addEventListener('click', function(){
+    document.getElementById("configDesplegable").style.display = "none";
+});
+
+let cal = document.getElementById("cal-desplegable");
+cal.addEventListener('click', function(){
+    document.getElementById("configDesplegable").style.display = "none";
+});
+
+let pom = document.getElementById("pom-desplegable");
+pom.addEventListener('click', function(){
+    document.getElementById("configDesplegable").style.display = "none";
+});
+
 
 
 // ----------------------------------- CONTENIDO AJAX y Jquery. ----------------------------------- //
 $(document).ready(function() {
+    fetchArchive();
     fetchTasks();
     let edit = false;  
     // Seleccionamos el formulario. Capturaremos su evento 'submit', que manejaremos con una funcion. 
@@ -147,6 +163,38 @@ $(document).ready(function() {
         });
     }
 
+    function fetchArchive(){
+        // Pedimos informacion para mostrarla en lista. Como no se especifica el momento (como en los de arriba), se ejecuta siempre.
+        $.ajax({
+            url: 'ArchiveController.php?action=GetArchives',
+            type: 'GET',
+            success: function(response){
+                // console.log("ESTA ES LA RESPUESTA -> ", response);
+
+                let archives = JSON.parse(response);
+                let template = '';
+                archives.forEach(archive => {
+
+                    // console.log("TASK -> ", task.Nombre_rec);
+
+                        // Llenamos la Plantilla.
+                        template += 
+                        `
+                            <div class="tasks">
+                                <div class="task my-auto d-flex mb-1" style="background-color:${archive.color_arc};">
+                                    <h5 class="element-task nombre-task my-auto" id="">${archive.nombre_arc} | </h5>
+                                    <h5 class="element-task notifiacion-task my-auto" id=""> ${archive.notificacion_arc} </h5>
+                                </div>
+                            </div>
+                        `
+                    });
+                    
+                    // Pintamos la plantilla en el elemento seleccionado.
+                    $('#archive').html(template);
+                }
+        });
+    }
+
     // ----------------------------------------------- PREPARAR EL ACTUALIZAR ------------------------------------------------------- //
 
     $(document).on('click', '#nombre-task', function(e){
@@ -180,7 +228,7 @@ $(document).ready(function() {
     $(document).on('click', '.task-delete-user', function (){
         Swal.fire({
             title: '¿Estas Seguro?',
-            text: "Se borrara tu recordatorio ¡Y no podras recuperarlo! D:",
+            text: "Se borrara tu recordatorio ¡Si lo haces, Solo podras verlo desde los recordatorios archivados en el menu principal!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#1363DF',
@@ -201,12 +249,14 @@ $(document).ready(function() {
                 }
 
                 fetchTasks();
+                fetchArchive();
           })
     });
 
     // ------------------------------------------------------------------------------------------------------------- //
 
-    // setInterval(fetchTasks, 250);
+
+    fetchArchive();
     fetchTasks();
 
 
@@ -244,6 +294,7 @@ $(document).ready(function() {
                         $.post('TaskController.php?action=DeleteTask', {id_rec}, function(response){});
 
                         fetchTasks();
+                        fetchArchive();
                     }
                 }
             )}

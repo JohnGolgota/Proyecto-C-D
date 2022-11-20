@@ -48,9 +48,13 @@
                     <ul>
                         <hr class="salto">
                         <li><a href="#"></a></li>
-                        <li><a href=""> Configuracion </a></li>
+                        <li><a href=""> Carpe Diem </a></li>
                         <hr class="salto">
-                        <li><a href="#HerramientaUno"> Personalizacion </a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#addreminder" id="rec-desplegable"> Recordatorios </a></li>
+                        <li><a href="#herramientaCalendar" id="cal-desplegable"> Calendario </a></li>
+                        <li><a href="#herramientaPomodoro" id="pom-desplegable"> Reloj Pomodoro </a></li>
+                        <hr class="salto">
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#reminderarchive"> Archivo </a></li>
                         <hr class="salto">
                         <li>
                             <details>
@@ -194,16 +198,41 @@
   </div>
 </div>
 
+<!-- ARCHIVO -->
+<div class="modal fade" id="reminderarchive" tabindex="1" aria-labelledby="reminderarchiveLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h3> Recordatorios Archivados </h3>
+                <div class="col-md-12">
+                    <div class="tasks" id="archive">
+                    <!-- <div class="task my-auto d-flex mb-1">
+                        <h4 class="element-task nombre-task my-auto" id="nombre-task"> Nombre </h4>
+                        <h4 class="element-task notifiacion-task my-auto" id="notificacion-task"> 2022-10-21 15:44:34 </h4>
+                    </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Listo</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!--  -->
 <main>
     <!--  -->
-    <section class="container mt-3 mb-5 calendar-box-user">
+    <section class="container mt-3 mb-5 calendar-box-user" id="herramientaCalendar">
         <div id="calendar" class=""></div>
     </section>
     
     <!--  -->
-    <section class="text-center my-2 herramientas mt-5">
+    <section class="text-center my-2 herramientas mt-5" id="herramientaPomodoro">
         <!--  -->
         <article class="col align-items-center herramienta herramienta-dos">
             <div class="circulo-reloj">
