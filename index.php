@@ -303,7 +303,7 @@
                 <!-- Cuerpo. Formulario -->
                 <div class="modal-body formularios formulario-inicio">
                     <form action="" class="" id="form-inicio-sesion">
-                        <input type="hidden" name="action" value="session">
+                        <input type="hidden" name="action" value="session" id="hidden-input">
                         <input type="text" name="UsuarioIS" id="usuarioIS" placeholder="Nombre De Usuario" class="form-control shadow-none" required>
                         <input type="password" name="ContrasenaIS" id="contrasenaIS" placeholder="Contraseña" class="form-control shadow-none" required>
 
@@ -388,20 +388,35 @@
     <!-- <script src="./Public/Js/main.js"></script> -->
 
     <script>
+        
         $(document).ready(function() {
             // Reseteamos el formulario.
             $('#form-inicio-sesion').trigger('reset');
             $('#form-inicio-sesion').submit(function(e) {
-                e.preventDefault();
+                const element_action = document.getElementById("hidden-input");
+                let action;
+                if(element_action.getAttribute("name") == "admin"){
+                    action = 'admin-session';
+                    console.log("ENTRE EN EL ADMIN-SESSION");
+                    console.log("ACTION -> ", action);
+                }
+        
+                if(element_action.getAttribute("name") == "action"){
+                    console.log("ENTRE EN EL USER-SESSION");
+                    action = 'ajax-session';
+                }
 
+                e.preventDefault();
                 $.ajax({
                     data: {
                         usuariois: $('#usuarioIS').val(),
-                        contrasenais: $('#contrasenaIS').val()
+                        contrasenais: $('#contrasenaIS').val(),
+                        'action': action
                     },
-                    url: './Controllers/UserController.php?action=ajax-session',
+                    url: './Controllers/UserController.php',
                     type: 'post',
                     success: function(response) {
+                        console.log(response);
                         // CAMPOS VACIOS (NOVALIDATE)
                         if ($('#usuarioIS').val() == '' || $('#contrasenaIS').val() == '') {
                             let timerInterval
@@ -422,8 +437,12 @@
                                 }
                             });
                         }
-                        
+                        console.log(action);
                         // USUARIO NO EXISTE (NOT FOUND)
+                        if (response == "admin") {
+                            window.location.assign('./Controllers/UserController.php?action=admin');
+                        }
+
                         if (response == "not found") {
                             let timerInterval
                             Swal.fire({

@@ -15,6 +15,10 @@ class UserController extends User{
     {   
         include '../Views/User/Index-user.php';
     }
+    public function VistaAdmin()
+    {   
+        include '../Views/Admin/Index-admin.php';
+    }
     
     public function VistaDelete(){
         include '../Views/User/deleteUser.html';
@@ -255,6 +259,11 @@ if (isset($_POST['action']) && $_POST['action'] == 'session' && !empty($_POST['U
     return;
 }
 
+if (isset($_POST['action']) && $_POST['action'] == 'admin' && empty($_POST['UsuarioIS'] || $_POST['ContraseaIS'])) {
+    die("pibe");
+    return;
+}
+
 //  inicio de session fallido
 if (isset($_POST['action']) && $_POST['action'] == 'session' && empty($_POST['UsuarioIS'] || $_POST['ContraseaIS'])) {
     echo "Campos no validos";
@@ -263,7 +272,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'session' && empty($_POST['Us
 
 
 // Ajax verificacion [true]
-if(isset($_GET['action']) && $_GET['action'] == 'ajax-session' && !empty($_POST['usuariois']) && !empty($_POST['contrasenais'])){
+if(isset($_POST['action']) && $_POST['action'] == 'ajax-session' && !empty($_POST['usuariois']) && !empty($_POST['contrasenais'])){
     $usercontroler = new UserController();
     $usercontroler->VerificaInicio($_POST['usuariois'],$_POST['contrasenais']);
     echo "success";
@@ -275,6 +284,19 @@ if(isset($_GET['action']) && $_GET['action'] == 'ajax-session' && !empty($_POST[
 if (isset($_GET['action']) && $_GET['action'] == 'inicio') {
     $usercontroler = new UserController();
     $usercontroler->VistaUsuario();
+    return;
+}
+
+// Ajax verificacion [Admin true]
+if(isset($_POST['action']) && $_POST['action'] == 'admin-session'){
+    echo "admin";
+    return;
+} 
+
+// Ajax verificacion [Admin]
+if (isset($_GET['action']) && $_GET['action'] == 'admin') {
+    $usercontroler = new UserController();
+    $usercontroler->VistaAdmin();
     return;
 }
 
