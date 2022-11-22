@@ -2,18 +2,37 @@
     class Admin {
         protected $data;
 
-        // protected $nombre_adm;
-        // protected $color_arc;
-        // protected $fecha_arc;
-        // protected $notificaciones_rec;
-        // protected $id_usr;
-
         public function Query(){
             include_once '../Config/conexiondb.php';
             $conexion = new Conexion();
 
-            // $sql = "SELECT * FROM tbl_usuario FULL OUTER JOIN ON tbl_archivo FULL OUTER JOIN ON tbl_eventos FULL OUTER JOIN ON tbl_pomodoro FULL OUTER JOIN ON tbl_recordatorios";
-            $sql = "SELECT * FROM tbl_usuario";
+            $sql = "SELECT id_usr, nombre_usr, correo_usr FROM tbl_usuario WHERE id_usr LIKE '%$this->data%' or nombre_usr LIKE '%$this->data%' or correo_usr LIKE '%$this->data%'";
+            $result = $conexion->stm->prepare($sql);
+            $result->execute();
+
+            $search = $result->fetchAll(PDO::FETCH_OBJ);
+            $jsonstring = json_encode($search);      
+            return $jsonstring;
+        }
+
+        public function Events(){
+            include_once '../Config/conexiondb.php';
+            $conexion = new Conexion();
+
+            $sql = "SELECT id_evn, nombre_evn, descripcion_evn, fecha_evn, id_usr FROM tbl_eventos WHERE id_evn LIKE '%$this->data%' or nombre_evn LIKE '%$this->data%' or descripcion_evn LIKE '%$this->data%' or id_usr LIKE '%$this->data%'";
+            $result = $conexion->stm->prepare($sql);
+            $result->execute();
+
+            $search = $result->fetchAll(PDO::FETCH_OBJ);
+            $jsonstring = json_encode($search);      
+            return $jsonstring;
+        }
+
+        public function Tasks(){
+            include_once '../Config/conexiondb.php';
+            $conexion = new Conexion();
+
+            // $sql = "SELECT id_rec, nombre_rec, id_usr FROM tbl_usuario WHERE id_usr LIKE '%$this->data%' or nombre_usr LIKE '%$this->data%' or correo_usr LIKE '%$this->data%'";
             $result = $conexion->stm->prepare($sql);
             $result->execute();
 

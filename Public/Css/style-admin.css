@@ -44,7 +44,7 @@
     --dkalt: #212121;
 }
 
-.herramienta-busqueda {
+.main-admin {
     margin: auto;
     margin-top: 15px;
     border-radius: 12px;
@@ -55,6 +55,15 @@
 
 .titulo-principal, .barra-busqueda, .nombre-user {
     position: relative;
+}
+
+.herramienta-busqueda {
+    padding-bottom: 20px;
+    margin: auto;
+    margin-top: 15px;
+    border-radius: 12px;
+    width: 95%;
+    overflow: hidden;
 }
 
 .titulo-principal, .barra-busqueda {
@@ -71,4 +80,19 @@
 
 .nombre-user {
     top: -5px;
+}
+
+.resultados {
+    background-color: white;
+    /* padding-bottom: 20px; */
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 12px;
+    width: 95%;
+    /* overflow: hidden; */
+}
+
+.resultados > div {
+    padding: 15px 0px;
+    padding-left: 12px;
 }

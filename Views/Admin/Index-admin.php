@@ -45,19 +45,24 @@ include '../Inc/header.php';
         <!--  -->
         <div class="herramienta herramienta-busqueda row">
             <div class="titulo-principal col-md-9">
-                <h3 class="resultados-titulo"> Resultados </h3>
+                <h3 class="resultados-titulo"> Coincidencia </h3>
             </div>
             <div class="barra-busqueda col-md-3">
-                <form class="d-flex" role="search">
+                <form class="d-flex" role="search" id="form-query">
                     <input class="form-control me-2 shadow-none search" type="search" placeholder="Buscar" aria-label="Search" id="search">
                     <button class="btn btn-primary" type="submit"> Buscar </button>
                 </form>
             </div>
-            <div id="resultados">
-                
-            </div>
         </div>
-
+        <div id="resultados-usuarios" class="resultados">
+            <!-- <h4 class="titulo-usuarios"> Usuarios </h4> -->
+        </div>
+        <div id="resultados-eventos" class="resultados">
+            <!-- <h4> Usuarios </h4> -->
+        </div>
+        <div id="resultados-tasks" class="resultados">
+            <!-- <h4> Usuarios </h4> -->
+        </div>
     </main>
 
     <!-- Remove the containe if you want to extend the Footer to full width. -->
