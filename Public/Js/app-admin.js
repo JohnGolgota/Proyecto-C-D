@@ -9,8 +9,6 @@ function configDesplegable(){
 }
 
 $(function(){
-    console.log("Jquery sirve");
-
     $('#form-query').submit(function(e){
         e.preventDefault();
         let search = $('#search').val();
@@ -34,8 +32,8 @@ $(function(){
                         // Llenamos la Plantilla.
                         template += 
                         `
-                            <div class="mt-3">
-                                <h5 style="color: black;">${query.id_usr} | ${query.nombre_usr} | ${query.correo_usr}</h5>
+                            <div class="">
+                                <h5 style="color: black;">${query.id_usr} | ${query.nombre_usr} | ${query.correo_usr} </h5><h5 class="type"> en usuarios. </h5>
                             </div>
                         `
                     });
@@ -57,8 +55,8 @@ $(function(){
                 events.forEach(event => {
                         template_events += 
                         `
-                            <div class="mt-3">
-                                <h5 style="color: black;">${event.id_evn} | ${event.nombre_evn} | ${event.descripcion_evn} | ${event.id_usr}</h5>
+                            <div class="">
+                                <h5 style="color: black;">${event.id_evn} | ${event.nombre_evn} | ${event.descripcion_evn} | ${event.id_usr} </h5><h5 class="type"> en eventos. </h5>
                             </div>
                         `
                     });
@@ -73,21 +71,67 @@ $(function(){
             type: 'POST', // GET es para recibir informacion, POST para enviar.
             data: {search},
             success: function(response){
-                console.log("ESTA ES LA RESPUESTA -> ", response);
+                // console.log("ESTA ES LA RESPUESTA -> ", response);
 
                 let tasks = JSON.parse(response);
                 let template_tasks = '';
                 tasks.forEach(task => {
-                        template_events += 
+                        template_tasks += 
                         `
-                            <div class="mt-3">
-                                <h5 style="color: black;">${event.id_evn} | ${event.nombre_evn} | ${event.descripcion_evn} | ${event.id_usr}</h5>
+                            <div class="">
+                                <h5 style="color: black;">${task.id_rec} | ${task.nombre_rec} | ${task.id_usr}</h5><h5 class="type"> en recordatorios. </h5>
                             </div>
                         `
                     });
                     
                     // Pintamos la plantilla en el elemento seleccionado.
-                    $('#resultados-tasks').html(template_events);
+                    $('#resultados-tasks').html(template_tasks);
+                }
+        });
+
+        $.ajax({
+            url: 'AdminController.php?action=Archives',
+            type: 'POST', // GET es para recibir informacion, POST para enviar.
+            data: {search},
+            success: function(response){
+                // console.log("ESTA ES LA RESPUESTA -> ", response);
+
+                let archives = JSON.parse(response);
+                let template_archive = '';
+                archives.forEach(archive => {
+                        template_archive += 
+                        `
+                            <div class="">
+                                <h5 style="color: black;">${archive.id_arc} | ${archive.nombre_arc} | ${archive.id_usr}</h5><h5 class="type"> en archivo. </h5>
+                            </div>
+                        `
+                    });
+                    
+                    // Pintamos la plantilla en el elemento seleccionado.
+                    $('#resultados-archivo').html(template_archive);
+                }
+        });
+
+        $.ajax({
+            url: 'AdminController.php?action=Pomodoros',
+            type: 'POST', // GET es para recibir informacion, POST para enviar.
+            data: {search},
+            success: function(response){
+                console.log("ESTA ES LA RESPUESTA -> ", response);
+
+                let pomodoros = JSON.parse(response);
+                let template_pomodoro = '';
+                pomodoros.forEach(pomodoro => {
+                        template_pomodoro += 
+                        `
+                            <div class="">
+                                <h5 style="color: black;">${pomodoro.id_pmd} | ${pomodoro.evento_pmd} | ${pomodoro.id_usr}</h5><h5 class="type"> en pomodoro. </h5>
+                            </div>
+                        `
+                    });
+                    
+                    // Pintamos la plantilla en el elemento seleccionado.
+                    $('#resultados-pomodoro').html(template_pomodoro);
                 }
         });
     });

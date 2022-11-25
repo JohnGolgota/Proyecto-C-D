@@ -17,8 +17,20 @@
 
         public function prepareTasks($search){
             $this->data = $search;
-            $tasks = $this->Events();
+            $tasks = $this->Tasks();
             echo $tasks;
+        }
+
+        public function prepareArchives($search){
+            $this->data = $search;
+            $archives = $this->Archives();
+            echo $archives;
+        }
+
+        public function preparePomodoros($search){
+            $this->data = $search;
+            $pomodoros = $this->Pomodoros();
+            echo $pomodoros;
         }
     }
 
@@ -36,6 +48,16 @@
 
     if (isset($_GET['action']) && $_GET['action'] == 'Tasks') {
         $admincontroller = new AdminController();
-        $admincontroller->prepareEvents($_POST['search']);
+        $admincontroller->prepareTasks($_POST['search']);
+    }
+
+    if (isset($_GET['action']) && $_GET['action'] == 'Archives') {
+        $admincontroller = new AdminController();
+        $admincontroller->prepareArchives($_POST['search']);
+    }
+
+    if (isset($_GET['action']) && $_GET['action'] == 'Pomodoros') {
+        $admincontroller = new AdminController();
+        $admincontroller->preparePomodoros($_POST['search']);
     }
 ?>
