@@ -60,14 +60,4 @@
         $admincontroller = new AdminController();
         $admincontroller->preparePomodoros($_POST['search']);
     }
-
-    // [ALL]
-
-    if (isset($_GET['action']) && $_GET['action'] == 'Hola') {
-        echo "Hola";
-        // $admincontroller = new AdminController();
-        // $admincontroller->preparePomodoros($_POST['search']);
-    }
-
-    
 ?>
