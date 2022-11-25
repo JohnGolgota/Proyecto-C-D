@@ -86,7 +86,8 @@ class UserController extends User{
 
     public function verificarUpdate($nombre, $email, $contrasena){
         if(empty($contrasena)){
-            die("Contraseña Incorrecta");
+            echo "pass empty";
+            die();
         }
 
         if(empty($email)){
@@ -96,8 +97,8 @@ class UserController extends User{
         if(empty($nombre)){
             $nombre = $_SESSION['nombre_usr'];
         }
-
         $this->correo_usr = $email;
+        // die($this->correo_usr);
         $comprobacion = $this->ComprobarCorreo();
         if ($comprobacion == "" || $comprobacion == $this->correo_usr) {
             $this->nombre_usr = $_SESSION['nombre_usr'];
@@ -106,18 +107,22 @@ class UserController extends User{
             # Recorremos el objeto que obtenemos en el model.
             foreach ($datosUsuario as $dU) {}
             if (!password_verify($contrasena,$dU->contrasena_usr)) {
-                die("Contraseña Incorrecta");
-            }
+                echo "pass error";
+                die();
     
+            }
+            
             if (strlen($nombre) < 4) {
-                die('El nombre de usuario debe tener al menos 6 caracteres.');
+                echo "length";
+                die();
             }   
 
-            
+            $this->PrepareUpdateUserById($nombre, $this->correo_usr, $_SESSION['id_usr']);
         } else {
-            die("Ya existe una cuenta con ese correo D:");
+            echo "exist";
+            die();
         }
-        
+
         return;
     }
 
@@ -334,14 +339,10 @@ if (isset($_GET['action']) && $_GET['action'] == 'update') {
     return;
 }
 
-if (isset($_POST['action']) && $_POST['action'] == 'actualizar') {
+if (isset($_GET['action']) && $_GET['action'] == 'actualizar') {
     $usercontroler = new UserController();
-    // session_start();
     $usercontroler->verificarUpdate($_POST['nombre_usr'], $_POST['correo_usr'], $_POST['contrasena_usr']);
-    $usercontroler->PrepareUpdateUserById($_POST['nombre_usr'], $_POST['correo_usr'],$_SESSION['id_usr']);
-    $usercontroler->VistaUsuario();
-
-    // $usercontroler->VistaUpdate();
+    echo "true";
     return;
 }
 
@@ -367,7 +368,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'abort') {
 // ------------------------------------------
 
 // Action vista predefinida
-if(isset($_GET) || !isset($_GET)){
+if(isset($_GET) || !isset($_GET) && $_GET['action'] != "actualizar"){
     $usercontroler = new UserController();
     session_destroy();
     $usercontroler->RedirigirNoUsuario();
