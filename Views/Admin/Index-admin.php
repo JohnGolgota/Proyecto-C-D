@@ -16,17 +16,16 @@ include '../Inc/header.php';
             <section class="d-inline align-items-end text-end position-absolute end-0 botones row">
                 <!-- Boton user -->
                 <section class="mt-2 usuario boton-usr-container">
-                    <i onclick="configDesplegable();" class="fa-solid fa-user icono m-2 icono-user"></i><label onclick="configDesplegable();" for="" class="user-nav label-nav nombre-user"> Administrador </label>
+                    <i class="fa-solid fa-user icono m-2 icono-user"></i><label for="" class="user-nav label-nav nombre-user"> Administrador </label>
                 </section>
-                <aside id="configDesplegable" style="display: none;" class="menu-no">
-                    <!--  -->
-                    <div class="contenido-menu">
+                <!-- <aside id="configDesplegable" style="display: none;" class="menu-no"> -->
+                    <!-- <div class="contenido-menu">
                         <ul>
                             <hr class="salto">
                             <li><a href="#"></a></li>
                             <li><a href=""> Carpe Diem </a></li>
                             <hr class="salto">
-                            <li><a href="#"> Usuarios </a></li>
+                            <li><a data-bs-toggle="modal" data-bs-target="#user"> Usuarios </a></li>
                             <li><a href="#"> Eventos </a></li>
                             <li><a href="#"> Recordatorios </a></li>
                             <li><a href="#"> Relojes Pomodoro </a></li>
@@ -34,7 +33,7 @@ include '../Inc/header.php';
                             <hr class="salto">
                             <li><a href="./UserController.php?action=abort"> Cerrar sesión </a></li>
                         </ul>
-                    </div>
+                    </div> -->
                 </aside>
             </section>
         </nav>
@@ -67,126 +66,6 @@ include '../Inc/header.php';
     </main>
 
     <!-- ALL -->
-    <div class="modal fade" id="reminderarchive" tabindex="1" aria-labelledby="reminderarchiveLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h3> Usuarios </h3>
-                    <div class="col-md-12">
-                        <div class="tasks" id="all">
-                        <!-- <div class="task my-auto d-flex mb-1">
-                            <h4 class="element-task nombre-task my-auto" id="nombre-task"> Nombre </h4>
-                            <h4 class="element-task notifiacion-task my-auto" id="notificacion-task"> 2022-10-21 15:44:34 </h4>
-                        </div> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> Listo </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="reminderarchive" tabindex="1" aria-labelledby="reminderarchiveLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h3> Eventos </h3>
-                    <div class="col-md-12">
-                        <div class="tasks" id="all">
-                        <!-- <div class="task my-auto d-flex mb-1">
-                            <h4 class="element-task nombre-task my-auto" id="nombre-task"> Nombre </h4>
-                            <h4 class="element-task notifiacion-task my-auto" id="notificacion-task"> 2022-10-21 15:44:34 </h4>
-                        </div> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> Listo </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="reminderarchive" tabindex="1" aria-labelledby="reminderarchiveLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h3> Recordatorios </h3>
-                    <div class="col-md-12">
-                        <div class="tasks" id="all">
-                        <!-- <div class="task my-auto d-flex mb-1">
-                            <h4 class="element-task nombre-task my-auto" id="nombre-task"> Nombre </h4>
-                            <h4 class="element-task notifiacion-task my-auto" id="notificacion-task"> 2022-10-21 15:44:34 </h4>
-                        </div> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> Listo </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="reminderarchive" tabindex="1" aria-labelledby="reminderarchiveLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h3> Relojes Pomodoro </h3>
-                    <div class="col-md-12">
-                        <div class="tasks" id="all">
-                        <!-- <div class="task my-auto d-flex mb-1">
-                            <h4 class="element-task nombre-task my-auto" id="nombre-task"> Nombre </h4>
-                            <h4 class="element-task notifiacion-task my-auto" id="notificacion-task"> 2022-10-21 15:44:34 </h4>
-                        </div> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> Listo </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="reminderarchive" tabindex="1" aria-labelledby="reminderarchiveLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h3> Recordatorios Archivados </h3>
-                    <div class="col-md-12">
-                        <div class="tasks" id="all">
-                        <!-- <div class="task my-auto d-flex mb-1">
-                            <h4 class="element-task nombre-task my-auto" id="nombre-task"> Nombre </h4>
-                            <h4 class="element-task notifiacion-task my-auto" id="notificacion-task"> 2022-10-21 15:44:34 </h4>
-                        </div> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> Listo </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Remove the containe if you want to extend the Footer to full width. -->
     <!-- Footer -->
     <section class="container-fluid px-4 mt-3 footer-cd">
@@ -347,9 +226,9 @@ include '../Inc/header.php';
             </div>
     </section>
     </section>
+    <script src="../Public/Js/bootstrap.bundle.min.js"></script>
     <script src="../Public/Js/jquery-3.6.1.min.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="crossorigin="anonymous"></script> -->
     <script src="../Public/Js/app-admin.js"></script>
 </body>
-
 </html>

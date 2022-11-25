@@ -1,13 +1,3 @@
-// ----------------------------------- MENU DESPLEGABLE ----------------------------------- //
-function configDesplegable(){
-    if(document.getElementById("configDesplegable").style.display == "none"){
-        document.getElementById("configDesplegable").style.display = "block";
-    }
-    else {
-        document.getElementById("configDesplegable").style.display = "none";
-    }
-}
-
 $(function(){
     $('#form-query').submit(function(e){
         e.preventDefault();
@@ -136,3 +126,4 @@ $(function(){
         });
     });
 })
+
