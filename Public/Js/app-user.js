@@ -108,7 +108,7 @@ $('#form-actualizar').submit(function (er) {
 
                 setTimeout(function(){
                     window.location.reload();
-                }, 1000);
+                }, 1250);
                
                 break;
 
