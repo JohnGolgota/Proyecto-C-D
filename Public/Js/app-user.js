@@ -39,6 +39,89 @@ pom.addEventListener('click', function(){
 
 
 // ----------------------------------- CONTENIDO AJAX y Jquery. ----------------------------------- //
+// [ACTUALIZAR USUARIO] --------------------------------------------------------------------------- //
+$('#form-actualizar').submit(function (er) {
+    const postData = {
+        nombre_usr: $('#nombre_usr').val(),
+        correo_usr: $('#correo_usr').val(),
+        contrasena_usr: $('#contrasena_usr').val(),
+    }
+
+    let url = 'UserController.php?action=actualizar';
+
+    $.post(url, postData, function (response) {
+        console.log("RESPUESTA -> ", response);
+        console.log("Formularios de M*r",$('#nombre_usr').val(), $('#correo_usr').val(), $('#contrasena_usr').val())
+        switch (response) {
+            case "pass empty":
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Nao Nao!',
+                    text: '¡La contraseña NO puede estar vacia!',
+                    confirmButtonText: '¡Vale!'
+                })
+                break;
+                
+            case "exist":
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Nao Nao!',
+                    text: 'Ese correo electronico ya existe',
+                    confirmButtonText: '¡Vale!'
+                })
+                break;
+
+            case "pass error":
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Nao Nao!',
+                    text: '¡Contraseña Incorrecta!',
+                    confirmButtonText: '¡Vale!'
+                })
+                break;
+
+            case "length":
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Nao Nao!',
+                    text: '¡El nombre de usuario debe tener al menos 4 caracteres y maximo 10!',
+                    confirmButtonText: '¡Vale!'
+                })
+                break;
+                
+            case "true":
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Genial!',
+                    text: '¡Los datos han sido actualizados correctamente!',
+                    confirmButtonText: '¡Vale!'
+                })
+
+                if(!$('#nombre_usr').val() == ""){
+                    $('#nombre_readonly').val($('#nombre_usr').val());
+                }
+
+                if(!$('#correo_usr').val() == ""){
+                    // break;
+                    $('#correo_readonly').val($('#correo_usr').val());
+                }
+
+                setTimeout(function(){
+                    window.location.reload();
+                }, 1000);
+               
+                break;
+
+            default:
+                break;
+        }
+    });
+
+    er.preventDefault();
+    // $('#form-actualizar').trigger('reset');
+});
+
+// [TASKS] ---------------------------------------------------------------------------------------------------- //
 $(document).ready(function() {
     fetchArchive();
     fetchTasks();
