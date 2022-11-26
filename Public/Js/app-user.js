@@ -803,21 +803,6 @@ let array_actividad;
 let seconds;
 let actividad;
 
-// function demo() {
-//     console.log('Taking a break...');
-//     sleep(2000);
-//     console.log('Two second later');
-// }
-
-function wait(espera_segundos) {
-    espera = espera_segundos * 1000;
-    const tiempo_inicio = Date.now();
-    let tiempo_actual = null;
-    do {
-        tiempo_actual = Date.now();
-    } while (tiempo_actual - tiempo_inicio < espera);
-}
-  
 
 // FUNCION POMODORO (JODIO EL ASUNTO)
 const pomodoro_start = document.getElementById("btnPomodoro");
@@ -841,9 +826,6 @@ pomodoro_start.addEventListener('click', function(){
     actividad = (((result * 77) / 100) / 4) * 60;
     let pausa_corta = (((result * 11.5) / 100) / 3) * 60;
     let pausa_larga = ((result * 11.5) / 100) * 60;
-    
-    // console.log("TIEMPO DE PAUSA CORTA", pausa_corta);
-    // console.log("TIEMPO DE PAUSA LARGA ", pausa_larga);
     
     document.getElementById("customRange1").value = actividad;
     document.getElementById("first-label").innerText = actividad.toFixed(0) + " Minutos";
@@ -879,90 +861,262 @@ $(document).ready(function() {
         $.post('PomodoroController.php?action=AddPomodoro', postData, function(response){
             console.log(response);
         })
-        let actividad_timing = parseInt(actividad);
-        console.log(actividad_timing, ":", seconds);
 
-        for (let cicle = 2; cicle <= 8; cicle++) {
-            if(cicle %2 == 0){
-                console.log("[ACTIVIDAD] ----> " + cicle);
-                actividad_timing = document.getElementById("customRange1").value;
-                let index = 0;
-                while(index <= actividad_timing){
-                    // wait(1);
-                    // demo();
-                    a = setTimeout(() => {
-                        if(actividad_timing == 0 && seconds == 0){
-                            // break;
-                            clearTimeout(a);
-                        }
-                                
-                        if(seconds == 0){
-                            seconds = 60;
-                            actividad_timing =  actividad_timing - 1;
-                        }
-            
-                        seconds = seconds - 1;
-                        
-                        if(seconds < 10){
-                            document.getElementById("counter").innerText = actividad_timing + ": 0" + seconds;
-                            console.log(actividad_timing, ": 0", seconds);
-                        } else {
-                            document.getElementById("counter").innerText = actividad_timing + ":" + seconds;
-                            console.log(actividad_timing, ":", seconds);
-                        }
-                    }, 1000);
-                }
-            }
+        let time = $("#customRange1").val();
+        let time_array = time.split(".");
+        let seconds;
 
-            if(cicle %2 != 0 && cicle != 8){
-                console.log("[PAUSA] ----> " + cicle);
-                pausa_timing = document.getElementById("customRange2").value;
-                let index = 0;
-                while(index <= pausa_timing){
-                    if(actividad_timing == 0 && seconds == 0){
-                        index++;
-                        break;
-                    }
-                            
-                    if(seconds == 0){
-                        seconds = 60;
-                        pausa_timing =  pausa_timing - 1;
-                    }
-        
-                    seconds = seconds - 1;
-                    
-                    if(seconds < 10){
-                        console.log(pausa_timing, ": 0", seconds);
-                    } else {
-                        console.log(pausa_timing, ":", seconds);
-                    }
-                }
-            }
-
-            if(cicle == 8){
-                console.log("[PAUSA LARGA] ----> " + cicle);
-                larga_timing = document.getElementById("customRange3").value;
-                let index = 0;
-                while(index <= larga_timing){
-                    if(actividad_timing == 0 && seconds == 0){
-                        index++;
-                        break;
-                    }
-                            
-                    if(seconds == 0){
-                        seconds = 60;
-                        larga_timing =  larga_timing - 1;
-                    }
-        
-                    seconds = seconds - 1;
-                    
-                    if(seconds < 10){
-                        console.log(larga_timing, ": 0", seconds);
-                    } else {
-                        console.log(larga_timing, ":", seconds);
-                    }
-                }
-            }
+        let actividad = time_array[0];
+        if(time_array[1] == undefined){
+            seconds = 0;
+        } else {
+            seconds = 59;
         }
+
+        let pausa_corta_time = $("#customRange2").val();
+        let pausa_corta_array = pausa_corta_time.split(".");
+        let seconds_pausa_corta;
+
+        let pausa_corta = pausa_corta_array[0];
+        if(pausa_corta_array[1] == undefined){
+            seconds_pausa_corta = 0;
+        } else {
+            seconds_pausa_corta = 59;
+        }
+
+        // [PRIMER CICLO]
+        actividad_pom_1 = setInterval(() => {
+            if(actividad == 00 && seconds == 0){
+                clearInterval(actividad_pom_1);
+                console.log("FIN ACTIVIDAD 1");
+            }
+
+            if(seconds == -1){
+                seconds = 59;
+                actividad--;
+            }
+            
+            if(actividad < 10 && seconds < 10){
+                console.log("0", actividad, ": 0", seconds);
+            } else if(actividad < 10){
+                console.log("0", actividad, ":", seconds);
+            } else if(seconds < 10){
+                console.log(actividad, ": 0", seconds);
+            } else {
+                console.log(actividad, ":", seconds);
+            }
+
+            seconds--;
+        }, 100);
+        
+        setTimeout(() => {
+            pausa_pom_1 = setInterval(() => {
+                if(pausa_corta == 00 && seconds_pausa_corta == 0){
+                    clearInterval(pausa_pom_1);
+                    console.log("FIN PAUSA 1");
+                }
+    
+                if(seconds_pausa_corta == -1){
+                    seconds_pausa_corta = 59;
+                    pausa_corta--;
+                }
+                
+                if(pausa_corta < 10 && seconds_pausa_corta < 10){
+                    console.log("0", pausa_corta, ": 0", seconds_pausa_corta);
+                } else if(pausa_corta < 10){
+                    console.log("0", pausa_corta, ":", seconds_pausa_corta);
+                } else if(seconds_pausa_corta < 10){
+                    console.log(pausa_corta, ": 0", seconds_pausa_corta);
+                } else {
+                    console.log(pausa_corta, ":", seconds_pausa_corta);
+                }
+    
+                seconds_pausa_corta--;
+            }, 100);
+        }, (actividad * 6000) + 10000);
+
+        // [SEGUNDO CICLO]
+        let actividad_2 = time_array[0];
+        console.log("ACTIVIDAD -> ", actividad_2);
+        setTimeout(() => {
+            actividad_pom_2 = setInterval(() => {
+                if(actividad_2 == 00 && seconds == 0){
+                    clearInterval(actividad_pom_2);
+                    console.log("FIN ACTIVIDAD 2");
+                }
+    
+                if(seconds == -1){
+                    seconds = 59;
+                    actividad_2--;
+                }
+                
+                if(actividad_2 < 10 && seconds < 10){
+                    console.log("0", actividad_2, ": 0", seconds);
+                } else if(actividad_2 < 10){
+                    console.log("0", actividad_2, ":", seconds);
+                } else if(seconds < 10){
+                    console.log(actividad_2, ": 0", seconds);
+                } else {
+                    console.log(actividad_2, ":", seconds);
+                }
+                
+                seconds--;
+            }, 100);
+        }, ((actividad * 6000) + 10000) + ((pausa_corta * 6000) + 10000));
+
+        let seconds_pausa_corta_2
+        if(pausa_corta_array[1] == undefined){
+            seconds_pausa_corta_2 = 0;
+        } else {
+            seconds_pausa_corta_2 = 59;
+        }
+
+        let pausa_corta_2 = pausa_corta_array[0];
+        setTimeout(() => {
+            pausa_pom_2 = setInterval(() => {
+                if(pausa_corta_2 == 00 && seconds_pausa_corta_2 == 0){
+                    clearInterval(pausa_pom_2);
+                    console.log("FIN PAUSA 2");
+                }
+    
+                if(seconds_pausa_corta_2 == -1){
+                    seconds_pausa_corta_2 = 59;
+                    pausa_corta_2--;
+                }
+                
+                if(pausa_corta_2 < 10 && seconds_pausa_corta_2 < 10){
+                    console.log("0", pausa_corta_2, ": 0", seconds_pausa_corta_2);
+                } else if(pausa_corta_2 < 10){
+                    console.log("0", pausa_corta_2, ":", seconds_pausa_corta_2);
+                } else if(seconds_pausa_corta_2 < 10){
+                    console.log(pausa_corta_2, ": 0", seconds_pausa_corta_2);
+                } else {
+                    console.log(pausa_corta_2, ":", seconds_pausa_corta_2);
+                }
+    
+                seconds_pausa_corta_2--;
+            }, 100);
+        }, (((actividad * 6000) + 10000)*2) + ((pausa_corta * 6000) + 10000));
+
+        // [TERCER CICLO]
+        let actividad_3 = time_array[0];
+        console.log("ACTIVIDAD -> ", actividad_3);
+        setTimeout(() => {
+            actividad_pom_3 = setInterval(() => {
+                if(actividad_3 == 00 && seconds == 0){
+                    clearInterval(actividad_pom_3);
+                    console.log("FIN ACTIVIDAD 3");
+                }
+    
+                if(seconds == -1){
+                    seconds = 59;
+                    actividad_3--;
+                }
+                
+                if(actividad_3 < 10 && seconds < 10){
+                    console.log("0", actividad_3, ": 0", seconds);
+                } else if(actividad_3 < 10){
+                    console.log("0", actividad_3, ":", seconds);
+                } else if(seconds < 10){
+                    console.log(actividad_3, ": 0", seconds);
+                } else {
+                    console.log(actividad_3, ":", seconds);
+                }
+    
+                seconds--;
+            }, 100);
+        }, (((actividad * 6000) + 10000)*2) + (((pausa_corta * 6000) + 10000)*2));
+
+        let pausa_corta_3 = pausa_corta_array[0];
+        setTimeout(() => {
+            pausa_pom_3 = setInterval(() => {
+                if(pausa_corta_3 == 00 && seconds_pausa_corta == 0){
+                    clearInterval(pausa_pom_3);
+                    console.log("FIN PAUSA 3");
+                }
+    
+                if(seconds_pausa_corta == -1){
+                    seconds_pausa_corta = 59;
+                    pausa_corta_3--;
+                }
+                
+                if(pausa_corta_3 < 10 && seconds_pausa_corta < 10){
+                    console.log("0", pausa_corta_3, ": 0", seconds_pausa_corta);
+                } else if(pausa_corta_3 < 10){
+                    console.log("0", pausa_corta_3, ":", seconds_pausa_corta);
+                } else if(seconds_pausa_corta < 10){
+                    console.log(pausa_corta_3, ": 0", seconds_pausa_corta);
+                } else {
+                    console.log(pausa_corta_3, ":", seconds_pausa_corta);
+                }
+    
+                seconds_pausa_corta--;
+            }, 100);
+        }, (((actividad * 6000) + 10000)*3) + (((pausa_corta * 6000) + 10000)*2));
+
+        // [ULTIMO CICLO]
+        let actividad_4 = time_array[0];
+        console.log("ACTIVIDAD -> ", actividad_4);
+        setTimeout(() => {
+            actividad_pom_4 = setInterval(() => {
+                if(actividad_4 == 00 && seconds == 0){
+                    clearInterval(actividad_pom_4);
+                    console.log("FIN ACTIVIDAD 4");
+                }
+    
+                if(seconds == -1){
+                    seconds = 59;
+                    actividad_4--;
+                }
+                
+                if(actividad_4 < 10 && seconds < 10){
+                    console.log("0", actividad_4, ": 0", seconds);
+                } else if(actividad_4 < 10){
+                    console.log("0", actividad_4, ":", seconds);
+                } else if(seconds < 10){
+                    console.log(actividad_4, ": 0", seconds);
+                } else {
+                    console.log(actividad_4, ":", seconds);
+                }
+    
+                seconds--;
+            }, 100);
+        }, (((actividad * 6000) + 10000)*3) + (((pausa_corta * 6000) + 10000)*3));
+
+        let pausa_larga_time = $("#customRange3").val();
+        let pausa_larga_array = pausa_larga_time.split(".");
+        let pausa_larga_seconds;
+        let pausa_larga = pausa_larga_array[0];
+        if(pausa_larga_array[1] == undefined){
+            pausa_larga_seconds = 0;
+        } else {
+            pausa_larga_seconds = 59;
+        }
+
+        setTimeout(() => {
+            pausa_pom_4 = setInterval(() => {
+                if(pausa_larga == 00 && pausa_larga_seconds == 0){
+                    clearInterval(pausa_pom_4);
+                    console.log("FIN PAUSA LARGA");
+                }
+    
+                if(pausa_larga_seconds == -1){
+                    pausa_larga_seconds = 59;
+                    pausa_larga--;
+                }
+                
+                if(pausa_larga < 10 && pausa_larga_seconds < 10){
+                    console.log("0", pausa_larga, ": 0", pausa_larga_seconds);
+                } else if(pausa_larga < 10){
+                    console.log("0", pausa_larga, ":", pausa_larga_seconds);
+                } else if(pausa_larga_seconds < 10){
+                    console.log(pausa_larga, ": 0", pausa_larga_seconds);
+                } else {
+                    console.log(pausa_larga, ":", pausa_larga_seconds);
+                }
+    
+                pausa_larga_seconds--;
+            }, 100);
+        }, (((actividad * 6000) + 10000)*4) + (((pausa_corta * 6000) + 10000)*3));
     })
 });
