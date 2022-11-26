@@ -127,24 +127,24 @@
                 <h5 class="modal-title" id="changepassword"> Actualizar Informacion </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="UserController.php" method="POST">
+            <form method="" id="form-password">
                 <input type="hidden" name="action" value="act_contrasena">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <label for="nombre"> Contraseña Antigua </label>
-                            <input type="password" placeholder="Duvan Arwen Lazar" class="form-control shadow-none" name="old_password_usr" required minlength="6">
+                            <input type="password" placeholder="Duvan Arwen Lazar" class="form-control shadow-none" name="old_password_usr" id="old_password_usr" required minlength="6">
                             <!-- <hr class="salto"> -->
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <label for="nombre"> Nueva Contraseña </label>
-                            <input type="password" placeholder="Jiss Golgota" class="form-control shadow-none" name="new_password_usr" required>
+                            <input type="password" placeholder="Jiss Golgota" class="form-control shadow-none" name="new_password_usr" id="new_password_usr" required>
                         </div>
                         <div class="col-md-6">
                             <label for="nombre"> Confirmar Contraseña </label>
-                            <input type="password" placeholder="Jiss Golgota" class="form-control shadow-none" name="confirm_password_usr" required>
+                            <input type="password" placeholder="Jiss Golgota" class="form-control shadow-none" name="confirm_password_usr" id="confirm_password_usr" required>
                         </div>
                     </div>
                 </div>

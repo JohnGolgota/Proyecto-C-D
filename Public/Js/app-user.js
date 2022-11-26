@@ -39,6 +39,115 @@ pom.addEventListener('click', function(){
 
 
 // ----------------------------------- CONTENIDO AJAX y Jquery. ----------------------------------- //
+// [ACTUALIZAR CONTRASEÑA] --------------------------------------------------------------------------- //
+$('#form-password').submit(function (er) {
+    const postData = {
+        old_password_usr: $('#old_password_usr').val(),
+        new_password_usr: $('#new_password_usr').val(),
+        confirm_password_usr: $('#confirm_password_usr').val()
+    }
+
+    let url = 'UserController.php?action=act_contrasena';
+
+    $.post(url, postData, function (response) {
+        console.log(response);
+        switch (response) {
+            case "empty":
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Nao Nao!',
+                    text: '¡Los campos NO pueden estar vacios!',
+                    confirmButtonText: '¡Vale!'
+                })
+                break;
+                
+            case "not":
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Nao Nao!',
+                    text: '¡Las contraseñas NO coinciden!',
+                    confirmButtonText: '¡Vale!'
+                })
+                break;
+
+            case "four":
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Nao Nao!',
+                    text: '¡La contraseña debe tener al menos 4 caracteres!',
+                    confirmButtonText: '¡Vale!'
+                })
+                break;
+
+            case "ten":
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Nao Nao!',
+                    text: '¡La contraseña NO puede tener mas de 10 caracteres!',
+                    confirmButtonText: '¡Vale!'
+                })
+                break;
+                
+            case "minus":
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Nao Nao!',
+                    text: '¡La contraseña debe tener al menos una letra minuscula!',
+                    confirmButtonText: '¡Vale!'
+                })
+                break;
+
+            case "number":
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Nao Nao!',
+                    text: '¡La contraseña debe tener al menos un numero!',
+                    confirmButtonText: '¡Vale!'
+                })
+                break;
+
+            case "incorrect":
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Nao Nao!',
+                    text: '¡Contraseña Incorrecta!',
+                    confirmButtonText: '¡Vale!'
+                })
+                break;
+
+            case "not found":
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Nao Nao!',
+                    text: '¡Ha ocurrido un error al actualizar los datos! D:',
+                    confirmButtonText: '¡Vale!'
+                })
+                break;
+            
+            case "success":
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Genial!',
+                    text: '¡Los datos han sido actualizados correctamente!',
+                    confirmButtonText: '¡Vale!'
+                })
+
+                setTimeout(function(){
+                    window.location.reload();
+                }, 1250);
+
+                break;
+
+            default:
+                break;
+        }
+    });
+
+    er.preventDefault();
+});
+
+
+
 // [ACTUALIZAR USUARIO] --------------------------------------------------------------------------- //
 $('#form-actualizar').submit(function (er) {
     const postData = {
@@ -50,8 +159,8 @@ $('#form-actualizar').submit(function (er) {
     let url = 'UserController.php?action=actualizar';
 
     $.post(url, postData, function (response) {
-        console.log("RESPUESTA -> ", response);
-        console.log("Formularios de M*r",$('#nombre_usr').val(), $('#correo_usr').val(), $('#contrasena_usr').val())
+        // console.log("RESPUESTA -> ", response);
+        // console.log("Formularios de M*r",$('#nombre_usr').val(), $('#correo_usr').val(), $('#contrasena_usr').val())
         switch (response) {
             case "pass empty":
                 Swal.fire({

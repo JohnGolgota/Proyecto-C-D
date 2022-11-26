@@ -45,43 +45,56 @@ class UserController extends User{
 
     public function verificarContrasena($old_password, $new_password, $confirm_password){
         if(empty($old_password) || empty($new_password) || empty($confirm_password)){
-            die("Los campos NO pueden estar vacios");
+            echo "empty";
+            die();
         }
 
         if($new_password != $confirm_password){
-            die("Las Contraseñas NO Coinciden");
+            // die("Las Contraseñas NO Coinciden");
+            echo "not";
+            die();
         }
 
         # strlen Idenfifica Cuantos caracteres hay
         if (strlen($new_password) < 4) {
-            die('La contraseña debe tener al menos 4 caracteres.');
+            echo "four";
+            die();
+            // die('La contraseña debe tener al menos 4 caracteres.');
         }
         if (strlen($new_password) > 10) {
-
-            die('La contraseña no puede tener mas de 10 caracteres.');
+            echo "ten";
+            die();
+            // die('La contraseña no puede tener mas de 10 caracteres.');
         }
 
         # preg_match Exige que la contraseña tenga al menos un caracter del diccionario especificado.
         if (!preg_match('`[a-z]`', $new_password)) {
-            die('La contraseña debe tener al menos una letra minuscula.');
+            echo "minus";
+            die();
+            // die('La contraseña debe tener al menos una letra minuscula.');
         }
         if (!preg_match('`[0-9]`', $new_password)) {
-            die('La contraseña debe tener al menos un numero.');
+            echo "number";
+            die();
+            // die('La contraseña debe tener al menos un numero.');
         }
 
-        $datosUsuario = $this->ConsultarUsuario($_SESSION['nombre_usr']);
+        $this->nombre_usr = $_SESSION['nombre_usr'];
+        $datosUsuario = $this->ConsultarUsuario();
 
         # Recorremos el objeto que obtenemos en el model.
         foreach ($datosUsuario as $dU) {}
         if (!password_verify($old_password,$dU->contrasena_usr)) {
-            die("CONTRASEÑA INCORRECTA");
+            echo "incorrect";
+            die();
+            // die("CONTRASEÑA INCORRECTA");
         } 
 
         $contrasenaEncript = password_hash($new_password,PASSWORD_ARGON2ID);
         $this->contrasena_usr = $contrasenaEncript;
 
         // Tampoco se si va, pero bueno. xd
-        // return;
+        return;
     }
 
     public function verificarUpdate($nombre, $email, $contrasena){
@@ -232,11 +245,13 @@ class UserController extends User{
         $this->correo_usr = $correo_usr;
         $this->id_usr = $id_usr;
         $this->updateNombreUsuario();
+        return;
     }
     public function PrepareIdForUpdate()
     {
         $this->id_usr = $_SESSION['id_usr'];
         $this->updateContrasena();
+        return;
     }
 }
 // Action Registro
@@ -330,12 +345,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'confirm_delete') {
 # Redireccion a Actualizar Nombre.
 if (isset($_GET['action']) && $_GET['action'] == 'update') {
     $usercontroler = new UserController();
-    // session_start();
 
     $busquedaObjeto = $usercontroler->TraerNombreUsuario();
     foreach ($busquedaObjeto as $obj) {}
-
-    // $usercontroler->VistaUpdate();
     return;
 }
 
@@ -346,14 +358,11 @@ if (isset($_GET['action']) && $_GET['action'] == 'actualizar') {
     return;
 }
 
-if (isset($_POST['action']) && $_POST['action'] == 'act_contrasena') {
+if (isset($_GET['action']) && $_GET['action'] == 'act_contrasena') {
     $usercontroler = new UserController();
-    // session_start();
     $usercontroler->verificarContrasena($_POST['old_password_usr'], $_POST['new_password_usr'], $_POST['confirm_password_usr']);
     $usercontroler->PrepareIdForUpdate();
-    $usercontroler->VistaUsuario();
-
-    // $usercontroler->VistaUpdate();
+    echo "success";
     return;
 }
 

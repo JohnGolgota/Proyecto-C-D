@@ -39,7 +39,7 @@ class User{
         }
         return;
     }
-// puto 2
+
     public function ConsultarUsuario(){
         include_once '../Config/conexiondb.php';
         $conexion = new Conexion();
@@ -52,7 +52,6 @@ class User{
             return $usuarioObjeto;
         } else {
             die("not found");
-            // die("No se a encontrado el usuario en la base de datos");
         }
     }
 
@@ -89,6 +88,7 @@ class User{
         $_SESSION['correo_usr'] = $this->correo_usr;
         
         $insert->execute();
+        return;
     }
     
     // Para hacer las siguientes lineas deberia haber un try catch
@@ -103,6 +103,7 @@ class User{
         $actualizacion = $conexion->stm->prepare($sql);
 
         $actualizacion->execute();
+        return;
     }
 }
 ?>
