@@ -897,17 +897,21 @@ $(document).ready(function() {
             }
             
             if(actividad < 10 && seconds < 10){
-                console.log("0", actividad, ": 0", seconds);
+                document.getElementById("counter").innerText = "0" + actividad + ": 0" + seconds;
+                // console.log("0", actividad, ": 0", seconds);
             } else if(actividad < 10){
-                console.log("0", actividad, ":", seconds);
+                document.getElementById("counter").innerText = "0" + actividad, ":" + seconds;
+                // console.log("0", actividad, ":", seconds);
             } else if(seconds < 10){
-                console.log(actividad, ": 0", seconds);
+                document.getElementById("counter").innerText = actividad + ": 0" + seconds;
+                // console.log(actividad, ": 0", seconds);
             } else {
-                console.log(actividad, ":", seconds);
+                document.getElementById("counter").innerText = actividad + ":" + seconds;
+                // console.log(actividad, ":", seconds);
             }
 
             seconds--;
-        }, 100);
+        }, 1000);
         
         setTimeout(() => {
             pausa_pom_1 = setInterval(() => {
@@ -932,37 +936,48 @@ $(document).ready(function() {
                 }
     
                 seconds_pausa_corta--;
-            }, 100);
-        }, (actividad * 6000) + 10000);
+            }, 1000);
+        }, (actividad * 60000) + 10000);
 
         // [SEGUNDO CICLO]
         let actividad_2 = time_array[0];
+        let seconds_2
+        if(time_array[1] == undefined){
+            seconds_2 = 0;
+        } else {
+            seconds_2 = 59;
+        }
+
         console.log("ACTIVIDAD -> ", actividad_2);
         setTimeout(() => {
             actividad_pom_2 = setInterval(() => {
-                if(actividad_2 == 00 && seconds == 0){
+                if(actividad_2 == 00 && seconds_2 == 0){
                     clearInterval(actividad_pom_2);
                     console.log("FIN ACTIVIDAD 2");
                 }
     
-                if(seconds == -1){
-                    seconds = 59;
+                if(seconds_2 == -1){
+                    seconds_2 = 59;
                     actividad_2--;
                 }
                 
-                if(actividad_2 < 10 && seconds < 10){
-                    console.log("0", actividad_2, ": 0", seconds);
+                if(actividad_2 < 10 && seconds_2 < 10){
+                    document.getElementById("counter").innerText = "0" + actividad_2 + ": 0" + seconds_2;
+                    // console.log("0", actividad_2, ": 0", seconds_2);
                 } else if(actividad_2 < 10){
-                    console.log("0", actividad_2, ":", seconds);
-                } else if(seconds < 10){
-                    console.log(actividad_2, ": 0", seconds);
+                    document.getElementById("counter").innerText = "0" + actividad_2, ":" + seconds_2;
+                    // console.log("0", actividad_2, ":", seconds_2);
+                } else if(seconds_2 < 10){
+                    document.getElementById("counter").innerText = actividad_2 + ": 0" + seconds_2;
+                    // console.log(actividad_2, ": 0", seconds_2);
                 } else {
-                    console.log(actividad_2, ":", seconds);
+                    document.getElementById("counter").innerText = actividad_2 + ":" + seconds_2;
+                    // console.log(actividad_2, ":", seconds_2);
                 }
                 
-                seconds--;
-            }, 100);
-        }, ((actividad * 6000) + 10000) + ((pausa_corta * 6000) + 10000));
+                seconds_2--;
+            }, 1000);
+        }, ((actividad * 60000) + 10000) + ((pausa_corta * 60000) + 10000));
 
         let seconds_pausa_corta_2
         if(pausa_corta_array[1] == undefined){
@@ -995,93 +1010,114 @@ $(document).ready(function() {
                 }
     
                 seconds_pausa_corta_2--;
-            }, 100);
-        }, (((actividad * 6000) + 10000)*2) + ((pausa_corta * 6000) + 10000));
+            }, 1000);
+        }, (((actividad * 60000) + 10000)*2) + ((pausa_corta * 60000) + 10000));
 
         // [TERCER CICLO]
         let actividad_3 = time_array[0];
+        let seconds_3
+        if(time_array[1] == undefined){
+            seconds_3 = 0;
+        } else {
+            seconds_3 = 59;
+        }
+
         console.log("ACTIVIDAD -> ", actividad_3);
         setTimeout(() => {
             actividad_pom_3 = setInterval(() => {
-                if(actividad_3 == 00 && seconds == 0){
+                if(actividad_3 == 00 && seconds_3 == 0){
                     clearInterval(actividad_pom_3);
                     console.log("FIN ACTIVIDAD 3");
                 }
     
-                if(seconds == -1){
-                    seconds = 59;
+                if(seconds_3 == -1){
+                    seconds_3 = 59;
                     actividad_3--;
                 }
                 
-                if(actividad_3 < 10 && seconds < 10){
-                    console.log("0", actividad_3, ": 0", seconds);
+                if(actividad_3 < 10 && seconds_3 < 10){
+                    console.log("0", actividad_3, ": 0", seconds_3);
                 } else if(actividad_3 < 10){
-                    console.log("0", actividad_3, ":", seconds);
-                } else if(seconds < 10){
-                    console.log(actividad_3, ": 0", seconds);
+                    console.log("0", actividad_3, ":", seconds_3);
+                } else if(seconds_3 < 10){
+                    console.log(actividad_3, ": 0", seconds_3);
                 } else {
-                    console.log(actividad_3, ":", seconds);
+                    console.log(actividad_3, ":", seconds_3);
                 }
     
-                seconds--;
-            }, 100);
-        }, (((actividad * 6000) + 10000)*2) + (((pausa_corta * 6000) + 10000)*2));
+                seconds_3--;
+            }, 1000);
+        }, (((actividad * 60000) + 10000)*2) + (((pausa_corta * 60000) + 10000)*2));
 
         let pausa_corta_3 = pausa_corta_array[0];
+        let seconds_pausa_corta_3
+        if(pausa_corta_array[1] == undefined){
+            seconds_pausa_corta_3 = 0;
+        } else {
+            seconds_pausa_corta_3 = 59;
+        }
+
         setTimeout(() => {
             pausa_pom_3 = setInterval(() => {
-                if(pausa_corta_3 == 00 && seconds_pausa_corta == 0){
+                if(pausa_corta_3 == 00 && seconds_pausa_corta_3 == 0){
                     clearInterval(pausa_pom_3);
                     console.log("FIN PAUSA 3");
                 }
     
-                if(seconds_pausa_corta == -1){
-                    seconds_pausa_corta = 59;
+                if(seconds_pausa_corta_3 == -1){
+                    seconds_pausa_corta_3 = 59;
                     pausa_corta_3--;
                 }
                 
-                if(pausa_corta_3 < 10 && seconds_pausa_corta < 10){
-                    console.log("0", pausa_corta_3, ": 0", seconds_pausa_corta);
+                if(pausa_corta_3 < 10 && seconds_pausa_corta_3 < 10){
+                    console.log("0", pausa_corta_3, ": 0", seconds_pausa_corta_3);
                 } else if(pausa_corta_3 < 10){
-                    console.log("0", pausa_corta_3, ":", seconds_pausa_corta);
-                } else if(seconds_pausa_corta < 10){
-                    console.log(pausa_corta_3, ": 0", seconds_pausa_corta);
+                    console.log("0", pausa_corta_3, ":", seconds_pausa_corta_3);
+                } else if(seconds_pausa_corta_3 < 10){
+                    console.log(pausa_corta_3, ": 0", seconds_pausa_corta_3);
                 } else {
-                    console.log(pausa_corta_3, ":", seconds_pausa_corta);
+                    console.log(pausa_corta_3, ":", seconds_pausa_corta_3);
                 }
     
-                seconds_pausa_corta--;
-            }, 100);
-        }, (((actividad * 6000) + 10000)*3) + (((pausa_corta * 6000) + 10000)*2));
+                seconds_pausa_corta_3--;
+            }, 1000);
+        }, (((actividad * 60000) + 10000)*3) + (((pausa_corta * 60000) + 10000)*2));
 
         // [ULTIMO CICLO]
         let actividad_4 = time_array[0];
+        let seconds_4
+        if(time_array[1] == undefined){
+            seconds_4 = 0;
+        } else {
+            seconds_4 = 59;
+        }
+
         console.log("ACTIVIDAD -> ", actividad_4);
         setTimeout(() => {
             actividad_pom_4 = setInterval(() => {
-                if(actividad_4 == 00 && seconds == 0){
+                if(actividad_4 == 00 && seconds_4 == 0){
                     clearInterval(actividad_pom_4);
                     console.log("FIN ACTIVIDAD 4");
                 }
     
-                if(seconds == -1){
-                    seconds = 59;
+                if(seconds_4 == -1){
+                    seconds_4 = 59;
                     actividad_4--;
                 }
                 
-                if(actividad_4 < 10 && seconds < 10){
-                    console.log("0", actividad_4, ": 0", seconds);
+                if(actividad_4 < 10 && seconds_4 < 10){
+                    console.log("0", actividad_4, ": 0", seconds_4);
                 } else if(actividad_4 < 10){
-                    console.log("0", actividad_4, ":", seconds);
-                } else if(seconds < 10){
-                    console.log(actividad_4, ": 0", seconds);
+                    console.log("0", actividad_4, ":", seconds_4);
+                } else if(seconds_4 < 10){
+                    console.log(actividad_4, ": 0", seconds_4);
                 } else {
-                    console.log(actividad_4, ":", seconds);
+                    console.log(actividad_4, ":", seconds_4);
                 }
     
-                seconds--;
-            }, 100);
-        }, (((actividad * 6000) + 10000)*3) + (((pausa_corta * 6000) + 10000)*3));
+                seconds_4--;
+            }, 1000);
+        }, (((actividad * 60000) + 10000)*3) + (((pausa_corta * 60000) + 10000)*3));
 
         let pausa_larga_time = $("#customRange3").val();
         let pausa_larga_array = pausa_larga_time.split(".");
@@ -1116,7 +1152,7 @@ $(document).ready(function() {
                 }
     
                 pausa_larga_seconds--;
-            }, 100);
-        }, (((actividad * 6000) + 10000)*4) + (((pausa_corta * 6000) + 10000)*3));
+            }, 1000);
+        }, (((actividad * 60000) + 10000)*4) + (((pausa_corta * 60000) + 10000)*3));
     })
 });
