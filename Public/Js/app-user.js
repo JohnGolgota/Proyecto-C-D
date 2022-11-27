@@ -888,6 +888,12 @@ $(document).ready(function() {
         actividad_pom_1 = setInterval(() => {
             if(actividad == 00 && seconds == 0){
                 clearInterval(actividad_pom_1);
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Genial!',
+                    text: 'Tiempo de actividad completo ¡Tomate un descanso!',
+                    confirmButtonText: '¡Vale!'
+                })
                 console.log("FIN ACTIVIDAD 1");
             }
 
@@ -900,13 +906,13 @@ $(document).ready(function() {
                 document.getElementById("counter").innerText = "0" + actividad + ": 0" + seconds;
                 // console.log("0", actividad, ": 0", seconds);
             } else if(actividad < 10){
-                document.getElementById("counter").innerText = "0" + actividad, ":" + seconds;
+                document.getElementById("counter").innerText = "0" + actividad + ":" + seconds;
                 // console.log("0", actividad, ":", seconds);
             } else if(seconds < 10){
-                document.getElementById("counter").innerText = actividad + ": 0" + seconds;
+                document.getElementById("counter").innerText = "" + actividad + ": 0" + seconds;
                 // console.log(actividad, ": 0", seconds);
             } else {
-                document.getElementById("counter").innerText = actividad + ":" + seconds;
+                document.getElementById("counter").innerText = "" + actividad + ":" + seconds;
                 // console.log(actividad, ":", seconds);
             }
 
@@ -918,6 +924,12 @@ $(document).ready(function() {
                 if(pausa_corta == 00 && seconds_pausa_corta == 0){
                     clearInterval(pausa_pom_1);
                     console.log("FIN PAUSA 1");
+                    Swal.fire({
+                        icon: 'info',
+                        title: '¡Vamos!',
+                        text: 'Descanso completado ¡A seguir trabajando!',
+                        confirmButtonText: '¡Vale!'
+                    })
                 }
     
                 if(seconds_pausa_corta == -1){
@@ -926,13 +938,17 @@ $(document).ready(function() {
                 }
                 
                 if(pausa_corta < 10 && seconds_pausa_corta < 10){
-                    console.log("0", pausa_corta, ": 0", seconds_pausa_corta);
+                    document.getElementById("counter").innerText = "0" + pausa_corta + ": 0" + seconds_pausa_corta;
+                    // console.log("0", pausa_corta, ": 0", seconds_pausa_corta);
                 } else if(pausa_corta < 10){
-                    console.log("0", pausa_corta, ":", seconds_pausa_corta);
+                    document.getElementById("counter").innerText = "0" + pausa_corta + ":" + seconds_pausa_corta;
+                    // console.log("0", pausa_corta, ":", seconds_pausa_corta);
                 } else if(seconds_pausa_corta < 10){
-                    console.log(pausa_corta, ": 0", seconds_pausa_corta);
+                    document.getElementById("counter").innerText = pausa_corta + ": 0" + seconds_pausa_corta;
+                    // console.log(pausa_corta, ": 0", seconds_pausa_corta);
                 } else {
-                    console.log(pausa_corta, ":", seconds_pausa_corta);
+                    document.getElementById("counter").innerText = pausa_corta + ":" + seconds_pausa_corta;
+                    // console.log(pausa_corta, ":", seconds_pausa_corta);
                 }
     
                 seconds_pausa_corta--;
@@ -954,6 +970,12 @@ $(document).ready(function() {
                 if(actividad_2 == 00 && seconds_2 == 0){
                     clearInterval(actividad_pom_2);
                     console.log("FIN ACTIVIDAD 2");
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Genial!',
+                        text: 'Tiempo de actividad completo ¡Tomate un descanso!',
+                        confirmButtonText: '¡Vale!'
+                    })
                 }
     
                 if(seconds_2 == -1){
@@ -965,7 +987,7 @@ $(document).ready(function() {
                     document.getElementById("counter").innerText = "0" + actividad_2 + ": 0" + seconds_2;
                     // console.log("0", actividad_2, ": 0", seconds_2);
                 } else if(actividad_2 < 10){
-                    document.getElementById("counter").innerText = "0" + actividad_2, ":" + seconds_2;
+                    document.getElementById("counter").innerText = "0" + actividad_2 + ":" + seconds_2;
                     // console.log("0", actividad_2, ":", seconds_2);
                 } else if(seconds_2 < 10){
                     document.getElementById("counter").innerText = actividad_2 + ": 0" + seconds_2;
@@ -992,6 +1014,12 @@ $(document).ready(function() {
                 if(pausa_corta_2 == 00 && seconds_pausa_corta_2 == 0){
                     clearInterval(pausa_pom_2);
                     console.log("FIN PAUSA 2");
+                    Swal.fire({
+                        icon: 'info',
+                        title: '¡Vamos!',
+                        text: 'Descanso completado ¡A seguir trabajando!',
+                        confirmButtonText: '¡Vale!'
+                    })
                 }
     
                 if(seconds_pausa_corta_2 == -1){
@@ -1000,13 +1028,17 @@ $(document).ready(function() {
                 }
                 
                 if(pausa_corta_2 < 10 && seconds_pausa_corta_2 < 10){
-                    console.log("0", pausa_corta_2, ": 0", seconds_pausa_corta_2);
+                    document.getElementById("counter").innerText = "0" + pausa_corta_2 + ": 0" + seconds_pausa_corta_2;
+                    // console.log("0", pausa_corta_2, ": 0", seconds_pausa_corta_2);
                 } else if(pausa_corta_2 < 10){
-                    console.log("0", pausa_corta_2, ":", seconds_pausa_corta_2);
+                    document.getElementById("counter").innerText = "0" + pausa_corta_2 + ":" + seconds_pausa_corta_2;
+                    // console.log("0", pausa_corta_2, ":", seconds_pausa_corta_2);
                 } else if(seconds_pausa_corta_2 < 10){
-                    console.log(pausa_corta_2, ": 0", seconds_pausa_corta_2);
+                    document.getElementById("counter").innerText = pausa_corta_2 + ": 0" + seconds_pausa_corta_2;
+                    // console.log(pausa_corta_2, ": 0", seconds_pausa_corta_2);
                 } else {
-                    console.log(pausa_corta_2, ":", seconds_pausa_corta_2);
+                    document.getElementById("counter").innerText = pausa_corta_2 + ":" + seconds_pausa_corta_2;
+                    // console.log(pausa_corta_2, ":", seconds_pausa_corta_2);
                 }
     
                 seconds_pausa_corta_2--;
@@ -1028,6 +1060,12 @@ $(document).ready(function() {
                 if(actividad_3 == 00 && seconds_3 == 0){
                     clearInterval(actividad_pom_3);
                     console.log("FIN ACTIVIDAD 3");
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Genial!',
+                        text: 'Tiempo de actividad completo ¡Tomate un descanso!',
+                        confirmButtonText: '¡Vale!'
+                    })
                 }
     
                 if(seconds_3 == -1){
@@ -1036,13 +1074,17 @@ $(document).ready(function() {
                 }
                 
                 if(actividad_3 < 10 && seconds_3 < 10){
-                    console.log("0", actividad_3, ": 0", seconds_3);
+                    document.getElementById("counter").innerText = "0" + actividad_3 + ": 0" + seconds_3;
+                    // console.log("0", actividad_3, ": 0", seconds_3);
                 } else if(actividad_3 < 10){
-                    console.log("0", actividad_3, ":", seconds_3);
+                    document.getElementById("counter").innerText = "0" + actividad_3 + ":" + seconds_3;
+                    // console.log("0", actividad_3, ":", seconds_3);
                 } else if(seconds_3 < 10){
-                    console.log(actividad_3, ": 0", seconds_3);
+                    document.getElementById("counter").innerText = actividad_3 + ": 0" + seconds_3;
+                    // console.log(actividad_3, ": 0", seconds_3);
                 } else {
-                    console.log(actividad_3, ":", seconds_3);
+                    document.getElementById("counter").innerText = actividad_3 + ":" + seconds_3;
+                    // console.log(actividad_3, ":", seconds_3);
                 }
     
                 seconds_3--;
@@ -1062,6 +1104,12 @@ $(document).ready(function() {
                 if(pausa_corta_3 == 00 && seconds_pausa_corta_3 == 0){
                     clearInterval(pausa_pom_3);
                     console.log("FIN PAUSA 3");
+                    Swal.fire({
+                        icon: 'info',
+                        title: '¡Vamos!',
+                        text: 'Descanso completado ¡A seguir trabajando!',
+                        confirmButtonText: '¡Vale!'
+                    })
                 }
     
                 if(seconds_pausa_corta_3 == -1){
@@ -1070,13 +1118,17 @@ $(document).ready(function() {
                 }
                 
                 if(pausa_corta_3 < 10 && seconds_pausa_corta_3 < 10){
-                    console.log("0", pausa_corta_3, ": 0", seconds_pausa_corta_3);
+                    document.getElementById("counter").innerText = "0" + pausa_corta_3 + ": 0" + seconds_pausa_corta_3;
+                    // console.log("0", pausa_corta_3, ": 0", seconds_pausa_corta_3);
                 } else if(pausa_corta_3 < 10){
-                    console.log("0", pausa_corta_3, ":", seconds_pausa_corta_3);
+                    document.getElementById("counter").innerText = "0" + pausa_corta_3 + ":" + seconds_pausa_corta_3;
+                    // console.log("0", pausa_corta_3, ":", seconds_pausa_corta_3);
                 } else if(seconds_pausa_corta_3 < 10){
-                    console.log(pausa_corta_3, ": 0", seconds_pausa_corta_3);
+                    document.getElementById("counter").innerText = pausa_corta_3 + ": 0" + seconds_pausa_corta_3;
+                    // console.log(pausa_corta_3, ": 0", seconds_pausa_corta_3);
                 } else {
-                    console.log(pausa_corta_3, ":", seconds_pausa_corta_3);
+                    document.getElementById("counter").innerText = pausa_corta_3 + ":" + seconds_pausa_corta_3;
+                    // console.log(pausa_corta_3, ":", seconds_pausa_corta_3);
                 }
     
                 seconds_pausa_corta_3--;
@@ -1098,6 +1150,12 @@ $(document).ready(function() {
                 if(actividad_4 == 00 && seconds_4 == 0){
                     clearInterval(actividad_pom_4);
                     console.log("FIN ACTIVIDAD 4");
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Genial!',
+                        text: '¡Lo has conseguido! ¡Te mereces un graaaaaan descanso!',
+                        confirmButtonText: '¡Vale!'
+                    })
                 }
     
                 if(seconds_4 == -1){
@@ -1106,13 +1164,17 @@ $(document).ready(function() {
                 }
                 
                 if(actividad_4 < 10 && seconds_4 < 10){
-                    console.log("0", actividad_4, ": 0", seconds_4);
+                    document.getElementById("counter").innerText = "0" + actividad_4 + ": 0" + seconds_4;
+                    // console.log("0", actividad_4, ": 0", seconds_4);
                 } else if(actividad_4 < 10){
-                    console.log("0", actividad_4, ":", seconds_4);
+                    document.getElementById("counter").innerText = "0" + actividad_4 + ":" + seconds_4;
+                    // console.log("0", actividad_4, ":", seconds_4);
                 } else if(seconds_4 < 10){
-                    console.log(actividad_4, ": 0", seconds_4);
+                    document.getElementById("counter").innerText = actividad_4 + ": 0" + seconds_4;
+                    // console.log(actividad_4, ": 0", seconds_4);
                 } else {
-                    console.log(actividad_4, ":", seconds_4);
+                    document.getElementById("counter").innerText = actividad_4 + ":" + seconds_4;
+                    // console.log(actividad_4, ":", seconds_4);
                 }
     
                 seconds_4--;
@@ -1134,6 +1196,12 @@ $(document).ready(function() {
                 if(pausa_larga == 00 && pausa_larga_seconds == 0){
                     clearInterval(pausa_pom_4);
                     console.log("FIN PAUSA LARGA");
+                    Swal.fire({
+                        icon: 'info',
+                        title: '¡Vamos!',
+                        text: 'Lo has conseguido, ¡FELICIDADES!',
+                        confirmButtonText: '¡Vale!'
+                    })
                 }
     
                 if(pausa_larga_seconds == -1){
@@ -1142,13 +1210,17 @@ $(document).ready(function() {
                 }
                 
                 if(pausa_larga < 10 && pausa_larga_seconds < 10){
-                    console.log("0", pausa_larga, ": 0", pausa_larga_seconds);
+                    document.getElementById("counter").innerText = "0" + pausa_larga + ": 0" + pausa_larga_seconds;
+                    // console.log("0", pausa_larga, ": 0", pausa_larga_seconds);
                 } else if(pausa_larga < 10){
-                    console.log("0", pausa_larga, ":", pausa_larga_seconds);
+                    document.getElementById("counter").innerText = "0" + pausa_larga + ":" + pausa_larga_seconds;
+                    // console.log("0", pausa_larga, ":", pausa_larga_seconds);
                 } else if(pausa_larga_seconds < 10){
-                    console.log(pausa_larga, ": 0", pausa_larga_seconds);
+                    document.getElementById("counter").innerText = pausa_larga + ": 0" + pausa_larga_seconds;
+                    // console.log(pausa_larga, ": 0", pausa_larga_seconds);
                 } else {
-                    console.log(pausa_larga, ":", pausa_larga_seconds);
+                    document.getElementById("counter").innerText = pausa_larga + ":" + pausa_larga_seconds;
+                    // console.log(pausa_larga, ":", pausa_larga_seconds);
                 }
     
                 pausa_larga_seconds--;
