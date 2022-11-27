@@ -851,380 +851,437 @@ pomodoro_start.addEventListener('click', function(){
 $(document).ready(function() {
     $('#pomodoro-form').submit(function(e){    
         e.preventDefault();    
-        const postData = {
-            evento_pmd: $("#nombre_evn").val(),
-            actividad_pmd: $("#customRange1").val(),
-            pausa_corta_pmd: $("#customRange2").val(),
-            pausa_larga_pmd: $("#customRange3").val()
-        }
-
-        $.post('PomodoroController.php?action=AddPomodoro', postData, function(response){
-            console.log(response);
-        })
-
-        let time = $("#customRange1").val();
-        let time_array = time.split(".");
-        let seconds;
-
-        let actividad = time_array[0];
-        if(time_array[1] == undefined){
-            seconds = 0;
-        } else {
-            seconds = 59;
-        }
-
-        let pausa_corta_time = $("#customRange2").val();
-        let pausa_corta_array = pausa_corta_time.split(".");
-        let seconds_pausa_corta;
-
-        let pausa_corta = pausa_corta_array[0];
-        if(pausa_corta_array[1] == undefined){
-            seconds_pausa_corta = 0;
-        } else {
-            seconds_pausa_corta = 59;
-        }
-
-        // [PRIMER CICLO]
-        actividad_pom_1 = setInterval(() => {
-            if(actividad == 00 && seconds == 0){
-                clearInterval(actividad_pom_1);
-                Swal.fire({
-                    icon: 'success',
-                    title: '¡Genial!',
-                    text: 'Tiempo de actividad completo ¡Tomate un descanso!',
-                    confirmButtonText: '¡Vale!'
-                })
-                console.log("FIN ACTIVIDAD 1");
+        if(document.getElementById("btn-continuar").textContent == "Comenzar"){
+            const postData = {
+                evento_pmd: $("#nombre_evn").val(),
+                actividad_pmd: $("#customRange1").val(),
+                pausa_corta_pmd: $("#customRange2").val(),
+                pausa_larga_pmd: $("#customRange3").val()
             }
 
-            if(seconds == -1){
+            $.post('PomodoroController.php?action=AddPomodoro', postData, function(response){
+                console.log(response);
+            })
+
+            document.getElementById("btn-continuar").textContent = "Detener";
+            
+            let time = $("#customRange1").val();
+            let time_array = time.split(".");
+            let seconds;
+            
+            let actividad = time_array[0];
+            if(time_array[1] == undefined){
+                seconds = 0;
+            } else {
                 seconds = 59;
-                actividad--;
             }
             
-            if(actividad < 10 && seconds < 10){
-                document.getElementById("counter").innerText = "0" + actividad + ": 0" + seconds;
-                // console.log("0", actividad, ": 0", seconds);
-            } else if(actividad < 10){
-                document.getElementById("counter").innerText = "0" + actividad + ":" + seconds;
-                // console.log("0", actividad, ":", seconds);
-            } else if(seconds < 10){
-                document.getElementById("counter").innerText = "" + actividad + ": 0" + seconds;
-                // console.log(actividad, ": 0", seconds);
+            let pausa_corta_time = $("#customRange2").val();
+            let pausa_corta_array = pausa_corta_time.split(".");
+            let seconds_pausa_corta;
+            
+            let pausa_corta = pausa_corta_array[0];
+            if(pausa_corta_array[1] == undefined){
+                seconds_pausa_corta = 0;
             } else {
-                document.getElementById("counter").innerText = "" + actividad + ":" + seconds;
-                // console.log(actividad, ":", seconds);
+                seconds_pausa_corta = 59;
             }
 
-            seconds--;
-        }, 1000);
+            function eliminar_interval(){
+                const button = document.getElementById("btn-continuar");
+                if(document.getElementById("btn-continuar").textContent == "Detener"){
+                    button.addEventListener('click', function(){
+                        clearInterval(actividad_pom_1);   
+                    });
+                }
+            }
+
+            function alt_function(){
+                const button = document.getElementById("btn-continuar");
+                if(document.getElementById("btn-continuar").textContent == "Detener"){
+                    button.addEventListener('click', function(){
+                        window.location.reload();
+                    });
+                }
+            }
+            
+            // [PRIMER CICLO]
+            var actividad_pom_1 = setInterval(() => {
+                eliminar_interval();
+                if(actividad == 00 && seconds == 0){
+                    clearInterval(actividad_pom_1);
+                    let not_mp3 = new Audio('../Public/Snd/not.mp3');
+                    not_mp3.play();
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Genial!',
+                        text: 'Tiempo de actividad completo ¡Tomate un descanso!',
+                        confirmButtonText: '¡Vale!'
+                    })
+                    console.log("FIN ACTIVIDAD 1");
+                }
+
+                if(seconds == -1){
+                    seconds = 59;
+                    actividad--;
+                }
+                
+                if(actividad < 10 && seconds < 10){
+                    document.getElementById("counter").innerText = "0" + actividad + ": 0" + seconds;
+                    // console.log("0", actividad, ": 0", seconds);
+                } else if(actividad < 10){
+                    document.getElementById("counter").innerText = "0" + actividad + ":" + seconds;
+                    // console.log("0", actividad, ":", seconds);
+                } else if(seconds < 10){
+                    document.getElementById("counter").innerText = "" + actividad + ": 0" + seconds;
+                    // console.log(actividad, ": 0", seconds);
+                } else {
+                    document.getElementById("counter").innerText = "" + actividad + ":" + seconds;
+                    // console.log(actividad, ":", seconds);
+                }
+
+                seconds--;
+            }, 1000);
+            
+            setTimeout(() => {
+                var pausa_pom_1 = setInterval(() => {
+                    alt_function();
+                    if(pausa_corta == 00 && seconds_pausa_corta == 0){
+                        clearInterval(pausa_pom_1);
+                        console.log("FIN PAUSA 1");
+                        let not_mp3 = new Audio('../Public/Snd/not.mp3');
+                        not_mp3.play();
+
+                        Swal.fire({
+                            icon: 'info',
+                            title: '¡Vamos!',
+                            text: 'Descanso completado ¡A seguir trabajando!',
+                            confirmButtonText: '¡Vale!'
+                        })
+                    }
         
-        setTimeout(() => {
-            pausa_pom_1 = setInterval(() => {
-                if(pausa_corta == 00 && seconds_pausa_corta == 0){
-                    clearInterval(pausa_pom_1);
-                    console.log("FIN PAUSA 1");
-                    Swal.fire({
-                        icon: 'info',
-                        title: '¡Vamos!',
-                        text: 'Descanso completado ¡A seguir trabajando!',
-                        confirmButtonText: '¡Vale!'
-                    })
-                }
-    
-                if(seconds_pausa_corta == -1){
-                    seconds_pausa_corta = 59;
-                    pausa_corta--;
-                }
-                
-                if(pausa_corta < 10 && seconds_pausa_corta < 10){
-                    document.getElementById("counter").innerText = "0" + pausa_corta + ": 0" + seconds_pausa_corta;
-                    // console.log("0", pausa_corta, ": 0", seconds_pausa_corta);
-                } else if(pausa_corta < 10){
-                    document.getElementById("counter").innerText = "0" + pausa_corta + ":" + seconds_pausa_corta;
-                    // console.log("0", pausa_corta, ":", seconds_pausa_corta);
-                } else if(seconds_pausa_corta < 10){
-                    document.getElementById("counter").innerText = pausa_corta + ": 0" + seconds_pausa_corta;
-                    // console.log(pausa_corta, ": 0", seconds_pausa_corta);
-                } else {
-                    document.getElementById("counter").innerText = pausa_corta + ":" + seconds_pausa_corta;
-                    // console.log(pausa_corta, ":", seconds_pausa_corta);
-                }
-    
-                seconds_pausa_corta--;
-            }, 1000);
-        }, (actividad * 60000) + 10000);
+                    if(seconds_pausa_corta == -1){
+                        seconds_pausa_corta = 59;
+                        pausa_corta--;
+                    }
+                    
+                    if(pausa_corta < 10 && seconds_pausa_corta < 10){
+                        document.getElementById("counter").innerText = "0" + pausa_corta + ": 0" + seconds_pausa_corta;
+                        // console.log("0", pausa_corta, ": 0", seconds_pausa_corta);
+                    } else if(pausa_corta < 10){
+                        document.getElementById("counter").innerText = "0" + pausa_corta + ":" + seconds_pausa_corta;
+                        // console.log("0", pausa_corta, ":", seconds_pausa_corta);
+                    } else if(seconds_pausa_corta < 10){
+                        document.getElementById("counter").innerText = pausa_corta + ": 0" + seconds_pausa_corta;
+                        // console.log(pausa_corta, ": 0", seconds_pausa_corta);
+                    } else {
+                        document.getElementById("counter").innerText = pausa_corta + ":" + seconds_pausa_corta;
+                        // console.log(pausa_corta, ":", seconds_pausa_corta);
+                    }
+        
+                    seconds_pausa_corta--;
+                }, 1000);
+            }, (actividad * 60000) + 10000);
 
-        // [SEGUNDO CICLO]
-        let actividad_2 = time_array[0];
-        let seconds_2
-        if(time_array[1] == undefined){
-            seconds_2 = 0;
+            // [SEGUNDO CICLO]
+            let actividad_2 = time_array[0];
+            let seconds_2
+            if(time_array[1] == undefined){
+                seconds_2 = 0;
+            } else {
+                seconds_2 = 59;
+            }
+
+            console.log("ACTIVIDAD -> ", actividad_2);
+            setTimeout(() => {
+                var actividad_pom_2 = setInterval(() => {
+                    alt_function();
+                    if(actividad_2 == 00 && seconds_2 == 0){
+                        clearInterval(actividad_pom_2);
+                        console.log("FIN ACTIVIDAD 2");
+                        let not_mp3 = new Audio('../Public/Snd/not.mp3');
+                        not_mp3.play();
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Genial!',
+                            text: 'Tiempo de actividad completo ¡Tomate un descanso!',
+                            confirmButtonText: '¡Vale!'
+                        })
+                    }
+        
+                    if(seconds_2 == -1){
+                        seconds_2 = 59;
+                        actividad_2--;
+                    }
+                    
+                    if(actividad_2 < 10 && seconds_2 < 10){
+                        document.getElementById("counter").innerText = "0" + actividad_2 + ": 0" + seconds_2;
+                        // console.log("0", actividad_2, ": 0", seconds_2);
+                    } else if(actividad_2 < 10){
+                        document.getElementById("counter").innerText = "0" + actividad_2 + ":" + seconds_2;
+                        // console.log("0", actividad_2, ":", seconds_2);
+                    } else if(seconds_2 < 10){
+                        document.getElementById("counter").innerText = actividad_2 + ": 0" + seconds_2;
+                        // console.log(actividad_2, ": 0", seconds_2);
+                    } else {
+                        document.getElementById("counter").innerText = actividad_2 + ":" + seconds_2;
+                        // console.log(actividad_2, ":", seconds_2);
+                    }
+                    
+                    seconds_2--;
+                }, 1000);
+            }, ((actividad * 60000) + 10000) + ((pausa_corta * 60000) + 10000));
+
+            let seconds_pausa_corta_2
+            if(pausa_corta_array[1] == undefined){
+                seconds_pausa_corta_2 = 0;
+            } else {
+                seconds_pausa_corta_2 = 59;
+            }
+
+            let pausa_corta_2 = pausa_corta_array[0];
+            setTimeout(() => {
+                var pausa_pom_2 = setInterval(() => {
+                    alt_function();
+                    if(pausa_corta_2 == 00 && seconds_pausa_corta_2 == 0){
+                        clearInterval(pausa_pom_2);
+                        console.log("FIN PAUSA 2");
+                        let not_mp3 = new Audio('../Public/Snd/not.mp3');
+                        not_mp3.play(); 
+
+                        Swal.fire({
+                            icon: 'info',
+                            title: '¡Vamos!',
+                            text: 'Descanso completado ¡A seguir trabajando!',
+                            confirmButtonText: '¡Vale!'
+                        })
+                    }
+        
+                    if(seconds_pausa_corta_2 == -1){
+                        seconds_pausa_corta_2 = 59;
+                        pausa_corta_2--;
+                    }
+                    
+                    if(pausa_corta_2 < 10 && seconds_pausa_corta_2 < 10){
+                        document.getElementById("counter").innerText = "0" + pausa_corta_2 + ": 0" + seconds_pausa_corta_2;
+                        // console.log("0", pausa_corta_2, ": 0", seconds_pausa_corta_2);
+                    } else if(pausa_corta_2 < 10){
+                        document.getElementById("counter").innerText = "0" + pausa_corta_2 + ":" + seconds_pausa_corta_2;
+                        // console.log("0", pausa_corta_2, ":", seconds_pausa_corta_2);
+                    } else if(seconds_pausa_corta_2 < 10){
+                        document.getElementById("counter").innerText = pausa_corta_2 + ": 0" + seconds_pausa_corta_2;
+                        // console.log(pausa_corta_2, ": 0", seconds_pausa_corta_2);
+                    } else {
+                        document.getElementById("counter").innerText = pausa_corta_2 + ":" + seconds_pausa_corta_2;
+                        // console.log(pausa_corta_2, ":", seconds_pausa_corta_2);
+                    }
+        
+                    seconds_pausa_corta_2--;
+                }, 1000);
+            }, (((actividad * 60000) + 10000)*2) + ((pausa_corta * 60000) + 10000));
+
+            // [TERCER CICLO]
+            let actividad_3 = time_array[0];
+            let seconds_3
+            if(time_array[1] == undefined){
+                seconds_3 = 0;
+            } else {
+                seconds_3 = 59;
+            }
+
+            console.log("ACTIVIDAD -> ", actividad_3);
+            setTimeout(() => {
+                var actividad_pom_3 = setInterval(() => {
+                    alt_function();
+                    if(actividad_3 == 00 && seconds_3 == 0){
+                        clearInterval(actividad_pom_3);
+                        console.log("FIN ACTIVIDAD 3");
+                        let not_mp3 = new Audio('../Public/Snd/not.mp3');
+                        not_mp3.play();
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Genial!',
+                            text: 'Tiempo de actividad completo ¡Tomate un descanso!',
+                            confirmButtonText: '¡Vale!'
+                        })
+                    }
+        
+                    if(seconds_3 == -1){
+                        seconds_3 = 59;
+                        actividad_3--;
+                    }
+                    
+                    if(actividad_3 < 10 && seconds_3 < 10){
+                        document.getElementById("counter").innerText = "0" + actividad_3 + ": 0" + seconds_3;
+                        // console.log("0", actividad_3, ": 0", seconds_3);
+                    } else if(actividad_3 < 10){
+                        document.getElementById("counter").innerText = "0" + actividad_3 + ":" + seconds_3;
+                        // console.log("0", actividad_3, ":", seconds_3);
+                    } else if(seconds_3 < 10){
+                        document.getElementById("counter").innerText = actividad_3 + ": 0" + seconds_3;
+                        // console.log(actividad_3, ": 0", seconds_3);
+                    } else {
+                        document.getElementById("counter").innerText = actividad_3 + ":" + seconds_3;
+                        // console.log(actividad_3, ":", seconds_3);
+                    }
+        
+                    seconds_3--;
+                }, 1000);
+            }, (((actividad * 60000) + 10000)*2) + (((pausa_corta * 60000) + 10000)*2));
+
+            let pausa_corta_3 = pausa_corta_array[0];
+            let seconds_pausa_corta_3
+            if(pausa_corta_array[1] == undefined){
+                seconds_pausa_corta_3 = 0;
+            } else {
+                seconds_pausa_corta_3 = 59;
+            }
+
+            setTimeout(() => {
+                var pausa_pom_3 = setInterval(() => {
+                    alt_function();
+                    if(pausa_corta_3 == 00 && seconds_pausa_corta_3 == 0){
+                        clearInterval(pausa_pom_3);
+                        console.log("FIN PAUSA 3");
+                        let not_mp3 = new Audio('../Public/Snd/not.mp3');
+                        not_mp3.play();
+
+                        Swal.fire({
+                            icon: 'info',
+                            title: '¡Vamos!',
+                            text: 'Descanso completado ¡A seguir trabajando!',
+                            confirmButtonText: '¡Vale!'
+                        })
+                    }
+        
+                    if(seconds_pausa_corta_3 == -1){
+                        seconds_pausa_corta_3 = 59;
+                        pausa_corta_3--;
+                    }
+                    
+                    if(pausa_corta_3 < 10 && seconds_pausa_corta_3 < 10){
+                        document.getElementById("counter").innerText = "0" + pausa_corta_3 + ": 0" + seconds_pausa_corta_3;
+                        // console.log("0", pausa_corta_3, ": 0", seconds_pausa_corta_3);
+                    } else if(pausa_corta_3 < 10){
+                        document.getElementById("counter").innerText = "0" + pausa_corta_3 + ":" + seconds_pausa_corta_3;
+                        // console.log("0", pausa_corta_3, ":", seconds_pausa_corta_3);
+                    } else if(seconds_pausa_corta_3 < 10){
+                        document.getElementById("counter").innerText = pausa_corta_3 + ": 0" + seconds_pausa_corta_3;
+                        // console.log(pausa_corta_3, ": 0", seconds_pausa_corta_3);
+                    } else {
+                        document.getElementById("counter").innerText = pausa_corta_3 + ":" + seconds_pausa_corta_3;
+                        // console.log(pausa_corta_3, ":", seconds_pausa_corta_3);
+                    }
+        
+                    seconds_pausa_corta_3--;
+                }, 1000);
+            }, (((actividad * 60000) + 10000)*3) + (((pausa_corta * 60000) + 10000)*2));
+
+            // [ULTIMO CICLO]
+            let actividad_4 = time_array[0];
+            let seconds_4
+            if(time_array[1] == undefined){
+                seconds_4 = 0;
+            } else {
+                seconds_4 = 59;
+            }
+
+            console.log("ACTIVIDAD -> ", actividad_4);
+            setTimeout(() => {
+                var actividad_pom_4 = setInterval(() => {
+                    alt_function();
+                    if(actividad_4 == 00 && seconds_4 == 0){
+                        clearInterval(actividad_pom_4);
+                        console.log("FIN ACTIVIDAD 4");
+                        let not_mp3 = new Audio('../Public/Snd/not.mp3');
+                        not_mp3.play();
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Genial!',
+                            text: '¡Lo has conseguido! ¡Te mereces un graaaaaan descanso!',
+                            confirmButtonText: '¡Vale!'
+                        })
+                    }
+        
+                    if(seconds_4 == -1){
+                        seconds_4 = 59;
+                        actividad_4--;
+                    }
+                    
+                    if(actividad_4 < 10 && seconds_4 < 10){
+                        document.getElementById("counter").innerText = "0" + actividad_4 + ": 0" + seconds_4;
+                        // console.log("0", actividad_4, ": 0", seconds_4);
+                    } else if(actividad_4 < 10){
+                        document.getElementById("counter").innerText = "0" + actividad_4 + ":" + seconds_4;
+                        // console.log("0", actividad_4, ":", seconds_4);
+                    } else if(seconds_4 < 10){
+                        document.getElementById("counter").innerText = actividad_4 + ": 0" + seconds_4;
+                        // console.log(actividad_4, ": 0", seconds_4);
+                    } else {
+                        document.getElementById("counter").innerText = actividad_4 + ":" + seconds_4;
+                        // console.log(actividad_4, ":", seconds_4);
+                    }
+        
+                    seconds_4--;
+                }, 1000);
+            }, (((actividad * 60000) + 10000)*3) + (((pausa_corta * 60000) + 10000)*3));
+
+            let pausa_larga_time = $("#customRange3").val();
+            let pausa_larga_array = pausa_larga_time.split(".");
+            let pausa_larga_seconds;
+            let pausa_larga = pausa_larga_array[0];
+            if(pausa_larga_array[1] == undefined){
+                pausa_larga_seconds = 0;
+            } else {
+                pausa_larga_seconds = 59;
+            }
+
+            setTimeout(() => {
+                var pausa_pom_4 = setInterval(() => {
+                    alt_function();
+                    if(pausa_larga == 00 && pausa_larga_seconds == 0){
+                        clearInterval(pausa_pom_4);
+                        console.log("FIN PAUSA LARGA");
+                        let not_mp3 = new Audio('../Public/Snd/not.mp3');
+                        not_mp3.play();
+
+                        Swal.fire({
+                            icon: 'info',
+                            title: '¡Vamos!',
+                            text: 'Lo has conseguido, ¡FELICIDADES!',
+                            confirmButtonText: '¡Vale!'
+                        })
+                    }
+        
+                    if(pausa_larga_seconds == -1){
+                        pausa_larga_seconds = 59;
+                        pausa_larga--;
+                    }
+                    
+                    if(pausa_larga < 10 && pausa_larga_seconds < 10){
+                        document.getElementById("counter").innerText = "0" + pausa_larga + ": 0" + pausa_larga_seconds;
+                        // console.log("0", pausa_larga, ": 0", pausa_larga_seconds);
+                    } else if(pausa_larga < 10){
+                        document.getElementById("counter").innerText = "0" + pausa_larga + ":" + pausa_larga_seconds;
+                        // console.log("0", pausa_larga, ":", pausa_larga_seconds);
+                    } else if(pausa_larga_seconds < 10){
+                        document.getElementById("counter").innerText = pausa_larga + ": 0" + pausa_larga_seconds;
+                        // console.log(pausa_larga, ": 0", pausa_larga_seconds);
+                    } else {
+                        document.getElementById("counter").innerText = pausa_larga + ":" + pausa_larga_seconds;
+                        // console.log(pausa_larga, ":", pausa_larga_seconds);
+                    }
+        
+                    pausa_larga_seconds--;
+                }, 1000);
+            }, (((actividad * 60000) + 10000)*4) + (((pausa_corta * 60000) + 10000)*3));
         } else {
-            seconds_2 = 59;
+            document.getElementById("btn-continuar").textContent = "Comenzar";
+            document.getElementById("counter").innerText = "00:00";
         }
-
-        console.log("ACTIVIDAD -> ", actividad_2);
-        setTimeout(() => {
-            actividad_pom_2 = setInterval(() => {
-                if(actividad_2 == 00 && seconds_2 == 0){
-                    clearInterval(actividad_pom_2);
-                    console.log("FIN ACTIVIDAD 2");
-                    Swal.fire({
-                        icon: 'success',
-                        title: '¡Genial!',
-                        text: 'Tiempo de actividad completo ¡Tomate un descanso!',
-                        confirmButtonText: '¡Vale!'
-                    })
-                }
-    
-                if(seconds_2 == -1){
-                    seconds_2 = 59;
-                    actividad_2--;
-                }
-                
-                if(actividad_2 < 10 && seconds_2 < 10){
-                    document.getElementById("counter").innerText = "0" + actividad_2 + ": 0" + seconds_2;
-                    // console.log("0", actividad_2, ": 0", seconds_2);
-                } else if(actividad_2 < 10){
-                    document.getElementById("counter").innerText = "0" + actividad_2 + ":" + seconds_2;
-                    // console.log("0", actividad_2, ":", seconds_2);
-                } else if(seconds_2 < 10){
-                    document.getElementById("counter").innerText = actividad_2 + ": 0" + seconds_2;
-                    // console.log(actividad_2, ": 0", seconds_2);
-                } else {
-                    document.getElementById("counter").innerText = actividad_2 + ":" + seconds_2;
-                    // console.log(actividad_2, ":", seconds_2);
-                }
-                
-                seconds_2--;
-            }, 1000);
-        }, ((actividad * 60000) + 10000) + ((pausa_corta * 60000) + 10000));
-
-        let seconds_pausa_corta_2
-        if(pausa_corta_array[1] == undefined){
-            seconds_pausa_corta_2 = 0;
-        } else {
-            seconds_pausa_corta_2 = 59;
-        }
-
-        let pausa_corta_2 = pausa_corta_array[0];
-        setTimeout(() => {
-            pausa_pom_2 = setInterval(() => {
-                if(pausa_corta_2 == 00 && seconds_pausa_corta_2 == 0){
-                    clearInterval(pausa_pom_2);
-                    console.log("FIN PAUSA 2");
-                    Swal.fire({
-                        icon: 'info',
-                        title: '¡Vamos!',
-                        text: 'Descanso completado ¡A seguir trabajando!',
-                        confirmButtonText: '¡Vale!'
-                    })
-                }
-    
-                if(seconds_pausa_corta_2 == -1){
-                    seconds_pausa_corta_2 = 59;
-                    pausa_corta_2--;
-                }
-                
-                if(pausa_corta_2 < 10 && seconds_pausa_corta_2 < 10){
-                    document.getElementById("counter").innerText = "0" + pausa_corta_2 + ": 0" + seconds_pausa_corta_2;
-                    // console.log("0", pausa_corta_2, ": 0", seconds_pausa_corta_2);
-                } else if(pausa_corta_2 < 10){
-                    document.getElementById("counter").innerText = "0" + pausa_corta_2 + ":" + seconds_pausa_corta_2;
-                    // console.log("0", pausa_corta_2, ":", seconds_pausa_corta_2);
-                } else if(seconds_pausa_corta_2 < 10){
-                    document.getElementById("counter").innerText = pausa_corta_2 + ": 0" + seconds_pausa_corta_2;
-                    // console.log(pausa_corta_2, ": 0", seconds_pausa_corta_2);
-                } else {
-                    document.getElementById("counter").innerText = pausa_corta_2 + ":" + seconds_pausa_corta_2;
-                    // console.log(pausa_corta_2, ":", seconds_pausa_corta_2);
-                }
-    
-                seconds_pausa_corta_2--;
-            }, 1000);
-        }, (((actividad * 60000) + 10000)*2) + ((pausa_corta * 60000) + 10000));
-
-        // [TERCER CICLO]
-        let actividad_3 = time_array[0];
-        let seconds_3
-        if(time_array[1] == undefined){
-            seconds_3 = 0;
-        } else {
-            seconds_3 = 59;
-        }
-
-        console.log("ACTIVIDAD -> ", actividad_3);
-        setTimeout(() => {
-            actividad_pom_3 = setInterval(() => {
-                if(actividad_3 == 00 && seconds_3 == 0){
-                    clearInterval(actividad_pom_3);
-                    console.log("FIN ACTIVIDAD 3");
-                    Swal.fire({
-                        icon: 'success',
-                        title: '¡Genial!',
-                        text: 'Tiempo de actividad completo ¡Tomate un descanso!',
-                        confirmButtonText: '¡Vale!'
-                    })
-                }
-    
-                if(seconds_3 == -1){
-                    seconds_3 = 59;
-                    actividad_3--;
-                }
-                
-                if(actividad_3 < 10 && seconds_3 < 10){
-                    document.getElementById("counter").innerText = "0" + actividad_3 + ": 0" + seconds_3;
-                    // console.log("0", actividad_3, ": 0", seconds_3);
-                } else if(actividad_3 < 10){
-                    document.getElementById("counter").innerText = "0" + actividad_3 + ":" + seconds_3;
-                    // console.log("0", actividad_3, ":", seconds_3);
-                } else if(seconds_3 < 10){
-                    document.getElementById("counter").innerText = actividad_3 + ": 0" + seconds_3;
-                    // console.log(actividad_3, ": 0", seconds_3);
-                } else {
-                    document.getElementById("counter").innerText = actividad_3 + ":" + seconds_3;
-                    // console.log(actividad_3, ":", seconds_3);
-                }
-    
-                seconds_3--;
-            }, 1000);
-        }, (((actividad * 60000) + 10000)*2) + (((pausa_corta * 60000) + 10000)*2));
-
-        let pausa_corta_3 = pausa_corta_array[0];
-        let seconds_pausa_corta_3
-        if(pausa_corta_array[1] == undefined){
-            seconds_pausa_corta_3 = 0;
-        } else {
-            seconds_pausa_corta_3 = 59;
-        }
-
-        setTimeout(() => {
-            pausa_pom_3 = setInterval(() => {
-                if(pausa_corta_3 == 00 && seconds_pausa_corta_3 == 0){
-                    clearInterval(pausa_pom_3);
-                    console.log("FIN PAUSA 3");
-                    Swal.fire({
-                        icon: 'info',
-                        title: '¡Vamos!',
-                        text: 'Descanso completado ¡A seguir trabajando!',
-                        confirmButtonText: '¡Vale!'
-                    })
-                }
-    
-                if(seconds_pausa_corta_3 == -1){
-                    seconds_pausa_corta_3 = 59;
-                    pausa_corta_3--;
-                }
-                
-                if(pausa_corta_3 < 10 && seconds_pausa_corta_3 < 10){
-                    document.getElementById("counter").innerText = "0" + pausa_corta_3 + ": 0" + seconds_pausa_corta_3;
-                    // console.log("0", pausa_corta_3, ": 0", seconds_pausa_corta_3);
-                } else if(pausa_corta_3 < 10){
-                    document.getElementById("counter").innerText = "0" + pausa_corta_3 + ":" + seconds_pausa_corta_3;
-                    // console.log("0", pausa_corta_3, ":", seconds_pausa_corta_3);
-                } else if(seconds_pausa_corta_3 < 10){
-                    document.getElementById("counter").innerText = pausa_corta_3 + ": 0" + seconds_pausa_corta_3;
-                    // console.log(pausa_corta_3, ": 0", seconds_pausa_corta_3);
-                } else {
-                    document.getElementById("counter").innerText = pausa_corta_3 + ":" + seconds_pausa_corta_3;
-                    // console.log(pausa_corta_3, ":", seconds_pausa_corta_3);
-                }
-    
-                seconds_pausa_corta_3--;
-            }, 1000);
-        }, (((actividad * 60000) + 10000)*3) + (((pausa_corta * 60000) + 10000)*2));
-
-        // [ULTIMO CICLO]
-        let actividad_4 = time_array[0];
-        let seconds_4
-        if(time_array[1] == undefined){
-            seconds_4 = 0;
-        } else {
-            seconds_4 = 59;
-        }
-
-        console.log("ACTIVIDAD -> ", actividad_4);
-        setTimeout(() => {
-            actividad_pom_4 = setInterval(() => {
-                if(actividad_4 == 00 && seconds_4 == 0){
-                    clearInterval(actividad_pom_4);
-                    console.log("FIN ACTIVIDAD 4");
-                    Swal.fire({
-                        icon: 'success',
-                        title: '¡Genial!',
-                        text: '¡Lo has conseguido! ¡Te mereces un graaaaaan descanso!',
-                        confirmButtonText: '¡Vale!'
-                    })
-                }
-    
-                if(seconds_4 == -1){
-                    seconds_4 = 59;
-                    actividad_4--;
-                }
-                
-                if(actividad_4 < 10 && seconds_4 < 10){
-                    document.getElementById("counter").innerText = "0" + actividad_4 + ": 0" + seconds_4;
-                    // console.log("0", actividad_4, ": 0", seconds_4);
-                } else if(actividad_4 < 10){
-                    document.getElementById("counter").innerText = "0" + actividad_4 + ":" + seconds_4;
-                    // console.log("0", actividad_4, ":", seconds_4);
-                } else if(seconds_4 < 10){
-                    document.getElementById("counter").innerText = actividad_4 + ": 0" + seconds_4;
-                    // console.log(actividad_4, ": 0", seconds_4);
-                } else {
-                    document.getElementById("counter").innerText = actividad_4 + ":" + seconds_4;
-                    // console.log(actividad_4, ":", seconds_4);
-                }
-    
-                seconds_4--;
-            }, 1000);
-        }, (((actividad * 60000) + 10000)*3) + (((pausa_corta * 60000) + 10000)*3));
-
-        let pausa_larga_time = $("#customRange3").val();
-        let pausa_larga_array = pausa_larga_time.split(".");
-        let pausa_larga_seconds;
-        let pausa_larga = pausa_larga_array[0];
-        if(pausa_larga_array[1] == undefined){
-            pausa_larga_seconds = 0;
-        } else {
-            pausa_larga_seconds = 59;
-        }
-
-        setTimeout(() => {
-            pausa_pom_4 = setInterval(() => {
-                if(pausa_larga == 00 && pausa_larga_seconds == 0){
-                    clearInterval(pausa_pom_4);
-                    console.log("FIN PAUSA LARGA");
-                    Swal.fire({
-                        icon: 'info',
-                        title: '¡Vamos!',
-                        text: 'Lo has conseguido, ¡FELICIDADES!',
-                        confirmButtonText: '¡Vale!'
-                    })
-                }
-    
-                if(pausa_larga_seconds == -1){
-                    pausa_larga_seconds = 59;
-                    pausa_larga--;
-                }
-                
-                if(pausa_larga < 10 && pausa_larga_seconds < 10){
-                    document.getElementById("counter").innerText = "0" + pausa_larga + ": 0" + pausa_larga_seconds;
-                    // console.log("0", pausa_larga, ": 0", pausa_larga_seconds);
-                } else if(pausa_larga < 10){
-                    document.getElementById("counter").innerText = "0" + pausa_larga + ":" + pausa_larga_seconds;
-                    // console.log("0", pausa_larga, ":", pausa_larga_seconds);
-                } else if(pausa_larga_seconds < 10){
-                    document.getElementById("counter").innerText = pausa_larga + ": 0" + pausa_larga_seconds;
-                    // console.log(pausa_larga, ": 0", pausa_larga_seconds);
-                } else {
-                    document.getElementById("counter").innerText = pausa_larga + ":" + pausa_larga_seconds;
-                    // console.log(pausa_larga, ":", pausa_larga_seconds);
-                }
-    
-                pausa_larga_seconds--;
-            }, 1000);
-        }, (((actividad * 60000) + 10000)*4) + (((pausa_corta * 60000) + 10000)*3));
     })
 });

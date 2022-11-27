@@ -241,7 +241,7 @@
             <form action="" class="form-group" id="pomodoro-form">
                 <!--  -->
                 <section class="col mt-3">
-                    <button class="btn btn-primary"> Continuar </button>
+                    <button class="btn btn-primary" id="btn-continuar">Comenzar</button>
                 </section>
 
                 <!--  -->
@@ -405,7 +405,7 @@
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="timeend" class="form-label"> Hora Final * </label>
-                                <input type="time" class="form-control shadow-none" id="timeend" value="03:00" required>
+                                <input type="time" class="form-control shadow-none" id="timeend" value="15:00" required>
                             </div>
                         </div>
                         
