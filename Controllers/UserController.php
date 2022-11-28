@@ -7,10 +7,6 @@ class UserController extends User{
     {
         include '../Views/User/index.html';
     }
-    public function VistaRegistro()
-    {
-        include '../Views/User/index.html';
-    }
     public function VistaUsuario()
     {   
         include '../Views/User/Index-user.php';
@@ -140,57 +136,55 @@ class UserController extends User{
     }
 
     # Alistar informacion para registrarse
-    public function AlistarInformacion($email,$contrasena,$cContrasena)
+    function AlistarInformacion($email, $contrasena, $cContrasena)
     {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            # Return + echo = die
-            echo "<script>alert('Email not valid');</script>";
-            die("Introduzca una dirección de correo electronico valido");
+            session_destroy();
+            die("Correo no valido.");
+        }
+        $this->correo_usr = $email;
+        $comprobacion = $this->ComprobarCorreo();
+        if ($comprobacion != 1) {
+            die("Correo en uso.");
         }
 
-        # Si retorna un elemento en vez de nada, entonces rompe.
-        $comprobacion = $this->ComprobarCorreo($email);
-        if ($comprobacion != "") {
-            session_destroy();
-            die("Ya existe una cuenta con este correo");
-        }
-        
         if ($cContrasena !== $contrasena) {
             session_destroy();
-            die("Las Contraseñas no coinciden");
+            die("Las contrasenas no coinciden.");
         }
 
         # strlen Idenfifica Cuantos caracteres hay
-        if (strlen($_POST['UsuarioRC']) < 4) {
+        if (strlen($contrasena) < 4) {
             session_destroy();
-            die('La contraseña debe tener al menos 4 caracteres.');
+            die('minimo 4 caracteres.');
         }
-        if (strlen($_POST['UsuarioRC']) > 10) {
+        if (strlen($contrasena) > 10) {
             session_destroy();
-            die('La contraseña no puede tener mas de 10 caracteres.');
+            die('maximo 10 caracteres.');
         }
 
         # preg_match Exige que la contraseña tenga al menos un caracter del diccionario especificado.
-        if (!preg_match('`[a-z]`', $_POST['UsuarioRC'])) {
+        if (!preg_match('`[a-z]`', $contrasena)) {
             session_destroy();
-            die('La contraseña debe tener al menos una letra minuscula.');
+            die('una letra minuscula.');
         }
-        if (!preg_match('`[0-9]`', $_POST['UsuarioRC'])) {
+        if (!preg_match('`[0-9]`', $contrasena)) {
             session_destroy();
-            die('La contraseña debe tener al menos un numero.');
+            die('un numero.');
         }
 
         # Si todo es correcto, hacer:
         $this->correo_usr = $email;
-        $alias = explode("@",$email);
+        $alias = explode("@", $email);
         $this->nombre_usr = $alias[0];
-        $contrasenaEncript = password_hash($contrasena,PASSWORD_ARGON2ID);
+        $contrasenaEncript = password_hash($contrasena, PASSWORD_ARGON2ID);
         $this->contrasena_usr = $contrasenaEncript;
 
-        $this->RegistrarUsuario();  
-        $this->VistaUsuario();
+        $this->RegistrarUsuario();
+        $this->IniciarSession();
+        // $this->VistaUsuario();
 
-        
+
         // $datosUsuario = $this->ConsultarUsuario($nombre);
 
         // session_start();
@@ -198,7 +192,25 @@ class UserController extends User{
 
         return;
     }
+    public function IniciarSession()
+    {
+        $datosUsuario = $this->ConsultarUsuario();
+        foreach ($datosUsuario as $dU) {}
 
+        // session_start();
+        $_SESSION['id_usr'] = $dU->id_usr;
+        $_SESSION['nombre_usr'] = $dU->nombre_usr;
+        $_SESSION['correo_usr'] = $dU->correo_usr;
+
+        // var_dump($datosUsuario);
+        // var_dump($_SESSION);
+        // return $_SESSION;
+        return;
+
+
+        # Si no funciona el inicio de sesion pero devuelve un objeto.
+
+    }
     # Verificamos la informacion de inicio de sesion.
     public function VerificaInicio($nombre,$contrasena)
     {
@@ -266,7 +278,14 @@ if(isset($_POST['action']) && $_POST['action'] =='registrar' && !empty($_POST['U
 if (isset($_POST['action']) && $_POST['action'] =='registrar' && empty($_POST['UsuarioRE'] || $_POST['UsuarioRC'] || $_POST['UsuarioRCC'])) {
     die("Por favor rellene todos los campos de registro. ʕっ•ᴥ•ʔっ ♡");
 }
-
+if (isset($_GET['action']) && $_GET['action'] == 'ajax-registro') {
+    // session_start();
+    $usercontroler = new UserController();
+    $usercontroler->AlistarInformacion($_POST['usuarioRE'], $_POST['usuarioRC'], $_POST['usuarioRCC']);
+    
+    echo "success";
+    return;
+}
 // inicio de sesion.
 if (isset($_POST['action']) && $_POST['action'] == 'session' && !empty($_POST['UsuarioIS']) && !empty($_POST['ContrasenaIS'])) {
     // echo "holiwi";
@@ -337,7 +356,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'confirm_delete') {
     # Accedemos a la funcion de "Eliminar Usuario".
     // $usercontroler->EliminarUsuario();
     $usercontroler->PrepararIdDelete($_SESSION['id_usr']);
-    $usercontroler->VistaIndex();
+    $usercontroler->RedirigirNoUsuario();
 
     return;
 }

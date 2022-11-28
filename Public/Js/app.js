@@ -74,13 +74,16 @@ buttonDarkMode.addEventListener('click', function(){
 
 // ----------------------------------- VALIDACION ----------------------------------- //
 // Mas que organiza duvan
-function ValidarContraseña() {
+function PassValidateJS() {
     let contrasena = document.getElementById('usuarioRC').value
     let comprobarContrasena = document.getElementById('usuarioRCC').value
     let mensajeConfirmacion = document.getElementById('MensajeConfirmarContrasena')
-    
+
     if (contrasena == comprobarContrasena) {
-        mensajeConfirmacion.textContent = "A"
+        mensajeConfirmacion.textContent = "Nice"
+        mensajeConfirmacion.style.color = "green"
+    } else {
+        mensajeConfirmacion.textContent = "Bad"
+        mensajeConfirmacion.style.color = "red"
     }
 }
-
