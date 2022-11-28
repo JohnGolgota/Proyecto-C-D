@@ -64,7 +64,7 @@
                             </details>
                         </li>
                         <li><a href="../Controllers/UserController.php?action=delete"> Eliminar Cuenta </a></li>
-                        <li><a href="./UserController.php?action=abort"> Cerrar sesión </a></li>
+                        <li id="cerrar-sesion"><a href="./UserController.php?action=abort" target="_blank"> Cerrar sesión </a></li>
                     </ul>
                 </div>
             </aside>
