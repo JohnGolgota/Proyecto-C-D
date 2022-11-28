@@ -108,12 +108,12 @@
 
             <!-- Facebook -->
             <div class="">
-                <a href="https://www.facebook.com/" target="_blank"><img src="./Public/Img/LogosRedes/facebook.png" alt="Facebook" width="40px"></a>
+                <a href="https://www.facebook.com/DuvanArboledaa/" target="_blank"><img src="./Public/Img/LogosRedes/facebook.png" alt="Facebook" width="40px"></a>
             </div>
 
             <!-- Imgtagram -->
             <div class="">
-                <a href="https://www.instagram.com/" target="_blank"><img src="./Public/Img/LogosRedes/instagram.png" alt="instagram" width="40px"></a>
+                <a href="https://www.instagram.com/dusvan_/" target="_blank"><img src="./Public/Img/LogosRedes/instagram.png" alt="instagram" width="40px"></a>
             </div>
         </aside>
 
