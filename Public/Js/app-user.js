@@ -218,7 +218,7 @@ $('#form-actualizar').submit(function (er) {
                 setTimeout(function(){
                     window.location.reload();
                 }, 1250);
-               
+                
                 break;
 
             default:
