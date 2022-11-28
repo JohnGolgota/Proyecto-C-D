@@ -397,12 +397,12 @@
                 let action;
                 if (element_action.getAttribute("name") == "admin") {
                     action = 'admin-session';
-                    console.log("ENTRE EN EL ADMIN-SESSION");
-                    console.log("ACTION -> ", action);
+                    // console.log("ENTRE EN EL ADMIN-SESSION");
+                    // console.log("ACTION -> ", action);
                 }
 
                 if (element_action.getAttribute("name") == "action") {
-                    console.log("ENTRE EN EL USER-SESSION");
+                    // console.log("ENTRE EN EL USER-SESSION");
                     action = 'ajax-session';
                 }
 
@@ -416,7 +416,7 @@
                     url: './Controllers/UserController.php',
                     type: 'post',
                     success: function(response) {
-                        console.log(response);
+                        // console.log(response);
                         // CAMPOS VACIOS (NOVALIDATE)
                         if ($('#usuarioIS').val() == '' || $('#contrasenaIS').val() == '') {
                             let timerInterval
@@ -437,7 +437,7 @@
                                 }
                             });
                         }
-                        console.log(action);
+                        // console.log(action);
                         // USUARIO NO EXISTE (NOT FOUND)
                         if (response == "admin") {
                             window.location.assign('./Controllers/UserController.php?action=admin');
@@ -489,7 +489,7 @@
                         // console.log("RESPUESTA -> ", response); 
                     },
                     error: function(error) {
-                        console.log("ERROR ->", error); // Imprimir respuesta de error
+                        // console.log("ERROR ->", error); // Imprimir respuesta de error
                     }
                 });
             });
@@ -505,13 +505,13 @@
                     usuarioRCC: $('#usuarioRCC').val(),
                     terminosycondiciones: $('#terminosycondiciones').val()
                 }
-                console.log(postData)
+                // console.log(postData)
                 let url = "./Controllers/UserController.php?action=ajax-registro"
 
                 $.post(url, postData, function(response) {
-                    console.log("Donde me envie -> ", url, " Que recibi -> ", e);
-                    console.log("NOMBRE ->", usuarioRE);
-                    console.log("RESPUESTA DEL SERVIDOR -> ", response);
+                    // console.log("Donde me envie -> ", url, " Que recibi -> ", e);
+                    // console.log("NOMBRE ->", usuarioRE);
+                    // console.log("RESPUESTA DEL SERVIDOR -> ", response);
 
                     if (response == "Correo no valido.") {
                         let timerInterval

@@ -107,7 +107,7 @@ $(function(){
             type: 'POST', // GET es para recibir informacion, POST para enviar.
             data: {search},
             success: function(response){
-                console.log("ESTA ES LA RESPUESTA -> ", response);
+                // console.log("ESTA ES LA RESPUESTA -> ", response);
 
                 let pomodoros = JSON.parse(response);
                 let template_pomodoro = '';

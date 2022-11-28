@@ -50,7 +50,7 @@ $('#form-password').submit(function (er) {
     let url = 'UserController.php?action=act_contrasena';
 
     $.post(url, postData, function (response) {
-        console.log(response);
+        // console.log(response);
         switch (response) {
             case "empty":
                 Swal.fire({
@@ -159,8 +159,8 @@ $('#form-actualizar').submit(function (er) {
     let url = 'UserController.php?action=actualizar';
 
     $.post(url, postData, function (response) {
-        // console.log("RESPUESTA -> ", response);
-        // console.log("Formularios de M*r",$('#nombre_usr').val(), $('#correo_usr').val(), $('#contrasena_usr').val())
+        // // console.log("RESPUESTA -> ", response);
+        // // console.log("Formularios de M*r",$('#nombre_usr').val(), $('#correo_usr').val(), $('#contrasena_usr').val())
         switch (response) {
             case "pass empty":
                 Swal.fire({
@@ -264,7 +264,7 @@ $(document).ready(function() {
         } else {
             // Enviar informacion (Donde queremos enviar el dato, Que datos se envian, que se hace cuando reciba respuesta)
             $.post(url, postData, function(response){
-                console.log(response);
+                // console.log(response);
             })
 
             if(edit == true){
@@ -326,13 +326,13 @@ $(document).ready(function() {
             
             // Cuando reciba la respuesta se va a ejecutar cierta funcion:
             success: function(response){
-                // console.log("ESTA ES LA RESPUESTA -> ", response);
+                // // console.log("ESTA ES LA RESPUESTA -> ", response);
 
                 let tasks = JSON.parse(response);
                 let template = '';
                 tasks.forEach(task => {
 
-                    // console.log("TASK -> ", task.Nombre_rec);
+                    // // console.log("TASK -> ", task.Nombre_rec);
 
                         // Llenamos la Plantilla.
                         template += 
@@ -361,13 +361,13 @@ $(document).ready(function() {
             url: 'ArchiveController.php?action=GetArchives',
             type: 'GET',
             success: function(response){
-                // console.log("ESTA ES LA RESPUESTA -> ", response);
+                // // console.log("ESTA ES LA RESPUESTA -> ", response);
 
                 let archives = JSON.parse(response);
                 let template = '';
                 archives.forEach(archive => {
 
-                    // console.log("TASK -> ", task.Nombre_rec);
+                    // // console.log("TASK -> ", task.Nombre_rec);
 
                         // Llenamos la Plantilla.
                         template += 
@@ -393,21 +393,21 @@ $(document).ready(function() {
         let element = $(this).next().next();
         let id_rec = $(element).attr('taskId-del');
 
-        // console.log(element);
-        // console.log(id_rec);
+        // // console.log(element);
+        // // console.log(id_rec);
 
         $.post('TaskController.php?action=GetTask', {id_rec}, function(response){
-            console.log(response);
+            // console.log(response);
             let task = JSON.parse(response);
             task.forEach(t => {
-                // console.log(t);
-                // console.log(nombre_rec);
+                // // console.log(t);
+                // // console.log(nombre_rec);
 
                 $('#taskId').val(t.id_rec);
                 $('#nombre_rec').val(t.Nombre_rec);
                 $('#notificacion_rec').val(t.Notificacion_rec);
                 $('#color_rec').val(t.Color_rec);
-                // console.log(response);
+                // // console.log(response);
                 edit = true;
             });
         });
@@ -431,7 +431,7 @@ $(document).ready(function() {
                 if (result.isConfirmed) {
                     let element = $(this)[0].parentElement;
                     let id_rec = $(element).attr('taskId-del');
-                    $.post('TaskController.php?action=DeleteTask', {id_rec}, function(response){ /* console.log(response); */ });
+                    $.post('TaskController.php?action=DeleteTask', {id_rec}, function(response){ /* // console.log(response); */ });
                     
                     Swal.fire(
                         '¡Poof!',
@@ -456,7 +456,7 @@ $(document).ready(function() {
                                                     // NOTIFICACIONES // 
     // ------------------------------------------------------------------------------------------------------------- //
     function notTasks(){
-        // console.log("Me he ejecutaado");
+        // // console.log("Me he ejecutaado");
         $.ajax({
             url: 'TaskController.php?action=GetTasks',
             type: 'GET',
@@ -516,7 +516,7 @@ document.addEventListener('DOMContentLoaded', function() {
         events: 'CalendarController.php?action=GetEvents',
         editable: true,
         dateClick: function(info){
-            console.log("Date Click");
+            // console.log("Date Click");
             
             document.getElementById('start').value = info.dateStr;
             eliminar.classList.add('d-none');
@@ -528,7 +528,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             $(document).ready(function() {
                 $('#form-c').submit(function(er){
-                    console.log("Cree Evento");
+                    // console.log("Cree Evento");
                     const postData = {
                         id_evn: $('#id_evn').val(),
                         nombre_evn: $('#nombre_evn').val(),
@@ -548,10 +548,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     let random_r = Math.round(random);
 
                     let nombre_evn = document.getElementById('nombre_evn').value;
-                    // console.log("ANTES DE ENTRAR AL CONDICIONAL -> ", nombre_evn);
+                    // // console.log("ANTES DE ENTRAR AL CONDICIONAL -> ", nombre_evn);
 
                     if(nombre_evn.length > 0){
-                        console.log("Agregare Un Evento");
+                        // console.log("Agregare Un Evento");
                         $.post(url, postData, function(response){
                             if(response == 'event success' && random_r >  4){
                                 let timerInterval
@@ -623,14 +623,14 @@ document.addEventListener('DOMContentLoaded', function() {
                                 })
                             }
 
-                            console.log("RESPUESTA -> ", response);
+                            // console.log("RESPUESTA -> ", response);
                             $('#form-c').trigger('reset');
 
                             calendar.refetchEvents();
                             myModal.hide();
                         })
                     } else {
-                        console.log("NO VOY A AGREGAR NADA -> ", nombre_evn);
+                        // console.log("NO VOY A AGREGAR NADA -> ", nombre_evn);
                     }
                     
                     er.preventDefault();
@@ -641,7 +641,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
 
         eventClick : function(i){
-            // console.log("Informacion -> ", i);
+            // // console.log("Informacion -> ", i);
             document.getElementById('id_evn').value = i.event.id;
             const id_evn = document.getElementById('id_evn').value;
 
@@ -657,7 +657,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     'id_evn': id_evn
                 },
                 success: function(response){
-                    console.log(response);
+                    // console.log(response);
                     let event = JSON.parse(response);
 
                     event.forEach(e => {
@@ -671,7 +671,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         document.getElementById("timeend").value = e.hora_final_evn;
                     });
                     
-                    console.log("ID -> ", $('#id_evn').val())
+                    // console.log("ID -> ", $('#id_evn').val())
                     myModal.show();
                 }
             });
@@ -684,7 +684,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const id_evn = info.event.id;
             const start_evn = info.event.startStr;
 
-            console.log(id_evn, start);
+            // console.log(id_evn, start);
 
             $.ajax({
                 url: 'CalendarController.php?action=DropEvent',
@@ -696,7 +696,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Cuando reciba la respuesta se va a ejecutar cierta funcion:
                 success: function(response){
-                    console.log("RESPUESTA -> ", response);
+                    // console.log("RESPUESTA -> ", response);
                 }
 
             });
@@ -720,7 +720,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (result.isConfirmed) {
                     const id_evn = document.getElementById("id_evn").value;
                     $.post('CalendarController.php?action=DeleteEvent', {id_evn}, function(response){ 
-                        console.log(response); 
+                        // console.log(response); 
                     });
                     
                     Swal.fire(
@@ -819,8 +819,8 @@ pomodoro_start.addEventListener('click', function(){
     parseFloat(short_time);
     parseFloat(short_end);
 
-    console.log(short_time);
-    console.log(short_end);
+    // console.log(short_time);
+    // console.log(short_end);
 
     let result = short_end - short_time;
     actividad = (((result * 77) / 100) / 4) * 60;
@@ -838,8 +838,8 @@ pomodoro_start.addEventListener('click', function(){
     
     actividad_string = actividad.toString();
     array_actividad = actividad_string.split(".");
-    console.log("ARRAY DE ACTIVIDAD ", array_actividad);
-    console.log(array_actividad[0]);
+    // console.log("ARRAY DE ACTIVIDAD ", array_actividad);
+    // console.log(array_actividad[0]);
     if(array_actividad[1] > 5){
         seconds = 59;
     } else {
@@ -860,7 +860,7 @@ $(document).ready(function() {
             }
 
             $.post('PomodoroController.php?action=AddPomodoro', postData, function(response){
-                console.log(response);
+                // console.log(response);
             })
 
             document.getElementById("btn-continuar").textContent = "Detener";
@@ -919,7 +919,7 @@ $(document).ready(function() {
                         text: 'Tiempo de actividad completo ¡Tomate un descanso!',
                         confirmButtonText: '¡Vale!'
                     })
-                    console.log("FIN ACTIVIDAD 1");
+                    // console.log("FIN ACTIVIDAD 1");
                 }
 
                 if(seconds == -1){
@@ -929,16 +929,16 @@ $(document).ready(function() {
                 
                 if(actividad < 10 && seconds < 10){
                     document.getElementById("counter").innerText = "0" + actividad + ": 0" + seconds;
-                    // console.log("0", actividad, ": 0", seconds);
+                    // // console.log("0", actividad, ": 0", seconds);
                 } else if(actividad < 10){
                     document.getElementById("counter").innerText = "0" + actividad + ":" + seconds;
-                    // console.log("0", actividad, ":", seconds);
+                    // // console.log("0", actividad, ":", seconds);
                 } else if(seconds < 10){
                     document.getElementById("counter").innerText = "" + actividad + ": 0" + seconds;
-                    // console.log(actividad, ": 0", seconds);
+                    // // console.log(actividad, ": 0", seconds);
                 } else {
                     document.getElementById("counter").innerText = "" + actividad + ":" + seconds;
-                    // console.log(actividad, ":", seconds);
+                    // // console.log(actividad, ":", seconds);
                 }
 
                 seconds--;
@@ -949,7 +949,7 @@ $(document).ready(function() {
                     alt_function();
                     if(pausa_corta == 00 && seconds_pausa_corta == 0){
                         clearInterval(pausa_pom_1);
-                        console.log("FIN PAUSA 1");
+                        // console.log("FIN PAUSA 1");
                         let not_mp3 = new Audio('../Public/Snd/not.mp3');
                         not_mp3.play();
 
@@ -968,16 +968,16 @@ $(document).ready(function() {
                     
                     if(pausa_corta < 10 && seconds_pausa_corta < 10){
                         document.getElementById("counter").innerText = "0" + pausa_corta + ": 0" + seconds_pausa_corta;
-                        // console.log("0", pausa_corta, ": 0", seconds_pausa_corta);
+                        // // console.log("0", pausa_corta, ": 0", seconds_pausa_corta);
                     } else if(pausa_corta < 10){
                         document.getElementById("counter").innerText = "0" + pausa_corta + ":" + seconds_pausa_corta;
-                        // console.log("0", pausa_corta, ":", seconds_pausa_corta);
+                        // // console.log("0", pausa_corta, ":", seconds_pausa_corta);
                     } else if(seconds_pausa_corta < 10){
                         document.getElementById("counter").innerText = pausa_corta + ": 0" + seconds_pausa_corta;
-                        // console.log(pausa_corta, ": 0", seconds_pausa_corta);
+                        // // console.log(pausa_corta, ": 0", seconds_pausa_corta);
                     } else {
                         document.getElementById("counter").innerText = pausa_corta + ":" + seconds_pausa_corta;
-                        // console.log(pausa_corta, ":", seconds_pausa_corta);
+                        // // console.log(pausa_corta, ":", seconds_pausa_corta);
                     }
         
                     seconds_pausa_corta--;
@@ -993,13 +993,13 @@ $(document).ready(function() {
                 seconds_2 = 59;
             }
 
-            console.log("ACTIVIDAD -> ", actividad_2);
+            // console.log("ACTIVIDAD -> ", actividad_2);
             setTimeout(() => {
                 var actividad_pom_2 = setInterval(() => {
                     alt_function();
                     if(actividad_2 == 00 && seconds_2 == 0){
                         clearInterval(actividad_pom_2);
-                        console.log("FIN ACTIVIDAD 2");
+                        // console.log("FIN ACTIVIDAD 2");
                         let not_mp3 = new Audio('../Public/Snd/not.mp3');
                         not_mp3.play();
 
@@ -1018,16 +1018,16 @@ $(document).ready(function() {
                     
                     if(actividad_2 < 10 && seconds_2 < 10){
                         document.getElementById("counter").innerText = "0" + actividad_2 + ": 0" + seconds_2;
-                        // console.log("0", actividad_2, ": 0", seconds_2);
+                        // // console.log("0", actividad_2, ": 0", seconds_2);
                     } else if(actividad_2 < 10){
                         document.getElementById("counter").innerText = "0" + actividad_2 + ":" + seconds_2;
-                        // console.log("0", actividad_2, ":", seconds_2);
+                        // // console.log("0", actividad_2, ":", seconds_2);
                     } else if(seconds_2 < 10){
                         document.getElementById("counter").innerText = actividad_2 + ": 0" + seconds_2;
-                        // console.log(actividad_2, ": 0", seconds_2);
+                        // // console.log(actividad_2, ": 0", seconds_2);
                     } else {
                         document.getElementById("counter").innerText = actividad_2 + ":" + seconds_2;
-                        // console.log(actividad_2, ":", seconds_2);
+                        // // console.log(actividad_2, ":", seconds_2);
                     }
                     
                     seconds_2--;
@@ -1047,7 +1047,7 @@ $(document).ready(function() {
                     alt_function();
                     if(pausa_corta_2 == 00 && seconds_pausa_corta_2 == 0){
                         clearInterval(pausa_pom_2);
-                        console.log("FIN PAUSA 2");
+                        // console.log("FIN PAUSA 2");
                         let not_mp3 = new Audio('../Public/Snd/not.mp3');
                         not_mp3.play(); 
 
@@ -1066,16 +1066,16 @@ $(document).ready(function() {
                     
                     if(pausa_corta_2 < 10 && seconds_pausa_corta_2 < 10){
                         document.getElementById("counter").innerText = "0" + pausa_corta_2 + ": 0" + seconds_pausa_corta_2;
-                        // console.log("0", pausa_corta_2, ": 0", seconds_pausa_corta_2);
+                        // // console.log("0", pausa_corta_2, ": 0", seconds_pausa_corta_2);
                     } else if(pausa_corta_2 < 10){
                         document.getElementById("counter").innerText = "0" + pausa_corta_2 + ":" + seconds_pausa_corta_2;
-                        // console.log("0", pausa_corta_2, ":", seconds_pausa_corta_2);
+                        // // console.log("0", pausa_corta_2, ":", seconds_pausa_corta_2);
                     } else if(seconds_pausa_corta_2 < 10){
                         document.getElementById("counter").innerText = pausa_corta_2 + ": 0" + seconds_pausa_corta_2;
-                        // console.log(pausa_corta_2, ": 0", seconds_pausa_corta_2);
+                        // // console.log(pausa_corta_2, ": 0", seconds_pausa_corta_2);
                     } else {
                         document.getElementById("counter").innerText = pausa_corta_2 + ":" + seconds_pausa_corta_2;
-                        // console.log(pausa_corta_2, ":", seconds_pausa_corta_2);
+                        // // console.log(pausa_corta_2, ":", seconds_pausa_corta_2);
                     }
         
                     seconds_pausa_corta_2--;
@@ -1091,13 +1091,13 @@ $(document).ready(function() {
                 seconds_3 = 59;
             }
 
-            console.log("ACTIVIDAD -> ", actividad_3);
+            // console.log("ACTIVIDAD -> ", actividad_3);
             setTimeout(() => {
                 var actividad_pom_3 = setInterval(() => {
                     alt_function();
                     if(actividad_3 == 00 && seconds_3 == 0){
                         clearInterval(actividad_pom_3);
-                        console.log("FIN ACTIVIDAD 3");
+                        // console.log("FIN ACTIVIDAD 3");
                         let not_mp3 = new Audio('../Public/Snd/not.mp3');
                         not_mp3.play();
 
@@ -1116,16 +1116,16 @@ $(document).ready(function() {
                     
                     if(actividad_3 < 10 && seconds_3 < 10){
                         document.getElementById("counter").innerText = "0" + actividad_3 + ": 0" + seconds_3;
-                        // console.log("0", actividad_3, ": 0", seconds_3);
+                        // // console.log("0", actividad_3, ": 0", seconds_3);
                     } else if(actividad_3 < 10){
                         document.getElementById("counter").innerText = "0" + actividad_3 + ":" + seconds_3;
-                        // console.log("0", actividad_3, ":", seconds_3);
+                        // // console.log("0", actividad_3, ":", seconds_3);
                     } else if(seconds_3 < 10){
                         document.getElementById("counter").innerText = actividad_3 + ": 0" + seconds_3;
-                        // console.log(actividad_3, ": 0", seconds_3);
+                        // // console.log(actividad_3, ": 0", seconds_3);
                     } else {
                         document.getElementById("counter").innerText = actividad_3 + ":" + seconds_3;
-                        // console.log(actividad_3, ":", seconds_3);
+                        // // console.log(actividad_3, ":", seconds_3);
                     }
         
                     seconds_3--;
@@ -1145,7 +1145,7 @@ $(document).ready(function() {
                     alt_function();
                     if(pausa_corta_3 == 00 && seconds_pausa_corta_3 == 0){
                         clearInterval(pausa_pom_3);
-                        console.log("FIN PAUSA 3");
+                        // console.log("FIN PAUSA 3");
                         let not_mp3 = new Audio('../Public/Snd/not.mp3');
                         not_mp3.play();
 
@@ -1164,16 +1164,16 @@ $(document).ready(function() {
                     
                     if(pausa_corta_3 < 10 && seconds_pausa_corta_3 < 10){
                         document.getElementById("counter").innerText = "0" + pausa_corta_3 + ": 0" + seconds_pausa_corta_3;
-                        // console.log("0", pausa_corta_3, ": 0", seconds_pausa_corta_3);
+                        // // console.log("0", pausa_corta_3, ": 0", seconds_pausa_corta_3);
                     } else if(pausa_corta_3 < 10){
                         document.getElementById("counter").innerText = "0" + pausa_corta_3 + ":" + seconds_pausa_corta_3;
-                        // console.log("0", pausa_corta_3, ":", seconds_pausa_corta_3);
+                        // // console.log("0", pausa_corta_3, ":", seconds_pausa_corta_3);
                     } else if(seconds_pausa_corta_3 < 10){
                         document.getElementById("counter").innerText = pausa_corta_3 + ": 0" + seconds_pausa_corta_3;
-                        // console.log(pausa_corta_3, ": 0", seconds_pausa_corta_3);
+                        // // console.log(pausa_corta_3, ": 0", seconds_pausa_corta_3);
                     } else {
                         document.getElementById("counter").innerText = pausa_corta_3 + ":" + seconds_pausa_corta_3;
-                        // console.log(pausa_corta_3, ":", seconds_pausa_corta_3);
+                        // // console.log(pausa_corta_3, ":", seconds_pausa_corta_3);
                     }
         
                     seconds_pausa_corta_3--;
@@ -1189,13 +1189,13 @@ $(document).ready(function() {
                 seconds_4 = 59;
             }
 
-            console.log("ACTIVIDAD -> ", actividad_4);
+            // console.log("ACTIVIDAD -> ", actividad_4);
             setTimeout(() => {
                 var actividad_pom_4 = setInterval(() => {
                     alt_function();
                     if(actividad_4 == 00 && seconds_4 == 0){
                         clearInterval(actividad_pom_4);
-                        console.log("FIN ACTIVIDAD 4");
+                        // console.log("FIN ACTIVIDAD 4");
                         let not_mp3 = new Audio('../Public/Snd/not.mp3');
                         not_mp3.play();
 
@@ -1214,16 +1214,16 @@ $(document).ready(function() {
                     
                     if(actividad_4 < 10 && seconds_4 < 10){
                         document.getElementById("counter").innerText = "0" + actividad_4 + ": 0" + seconds_4;
-                        // console.log("0", actividad_4, ": 0", seconds_4);
+                        // // console.log("0", actividad_4, ": 0", seconds_4);
                     } else if(actividad_4 < 10){
                         document.getElementById("counter").innerText = "0" + actividad_4 + ":" + seconds_4;
-                        // console.log("0", actividad_4, ":", seconds_4);
+                        // // console.log("0", actividad_4, ":", seconds_4);
                     } else if(seconds_4 < 10){
                         document.getElementById("counter").innerText = actividad_4 + ": 0" + seconds_4;
-                        // console.log(actividad_4, ": 0", seconds_4);
+                        // // console.log(actividad_4, ": 0", seconds_4);
                     } else {
                         document.getElementById("counter").innerText = actividad_4 + ":" + seconds_4;
-                        // console.log(actividad_4, ":", seconds_4);
+                        // // console.log(actividad_4, ":", seconds_4);
                     }
         
                     seconds_4--;
@@ -1245,7 +1245,7 @@ $(document).ready(function() {
                     alt_function();
                     if(pausa_larga == 00 && pausa_larga_seconds == 0){
                         clearInterval(pausa_pom_4);
-                        console.log("FIN PAUSA LARGA");
+                        // console.log("FIN PAUSA LARGA");
                         let not_mp3 = new Audio('../Public/Snd/not.mp3');
                         not_mp3.play();
 
@@ -1264,16 +1264,16 @@ $(document).ready(function() {
                     
                     if(pausa_larga < 10 && pausa_larga_seconds < 10){
                         document.getElementById("counter").innerText = "0" + pausa_larga + ": 0" + pausa_larga_seconds;
-                        // console.log("0", pausa_larga, ": 0", pausa_larga_seconds);
+                        // // console.log("0", pausa_larga, ": 0", pausa_larga_seconds);
                     } else if(pausa_larga < 10){
                         document.getElementById("counter").innerText = "0" + pausa_larga + ":" + pausa_larga_seconds;
-                        // console.log("0", pausa_larga, ":", pausa_larga_seconds);
+                        // // console.log("0", pausa_larga, ":", pausa_larga_seconds);
                     } else if(pausa_larga_seconds < 10){
                         document.getElementById("counter").innerText = pausa_larga + ": 0" + pausa_larga_seconds;
-                        // console.log(pausa_larga, ": 0", pausa_larga_seconds);
+                        // // console.log(pausa_larga, ": 0", pausa_larga_seconds);
                     } else {
                         document.getElementById("counter").innerText = pausa_larga + ":" + pausa_larga_seconds;
-                        // console.log(pausa_larga, ":", pausa_larga_seconds);
+                        // // console.log(pausa_larga, ":", pausa_larga_seconds);
                     }
         
                     pausa_larga_seconds--;

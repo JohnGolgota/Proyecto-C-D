@@ -80,10 +80,10 @@ function PassValidateJS() {
     let mensajeConfirmacion = document.getElementById('MensajeConfirmarContrasena')
 
     if (contrasena == comprobarContrasena) {
-        mensajeConfirmacion.textContent = "Nice"
+        mensajeConfirmacion.textContent = "¡Una maravilla!"
         mensajeConfirmacion.style.color = "green"
     } else {
-        mensajeConfirmacion.textContent = "Bad"
+        mensajeConfirmacion.textContent = "¡Las Contraseñas NO Coinciden! D:"
         mensajeConfirmacion.style.color = "red"
     }
 }
