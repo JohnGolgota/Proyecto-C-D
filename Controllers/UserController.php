@@ -108,7 +108,7 @@ class UserController extends User{
         }
         $this->correo_usr = $email;
         // die($this->correo_usr);
-        $comprobacion = $this->ComprobarCorreo();
+        $comprobacion = $this->ComprobarCorreoUpdate();
         if ($comprobacion == "" || $comprobacion == $this->correo_usr) {
             $this->nombre_usr = $_SESSION['nombre_usr'];
             $datosUsuario = $this->ConsultarUsuario();

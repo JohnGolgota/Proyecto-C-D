@@ -43,6 +43,22 @@ class User
         }
     }
 
+    public function ComprobarCorreoUpdate()
+    {
+        include_once '../Config/conexiondb.php';
+        $conexion = new Conexion();
+
+        $sql = "CALL ReadEmail_usr('$this->correo_usr')";
+        $result = $conexion->stm->prepare($sql);
+        $result->execute();
+        $usuario = $result->fetchAll(PDO::FETCH_OBJ);
+        if ($usuario) {
+            foreach($usuario as $prueba){}
+            return $prueba->correo_usr;
+        }
+        return;
+    }
+
     public function ConsultarUsuario()
     {
         include_once '../Config/conexiondb.php';
