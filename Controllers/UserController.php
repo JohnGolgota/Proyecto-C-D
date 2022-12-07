@@ -1,7 +1,9 @@
 <?php
 session_start();
 include_once '../Models/User.php';
-
+if ($_SESSION == array()) {
+    header("location: ../");
+}
 class UserController extends User{
     public function VistaIndex()
     {
