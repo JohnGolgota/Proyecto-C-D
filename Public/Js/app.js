@@ -28,7 +28,7 @@ buttonDropdownMenu.addEventListener('click', function () {
 
 
 // -------------------------------------- "Aleatoriedad" de la frase principal. -------------------------------------- //
-var frasesCabecera = ["Programa tu tiempo. Programa Tu Vida", "¿Tienes sueño? ¡Pues duerme!", "¿Estas triste? ¡Pues no lo estes!", "¿Sabias que se puede vivir sin celular?", "Soy El Numero 4", "La fama me persigue, pero yo soy mas rapido.", "Más vale tarde, porque por la mañana duermo", "A alguien le importas, no a mí, pero a alguien sí le importas"];
+var frasesCabecera = ["Programa tu tiempo. Programa Tu Vida", "Cada segundo es de un valor infinito", "La vida, si se vive bien, es lo suficientemente larga", "No puedes ahorrar tiempo para usarlo otro dia", "Puedes tenerlo todo, solo que no al mismo tiempo", "El tiempo se lo lleva todo, lo quieras o no", "Los más fuertes de todos los guerreros son el tiempo y la paciencia", "Los más fuertes de todos los guerreros son el tiempo y la paciencia"];
 function aleatorio(){
 
     let maximo = frasesCabecera.length;
