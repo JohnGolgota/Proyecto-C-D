@@ -62,7 +62,7 @@
 
     if (isset($_GET['action']) && $_GET['action'] == 'Event') {
         $calendarcontroller = new CalendarController();
-        if($_POST['id_evn'] == '' || $_POST['id_evn'] == NULL){
+        if($_POST['id_evn'] == '' || $_POST['id_evn'] == ''){
             $calendarcontroller->prepareEvent($_POST['nombre_evn'], $_POST['descripcion_evn'], $_POST['color_evn'], $_POST['desde_evn'], $_POST['hasta_evn'], $_POST['hora_inicio_evn'], $_POST['hora_final_evn'], $_SESSION['id_usr']);
             echo "event success";
             die();

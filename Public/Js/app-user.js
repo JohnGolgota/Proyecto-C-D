@@ -633,6 +633,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         // console.log("NO VOY A AGREGAR NADA -> ", nombre_evn);
                     }
                     
+                    $('#form-c').trigger('reset');
                     er.preventDefault();
                     calendar.refetchEvents();
                 });
@@ -730,11 +731,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     )
                     
+                    $('#form-c').trigger('reset');
                     calendar.refetchEvents();
                     myModal.hide();
                 }
           })
+          $('#form-c').trigger('reset');
     });
+    
 });
 
 // ------------------------------------------------------------------------------------------------------------- //

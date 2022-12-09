@@ -1,9 +1,7 @@
 <?php
 session_start();
 include_once '../Models/User.php';
-if ($_SESSION == array()) {
-    header("location: ../");
-}
+
 class UserController extends User{
     public function VistaIndex()
     {
@@ -268,6 +266,7 @@ class UserController extends User{
         return;
     }
 }
+
 // Action Registro
 if(isset($_POST['action']) && $_POST['action'] =='registrar' && !empty($_POST['UsuarioRE'] && $_POST['UsuarioRC'] && $_POST['UsuarioRCC'] && $_POST['terminosycondiciones'])){
     $usercontroler = new UserController();
@@ -322,7 +321,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'ajax-session' && !empty($_POS
 } 
 
 // Ajax verificacion [success]
-if (isset($_GET['action']) && $_GET['action'] == 'inicio') {
+if (isset($_GET['action']) && $_GET['action'] == 'inicio' && $_SESSION != array()){
     $usercontroler = new UserController();
     $usercontroler->VistaUsuario();
     return;
@@ -402,5 +401,10 @@ if(isset($_GET) || !isset($_GET) && $_GET['action'] != "actualizar"){
     $usercontroler = new UserController();
     session_destroy();
     $usercontroler->RedirigirNoUsuario();
+    return;
+}
+
+if ($_SESSION == array()) {
+    header("location: ../");
     return;
 }
