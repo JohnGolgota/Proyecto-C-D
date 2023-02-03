@@ -728,15 +728,16 @@ document.addEventListener('DOMContentLoaded', function() {
                         '¡Poof!',
                         'Tu recordatorio Ha Sido Eliminado',
                         'success'
-
                     )
                     
                     $('#form-c').trigger('reset');
                     calendar.refetchEvents();
                     myModal.hide();
                 }
-          })
-          $('#form-c').trigger('reset');
+                $('#form-c').trigger('reset');
+            })
+
+            $('#form-c').trigger('reset');
     });
     
 });
